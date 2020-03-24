@@ -13,25 +13,23 @@
 `$ npm install -g nodemon`
 
 `$ nodemon`
-You should see a few extra lines output to terminal, confirming that nodemon is
-running and that it has started node ./bin/www
+ ###### You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node ./bin/www  ######
 
 #### ADDING AN ENGINES SECTION TO package.json ####
 `"engines": {`
     `"node": ">=11.0.0",`
     `"npm": ">=6.4.0"`
 `},`
-Adds an engines section to package.json to tell Heroku which platform your
-application is on and which version to use
+###### Adds an engines section to package.json to tell Heroku which platform your application is on and which version to use ######
 
 #### CREATING A PROCFILE ####
- create a file called Procfile
- Enter the following line in the Procfile: web: npm start
+* create a file called Procfile
+* Enter the following line in the Procfile:
+  `web: npm start`
 
 #### TESTING IT LOCALLY WITH HEROKU LOCAL ####
 `$ heroku local`
-starts the application running on localhost
-again, but this time on a different port: 5000
+###### Starts the application running on localhost again, but this time on a different port: 5000 ######
 
 #### STORING THE APPLICATION IN GIT ####
 `$ git init`
