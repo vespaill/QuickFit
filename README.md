@@ -1,4 +1,6 @@
-# CREATING AN EXPRESS PROJECT AND TRYING IT OUT#
+# COMMANDS USED #
+
+#### CREATING AN EXPRESS PROJECT AND TRYING IT OUT ####
 `$ express --view=pug --git`
 
 ###### install the dependencies. ######
