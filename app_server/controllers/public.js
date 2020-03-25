@@ -2,9 +2,9 @@ const website_name = 'QuickFit';
 
 /* Get the intro page */
 const intro = (req, res) => {
-    /* Defines the route, using the view template 'index.pug' but changing the
-       with title 'Introduction' */
-    res.render('intro', {
+    /* Defines the route, using the view template 'intro.pug'
+       Passes an object with variables to be used in the view. */
+    res.render('intro.pug', {
         title: website_name,
         introMsg: 'QuickFit is a progressive web application designed to help people meet their fitness goals, whatever they may be. QuickFit has been created from the ground-up with beginners in mind. It aims to remove needless complexities that are often experienced by the beginner when choosing a workout program. Click below to find a workout program tailored to your needs by going through our questionnaire.'
     });
@@ -13,28 +13,28 @@ const intro = (req, res) => {
 
 /* Get the questionnaire page */
 const questionnaire = (req, res) => {
-    res.render('questionnaire', {
+    res.render('questionnaire.pug', {
         title: `${website_name}—questionnaire`
     });
 };
 
 /* Get the login page */
 const login = (req, res) => {
-    res.render('login', {
+    res.render('login.pug', {
         title: `${website_name}—Login`
     });
 };
 
 /* Get the registration page */
 const register = (req, res) => {
-    res.render('register', {
+    res.render('register.pug', {
         title: `${website_name}—Registration`
     });
 };
 
 /* Get the about page */
 const about = (req, res) => {
-    res.render('about', {
+    res.render('about.pug', {
         title: `${website_name}—About`
     });
 };

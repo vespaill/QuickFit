@@ -20,10 +20,10 @@ html
               a.nav-link.btn.btn-default(href='/login') Login
             li.nav-item
               a.nav-link.btn.btn-default(href='/about') About
+    //- Hide on screens smaller than md
     .jumbotron.jumbotron-fluid.d-none.d-md-block
 
-    .container.content
-      block content
+    block content
 
     footer.footer.fixed-bottom.d-none.d-md-block
       .container
