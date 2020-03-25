@@ -1,16 +1,17 @@
 jQuery(document).ready(() => {
 
-    let $rNavBtn = jQuery('#nav-btn-right');
-    $rNavBtn.hide();
 
-    let $options = jQuery('.option');
+    let $qnrNextBtn = jQuery('#nav-btn-right');
+    $qnrNextBtn.hide();
 
-    $options
+    let $qnrOptions = jQuery('.option');
+
+    $qnrOptions
     .on('focus', () => {
-            $rNavBtn.show();
+        $qnrNextBtn.show();
     })
     // .on('blur', () => {
-    //         $rNavBtn.hide();
+    //     setTimeout( ()=> $qnrNextBtn.hide(), 1000 );
     // });
 
 });

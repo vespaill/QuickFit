@@ -49,7 +49,6 @@ const qnr_end = (req, res) => {
 
         options: ['Recommended Program', 'See All Programs'],
         prev: 'qnr3',
-        next: 'recommendations'
     });
 };
 
