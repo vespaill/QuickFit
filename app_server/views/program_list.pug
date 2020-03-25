@@ -1,0 +1,8 @@
+extends layout
+block content
+  .content
+    ul
+      li
+        each program in programs
+          h1.text-center
+            a.btn.btn-default(href='/dashboard/calendar') program

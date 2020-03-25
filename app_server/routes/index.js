@@ -7,7 +7,11 @@ const ctrlUser = require('../controllers/user_specific_pages');
 router.get('/', ctrlPublic.intro);
 router.get('/login', ctrlPublic.login);
 router.get('/register', ctrlPublic.register);
-router.get('/questionnaire', ctrlPublic.questionnaire);
+router.get('/qnr1', ctrlPublic.qnr1);
+router.get('/qnr2', ctrlPublic.qnr2);
+router.get('/qnr3', ctrlPublic.qnr3);
+router.get('/qnr_end', ctrlPublic.qnr_end);
+router.get('/program_list', ctrlPublic.program_list);
 router.get('/about', ctrlPublic.about);
 
 /* User-specific pages. */

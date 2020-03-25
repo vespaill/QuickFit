@@ -112,7 +112,7 @@ body {
   color: #FFFFFF;
   float: right;
   position: sticky;
-  visibility: hidden;
+  /* visibility: hidden; */
 }
 
 .badge-pill {

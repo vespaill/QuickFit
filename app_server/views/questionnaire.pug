@@ -2,20 +2,26 @@ extends layout
 block content
   .container.main-content
     .choiceFixed
-      section
-        h1.display-4.text-center What is your fitness goal?
+      if question
+        section
+          h1.display-4.text-center= question
+
+      //- Saved Choices
+      .col.text-center
+        each savedAnswer in savedAnswers
+          h2
+            span.badge.badge-pill= savedAnswer
 
       //- Choices
       .col.text-center
-        button.btn.btn-lg.qnr-btn.m-4.mt-5.p-3.col-sm-3.col-md-3.hideOverflow Gain Muscle
-        button.btn.btn-lg.qnr-btn.m-4.mt-5.p-3.col-sm-3.col-md-3.hideOverflow Maintain Weight
-        button.btn.btn-lg.qnr-btn.m-4.mt-5.p-3.col-sm-3.col-md-3.hideOverflow Burn Fat
+        each option in options
+          button.option.btn.btn-lg.qnr-btn.m-4.p-3= option
 
       //- Prev/Next Btns
       .navigation-btn
         .container
           .row.justify-content-between
             .col-6
-              button.btn.nav-btn.col-sm-3.col-md-6 Previous
+              a.btn.nav-btn.col-sm-3.col-md-6(href=prev) Previous
             .col-6
-              button#nav-btn-right.btn.nav-btn.col-sm-3.col-md-6 Next
+              a#nav-btn-right.btn.nav-btn.col-sm-3.col-md-6(href=next) Next
