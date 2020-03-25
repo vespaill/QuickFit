@@ -6,8 +6,8 @@ const dashboard = (req, res) => {
     });
 };
 
-const settings = (req, res) => {
-    res.render('settings.pug', {
+const account = (req, res) => {
+    res.render('account.pug', {
         title: website_name
     });
 };
@@ -20,6 +20,6 @@ const calendar = (req, res) => {
 
 module.exports = {
     dashboard,
-    settings,
+    account,
     calendar
 };
