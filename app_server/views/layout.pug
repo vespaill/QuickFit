@@ -2,12 +2,12 @@ doctype html
 html
   head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    title= `QuickFit—${title}`
+    title= title
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/all.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    nav.navbar.navbar-expand-lg
+    nav.navbar.navbar-expand-md
       .container
         a#home.navbar-brand.btn.btn-default(href='/') home
         button.navbar-toggler(type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation")
@@ -15,17 +15,17 @@ html
 
       .container
         #navbarToggle.navbar-collapse.collapse
-            ul.navbar-nav.center.ml-auto
-              li.nav-item
-                a.nav-link.btn.btn-default(href='/login') Login
-              li.nav-item
-                a.nav-link.btn.btn-default(href='/login') About
-    .jumbotron.jumbotron-fluid
+          ul.navbar-nav.center.ml-auto
+            li.nav-item
+              a.nav-link.btn.btn-default(href='/login') Login
+            li.nav-item
+              a.nav-link.btn.btn-default(href='/about') About
+    .jumbotron.jumbotron-fluid.d-none.d-md-block
 
     .container.content
       block content
 
-    footer.footer.fixed-bottom
+    footer.footer.fixed-bottom.d-none.d-md-block
       .container
         .row
           section.col-4

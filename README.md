@@ -2,8 +2,9 @@
 
 #### CREATING AN EXPRESS PROJECT ####
 `$ express --view=pug --git`
+<p> Create an Express project with the Pug template engine.</br>
 
-###### install the dependencies. ######
+##### Install the dependencies. #####
 `$ npm install`
 
 #### TRYING IT OUT (Windows 10)
@@ -13,27 +14,27 @@
 `$ npm install -g nodemon`
 
 `$ nodemon`
-###### You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node ./bin/www  ######
+<p> You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node ./bin/www  </p>
 
 #### ADDING AN ENGINES SECTION TO package.json ####
-`"engines": {`
-    `"node": ">=11.0.0",`
-    `"npm": ">=6.4.0"`
+`"engines": {`</br>
+`    "node": ">=11.0.0",`</br>
+`    "npm": ">=6.4.0"`</br>
 `},`
-###### Adds an engines section to package.json to tell Heroku which platform your application is on and which version to use ######
+<p> Adds an engines section to package.json to tell Heroku which platform your application is on and which version to use </p>
 
 #### CREATING A PROCFILE ####
-###### * create a file called Procfile ######
-###### * Enter the following line in the Procfile: ######
+<p> create a file called Procfile </p>
+<p> Enter the following line in the Procfile: </p>
 `web: npm start`
 
 #### TESTING IT LOCALLY WITH HEROKU LOCAL ####
 `$ heroku local`
-###### Starts the application running on localhost again, but this time on a different port: 5000 ######
+<p> Starts the application running on localhost again, but this time on a different port: 5000 </p>
 
 #### STORING THE APPLICATION IN GIT ####
-`$ git init`
-`$ git add --all`
+`$ git init`</br>
+`$ git add --all`</br>
 `$ git commit -m "First commit"`
 
 #### CREATING THE HEROKU APPLICATION ####
@@ -46,6 +47,6 @@
 `$ heroku open`
 
 #### A SIMPLE UPDATE PROCESS ####
-`$ git add --all`
-`$ git commit -m "Commit message here"`
+`$ git add --all`</br>
+`$ git commit -m "Commit message here"`</br>
 `$ git push heroku master`

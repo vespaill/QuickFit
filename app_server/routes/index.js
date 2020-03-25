@@ -8,5 +8,6 @@ router.get('/', ctrlPublic.intro);
 router.get('/login', ctrlPublic.login);
 router.get('/register', ctrlPublic.register);
 router.get('/questionnaire', ctrlPublic.questionnaire);
+router.get('/about', ctrlPublic.about);
 
 module.exports = router;
