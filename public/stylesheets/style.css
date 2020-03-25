@@ -244,3 +244,24 @@ a:hover {
   box-sizing: border-box;
   width : 100%;
 }
+
+/* Calendar *******************************************************************/
+.close {
+  font-size: 12px;
+}
+
+.table {
+  background-color: #d5dbeb;
+}
+
+td.btn {
+  font-size: 12px;
+}
+
+td#empty {
+  font-size: 7px;
+}
+
+a.button {
+  margin-right: 15px;
+}
