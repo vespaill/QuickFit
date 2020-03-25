@@ -1,72 +1,55 @@
 * {
-    /* global font, feel free to change, I went for something similar to prototype */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0
+  padding: 0
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    color: white;
-    background-color: #D5D0CA;
-}
-
-img.brand {
-    height: 100px;
-    margin: 20px 0 20px 0;
+  color: white;
+  background-color: #D5D0CA;
 }
 
 .main-content {
-    color: #000000;
+  color: #000000;
 }
 
-.main-content section {
-    /* Increase font-size of all sections under .main-content */
-    font-size: x-large;
-}
-
-.footer {
-    background-color: #294D67;
-    padding: 15px;
-}
-
-/* Bootstrap modifications */
 .navbar {
   background-color: #294D67;
-  /* Navbar has a static height of 75px */
-  height: 75px;
-}
-
-.navbar-logo {
-  /* To be used when logo is included in the navbar instead of jumbotron */
-  background-color: #1B1B1B;
-}
-
-.navbar-brand img {
-  /* Height of navbar logo 75px */
-  height: 75px;
-}
-
-@media (max-width:991px) {
-  .navbar-brand img {
-      /* Shrink navbar logo when collapsed so that it doesn't overflow */
-      height: 60px;
-  }
 }
 
 .navbar-toggler-icon {
-    /* Toggler is invisible for some reason, use custom SVG instead */
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  /* Toggler is invisible for some reason, use custom SVG instead */
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.nav-item {
+  max-width: 100px;
+  margin: 3px 0;
+}
+
+#home {
+  margin-bottom: 5px;
 }
 
 .jumbotron {
-    background-color: #1B1B1B;
-    background-image: url("../images/logo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    padding: 100px;
+  background-color: #1B1B1B;
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 100px;
+}
+
+.btn {
+  margin: 3px
 }
 
 .btn-default {
-    background-color: #FF9A00;
-    color: #FFF;
+  background-color: #FF9A00;
+  color: #FFF;
+  margin-right: 1em;
 }
 
 .btn-blue {
@@ -83,169 +66,7 @@ img.brand {
   padding-left: 15px;
 }
 
-/* Dashboard */
-.greeting {
-  font-size: 40px;
-  margin-bottom: 30px;
-}
-
-.row > .my-programs, .row > .current-program, .row > .nutrition, .row > .history, .row > .info {
-  border: 1px solid #686767;
-  border-radius: 20px;
-  padding: 0;
-}
-
-.my-programs > div:nth-child(even), .nutrition > div:nth-child(even) {
-  background-color: #ffffff;
-}
-
-.my-programs > div, .nutrition > div, .current-program > div, .program-list > div {
-  border-bottom: 2px solid #706e6e;
-}
-
-.program-list > div:last-child, .nutrition > div:last-child {
-  border-bottom: none;
-}
-
-.nutrition > div {
-  padding: 0 10px 0 10px;
-}
-
-.box-title {
-  font-size: 25px;
-  padding: 0 0 10px 10px;
-}
-
-.current-program {
-  margin: 0 50px 0 50px;
-}
-
-.row {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.add-button {
-  box-sizing: border-box;
-  width : 100%;
-}
-
-.program-list {
-  padding: 0;
-}
-
-.program-list > div {
-  padding: 0;
-}
-
-.buttons > button {
-  color: #ffffff;
-  background-color: #237fbd;
-  border-radius: 20px;
-  border: 1px solid #267fa8;
-  margin: 3px 0 3px 0;
-}
-
-.program-list {
-  border-radius: 0 0 20px 20px;
-}
-
-/* Profile Page CSS */
-.exercise-names {
-  padding-right: 0;
-}
-
-.exercise-names > div {
-  margin-bottom: 3px;
-}
-
-.exercise-names div:nth-child(even) {
-  background-color: pink;
-}
-
-.exercise-names div:nth-child(odd) {
-  background-color: yellowgreen;
-}
-
-/* Profile */
-.history > div:nth-child(even), .info > div:nth-child(even) {
-  background-color: #ffffff;
-}
-
-.history > div, .info > div {
-  border-bottom: 2px solid #706e6e;
-}
-
-.history > div:last-child, .info > div:last-child {
-  border-bottom: none;
-}
-
-.box-title {
-  font-size: 25px;
-  padding: 0 0 10px 10px;
-}
-
-::placeholder {
-  color: #000000;
-  font-style: italic;
-}
-
-.fields {
-  padding: 30px 0 200px 0;
-  border-radius: 0 0 20px 20px;
-}
-
-.update-button {
-  box-sizing: border-box;
-  width : 100%;
-}
-
-/* Questionnaire */
-
-.btn-active {
-  background-color: #FF9A00;
-  color: #FFF;
-}
-.btn-active:focus {
-  background-color: #ff5d00;
-  font-weight: bold;
-}
-
-.nav-btn {
-  background-color: #00a2ff;
-  color: #FFFFFF;
-  position: sticky;
-}
-
-#nav-btn-right{
-  background-color: #00a2ff;
-  color: #FFFFFF;
-  float: right;
-  position: sticky;
-  visibility: hidden;
-}
-
-.badge-pill {
-  background-color: #ff5d00;
-  color: #FFFFFF;
-}
-
-.choiceFixed {
-  height: 370px;
-}
-
-/* pitou calendar */
-.close{
-  font-size: 12px;
-}
-
-table{
-  background-color: #d5dbeb
-}
-
-td .btn{
-  font-size: 12px;
-}
-td #empty{
-  font-size: 7px;
+.footer {
+  background-color: #294D67;
+  padding: 15px;
 }

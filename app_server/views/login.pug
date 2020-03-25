@@ -1,0 +1,15 @@
+extends layout
+block content
+  .container.main-content.form
+    .row.mt-5
+      .col-6.text-center.mx-auto
+        input(type="text" placeholder="Email")
+    .row.mt-5
+      .col-6.text-center.mx-auto
+        input(type="password" placeholder="Password")
+    .row.mt-5
+      .col-3.text-center.mx-auto
+        a.button.btn.btn-default.btn-block.p-2 Login
+    .row.mt-3
+      .col-3.text-center.mx-auto
+        a.button.btn.btn-default.btn-block.p-2(href='/register') Create Account

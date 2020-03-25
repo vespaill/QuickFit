@@ -1,6 +1,6 @@
 # COMMANDS USED #
 
-#### CREATING AN EXPRESS PROJECT AND TRYING IT OUT ####
+#### CREATING AN EXPRESS PROJECT ####
 `$ express --view=pug --git`
 
 ###### install the dependencies. ######
@@ -13,7 +13,7 @@
 `$ npm install -g nodemon`
 
 `$ nodemon`
- ###### You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node ./bin/www  ######
+###### You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node ./bin/www  ######
 
 #### ADDING AN ENGINES SECTION TO package.json ####
 `"engines": {`
@@ -23,9 +23,9 @@
 ###### Adds an engines section to package.json to tell Heroku which platform your application is on and which version to use ######
 
 #### CREATING A PROCFILE ####
-* create a file called Procfile
-* Enter the following line in the Procfile:
-  `web: npm start`
+###### * create a file called Procfile ######
+###### * Enter the following line in the Procfile: ######
+`web: npm start`
 
 #### TESTING IT LOCALLY WITH HEROKU LOCAL ####
 `$ heroku local`

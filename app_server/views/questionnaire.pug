@@ -1,0 +1,21 @@
+extends layout
+block content
+  .container.main-content
+    .choiceFixed
+      section
+        h1.display-4.text-center What is your fitness goal?
+
+      //- Choices
+      .col.text-center
+        button.btn.btn-lg.btn-active.m-4.mt-5.p-3.col-sm-3.col-md-3 Gain Muscle
+        button.btn.btn-lg.btn-active.m-4.mt-5.p-3.col-sm-3.col-md-3 Maintain Weight
+        button.btn.btn-lg.btn-active.m-4.mt-5.p-3.col-sm-3.col-md-3 Burn Fat
+
+      //-Prev/Next Btns
+      .navigation-btn
+        .container
+          .row.justify-content-between
+            .col-6
+              button.btn.nav-btn.col-sm-3.col-md-6 Previous
+            .col-6
+              button.btn.nav-btn.col-sm-3.col-md-6(id="nav-btn-right") Next
