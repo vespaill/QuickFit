@@ -10,7 +10,7 @@
 ##### Installing nodemon globably #####
     $ npm install -g nodemon
 
-##### Installing nodemon globably #####
+##### Running it #####
     $ nodemon
 <p> You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node ./bin/www  </p>
 
