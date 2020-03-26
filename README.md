@@ -22,7 +22,7 @@ go to &nbsp;`localhost:3000`
 </br>
 
 --------------------------------------------------------------------------------
-## The following commands may not be that relevant to you. They're kept here for future reference for myself. ##
+### The following commands may not be that relevant to you. They're kept here as future reference for myself. ###
 --------------------------------------------------------------------------------
 #### CREATING AN EXPRESS PROJECT ####
     $ express --view=pug --git
@@ -63,3 +63,22 @@ Create a file called **Procfile**
     $ git add --all
     $ git commit -m "Commit message here"
     $ git push heroku master
+
+---
+
+## Making the application use the right database (local vs. live) ##
+#### TESTING, AFTER SETTING THE DATABASE URI BASED ON THE ENVIRONMENT ####
+    $ NODE_ENV=production MONGODB_URI=mongodb://<username>:<password>@<hostname>:<port>/<database> nodemon
+##### (Windows 10) #####
+    [Environment]::SetEnvironmentVariable("NODE_ENV","production"); [Environment]::SetEnvironmentVariable("MONGODB_URI","mongodb://<username>:<password>@<hostname>:<port>/<database>"); & nodemon
+
+#### TESTING THAT HEROKU IS CONNECTING TO THE LIVE DATABASE ####
+After pushing to heroku do the following command
+
+    $ heroku logs > logs.txt
+
+This command outputs the latest 100 lines of Heroku logs to a text file. Search the file for the a message along the lines of:
+
+    Mongoose connected to mongodb://heroku_t0zs37gc:1k3t3pgo8sb5enosk314gj@ds159330.mlab.com:59330/heroku_t0zs37gc
+
+If you found it, then you know that the live application on Heroku is connecting to your live database.
