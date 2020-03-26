@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ctrlPublic = require('../controllers/public');
 const ctrlUser = require('../controllers/user_specific_pages');
+const ctrlExercises = require('../controllers/exercise_pages');
 
 /* Define URL for different pages. */
 router.get('/', ctrlPublic.intro);
@@ -18,5 +19,9 @@ router.get('/about', ctrlPublic.about);
 router.get('/dashboard', ctrlUser.dashboard);
 router.get('/dashboard/account', ctrlUser.account);
 router.get('/dashboard/calendar', ctrlUser.calendar);
+
+/* Exercises pages. */
+router.get('/exercises', ctrlExercises.exercises);
+
 
 module.exports = router;

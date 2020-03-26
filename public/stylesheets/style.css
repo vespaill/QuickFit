@@ -37,7 +37,7 @@ body {
 }
 
 .nav-item {
-  max-width: 100px;
+  max-width: 150px;
   margin: 3px 0;
 }
 
@@ -254,11 +254,11 @@ a:hover {
   background-color: #d5dbeb;
 }
 
-td.btn {
+.add-btn {
   font-size: 12px;
 }
 
-td#empty {
+.empty-btn {
   font-size: 7px;
 }
 
