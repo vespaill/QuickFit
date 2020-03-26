@@ -3,8 +3,11 @@
 ##### Install the dependencies. #####
     $ npm install
 
-#### TRYING IT OUT (Windows 10)
+#### TRYING IT OUT
+    $ DEBUG=quickfit:* npm start
+##### (Windows 10) #####
     $ [Environment]::SetEnvironmentVariable("DEBUG","quickfit:*"); & npm start
+
 
 #### AUTOMATICALLY RESTARTING THE APPLICATION WITH NODEMON ####
 ##### Installing nodemon globably #####
