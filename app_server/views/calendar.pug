@@ -4,117 +4,24 @@ block content
     table.table.table-bordered.mt-5.mb-5
       thead
         tr
-          th.text-center(scope="col") Sun
-          th.text-center(scope="col") Mon
-          th.text-center(scope="col") Tue
-          th.text-center(scope="col") Wed
-          th.text-center(scope="col") Thu
-          th.text-center(scope="col") Fri
-          th.text-center(scope="col") Sat
+          - for (let i = 0, days=['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; i < 7; i++)
+            th.text-center(scope="col")= days[i]
       tbody.table-borderless
+        - for (let i = 1; i <= 2; i++)
+          tr
+            - for (let i = 1; i <= 7; i++)
+              td.text-center.p-1
+                span.badge.badge-primary.p-2 exercise
+                  button.close.ml-2(type="button" aria-label="Close")
+                    span(aria-hidden="true") &times;
+        - for (let i = 1; i <= 9; i++)
+          tr
+            td
         tr
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
+          - for (let i = 1; i <= 7; i++)
+            td.text-center.p-1.pt-0.pb-0.m-0
+              button.btn.btn-default.btn-orange.pt-0.pb-0.pr-4.pl-4 Add
         tr
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-          td.text-center.p-1
-            span.badge.badge-primary.p-2 exercise
-              button.close.ml-2(type="button" aria-label="Close")
-                span(aria-hidden="true") &times;
-        tr
-          td
-        tr
-          td
-        tr
-          td
-        tr
-          td
-        tr
-          td
-        tr
-          td
-        tr
-          td
-        tr
-          td
-        tr
-          td
-        tr
-          td.text-center.p-1.pt-0.pb-0.m-0
-            button.btn.btn-default.btn-orange.pt-0.pb-0.pr-4.pl-4 Add
-          td.text-center.p-1.pt-0.pb-0.m-0
-            button.btn.btn-default.btn-orange.pt-0.pb-0.pr-4.pl-4 Add
-          td.text-center.p-1.pt-0.pb-0.m-0
-            button.btn.btn-default.btn-orange.pt-0.pb-0.pr-4.pl-4 Add
-          td.text-center.p-1.pt-0.pb-0.m-0
-            button.btn.btn-default.btn-orange.pt-0.pb-0.pr-4.pl-4 Add
-          td.text-center.p-1.pt-0.pb-0.m-0
-            button.btn.btn-default.btn-orange.pt-0.pb-0.pr-4.pl-4 Add
-          td.text-center.p-1.pt-0.pb-0.m-0
-            button.btn.btn-default.btn-orange.pt-0.pb-0.pr-4.pl-4 Add
-          td.text-center.p-1.pt-0.pb-0.m-0
-            button.btn.btn-default.btn-orange.pt-0.pb-0.pr-4.pl-4 Add
-        tr
-          td.pt-0.pb-0.m-0
-            button#empty.btn.btn-default.btn-orange.pt-0.pb-0.pr-3.pl-3 empty
-          td.pt-0.pb-0.m-0
-            button#empty.btn.btn-default.btn-orange.pt-0.pb-0.pr-3.pl-3 empty
-          td.pt-0.pb-0.m-0
-            button#empty.btn.btn-default.btn-orange.pt-0.pb-0.pr-3.pl-3 empty
-          td.pt-0.pb-0.m-0
-            button#empty.btn.btn-default.btn-orange.pt-0.pb-0.pr-3.pl-3 empty
-          td.pt-0.pb-0.m-0
-            button#empty.btn.btn-default.btn-orange.pt-0.pb-0.pr-3.pl-3 empty
-          td.pt-0.pb-0.m-0
-            button#empty.btn.btn-default.btn-orange.pt-0.pb-0.pr-3.pl-3 empty
-          td.pt-0.pb-0.m-0
-            button#empty.btn.btn-default.btn-orange.pt-0.pb-0.pr-3.pl-3 empty
+          - for (let i = 1; i <= 7; i++)
+            td.pt-0.pb-0.m-0
+              button#empty.btn.btn-default.btn-orange.pt-0.pb-0.pr-3.pl-3 empty
