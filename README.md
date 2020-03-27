@@ -25,7 +25,7 @@
 <br>
 <br>
 
-## CREATING AN EXPRESS PROJECT
+## 3.2 &nbsp; CREATING AN EXPRESS PROJECT
 
 #### Install the pieces
  - Node and npm
@@ -41,7 +41,7 @@
 
 #### Creating an Express project and trying it out
     $ express --view=pug --git
-> #####  Creates an Express project with the Pug template engine. Basically, this command creates a bunch of folders and files that form the basis of your application.
+> #####  Creates an Express project with the Pug template engine. Basically, this command creates a bunch of directories and files that form the basis of your application.
 > ##### Next, install the dependencies.
     $ npm install
 
@@ -65,18 +65,16 @@
         "node": ">=11.0.0",`
         "npm": ">=6.4.0"`
     },
+---
+<br>
+<br>
 
-
+## 3.5 &nbsp; Getting Heroku set up
 
 #### CREATING A PROCFILE (in order for heroku to work)
 > ##### Create a file called **Procfile**
 > ##### Enter the following line in the Procfile:
     web: npm start
----
-<br>
-<br>
-
-## Getting Heroku set up
 
 #### TESTING IT LOCALLY WITH HEROKU LOCAL
     $ heroku local
@@ -104,10 +102,10 @@
 </br>
 </br>
 
-## Adding Mongoose to your application
+## 5.1 &nbsp; Adding Mongoose to your application
 #### Install
     $ npm i mongoose
-#### In `app_server/models`:
+#### In `app_server/models/db.js`:
     const mongoose = require('mongoose');
 #### In `app.js`:
     require('./app_server/models/db');
@@ -117,7 +115,7 @@
 </br>
 
 
-## Using the MongoDB shell to create a MongoDB database and add data ##
+## 5.4 &nbsp; Using the MongoDB shell to create a MongoDB database and add data ##
 
 #### STARTING THE MONGODB SHELL
     $ mongo
@@ -151,27 +149,29 @@
 </br>
 </br>
 
-## GETTING YOUR DATABASE LIVE ##
+## 5.5 &nbsp; GETTING YOUR DATABASE LIVE ##
 
 #### ADDING THE MLAB ADD-ON TO HEROKU (in order to create a live database)
     $ heroku addons:create mongolab
 
- > ##### Now you have a MongoDB database ready and waiting for you in the cloud. To see for yourself, open a web interface to your live database:
+ > ##### Now you have a MongoDB database ready and waiting for you in the cloud. To see for yourself, open the web interface to your live database:
     $ heroku addons:open mongolab
 
 #### PUSHING DATA FROM LOCAL TO LIVE DATABASE
 
-##### Get the database URI
+##### Dump the data from your local database
+    $ mongodump -h localhost:27017 -d <local_database_name>
+> ##### It will output a directory called `dump`. Inside will be a directory with the name of your database.
+
+##### Get the live database URI (you'll need it)
     $ heroku config:get MONGODB_URI
 
-> ###### It will return something of this form:
+> ##### It will return something of this form:
     mongodb://<username>:<password>@<live_host_and_port>/<live_database_name>
 
-##### Dump the data from your local database into a directory
-    $ mongodump -h localhost:27017 -d <database_name>
-
 ##### Upload the dumped data to your live database
-    $ mongorestore -h <live_host_and_port> -d <live_database_name> -u <username> -p <password> <dump_folder>
+> ##### Go into the `dump` directory and enter this command:
+    $ mongorestore -h <live_host_and_port> -d <live_database_name> -u <username> -p <password> <database_dump_directory>
 
 #### TESTING THE LIVE DATABASE
     $ mongo <live_host_and_port>/<live_database_name> -u <username> -p <password>
@@ -180,20 +180,18 @@
 
     > show collections
     > db.exercises.find().pretty()
----
-<br>
 <br>
 
-## MAKING THE APPLICATION USE THE RIGHT DATABASE (local vs. live)
-
+### MAKING THE APPLICATION USE THE RIGHT DATABASE (local vs. live)
 #### SETTING THE DATABASE URI BASED ON THE ENVIRONMENT
-> In `app_server/models`:
+> In `app_server/models/db.js`:
 
-    let dbURI = 'mongodb://localhost/Loc8r';
+    let dbURI = 'mongodb://localhost/quickfit';
     if (process.env.NODE_ENV === 'production') {
         dbURI = process.env.MONGODB_URI;
     }
     mongoose.connect(dbURI, { useNewUrlParser: true });
+    ...
 
 #### TESTING BEFORE LAUNCHING
     $ NODE_ENV=production MONGODB_URI=mongodb://<username>:<password>@<live_host_and_port>/<live_database_name> nodemon
@@ -202,13 +200,17 @@
     [Environment]::SetEnvironmentVariable("NODE_ENV","production"); [Environment]::SetEnvironmentVariable("MONGODB_URI","mongodb://<username>:<password>@<live_host_and_port>/<live_database_name>"); & nodemon
 
 #### TESTING THAT HEROKU IS CONNECTING TO THE LIVE DATABASE
-After pushing to heroku do the following command
+> ##### After pushing to heroku do the following command:
 
     $ heroku logs > logs.txt
 
-This command outputs the latest 100 lines of Heroku logs to a text file. Search the file for the a message along the lines of:
+>##### It outputs the latest 100 lines of Heroku logs to a text file. Search the file for the a message along the lines of:
 
     Mongoose connected to mongodb://heroku_t0zs37gc:1k3t3pgo8sb5enosk314gj@ds159330.mlab.com:59330/heroku_t0zs37gc
 
-If you found it, then you know that the live application on Heroku is connecting to your live database.
+>#####  If you found it, then you know that the live application on Heroku is connecting to your live database.
+---
+<br>
+<br>
 
+## 6. Setting up the API in Express
