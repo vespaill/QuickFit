@@ -109,6 +109,8 @@
     $ npm i mongoose
 #### In `app_server/models`:
     const mongoose = require('mongoose');
+#### In `app.js`:
+    require('./app_server/models/db');
 
 ---
 </br>
