@@ -3,7 +3,7 @@
 ##### Install the dependencies. #####
     $ npm install
 
-#### TRYING IT OUT
+#### TRYING IT OUT ####
     $ DEBUG=quickfit:* npm start
 ##### (Windows 10) #####
     $ [Environment]::SetEnvironmentVariable("DEBUG","quickfit:*"); & npm start
@@ -19,7 +19,7 @@
 
 go to &nbsp;`localhost:3000`
 
-</br>
+</br></br></br>
 
 --------------------------------------------------------------------------------
 ### The following commands may not be that relevant to you. They're kept here as future reference for myself. ###
@@ -35,7 +35,7 @@ go to &nbsp;`localhost:3000`
     },
 <p> Adds an engines section to package.json to tell Heroku which platform your application is on and which version to use </p>
 
-#### CREATING A PROCFILE (for heroku to work) ####
+#### CREATING A PROCFILE (in order for heroku to work) ####
 Create a file called **Procfile**
 <p> Enter the following line in the Procfile:</p>
 
@@ -65,6 +65,63 @@ Create a file called **Procfile**
     $ git push heroku master
 
 ---
+</br>
+</br>
+
+## Using the MongoDB shell to create a MongoDB database and add data ##
+
+#### STARTING THE MONGODB SHELL ####
+    $ mongo
+
+#### LISTING ALL LOCAL DATABASES ####
+    > show dbs
+
+#### USING A SPECIFIC DATABASE ####
+    > use local
+
+#### LISTING THE COLLECTIONS IN A DATABASE ####
+    > show collections
+
+#### SEEING THE CONTENTS OF A COLLECTION ####
+    > db.startup_log.find( <optionalQueryObject> )
+
+##### Prettify output #####
+    > db.locations.find().pretty()
+
+#### Creating a MongoDB database ####
+    > use <newDatabaseName>
+
+#### CREATING A COLLECTION AND DOCUMENTS ####
+    > db.locations.save({
+        name: 'Starcups',
+        address: '125 High Street, Reading, RG6 1PS',
+        rating: 3,
+        facilities: ['Hot drinks', 'Food', 'Premium wifi'],
+        coords: [-0.9690884, 51.455041],
+        openingTimes: [{
+        days: 'Monday - Friday',
+        opening: '7:00am',
+        closing: '7:00pm',
+        closed: false
+        }, {
+            days: 'Saturday',
+            opening: '8:00am',
+            closing: '5:00pm',
+            closed: false
+        }, {
+            days: 'Sunday',
+            closed: true
+        }]
+    })
+</br>
+</br>
+
+## GETTING YOUR DATABASE LIVE ##
+#### ADD THE MLAB ADD-ON TO HEROKU TO CREATE A LIVE DATABASE ####
+    $ heroku addons:create mongolab
+
+#### OPEN A WEB INTERFACE TO YOUR LIVE DATABASE ####
+    $ heroku addons:open mongolab
 
 ## Making the application use the right database (local vs. live) ##
 #### TESTING, AFTER SETTING THE DATABASE URI BASED ON THE ENVIRONMENT ####
@@ -82,3 +139,4 @@ This command outputs the latest 100 lines of Heroku logs to a text file. Search 
     Mongoose connected to mongodb://heroku_t0zs37gc:1k3t3pgo8sb5enosk314gj@ds159330.mlab.com:59330/heroku_t0zs37gc
 
 If you found it, then you know that the live application on Heroku is connecting to your live database.
+
