@@ -8,7 +8,6 @@ const exercises = (req, res) => {
             name: 'Flat Bench Press',
             group: 'Chest',
             desc: 'null'
-            // desc: '1. Lie down on a flat bench.\n2. Create upper back tightness: Pull your shoulder together; bring them back and down. This will bring your chest out. (If you want to press heavy weight, you need a solid platform to press from. Your back is the platform that you’re going to press from).\n3. Feet Position: Your feet can be flat on the ground or brought in towards yourself to the point where your heels raise off the ground. At any rate, make sure you have solid contact against the floor. Don’t dance with your feet!\n4. Arc: You can create some arching on your lower back, but keep it reasonable. Make sure your upper back and butt are stable on the bench at all times.\n5. Find your grip: Generally this would be just wider than shoulder-width. Ideally, this would be the grip that allows your forearms to be perpendicular to the ground when the barbell is resting on your chest. Make sure your wrists are straight (your knuckles are facing the ceiling).\n6. Unrack the bar: You don’t want to lose your upper back tightness, so don’t push the bar when unracking. Instead, squeeze the bar and pull it out with your lats.\n7. Brace; inhale, hold it, and forcefully attempt to exhale against a closed airway.\n8. Descend: Now you’re holding the bar above your neck with arms straight. In a controlled manner, bring the weight down to your middle or lower chest. You don’t want to bring the weight down to your neck or upper chest, so the elbows must tuck in slightly as you descend. In contrast to the Squat and Deadlift, the bar path for the bench press will not be straight up and down, but rather diagonal.\n9. Ascend: Once the weight touches your mid/lower chest, press the weight up and untuck your elbows as you do. You may exhale during the ascend.\n10. Leg-drive: You may press against the ground with your feet, especially during the ascend, as long as your butt stays on the bench.\n'
         }, {
             equip: ['C'],
             name: 'Cable Crossover',
@@ -174,8 +173,7 @@ const exercises = (req, res) => {
             name: 'Hip Abduction',
             group: 'Lower body',
             desc: 'null'
-        }
-        ]
+        }]
     });
 };
 

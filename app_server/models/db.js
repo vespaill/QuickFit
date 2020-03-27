@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Use local database URI
-let dbURI = 'mongodb://localhost/QuickFit';
+let dbURI = 'mongodb://localhost/quickfit';
 
 // If we're in heroku, use the live database URI instead.
 if (process.env.NODE_ENV === 'production') {

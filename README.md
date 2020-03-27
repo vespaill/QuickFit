@@ -1,135 +1,205 @@
-# COMMANDS USED #
+# COMMANDS USED
 
-##### Install the dependencies. #####
+##### Install the dependencies.
     $ npm install
 
-#### TRYING IT OUT ####
-    $ DEBUG=quickfit:* npm start
-##### (Windows 10) #####
-    $ [Environment]::SetEnvironmentVariable("DEBUG","quickfit:*"); & npm start
-
-
-#### AUTOMATICALLY RESTARTING THE APPLICATION WITH NODEMON ####
-##### Installing nodemon globably #####
+#### AUTOMATICALLY RESTARTING THE APPLICATION WITH NODEMON
+> ##### Installing nodemon globably
     $ npm install -g nodemon
 
-##### Running it #####
+> ##### Running it
     $ nodemon
-<p> You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node ./bin/www  </p>
+> ##### You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node `./bin/www`. Go to `localhost:3000` and check.
+<br>
+<br>
+<br>
 
-go to &nbsp;`localhost:3000`
+---
+---
+---
+### The following may not be relevant to you. It's here to serve as future reference for myself.
+---
+---
+---
+<br>
+<br>
+<br>
 
-</br></br></br>
+## CREATING AN EXPRESS PROJECT
 
---------------------------------------------------------------------------------
-### The following commands may not be that relevant to you. They're kept here as future reference for myself. ###
---------------------------------------------------------------------------------
-#### CREATING AN EXPRESS PROJECT ####
+#### Install the pieces
+ - Node and npm
+ - The Express generator installed globally
+ - Git
+ - Heroku
+ - Suitable command-line interface (CLI) or terminal
+
+#### Verify the installations
+    $ node --version
+    $ npm --version
+    $ express --version
+
+#### Creating an Express project and trying it out
     $ express --view=pug --git
-<p> Creates an Express project with the Pug template engine.</br>
+> #####  Creates an Express project with the Pug template engine. Basically, this command creates a bunch of folders and files that form the basis of your application.
+> ##### Next, install the dependencies.
+    $ npm install
 
-#### ADDING AN ENGINES SECTION TO package.json ####
+#### TRYING IT OUT
+    $ DEBUG=quickfit:* npm start
+> ##### (Windows 10)
+    $ [Environment]::SetEnvironmentVariable("DEBUG","quickfit:*"); & npm start
+
+#### AUTOMATICALLY RESTARTING THE APPLICATION WITH NODEMON
+> ##### Installing nodemon globably
+    $ npm install -g nodemon
+
+> ##### Running it
+    $ nodemon
+> ##### You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node `./bin/www`. Go to `localhost:3000` and check.
+
+
+
+#### ADDING AN ENGINES SECTION TO package.json
     "engines": {`
         "node": ">=11.0.0",`
         "npm": ">=6.4.0"`
     },
-<p> Adds an engines section to package.json to tell Heroku which platform your application is on and which version to use </p>
 
-#### CREATING A PROCFILE (in order for heroku to work) ####
-Create a file called **Procfile**
-<p> Enter the following line in the Procfile:</p>
 
+
+#### CREATING A PROCFILE (in order for heroku to work)
+> ##### Create a file called **Procfile**
+> ##### Enter the following line in the Procfile:
     web: npm start
+---
+<br>
+<br>
 
-#### TESTING IT LOCALLY WITH HEROKU LOCAL ####
+## Getting Heroku set up
+
+#### TESTING IT LOCALLY WITH HEROKU LOCAL
     $ heroku local
-<p> Starts the application running on localhost again, but this time on a different port: 5000 </p>
+> ##### Starts the application running on localhost again, but this time on a different port: 5000
 
-#### STORING THE APPLICATION IN GIT ####
+#### STORING THE APPLICATION IN GIT
     $ git init
     $ git add --all
     $ git commit -m "First commit"
 
-#### CREATING THE HEROKU APPLICATION ####
+#### CREATING THE HEROKU APPLICATION
     $ heroku create
 
-#### DEPLOYING THE APPLICATION TO HEROKU ####
+#### DEPLOYING THE APPLICATION TO HEROKU
     $ git push heroku master
 
-#### VIEWING THE APPLICATION ON A LIVE URL ####
+#### VIEWING THE APPLICATION ON A LIVE URL
     $ heroku open
 
-#### A SIMPLE UPDATE PROCESS ####
+#### A SIMPLE UPDATE PROCESS
     $ git add --all
     $ git commit -m "Commit message here"
     $ git push heroku master
+---
+</br>
+</br>
+
+## Adding Mongoose to your application
+#### Install
+    $ npm i mongoose
+#### In `app_server/models`:
+    const mongoose = require('mongoose');
 
 ---
 </br>
 </br>
 
+
 ## Using the MongoDB shell to create a MongoDB database and add data ##
 
-#### STARTING THE MONGODB SHELL ####
+#### STARTING THE MONGODB SHELL
     $ mongo
 
-#### LISTING ALL LOCAL DATABASES ####
+#### LISTING ALL LOCAL DATABASES
     > show dbs
 
-#### USING A SPECIFIC DATABASE ####
+#### USING A SPECIFIC DATABASE
     > use <database_name>
 
-#### LISTING THE COLLECTIONS IN A DATABASE ####
+#### LISTING THE COLLECTIONS IN A DATABASE
     > show collections
 
-#### SEEING THE CONTENTS OF A COLLECTION ####
-    > db.startup_log.find( <optional_query_o_bject> )
+#### SEEING THE CONTENTS OF A COLLECTION
+    > db.startup_log.find( <optional_query_object> )
 
-##### Prettify output #####
+> ##### Prettify the output so that you can read it.
+
     > db.locations.find().pretty()
 
-#### Creating a MongoDB database ####
+#### CREATING A MONGODB DATABASE
     > use <new_database_name>
 
-#### CREATING A COLLECTION AND DOCUMENTS ####
-    > db.locations.save({
-        name: 'Starcups',
-        address: '125 High Street, Reading, RG6 1PS',
-        rating: 3,
-        facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-        coords: [-0.9690884, 51.455041],
-        openingTimes: [{
-        days: 'Monday - Friday',
-        opening: '7:00am',
-        closing: '7:00pm',
-        closed: false
-        }, {
-            days: 'Saturday',
-            opening: '8:00am',
-            closing: '5:00pm',
-            closed: false
-        }, {
-            days: 'Sunday',
-            closed: true
-        }]
+#### CREATING A COLLECTION AND DOCUMENTS
+    > db.<collection_name>.save({
+        name: 'Bench Press',
+        equip: ['BB', 'DB']
+        ...
     })
+---
 </br>
 </br>
 
 ## GETTING YOUR DATABASE LIVE ##
-#### ADD THE MLAB ADD-ON TO HEROKU TO CREATE A LIVE DATABASE ####
+
+#### ADDING THE MLAB ADD-ON TO HEROKU (in order to create a live database)
     $ heroku addons:create mongolab
 
-#### OPEN A WEB INTERFACE TO YOUR LIVE DATABASE ####
+ > ##### Now you have a MongoDB database ready and waiting for you in the cloud. To see for yourself, open a web interface to your live database:
     $ heroku addons:open mongolab
 
-## Making the application use the right database (local vs. live) ##
-#### TESTING, AFTER SETTING THE DATABASE URI BASED ON THE ENVIRONMENT ####
-    $ NODE_ENV=production MONGODB_URI=mongodb://<username>:<password>@<hostname>:<port>/<database> nodemon
-##### (Windows 10) #####
-    [Environment]::SetEnvironmentVariable("NODE_ENV","production"); [Environment]::SetEnvironmentVariable("MONGODB_URI","mongodb://<username>:<password>@<hostname>:<port>/<database>"); & nodemon
+#### PUSHING DATA FROM LOCAL TO LIVE DATABASE
 
-#### TESTING THAT HEROKU IS CONNECTING TO THE LIVE DATABASE ####
+##### Get the database URI
+    $ heroku config:get MONGODB_URI
+
+> ###### It will return something of this form:
+    mongodb://<username>:<password>@<live_host_and_port>/<live_database_name>
+
+##### Dump the data from your local database into a directory
+    $ mongodump -h localhost:27017 -d <database_name>
+
+##### Upload the dumped data to your live database
+    $ mongorestore -h <live_host_and_port> -d <live_database_name> -u <username> -p <password> <dump_folder>
+
+#### TESTING THE LIVE DATABASE
+    $ mongo <live_host_and_port>/<live_database_name> -u <username> -p <password>
+
+> ##### This command connects you to your live database through the MongoDB shell. Test the live database with some commands.
+
+    > show collections
+    > db.exercises.find().pretty()
+---
+<br>
+<br>
+
+## MAKING THE APPLICATION USE THE RIGHT DATABASE (local vs. live)
+
+#### SETTING THE DATABASE URI BASED ON THE ENVIRONMENT
+> In `app_server/models`:
+
+    let dbURI = 'mongodb://localhost/Loc8r';
+    if (process.env.NODE_ENV === 'production') {
+        dbURI = process.env.MONGODB_URI;
+    }
+    mongoose.connect(dbURI, { useNewUrlParser: true });
+
+#### TESTING BEFORE LAUNCHING
+    $ NODE_ENV=production MONGODB_URI=mongodb://<username>:<password>@<live_host_and_port>/<live_database_name> nodemon
+
+##### (Windows 10)
+    [Environment]::SetEnvironmentVariable("NODE_ENV","production"); [Environment]::SetEnvironmentVariable("MONGODB_URI","mongodb://<username>:<password>@<live_host_and_port>/<live_database_name>"); & nodemon
+
+#### TESTING THAT HEROKU IS CONNECTING TO THE LIVE DATABASE
 After pushing to heroku do the following command
 
     $ heroku logs > logs.txt
