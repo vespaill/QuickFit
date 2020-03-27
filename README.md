@@ -77,19 +77,19 @@ Create a file called **Procfile**
     > show dbs
 
 #### USING A SPECIFIC DATABASE ####
-    > use local
+    > use <database_name>
 
 #### LISTING THE COLLECTIONS IN A DATABASE ####
     > show collections
 
 #### SEEING THE CONTENTS OF A COLLECTION ####
-    > db.startup_log.find( <optionalQueryObject> )
+    > db.startup_log.find( <optional_query_o_bject> )
 
 ##### Prettify output #####
     > db.locations.find().pretty()
 
 #### Creating a MongoDB database ####
-    > use <newDatabaseName>
+    > use <new_database_name>
 
 #### CREATING A COLLECTION AND DOCUMENTS ####
     > db.locations.save({
