@@ -17,7 +17,7 @@
 ---
 ---
 ---
-### The following may not be relevant to you. It's here to serve as future reference for myself.
+### The following may or may not be relevant. It's a summary of everything done to get this far.
 ---
 ---
 ---
