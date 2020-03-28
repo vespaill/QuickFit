@@ -1,5 +1,7 @@
 *.code-workspace
 URI.txt
+.DS_Store
+.ds_store
 
 # Logs
 logs
