@@ -5,10 +5,30 @@ const mongoose = require('mongoose');
    interact with the Exercises collection. */
 const Exercise_model = mongoose.model('Exercise');
 
-/* Placeholder functions to enable the app to start while we figure out how to
-   write the API functionality. */
-const exercisesList = (req, res) => { };
+// List all the exercises in the Exercise collection.
+const exercisesList = (req, res) => {
+    Exercise_model
+        .find()
+        .exec((err, exercise) => {
+            if (!exercise) {
+                return res
+                    .status(404)
+                    .json({
+                        "message": "no exercises found"
+                    });
 
+            } else if (err) {
+                return res
+                    .status(404)
+                    .json(err);
+            }
+            res
+                .status(200)
+                .json(exercise);
+        });
+};
+
+// Controller for creating a new exercise
 const exercisesCreate = (req, res) => {
     Exercise_model
 
@@ -45,7 +65,7 @@ const exerciseReadOne = (req, res) => {
         // in order to tell the Exercise_model what the query will be.
         .findById(req.params.exerciseid)
 
-        // Execute the query
+        // Actually execute the query
         .exec((err, exercise) => {  // Define callback to accept possible params
 
             /* Error trap 1: If Mongoose doesn't return an exercise, send a 404
@@ -57,8 +77,8 @@ const exerciseReadOne = (req, res) => {
                         "message": "exercise not found"
                     });
 
-                /* Error trap 2: If Mongoose returns an error, send it as a 404
-                   response and exit the controller, using a return statement. */
+            /* Error trap 2: If Mongoose returns an error, send it as a 404
+               response and exit the controller, using a return statement. */
             } else if (err) {
                 return res
                     .status(404)
@@ -72,10 +92,56 @@ const exerciseReadOne = (req, res) => {
                 .status(200)
                 .json(exercise);
         });
-}
+};
 
-const exerciseUpdateOne = (req, res) => { }
-const exerciseDeleteOne = (req, res) => { };
+// Making changes to an existing document in MongoDB
+const exerciseUpdateOne = (req, res) => {
+    if (!req.params.exerciseid) {
+        return res
+            .status(404)
+            .json({
+                "message": "Not found, exercise is required"
+            });
+    }
+    Exercise_model
+        .findById(req.params.exerciseid)
+        .exec((err, exercise) => {
+            if (!exercise) {
+                return res
+                    .json(404)
+                    .status({
+                        "message": "exerciseid not found"
+                    });
+            } else if (err) {
+                return res
+                    .status(400)
+                    .json(err);
+            }
+            exercise.name = req.body.name;
+            exercise.equip = req.body.equip.split(",");
+            exercise.group = req.body.group;
+            exercise.desc = req.body.desc;
+
+            exercise.save((err, loc) => {   // Save the instance
+                /* Send an appropriate response, depending on the outcome of the
+                   save operation. */
+                if (err) {
+                    res
+                        .status(404)
+                        .json(err);
+                } else {
+                    res
+                        .status(200)
+                        .json(loc);
+                }
+            });
+        });
+};
+
+
+// Deleting a document from MongoDB, given an ID
+const exerciseDeleteOne = (req, res) => {
+};
 
 module.exports = {
     exercisesList,
