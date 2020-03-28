@@ -18,8 +18,8 @@ const qnr1 = (req, res) => {
         savedAnswers: [],
         question: 'What is your fitness goal?',
         options: ['Gain Muscle', 'Maintain Weight', 'Burn Fat'],
-        prev: '/',
-        next: 'qnr2'
+        prev: '/',      // url for previous page
+        next: 'qnr2'    // url for next page
     });
 };
 const qnr2 = (req, res) => {
