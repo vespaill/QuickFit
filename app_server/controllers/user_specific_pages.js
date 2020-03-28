@@ -1,4 +1,4 @@
-const myGlobals = require('./myGlobals.js');
+const myGlobals = require('./globals');
 
 const dashboard = (req, res) => {
     res.render('dashboard.pug', {

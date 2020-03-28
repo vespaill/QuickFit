@@ -1,4 +1,4 @@
-const myGlobals = require('./myGlobals.js');
+const myGlobals = require('./globals');
 
 /* Get the intro page */
 const intro = (req, res) => {

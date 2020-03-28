@@ -1,4 +1,4 @@
-const myGlobals = require('./myGlobals.js');
+const myGlobals = require('./globals');
 
 const exercises = (req, res) => {
     res.render('exercises.pug', {
