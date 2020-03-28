@@ -217,26 +217,26 @@
 
 #### Table 6.2 &nbsp; Four request methods used in a REST API
 | Request method | Use | Response
-| ----------- | ---- | -------- |
-| `POST` | Create new data in the database |  New data object as seen in the database
-| `GET` | Read data from the database |  Data object answering the request
-| `PUT` | Update a document in the database | Updated data object as seen in the database
+| :------: | :--------------------------------- | :--------------------------- |
+| `POST`   | Create new data in the database    | New data object as seen in the database
+| `GET`    | Read data from the database        | Data object answering the request
+| `PUT`    | Update a document in the database  | Updated data object as seen in the database
 | `DELETE` | Delete an object from the database | Null
 <br>
 
 #### Table 6.5 &nbsp; Most popular HTTP status codes and how they might be used to send responses to an API request
 | Status code | Name | Use case |
-| ----------- | ---- | -------- |
-| 200         | OK | A successful `GET` or `PUT` request
-| 201         | Created | A successful `POST` request
-| 204         | No content | A successful `DELETE` request
-| 400         | Bad request | An unsuccessful `GET`, `POST`, or `PUT` request due to invalid content
-| 401         | Unauthorized | Requesting a restricted URL with incorrect credentials
-| 403         | Forbidden | Making a request that isn’t allowed
-| 404         | Not found | Unsuccessful request due to an incorrect parameter in the URL
-| 405         | Method not allowed | Request method not allowed for the given URL
-| 409         | Conflict | Unsuccessful `POST` request when another object with the same data already exists
-| 500         | Internal server error | Problem with your server or the database server
+| :-: | :-------------------- | :--------------------------------------------- |
+| 200 | OK                    | A successful `GET` or `PUT` request
+| 201 | Created               | A successful `POST` request
+| 204 | No content            | A successful `DELETE` request
+| 400 | Bad request           | An unsuccessful `GET`, `POST`, or `PUT` request due to invalid content
+| 401 | Unauthorized          | Requesting a restricted URL with incorrect credentials
+| 403 | Forbidden             | Making a request that isn’t allowed
+| 404 | Not found             | Unsuccessful request due to an incorrect parameter in the URL
+| 405 | Method not allowed    | Request method not allowed for the given URL
+| 409 | Conflict              | Unsuccessful `POST` request when another object with the same data already exists
+| 500 | Internal server error | Problem with your server or the database server
 
 #### TESTING THE API
 ##### To test API calls like `POST`, `PUT`, and `DELETE` download the [Postman Rest Client](https://www.postman.com/)
@@ -246,15 +246,14 @@
 #### MONGOOSE QUERY METHODS
 ##### Mongoose interacts with the database through its models. Mongoose models have several methods available to help with querying the database. Here are some of the key ones:
 
-| Method | Breif Description |
-| ----- | ----- |
-| `find` | General search based on a suppplied query object
+|  Method   | Breif Description |
+| :-------- | :--------------------------------------------------------------- |
+| `find`    | General search based on a suppplied query object
 | `findById`| Looks for a specific ID
 | `findOne` | Gets the first document to match the supplied query
-| `exec` | Executes the query and takes a callback that'll run upon completion.
-| `create` | Creates a MongoDB document based on the given object which must match the model's schema. Also takes a callback that'll run upon completion.
+| `exec`    | Executes the query and takes a callback that'll run upon completion.
+| `create`  | Creates a MongoDB document based on the given object which must match the model's schema. Also takes a callback that'll run upon completion.
 
----
 <br>
 <br>
 
