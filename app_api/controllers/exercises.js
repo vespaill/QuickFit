@@ -8,7 +8,31 @@ const Exercise_model = mongoose.model('Exercise');
 /* Placeholder functions to enable the app to start while we figure out how to
    write the API functionality. */
 const exercisesList = (req, res) => { };
-const exercisesCreate = (req, res) => { };
+
+const exercisesCreate = (req, res) => {
+    Exercise_model
+
+        // Applies the create method to the model
+        .create({      // <model_name>.create.( { <data_to_save> }, <callback> )
+
+            name: req.body.name,
+            equip: req.body.equip.split(","),// Creates an array of "equipments"
+            group: req.body.group,           // by splitting a comma-separated list
+            desc: req.body.desc
+
+        // Callback function contains appropriate responses for success/failure
+        }, (err, exercise) => {
+            if (err) {
+                res
+                    .status(400)
+                    .json(err);
+            } else {
+                res
+                    .status(201)
+                    .json(exercise);
+            }
+        });
+};
 
 const exerciseReadOne = (req, res) => {
 
@@ -33,8 +57,8 @@ const exerciseReadOne = (req, res) => {
                         "message": "exercise not found"
                     });
 
-            /* Error trap 2: If Mongoose returns an error, send it as a 404
-               response and exit the controller, using a return statement. */
+                /* Error trap 2: If Mongoose returns an error, send it as a 404
+                   response and exit the controller, using a return statement. */
             } else if (err) {
                 return res
                     .status(404)
