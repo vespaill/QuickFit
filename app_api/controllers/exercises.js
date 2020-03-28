@@ -141,6 +141,30 @@ const exerciseUpdateOne = (req, res) => {
 
 // Deleting a document from MongoDB, given an ID
 const exerciseDeleteOne = (req, res) => {
+
+    const {exerciseid} = req.params;
+
+    if (exerciseid) {
+        Exercise_model
+            .findByIdAndRemove(exerciseid)
+            .exec((err, exercise) => {
+                if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+                res
+                    .status(204)
+                    .json(null);
+            });
+    } else {
+        res
+            .status(404)
+            .json({
+                "message": "No Exercise"
+            });
+    }
+
 };
 
 module.exports = {
