@@ -213,4 +213,6 @@
 <br>
 <br>
 
-## 6. Setting up the API in Express
+## 7.1 &nbsp; HOW TO CALL AN API FROM EXPRESS
+##### Add the request module to your project.
+    $ npm install --save request
