@@ -8,7 +8,7 @@ const exerciseSchema = new mongoose.Schema({
         required: true
     },
     equip: {
-        type: String,
+        type: [String],
         required: true
     },
     group: {
