@@ -41,7 +41,7 @@
 
 #### Creating an Express project and trying it out
     $ express --view=pug --git
-> #####  Creates an Express project with the Pug template engine. Basically, this command creates a bunch of directories and files that form the basis of your application.
+> ##### Creates an Express project with the Pug template engine. Basically, this command creates a bunch of directories and files that form the basis of your application.
 > ##### Next, install the dependencies.
     $ npm install
 
@@ -130,11 +130,11 @@
     > show collections
 
 #### SEEING THE CONTENTS OF A COLLECTION
-    > db.startup_log.find( <optional_query_object> )
+    > db.<collection_name>.find( <optional_query_object> )
 
 > ##### Prettify the output so that you can read it.
 
-    > db.locations.find().pretty()
+    > db.<collection_name>.find().pretty()
 
 #### CREATING A MONGODB DATABASE
     > use <new_database_name>
@@ -204,7 +204,7 @@
 
     $ heroku logs > logs.txt
 
->##### It outputs the latest 100 lines of Heroku logs to a text file. Search the file for the a message along the lines of:
+>##### It outputs the latest 100 lines of Heroku logs to a text file. Search the file for a message along the lines of:
 
     Mongoose connected to mongodb://heroku_t0zs37gc:1k3t3pgo8sb5enosk314gj@ds159330.mlab.com:59330/heroku_t0zs37gc
 
