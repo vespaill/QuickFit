@@ -1,3 +1,16 @@
+/* -------------------------------------------------------------------------- */
+/*                   Questionnaire: make next btn appear                      */
+/*                   after selecting a questionnaire option                   */
+/* -------------------------------------------------------------------------- */
 jQuery(document).ready(() => {
-    // TODO: Detect which choice was selected and redirect accordingly
+
+    let $qnrNextBtn = jQuery('#nav-btn-right');
+    $qnrNextBtn.hide();
+
+    let $qnrOptions = jQuery('.option');
+    $qnrOptions
+        .on('focus', () => {
+            $qnrNextBtn.show();
+        })
+
 });
