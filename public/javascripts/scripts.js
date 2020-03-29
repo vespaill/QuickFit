@@ -1,6 +1,9 @@
 jQuery(document).ready(() => {
 
-
+/* -------------------------------------------------------------------------- */
+/*                   Questionnaire: make next btn appear                      */
+/*                   after selecting a questionnaire option                   */
+/* -------------------------------------------------------------------------- */
     let $qnrNextBtn = jQuery('#nav-btn-right');
     $qnrNextBtn.hide();
 
@@ -10,8 +13,10 @@ jQuery(document).ready(() => {
     .on('focus', () => {
         $qnrNextBtn.show();
     })
-    // .on('blur', () => {
-    //     setTimeout( ()=> $qnrNextBtn.hide(), 1000 );
-    // });
+
+/* -------------------------------------------------------------------------- */
+/*                                                                            */
+/* -------------------------------------------------------------------------- */
+
 
 });

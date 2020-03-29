@@ -1,8 +1,45 @@
 extends layout
+
+mixin printExercise(exercise)
+  .card-block
+    h4
+      a.exercise(href="#")= exercise.name
+    .equipments
+      each equip in exercise.equip
+        span.badge.badge-warning= equip
+
+mixin colorCodeByGroup(exercise)
+  case exercise.group
+    when "Chest"
+      .card.bg-chest
+        +printExercise(exercise)
+    when "Triceps"
+      .card.bg-triceps
+        +printExercise(exercise)
+    when "Upper back"
+      .card.bg-upper-back
+        +printExercise(exercise)
+    when "Biceps"
+      .card.bg-biceps
+        +printExercise(exercise)
+    when "Shoulders"
+      .card.bg-shoulders
+        +printExercise(exercise)
+    when "Core"
+      .card.bg-core
+        +printExercise(exercise)
+    when "Lower body"
+      .card.bg-lower-body
+        +printExercise(exercise)
+    default
+      .card.bg-secondary
+        +printExercise(exercise)
+
 block content
   .container.main-content
-    ul
-      each exercise in exercises
-        li
-          b= `${exercise.name}: `
-          small=`${exercise.equip}, ${exercise.group}`
+    .row.justify-content-center
+      .col-12.col-md-8
+        each exercise in exercises
+          .card
+            +colorCodeByGroup(exercise)
+              +printExercise(exercise)

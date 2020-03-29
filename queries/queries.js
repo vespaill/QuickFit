@@ -2,16 +2,16 @@
 
 db.exercises.insertOne({
     equip: ['BB', 'DB'],
-    name: "Flat Bench Press",
-    group: "Chest",
-    desc: "null"
+    name: 'Flat Bench Press',
+    group: 'Chest',
+    desc: 'null'
 })
 
 db.exercises.insertMany([{
     equip: ['BB', 'DB'],
-    name: "Flat Bench Press",
-    group: "Chest",
-    desc: "null"
+    name: 'Flat Bench Press',
+    group: 'Chest',
+    desc: 'null'
 }, {
     equip: ['BE'],
     name: 'Dips',

@@ -260,3 +260,14 @@
 ## 7.1 &nbsp; HOW TO CALL AN API FROM EXPRESS
 ##### Add the request module to your project.
     $ npm install --save request
+
+##### Using the request module
+    request(<options>, <callback>);
+
+#### Table 7.1 &nbsp;  Four common request options for defining a call to an API
+| Option | Description | Required
+| :----- | :---------- | :--------
+| `url`  | Full URL of the request to be made, including protocol domain, path, and URL parameters | Yes
+| `method` | Method of the request, such as `GET`, `POST`, `PUT`, or `DELETE` | No—defaults to GET if not specified
+| `json` | Body of the request as a JavaScript object; an empty object should be sent if no body data is needed | Yes—ensures that the response body is also parsed as JSON
+| `qs` | JavaScript object representing any query string parameters | No
