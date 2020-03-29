@@ -1,8 +1,8 @@
 extends layout
 block content
-  .content.center
-    ul
-      li
+  .container.main-content
+    .row.justify-content-center
+      .col-12.col-md-4
         each program in programs
-          h1.text-center.col-4
+          #program-list.card.text-center
             a.btn.btn-default(href='/dashboard/calendar')= program

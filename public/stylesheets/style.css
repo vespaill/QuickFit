@@ -62,7 +62,7 @@ body {
 .btn-default {
   background-color: #FF9A00;
   color: #FFF;
-  margin-right: 1em;
+  /* margin-right: 1em; */
 }
 
 .btn-blue {
@@ -212,7 +212,6 @@ a:hover {
   background-color: yellowgreen;
 }
 
-/* Profile */
 .history > div:nth-child(even), .info > div:nth-child(even) {
   background-color: #ffffff;
 }
@@ -265,3 +264,32 @@ a:hover {
 a.button {
   margin-right: 15px;
 }
+
+/* Program list ***************************************************************/
+#program-list {
+  background-color: #FF9A00;
+  margin-top: 1ex;
+}
+
+/* Exercises ******************************************************************/
+
+a.exercise {
+  color: black;
+  text-decoration: none;
+}
+
+a.exercise:hover {
+  color: white;
+}
+
+.badge-warning {
+  margin-right: 2px;
+}
+
+.bg-chest      { background-color: #ea9999; }
+.bg-triceps    { background-color: #e6b8af; }
+.bg-upper-back { background-color: #a4c2f4; }
+.bg-biceps     { background-color: #c9daf8; }
+.bg-shoulders  { background-color: #93c47d; }
+.bg-core       { background-color: #8e7cc3; }
+.bg-lower-body { background-color: #f6b26b; }
