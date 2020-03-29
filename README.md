@@ -4,12 +4,15 @@
     $ npm install
 
 #### AUTOMATICALLY RESTARTING THE APPLICATION WITH NODEMON
-> ##### Installing nodemon globably
+Installing nodemon globably
+
     $ npm install -g nodemon
 
-> ##### Running it
+Running it
+
     $ nodemon
-> ##### You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node `./bin/www`. Go to `localhost:3000` and check.
+
+You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node `./bin/www`. Go to `localhost:3000` and check.
 <br>
 <br>
 <br>
@@ -41,24 +44,29 @@
 
 #### Creating an Express project and trying it out
     $ express --view=pug --git
-> ##### Creates an Express project with the Pug template engine. Basically, this command creates a bunch of directories and files that form the basis of your application.
-> ##### Next, install the dependencies.
+
+Creates an Express project with the Pug template engine. Basically, this command creates a bunch of directories and files that form the basis of your application.
+
+Next, install the dependencies.
+
     $ npm install
 
 #### TRYING IT OUT
     $ DEBUG=quickfit:* npm start
-> ##### (Windows 10)
+
+(Windows 10)
+
     $ [Environment]::SetEnvironmentVariable("DEBUG","quickfit:*"); & npm start
 
 #### AUTOMATICALLY RESTARTING THE APPLICATION WITH NODEMON
-> ##### Installing nodemon globably
+Installing nodemon globably
+
     $ npm install -g nodemon
 
-> ##### Running it
+Running it
+
     $ nodemon
-> ##### You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node `./bin/www`. Go to `localhost:3000` and check.
-
-
+You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node `./bin/www`. Go to `localhost:3000` and check.
 
 #### ADDING AN ENGINES SECTION TO package.json
     "engines": {`
@@ -69,16 +77,32 @@
 <br>
 <br>
 
+## 3.3 &nbsp; Modifying Express for MVC
+#### UNDERSTANDING `res.render`:
+`render` is the Express function for compiling a view template to send as the HTML response that the browser will receive.
+The `render` method takes the name of the view template and a JavaScript data
+object in the following construct:
+
+    res.render('index', {title: 'express'})
+
+The first argument is the name of template to use, in this case referencing index.pug
+The second argument is a JavaScript object containing data for the template to use.
+
+
+<br>
+<br>
+
 ## 3.5 &nbsp; Getting Heroku set up
 
 #### CREATING A PROCFILE (in order for heroku to work)
-> ##### Create a file called **Procfile**
-> ##### Enter the following line in the Procfile:
-    web: npm start
+Create an extensionless file called `Procfile`
+
+In it, type the single line: `web: npm start`
 
 #### TESTING IT LOCALLY WITH HEROKU LOCAL
     $ heroku local
-> ##### Starts the application running on localhost again, but this time on a different port: 5000
+
+Starts the application running on localhost again, but this time on a different port: 5000
 
 #### STORING THE APPLICATION IN GIT
     $ git init
@@ -132,7 +156,7 @@
 #### SEEING THE CONTENTS OF A COLLECTION
     > db.<collection_name>.find( <optional_query_object> )
 
-> ##### Prettify the output so that you can read it.
+Prettify the output so that you can read it.
 
     > db.<collection_name>.find().pretty()
 
@@ -140,6 +164,8 @@
     > use <new_database_name>
 
 #### CREATING A COLLECTION AND DOCUMENTS
+example:
+
     > db.<collection_name>.save({
         name: 'Bench Press',
         equip: ['BB', 'DB']
@@ -154,29 +180,32 @@
 #### ADDING THE MLAB ADD-ON TO HEROKU (in order to create a live database)
     $ heroku addons:create mongolab
 
- > ##### Now you have a MongoDB database ready and waiting for you in the cloud. To see for yourself, open the web interface to your live database:
+Now you have a MongoDB database ready and waiting for you in the cloud. To see for yourself, open the web interface to your live database:
+
     $ heroku addons:open mongolab
 
 #### PUSHING DATA FROM LOCAL TO LIVE DATABASE
 
 ##### Dump the data from your local database
     $ mongodump -h localhost:27017 -d <local_database_name>
-> ##### It will output a directory called `dump`. Inside will be a directory with the name of your database.
+It will output a directory called `dump`. Inside will be a directory with the name of your database.
 
 ##### Get the live database URI (you'll need it)
     $ heroku config:get MONGODB_URI
 
-> ##### It will return something of this form:
+It will return something of this form:
+
     mongodb://<username>:<password>@<live_host_and_port>/<live_database_name>
 
 ##### Upload the dumped data to your live database
-> ##### Go into the `dump` directory and enter this command:
+Go into the `dump` directory and enter this command:
+
     $ mongorestore -h <live_host_and_port> -d <live_database_name> -u <username> -p <password> <database_dump_directory>
 
 #### TESTING THE LIVE DATABASE
     $ mongo <live_host_and_port>/<live_database_name> -u <username> -p <password>
 
-> ##### This command connects you to your live database through the MongoDB shell. Test the live database with some commands.
+This command connects you to your live database through the MongoDB shell. Test the live database with some commands.
 
     > show collections
     > db.exercises.find().pretty()
@@ -184,7 +213,7 @@
 
 ### MAKING THE APPLICATION USE THE RIGHT DATABASE (local vs. live)
 #### SETTING THE DATABASE URI BASED ON THE ENVIRONMENT
-> In `app_server/models/db.js`:
+In `db.js`:
 
     let dbURI = 'mongodb://localhost/quickfit';
     if (process.env.NODE_ENV === 'production') {
@@ -196,19 +225,21 @@
 #### TESTING BEFORE LAUNCHING
     $ NODE_ENV=production MONGODB_URI=mongodb://<username>:<password>@<live_host_and_port>/<live_database_name> nodemon
 
-##### (Windows 10)
+(Windows 10)
+
     [Environment]::SetEnvironmentVariable("NODE_ENV","production"); [Environment]::SetEnvironmentVariable("MONGODB_URI","mongodb://<username>:<password>@<live_host_and_port>/<live_database_name>"); & nodemon
 
 #### TESTING THAT HEROKU IS CONNECTING TO THE LIVE DATABASE
-> ##### After pushing to heroku do the following command:
+After pushing to heroku do the following command:
 
     $ heroku logs > logs.txt
 
->##### It outputs the latest 100 lines of Heroku logs to a text file. Search the file for a message along the lines of:
+It outputs the latest 100 lines of Heroku logs to a text file. Search the file for a message along the lines of:
 
     Mongoose connected to mongodb://heroku_t0zs37gc:1k3t3pgo8sb5enosk314gj@ds159330.mlab.com:59330/heroku_t0zs37gc
 
->#####  If you found it, then you know that the live application on Heroku is connecting to your live database.
+If you found it, then you know that the live application on Heroku is connecting to your live database.
+
 ---
 <br>
 <br>
@@ -239,12 +270,12 @@
 | 500 | Internal server error | Problem with your server or the database server
 
 #### TESTING THE API
-##### To test API calls like `POST`, `PUT`, and `DELETE` download the [Postman Rest Client](https://www.postman.com/)
+To test API calls like `POST`, `PUT`, and `DELETE` download the [Postman Rest Client](https://www.postman.com/).
 
-##### Postman enables you to test API URLs with several request methods, allowing you to specify additional query string parameters or form data.
+Postman enables you to test API URLs with several request methods, allowing you to specify additional query string parameters or form data.
 
 #### MONGOOSE QUERY METHODS
-##### Mongoose interacts with the database through its models. Mongoose models have several methods available to help with querying the database. Here are some of the key ones:
+Mongoose interacts with the database through its models. Mongoose models have several methods available to help with querying the database. Here are some of the key ones:
 
 |  Method   | Breif Description |
 | :-------- | :--------------------------------------------------------------- |
@@ -258,11 +289,17 @@
 <br>
 
 ## 7.1 &nbsp; HOW TO CALL AN API FROM EXPRESS
-##### Add the request module to your project.
+#### Add the request module to your project.
     $ npm install --save request
 
-##### Using the request module
-    request(<options>, <callback>);
+#### Using the request module
+Your Express application needs to be able to call the API URLs that we've defined—sending the correct request method—and then be able to interpret the response.
+
+    request(options, callback);
+
+options—JavaScript object defining the request.
+
+callback—Function to run when a response is received.
 
 #### Table 7.1 &nbsp;  Four common request options for defining a call to an API
 | Option | Description | Required

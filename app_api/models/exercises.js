@@ -23,5 +23,5 @@ const exerciseSchema = new mongoose.Schema({
 
 
 
-// Build a model of the execises schema.
+// Build a model called 'Exercise' using the exerciseSchema that we defined.
 mongoose.model('Exercise', exerciseSchema);

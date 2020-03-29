@@ -1,8 +1,8 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
+const createError  = require('http-errors');
+const express      = require('express');
+const path         = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+const logger       = require('morgan');
 require('./app_api/models/db');
 
 const indexRouter = require('./app_server/routes/index');
@@ -10,15 +10,21 @@ const apiRouter = require('./app_api/routes/index');
 
 const app = express();
 
-// view engine setup
+/* -------------------------------------------------------------------------- */
+/*                              view engine setup                             */
+/* -------------------------------------------------------------------------- */
+
+// Tell Express to look for views in /app_server/views
 app.set('views', path.join(__dirname, 'app_server', 'views'));
+
+// Tell Express to use the pug template engine.
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use( express.static( path.join(__dirname, 'public') ) );
 
 app.use('/', indexRouter);;
 app.use('/api', apiRouter);

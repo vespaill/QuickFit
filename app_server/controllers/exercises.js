@@ -10,22 +10,34 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const renderExercises = (req, res, responseBody) => {
-    res.render('exercises', {
+
+    /* render is the Express function for compiling a view template to send as
+       the HTML response that the browser will receive.
+
+       The render method takes the name of the view template and a JavaScript
+       data object. */
+    res.render(
+
+        // Name of template to use, in this case referencing exercises.pug
+        'exercises', {  // JavaScript object containing data for template to use
+
         title: `${myGlobals.website_name()}—exercises`,
 
         /* Here we have finally removed the hardcoded array of exercise objects,
-           and passed the responseBody through instead. */
+           and passed the responseBody instead. */
         exercises: responseBody
+
     });
+
 };
 
 const exercises = (req, res) => {
 
-    /* Sets the path for the API request. (The server is already set at the top
+    /* Set the path for the API request. (The server is already set at the top
        of the file.) */
     const path = '/api/exercises';
 
-    // Sets the request options, including URL, method and empty JSON body
+    // Set the request options, including URL, method and empty JSON body
     const requestOptions = {
 
        /* Full URL of the request to be made, including protocol, domain, path,
