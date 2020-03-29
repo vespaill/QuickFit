@@ -286,6 +286,19 @@ a.exercise:hover {
   margin-right: 2px;
 }
 
+.error {
+  background-color: #d9534f;
+  color: white;
+}
+
+.card-body {
+  padding: 10px;
+}
+.card {
+  margin-bottom: 5px;
+
+}
+
 .bg-chest      { background-color: #ea9999; }
 .bg-triceps    { background-color: #e6b8af; }
 .bg-upper-back { background-color: #a4c2f4; }

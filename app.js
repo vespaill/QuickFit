@@ -13,12 +13,11 @@ const app = express();
 /* -------------------------------------------------------------------------- */
 /*                              view engine setup                             */
 /* -------------------------------------------------------------------------- */
-
 // Tell Express to look for views in /app_server/views
 app.set('views', path.join(__dirname, 'app_server', 'views'));
-
 // Tell Express to use the pug template engine.
 app.set('view engine', 'pug');
+
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -1,7 +1,7 @@
 extends layout
 
 mixin printExercise(exercise)
-  .card-block
+  .card-body
     h4
       a.exercise(href="#")= exercise.name
     .equipments
@@ -39,7 +39,10 @@ block content
   .container.main-content
     .row.justify-content-center
       .col-12.col-md-8
+        .error.alert= message
         each exercise in exercises
-          .card
-            +colorCodeByGroup(exercise)
-              +printExercise(exercise)
+          +colorCodeByGroup(exercise)
+            +printExercise(exercise)
+
+block scripts
+  script(src='/javascripts/exercises.js')

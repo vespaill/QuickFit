@@ -11,9 +11,22 @@ if (process.env.NODE_ENV === 'production') {
 
 const renderExercises = (req, res, responseBody) => {
 
+    let message = null;
+
+    /* If the response isn't an array, set a message and set the responseBody
+       to be an empty array. */
+    if ( !(responseBody instanceof Array) ) {
+        message = "API lookup error";
+        responseBody = [];
+    } else {
+        // If the response is an array with no length, set a message.
+        if (!responseBody.length) {
+            message = "No exercises found in database";
+        }
+    }
+
     /* render is the Express function for compiling a view template to send as
        the HTML response that the browser will receive.
-
        The render method takes the name of the view template and a JavaScript
        data object. */
     res.render(
@@ -25,7 +38,8 @@ const renderExercises = (req, res, responseBody) => {
 
         /* Here we have finally removed the hardcoded array of exercise objects,
            and passed the responseBody instead. */
-        exercises: responseBody
+        exercises: responseBody,
+        message
 
     });
 
