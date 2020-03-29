@@ -1,11 +1,6 @@
 extends layout
 block content
   .container.main-content
-    .choiceFixed
-      if question
-        section
-          h1.display-4.text-center= question
-
       //- Saved Choices
       .col.text-center
         each savedAnswer in savedAnswers
@@ -14,16 +9,14 @@ block content
 
       //- Choices
       .col.text-center
-        each option in options
-          button.option.btn.btn-lg.qnr-btn.m-4.p-3= option
+        a.btn.btn-default.btn-lg.m-4.p-3(href='dashboard/calendar')= recommended_program
+        a.btn.btn-default.btn-lg.m-4.p-3(href='program_list') See All Programs
 
       //- Prev/Next Btns
       .navigation-btn
         .container
           .row.justify-content-between
             .col-6
-              a.btn.qnr-nav-btn.col-sm-3.col-md-6(href=prev) Previous
-            .col-6
-              a#nav-btn-right.btn.qnr-nav-btn.col-sm-3.col-md-6(href=next) Next
+              a.btn.qnr-nav-btn.col-sm-3.col-md-6(href='qnr3') Previous
 block scripts
   script(src='/javascripts/questionnaire.js')

@@ -43,12 +43,10 @@ const qnr3 = (req, res) => {
     });
 };
 const qnr_end = (req, res) => {
-    res.render('questionnaire.pug', {
+    res.render('qnr_end.pug', {
         title: `${myGlobals.website_name()}—questionnaire`,
         savedAnswers: ['saved#1', 'saved#2', 'saved#2'],
-
-        options: ['Recommended Program', 'See All Programs'],
-        prev: 'qnr3',
+        recommended_program: '${Recommended Program}',
     });
 };
 
