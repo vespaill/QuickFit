@@ -1,22 +1,20 @@
 extends layout
 block content
   .container.main-content
-      //- Saved Choices
-      .col.text-center
-        each savedAnswer in savedAnswers
-          h2
+    //- Saved Choices
+    .row.justify-content-center.my-5
+      each savedAnswer in savedAnswers
+        .col-12
+          h3.text-center
             span.badge.badge-pill= savedAnswer
 
       //- Choices
-      .col.text-center
-        a.btn.btn-default.btn-lg.m-4.p-3(href='dashboard/calendar')= recommended_program
-        a.btn.btn-default.btn-lg.m-4.p-3(href='program_list') See All Programs
+    .row.justify-content-center.mb-5
+      a.option.btn.btn-lg.qnr-btn.mx-5(href='dashboard/calendar')= recommended_program
+      a.option.btn.btn-lg.qnr-btn.mx-5(href='program_list') See All Programs
 
-      //- Prev/Next Btns
-      .navigation-btn
-        .container
-          .row.justify-content-between
-            .col-6
-              a.btn.qnr-nav-btn.col-sm-3.col-md-6(href='qnr3') Previous
+    //- Prev/Next Btns
+    .row
+      a.col-4.btn.qnr-nav-btn(href='qnr3') Previous
 block scripts
   script(src='/javascripts/questionnaire.js')
