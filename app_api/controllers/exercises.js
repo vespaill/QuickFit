@@ -69,7 +69,7 @@ const exerciseReadOne = (req, res) => {
         .exec((err, exercise) => {  // Define callback to accept possible params
 
             /* Error trap 1: If Mongoose doesn't return an exercise, send a 404
-               message and exits the function scope, using a return statement */
+               message and exit the function scope, using a return statement. */
             if (!exercise) {
                 return res
                     .status(404)
@@ -86,8 +86,8 @@ const exerciseReadOne = (req, res) => {
             }
 
             /* If Mongoose doesn't error, continue as before, and send an
-               exercise object in a HTTP status response of 200 (which means a
-               successful GET or PUT request).  */
+               exercise object inside an HTTP status response of 200 (which
+               means a successful GET or PUT request).  */
             res
                 .status(200)
                 .json(exercise);

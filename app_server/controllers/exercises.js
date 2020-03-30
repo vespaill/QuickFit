@@ -66,7 +66,7 @@ const exercises = (req, res) => {
         json: {},
     };
 
-    // Make request, sending through the request options.
+    // Make request to the API, sending through the request options.
     request(
         requestOptions,
 
@@ -80,25 +80,32 @@ const exercises = (req, res) => {
 };
 
 const renderExerciseInfo = function (req, res, exercise) {
+    // Compile the view template exercise-info.pug
     res.render('exercise-info', {
+        // Pass some data to the template.
         title: exercise.name,
         exercise
     });
 };
 
 const exerciseInfo = (req, res) => {
+
+    // Set the path for the API request. Server is already set up at the top.
     const path = `/api/exercise/${req.params.exerciseid}`;
     const requestOptions = {
         url: `${apiOptions.server}${path}`,
         method: 'GET',
         json: {}
     };
+
+    // Make request to the API, sending through the request options.
     request(
         requestOptions,
         (err, response, body) => {
             renderExerciseInfo(req, res, body);
         }
     );
+
 };
 
 module.exports = {
