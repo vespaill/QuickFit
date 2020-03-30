@@ -79,6 +79,29 @@ const exercises = (req, res) => {
 
 };
 
+const renderExerciseInfo = function (req, res, exercise) {
+    res.render('exercise-info', {
+        title: exercise.name,
+        exercise
+    });
+};
+
+const exerciseInfo = (req, res) => {
+    const path = `/api/exercise/${req.params.exerciseid}`;
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'GET',
+        json: {}
+    };
+    request(
+        requestOptions,
+        (err, response, body) => {
+            renderExerciseInfo(req, res, body);
+        }
+    );
+};
+
 module.exports = {
-    exercises
+    exercises,
+    exerciseInfo
 };

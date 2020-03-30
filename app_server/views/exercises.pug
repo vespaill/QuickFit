@@ -3,7 +3,7 @@ extends layout
 mixin printExercise(exercise)
   .card-body
     h4
-      a.exercise(href="#")= exercise.name
+      a.exercise(href=`/exercise/${exercise._id}`)= exercise.name
     .equipments
       each equip in exercise.equip
         span.badge.badge-warning= equip
