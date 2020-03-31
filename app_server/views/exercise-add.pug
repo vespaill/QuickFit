@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  .container.main-content
+    .row.mb-4
+      .col-12
+        .display-4.text-center Add a new exercise to the database
+    form
+      //- Exercise name and muscle group
+      .row.mb-4
+        .col-sm-8
+          label(for='inputExerName') Exercise name
+          input#inputExerName.form-control(placeholder='new exercise name').
+        .col-sm-4
+          label(for='inputMuscleGroup') Muscle Group
+          select#inputMuscleGroup.form-control
+            option
+            each option in groupOptions
+              option= option
+
+      //- Equipment options
+      .row.mb-4
+        .col-12.text-center
+          label Equipment options
+
+        .col-12
+          .card.p-3
+            .row
+              each option in equipOptions
+                .col
+                  input.form-check-input(type='checkbox', id=`checkbox-${option}`)
+                  label.form-check-label.pr-5(for=`checkbox-${option}`)
+                    span.badge.badge-warning= option
+
+      //- Descriptionn text area.
+      .row.mb-4
+        .col
+          label(for='inputDesc') Description
+          textarea#inputDesc-ex-name.form-control(placeholder='Description')
+
+      //- Submit
+      .row.justify-content-center
+          button.col-sm-3.btn.btn-primary(type='submit') Submit

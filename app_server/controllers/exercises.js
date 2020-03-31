@@ -81,7 +81,7 @@ const exercises = (req, res) => {
 
 const renderExerciseInfo = function (req, res, exercise) {
     // Compile the view template exercise-info.pug
-    res.render('exercise-info', {
+    res.render('exercise-info.pug', {
         // Pass some data to the template.
         title: exercise.name,
         exercise
@@ -108,7 +108,16 @@ const exerciseInfo = (req, res) => {
 
 };
 
+const exerciseAdd = (req, res) => {
+    res.render('exercise-add.pug', {
+        title: 'New Exercise',
+        groupOptions: ['Chest', 'Upper back', 'Shoulders', 'Biceps', 'Triceps', 'Core', 'Lower body'],
+        equipOptions: ['BB', 'DB', 'C', 'M', 'BE', 'BW']
+    });
+};
+
 module.exports = {
     exercises,
-    exerciseInfo
+    exerciseInfo,
+    exerciseAdd
 };

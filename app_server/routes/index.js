@@ -22,6 +22,8 @@ router.get('/dashboard/calendar', ctrlUser.calendar);
 
 /* Exercises pages. */
 router.get('/exercises', ctrlExercises.exercises);
+router.get('/exercises/add', ctrlExercises.exerciseAdd);
+
 router.get('/exercise/:exerciseid', ctrlExercises.exerciseInfo);
 
 

@@ -37,6 +37,12 @@ mixin colorCodeByGroup(exercise)
 
 block content
   .container.main-content
+    .row.justify-content-center.mb-3
+      .display-4 Exercise Selection
+
+    .row.justify-content-center.mb-3
+      a.btn.btn-default(href='/exercises/add') Add New
+
     .row.justify-content-center
       .col-12.col-md-8
         .error.alert= message
