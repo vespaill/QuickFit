@@ -24,15 +24,15 @@ block content
           label Equipment options
 
         .col-12
-          .card.p-3
+          .card.overflow-hidden.p-3
             .row
               each option in equipOptions
-                .col
+                .col-sm-2.text-center
                   input.form-check-input(type='checkbox', id=`checkbox-${option}`)
-                  label.form-check-label.pr-5(for=`checkbox-${option}`)
+                  label.form-check-label(for=`checkbox-${option}`)
                     span.badge.badge-warning= option
 
-      //- Descriptionn text area.
+      //- Description text area.
       .row.mb-4
         .col
           label(for='inputDesc') Description
