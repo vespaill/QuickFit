@@ -36,8 +36,8 @@ const exercisesCreate = (req, res) => {
         .create({      // <model_name>.create.( { <data_to_save> }, <callback> )
 
             name: req.body.name,
-            equip: req.body.equip.split(","),// Creates an array of "equipments"
-            group: req.body.group,           // by splitting a comma-separated list
+            equip: req.body.equip,
+            group: req.body.group,
             desc: req.body.desc
 
         // Callback function contains appropriate responses for success/failure

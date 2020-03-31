@@ -2,7 +2,7 @@ const myGlobals = require('./globals');
 const request = require('request');
 
 // Set the default server URL for the local development.
-const apiOptions = {server: 'http://localhost:3000'};
+const apiOptions = { server: 'http://localhost:3000' };
 
 // If the application is running in production mode, use the live URL.
 if (process.env.NODE_ENV === 'production') {
@@ -15,7 +15,7 @@ const renderExercises = (req, res, responseBody) => {
 
     /* If the response isn't an array, set a message and set the responseBody
        to be an empty array. */
-    if ( !(responseBody instanceof Array) ) {
+    if (!(responseBody instanceof Array)) {
         message = "API lookup error";
         responseBody = [];
     } else {
@@ -54,8 +54,8 @@ const exercises = (req, res) => {
     // Set the request options, including URL, method and empty JSON body
     const requestOptions = {
 
-       /* Full URL of the request to be made, including protocol, domain, path,
-          and URL parameters */
+        /* Full URL of the request to be made, including protocol, domain, path,
+           and URL parameters */
         url: `${apiOptions.server}${path}`,
 
         // Method of the request, such as GET, POST, PUT, or DELETE
@@ -108,16 +108,84 @@ const exerciseInfo = (req, res) => {
 
 };
 
-const exerciseAdd = (req, res) => {
-    res.render('exercise-add.pug', {
+// GET 'Add Exercise' page
+const addExercise = (req, res) => {
+    res.render('exercise-form.pug', {
         title: 'New Exercise',
         groupOptions: ['Chest', 'Upper back', 'Shoulders', 'Biceps', 'Triceps', 'Core', 'Lower body'],
-        equipOptions: ['BB', 'DB', 'C', 'M', 'BE', 'BW']
+        equipOptions: [
+            {
+                abbrv: 'BB',
+                name: 'Barbell'
+            }, {
+                abbrv: 'DB',
+                name: 'Dumbbell'
+            }, {
+                abbrv: 'C',
+                name: 'Cable'
+            }, {
+                abbrv: 'M',
+                name: 'Machine'
+            }, {
+                abbrv: 'BE',
+                name: 'Body weight<br>& additional equipment'
+            }, {
+                abbrv: 'BW',
+                name: 'Body weight only'
+            }]
+    });
+}
+
+const doAddExercise = (req, res) => {
+
+    const path = '/api/exercises';
+
+    const postdata = {
+        name: req.body.name,
+        equip: req.body.equipment,
+        group: req.body.category,
+        desc: req.body.description
+    };
+
+    const requestOptions = {
+        url: `${apiOptions.server}${path}`,
+        method: 'POST',
+        json: postdata
+    };
+
+    request(
+        requestOptions,
+        (err, { statusCode }, body) => {
+            if (statusCode === 201) {
+                res.redirect('/exercises');
+            } else {
+                showError(req, res, statusCode);
+            }
+        }
+    );
+
+}
+
+const showError = (req, res, status) => {
+    let title = '';
+    let content = '';
+    if (status === 404) {
+        title = '404, page not found';
+        content = 'Oh dear. Looks like you can\'t find this page. Sorry.';
+    } else {
+        title = `${status}, something's gone wrong`;
+        content = 'Something, somewhere, has gone just a little bit wrong.';
+    }
+    res.status(status);
+    res.render('generic-text', {
+        title,
+        content
     });
 };
 
 module.exports = {
     exercises,
     exerciseInfo,
-    exerciseAdd
+    addExercise,
+    doAddExercise
 };
