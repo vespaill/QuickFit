@@ -306,3 +306,29 @@ a.exercise:hover {
 .bg-shoulders  { background-color: #93c47d; }
 .bg-core       { background-color: #8e7cc3; }
 .bg-lower-body { background-color: #f6b26b; }
+
+/* Add Exercise */
+.input-group-text, .input-label {
+  background-color: #294D67;
+  color: white;
+}
+
+.input-card {
+  padding: 1em;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+}
+
+.input-label {
+  margin: 0;
+  border-radius: 5px;
+  padding: 1ex 0 8px 12px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.desc-txt {
+  min-height: 4em;
+}

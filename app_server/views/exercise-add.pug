@@ -6,25 +6,26 @@ block content
       .col-12
         .display-4.text-center Add a new exercise to the database
     form
-      //- Exercise name and muscle group
+      //- Exercise name and muscle group ROW
       .row.mb-4
-        .col-sm-8
-          label(for='inputExerName') Exercise name
-          input#inputExerName.form-control(placeholder='new exercise name').
-        .col-sm-4
-          label(for='inputMuscleGroup') Muscle Group
-          select#inputMuscleGroup.form-control
-            option
+        .col-sm-6.input-group.mb-3
+          .input-group-prepend
+            span.input-group-text#inputGroup-sizing-default Name:
+          input.form-control(type="text" aria-label="Sizing example input" describedby="inputGroup-sizing-default")
+
+        .col-sm-6.input-group.mb-3
+          .input-group-prepend
+            span.input-group-text#inputGroup-sizing-default Category
+          select.custom-select.form-control(type="text" aria-label="Sizing example input" describedby="inputGroup-sizing-default")
+            option(hidden)
             each option in groupOptions
               option= option
 
-      //- Equipment options
-      .row.mb-4
-        .col-12.text-center
-          label Equipment options
-
+      //- Equipment options ROW
+      .row.mb-5
         .col-12
-          .card.overflow-hidden.p-3
+          label.col-12.input-label Equipment options:
+          .card.input-card.overflow-hidden
             .row
               each option in equipOptions
                 .col-sm-2.text-center
@@ -32,12 +33,12 @@ block content
                   label.form-check-label(for=`checkbox-${option}`)
                     span.badge.badge-warning= option
 
-      //- Description text area.
+      //- Description text area ROW
       .row.mb-4
-        .col
-          label(for='inputDesc') Description
-          textarea#inputDesc-ex-name.form-control(placeholder='Description')
+        .col-12
+          label.col-12.input-label Description:
+          textarea.desc-txt.form-control.input-card(placeholder='Optional')
 
       //- Submit
       .row.justify-content-center
-          button.col-sm-3.btn.btn-primary(type='submit') Submit
+          button.col-sm-3.btn.btn-default(type='submit') Save
