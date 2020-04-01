@@ -165,24 +165,28 @@ const doAddExercise = (req, res) => {
         json: postdata
     };
 
-    request(
-        requestOptions,
-        (err, {statusCode}, {name}) => {
-            if (statusCode === 201) {
-                res.redirect('/exercises');
+    if (!postdata.name || !postdata.equip || !postdata.group) {
+        res.redirect('/exercises/add?err=val');
+    } else {
+        request(
+            requestOptions,
+            (err, {statusCode}, {name}) => {
+                if (statusCode === 201) {
+                    res.redirect('/exercises');
 
-            /* Adds a check to see whether the status is 400, the body has a
-               name, and that name is ValidationError. */
-            } else if (statusCode===400 && name && name==='ValidationError') {
-                /* If true, redirects to the exercise form, passing an error
-                   flag in a query string */
-                res.redirect('/exercises/add?err=val');
+                /* Adds a check to see whether the status is 400, the body has a
+                name, and that name is ValidationError. */
+                } else if (statusCode===400 && name && name==='ValidationError') {
+                    /* If true, redirects to the exercise form, passing an error
+                    flag in a query string */
+                    res.redirect('/exercises/add?err=val');
 
-            } else {
-                showError(req, res, statusCode);
+                } else {
+                    showError(req, res, statusCode);
+                }
             }
-        }
-    );
+        );
+    }
 
 }
 
