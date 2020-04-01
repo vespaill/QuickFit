@@ -1,27 +1,37 @@
 extends layout
+block css
+  //- When CDN is used, the files are blocked by client. I think toggling CORS may fix
+  link(rel='stylesheet' href='/stylesheets/calendar/tui-calendar.css')
+  link(rel='stylesheet' href='/stylesheets/calendar.css')
 block content
   .container.main-content
-    table.table.table-bordered.my-5
-      thead
-        tr
-          - for (let i = 0, days=['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']; i < 7; i++)
-            th.text-center(scope="col")= days[i]
-      tbody.table-borderless
-        - for (let i = 1; i <= 2; i++)
-          tr
-            - for (let i = 1; i <= 7; i++)
-              td.text-center.p-1
-                span.badge.badge-primary.p-2 exercise
-                  button.close.ml-2(type="button" aria-label="Close")
-                    span(aria-hidden="true") &times;
-        - for (let i = 1; i <= 9; i++)
-          tr
-            td
-        tr
-          - for (let i = 1; i <= 7; i++)
-            td.text-center.p-1.pt-0.pb-0.m-0
-              a.add-btn.button.btn.btn-default.pt-0.pb-0.pr-4.pl-4(href='/') Add
-        tr
-          - for (let i = 1; i <= 7; i++)
-            td.pt-0.pb-0.m-0
-              a.empty-btn.btn.btn-default.pt-0.pb-0.pr-3.pl-3(href='/') empty
+    #menu
+      span.dropdown
+        button#dropdownMenu-calendarType.btn.btn-default.btn-sm.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true')
+          i#calendarTypeIcon.calendar-icon.ic_view_month(style='margin-right: 4px;')
+          span#calendarTypeName Weekly
+        ul.dropdown-menu(role='menu' aria-labelledby='dropdownMenu-calendarType')
+          li(role='presentation')
+            a.dropdown-menu-title(role='menuitem' data-action='toggle-weekly')
+              i.calendar-icon.ic_view_week
+              | Weekly
+          li(role='presentation')
+            a.dropdown-menu-title(role='menuitem' data-action='toggle-monthly')
+              i.calendar-icon.ic_view_month
+              | Monthly
+      span#menu-navi
+        button.btn.btn-default.btn-sm.move-today(type='button' data-action='move-today') Today
+        button.btn.btn-default.btn-sm.move-day(type='button' data-action='move-prev')
+          i.calendar-icon.ic-arrow-line-left(data-action='move-prev')
+        button.btn.btn-default.btn-sm.move-day(type='button' data-action='move-next')
+          i.calendar-icon.ic-arrow-line-right(data-action='move-next')
+      span#renderRange.render-range
+    #calendar
+  //- TODO: Insert modals here (one for clicking on an existing exercise and one for adding an exercise to day)
+block scripts
+  script(src="/javascripts/calendar/tui-code-snippet.js")
+  script(src="/javascripts/calendar/tui-dom.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js")
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/chance/1.0.13/chance.min.js")
+  script(src="/javascripts/calendar/tui-calendar.js")
+  script(src="/javascripts/calendar.js")
