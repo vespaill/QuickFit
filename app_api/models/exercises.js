@@ -9,15 +9,17 @@ const exerciseSchema = new mongoose.Schema({
     },
     equip: {
         type: [String],
-        required: true
+        required: true,
+        default: undefined
     },
     group: {
         type: String,
+        enum: ['Chest', 'Upper back', 'Shoulders', 'Biceps', 'Triceps', 'Core', 'Lower body'],
         required: true
     },
     desc: {
         type: String,
-        required: true
+        default: 'empty'
     }
 });
 

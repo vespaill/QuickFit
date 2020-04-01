@@ -332,3 +332,12 @@ a.exercise:hover {
 .desc-txt {
   min-height: 4em;
 }
+
+.alert-danger {
+  background-color: #d9534f;
+  color: white;
+}
+
+.custom-control-label:before{
+  background-color: #D5D0CA;
+}

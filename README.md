@@ -258,16 +258,16 @@ If you found it, then you know that the live application on Heroku is connecting
 #### Table 6.5 &nbsp; Most popular HTTP status codes and how they might be used to send responses to an API request
 | Status code | Name | Use case |
 | :-: | :-------------------- | :--------------------------------------------- |
-| 200 | OK                    | A successful `GET` or `PUT` request
-| 201 | Created               | A successful `POST` request
-| 204 | No content            | A successful `DELETE` request
-| 400 | Bad request           | An unsuccessful `GET`, `POST`, or `PUT` request due to invalid content
-| 401 | Unauthorized          | Requesting a restricted URL with incorrect credentials
-| 403 | Forbidden             | Making a request that isn’t allowed
-| 404 | Not found             | Unsuccessful request due to an incorrect parameter in the URL
-| 405 | Method not allowed    | Request method not allowed for the given URL
-| 409 | Conflict              | Unsuccessful `POST` request when another object with the same data already exists
-| 500 | Internal server error | Problem with your server or the database server
+| `200` | OK                    | A successful `GET` or `PUT` request
+| `201` | Created               | A successful `POST` request
+| `204` | No content            | A successful `DELETE` request
+| `400` | Bad request           | An unsuccessful `GET`, `POST`, or `PUT` request due to invalid content
+| `401` | Unauthorized          | Requesting a restricted URL with incorrect credentials
+| `403` | Forbidden             | Making a request that isn’t allowed
+| `404` | Not found             | Unsuccessful request due to an incorrect parameter in the URL
+| `405` | Method not allowed    | Request method not allowed for the given URL
+| `409` | Conflict              | Unsuccessful `POST` request when another object with the same data already exists
+| `500` | Internal server error | Problem with your server or the database server
 
 #### TESTING THE API
 To test API calls like `POST`, `PUT`, and `DELETE` download the [Postman Rest Client](https://www.postman.com/).

@@ -2,16 +2,20 @@ extends layout
 
 block content
   .container.main-content
-    .row.mb-4
+    .row.mb-4.mt-5
       .col-12
-        .display-4.text-center Add a new exercise to the database
+        .display-4.text-center.mb-4 Add a new exercise to the database
     form(action='', method='post', role='form')
+      .row
+        .col-12.text-center
+          - if (error == 'val')
+            .alert.alert-danger(role='alert') Fields required, please try again
       //- Exercise name and muscle group ROW
       .row.mb-4
         .col-sm-6.input-group.mb-3
           .input-group-prepend
             span.input-group-text#inputGroup-sizing-default Name:
-          input.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='. . .' name='name')
+          input.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' name='name')
 
         .col-sm-6.input-group.mb-3
           .input-group-prepend
@@ -29,15 +33,16 @@ block content
             .row
               each option in equipOptions
                 .col-sm-2.text-center
-                  input.form-check-input(type='checkbox', id=`checkbox-${option.abbrv}` name='equipment', value=option.abbrv)
-                  label.form-check-label(for=`checkbox-${option.abbrv}`)
-                    span.badge.badge-warning(data-toggle='tooltip' data-placement='right' data-html="true" title=option.name)= option.abbrv
+                  .custom-control.custom-checkbox
+                    input.custom-control-input(type='checkbox', id=`checkbox-${option.abbrv}` name='equipment', value=option.abbrv)
+                    label.custom-control-label(for=`checkbox-${option.abbrv}`)
+                      span.badge.badge-warning(data-toggle='tooltip' data-placement='right' data-html="true" title=option.name)= option.abbrv
 
       //- Description text area ROW
       .row.mb-4
         .col-12
           label.col-12.input-label Description:
-          textarea.desc-txt.form-control.input-card(placeholder='. . .' name='description')
+          textarea.desc-txt.form-control.input-card(placeholder='optional' name='description')
 
       //- Submit
       .row.justify-content-center

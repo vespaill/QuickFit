@@ -112,9 +112,16 @@ const exerciseInfo = (req, res) => {
 const addExercise = (req, res) => {
     res.render('exercise-form.pug', {
         title: 'New Exercise',
-        groupOptions: ['Chest', 'Upper back', 'Shoulders', 'Biceps', 'Triceps', 'Core', 'Lower body'],
-        equipOptions: [
-            {
+        groupOptions: [
+            'Chest',
+            'Upper back',
+            'Shoulders',
+            'Biceps',
+            'Triceps',
+            'Core',
+            'Lower body'
+        ],
+        equipOptions: [{
                 abbrv: 'BB',
                 name: 'Barbell'
             }, {
@@ -132,7 +139,10 @@ const addExercise = (req, res) => {
             }, {
                 abbrv: 'BW',
                 name: 'Body weight only'
-            }]
+        }],
+        /* Send a new error variable to the view, passing the view any existing
+           query parameters. */
+        error: req.query.err
     });
 }
 
@@ -144,8 +154,10 @@ const doAddExercise = (req, res) => {
         name: req.body.name,
         equip: req.body.equipment,
         group: req.body.category,
-        desc: req.body.description
+        desc: req.body.description === ''? undefined : req.body.description
     };
+
+    console.log(postdata);
 
     const requestOptions = {
         url: `${apiOptions.server}${path}`,
@@ -155,9 +167,17 @@ const doAddExercise = (req, res) => {
 
     request(
         requestOptions,
-        (err, { statusCode }, body) => {
+        (err, {statusCode}, {name}) => {
             if (statusCode === 201) {
                 res.redirect('/exercises');
+
+            /* Adds a check to see whether the status is 400, the body has a
+               name, and that name is ValidationError. */
+            } else if (statusCode===400 && name && name==='ValidationError') {
+                /* If true, redirects to the exercise form, passing an error
+                   flag in a query string */
+                res.redirect('/exercises/add?err=val');
+
             } else {
                 showError(req, res, statusCode);
             }

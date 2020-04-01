@@ -30,6 +30,7 @@ const exercisesList = (req, res) => {
 
 // Controller for creating a new exercise
 const exercisesCreate = (req, res) => {
+    console.log(req.body);
     Exercise_model
 
         // Applies the create method to the model
