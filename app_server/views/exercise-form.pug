@@ -23,7 +23,7 @@ block content
           select.custom-select.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' name='category')
             option(hidden) Choose a category
             each option in groupOptions
-              option= option
+              option(class=`bg-${option.replace(' ', '-').toLowerCase()}`)= option
 
       //- Equipment options ROW
       .row.mb-5

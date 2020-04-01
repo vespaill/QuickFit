@@ -315,6 +315,11 @@ a.exercise:hover {
 .bg-core       { background-color: #8e7cc3; }
 .bg-lower-body { background-color: #f6b26b; }
 
+.bg-chest, .bg-triceps, .bg-upper-back, .bg-biceps,
+.bg-shoulders, .bg-core, .bg-lower-body {
+  color: black;
+}
+
 /* Add Exercise */
 .input-group-text, .input-label {
   background-color: #294D67;
