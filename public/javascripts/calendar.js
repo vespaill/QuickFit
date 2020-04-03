@@ -3,10 +3,46 @@
  */
 var cal;
 
+// Number of days visible in week and month view
+const NUM_DAYS = {
+    "week": 7,
+    "month": 42
+};
+
 function init() {
     initCalendar();
     setRenderRangeText();
     setEventListener();
+
+    computeSchedules(NUM_DAYS['week']);
+}
+
+/**
+ * Re-computes schedules for visible date range
+ * @param {*} numDays 
+ */
+function computeSchedules(numDays) {
+    var scheduleList = [];
+    var date = cal.getDateRangeStart().toDate();
+
+    for (i = 0; i < numDays; ++i) {
+        // Program var is passed from PUG
+        program.forEach(exercise => {
+            // Inefficient af, optimize later
+            if (exercise.dayOfWeek == date.getDay()) {
+                scheduleList.push({
+                    start: date,
+                    title: exercise.name,
+                    category: 'task',
+                    raw: exercise
+                });
+            }
+        });
+        // Move to next day
+        date = new Date(date.getTime() + 864e5);
+    }
+    cal.clear(true);
+    cal.createSchedules(scheduleList);
 }
 
 /**
@@ -23,7 +59,12 @@ function initCalendar() {
         scheduleView: false,
         // Prevent the user from selecting days in monthly view
         isReadOnly: true,
-        // calendarList: [...] -> coming soon...
+        month: {
+            scheduleFilter(schedule) {
+                // Show everything in monthly view
+                return true;
+            }
+        },
         template: {
             taskTitle: function () {
                 // Replace the 'Task' text with Exercises
@@ -33,17 +74,12 @@ function initCalendar() {
                 // Add + button to day name in weekly view
                 return '<span class="tui-full-calendar-dayname-date">' + model.date + '</span>&nbsp;&nbsp;<span class="tui-full-calendar-dayname-name">' + model.dayName + '</span>' + '<span><button class="btn btn-default btn-xs float-right mt-2 mr-2 btn-add-exercise" type="button"><i class="calendar-icon ic-plus"></i></button></span>';
             },
-            monthGridHeader: function (dayModel) {
-                var date = parseInt(dayModel.date.split('-')[2], 10);
-                var classNames = ['tui-full-calendar-weekday-grid-date '];
-
-                if (dayModel.isToday) {
-                    classNames.push('tui-full-calendar-weekday-grid-date-decorator');
-                }
-
-                // Add + button to day name in monthly view
-                return '<span class="' + classNames.join(' ') + '">' + date + '</span>' + '<span><button class="btn btn-default btn-xs float-right btn-add-exercise" type="button"><i class="calendar-icon ic-plus"></i></button></span>';
-            }
+            monthDayname: function (model) {
+                return (model.label).toString() + '<span><button class="btn btn-default btn-xs float-right btn-add-exercise" type="button"><i class="calendar-icon ic-plus"></i></button></span>';
+            },
+            task: function (schedule) {
+                return '<div class=\"bg-' + schedule.raw.group.toLowerCase() + '\">' + schedule.title + ' x ' + schedule.raw.reps + "</div>";
+            },
         }
     });
 
@@ -104,24 +140,19 @@ function getDataAction(target) {
 function onClickMenu(e) {
     var target = $(e.target).closest('a[role="menuitem"]')[0];
     var action = getDataAction(target);
-    var options = cal.getOptions();
     var viewName = '';
 
     switch (action) {
-        case 'toggle-weekly':
-            viewName = 'week';
-            break;
         case 'toggle-monthly':
-            options.month.visibleWeeksCount = 0;
             viewName = 'month';
             break;
+        case 'toggle-weekly':
         default:
+            viewName = 'week';
             break;
     }
-
-    cal.setOptions(options, true);
     cal.changeView(viewName, true);
-
+    computeSchedules(NUM_DAYS[viewName]);
     // Update dropdown text
     setDropdownCalendarType();
     // Update range text
@@ -149,6 +180,7 @@ function onClickNavi(e) {
             return;
     }
 
+    computeSchedules(NUM_DAYS[cal.getViewName()]);
     setRenderRangeText();
 }
 

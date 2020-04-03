@@ -29,6 +29,9 @@ block content
     #calendar
   //- TODO: Insert modals here (one for clicking on an existing exercise and one for adding an exercise to day)
 block scripts
+  //- Pass program data through a script so that it is accessible as a variable in scripts
+  script.
+    const program = !{JSON.stringify(program).replace(/<\//g, "<\\/")}
   script(src="/javascripts/calendar/tui-code-snippet.js")
   script(src="/javascripts/calendar/tui-dom.js")
   script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js")
