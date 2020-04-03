@@ -91,3 +91,4 @@ process.on('SIGTERM', () => {
 });
 
 require('./exercises');
+require('./users');

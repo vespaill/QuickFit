@@ -1,3 +1,4 @@
+# Miscellaneous
 *.code-workspace
 URI.txt
 .DS_Store
@@ -40,6 +41,9 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+
+# Environment variables
+.env
 
 # Typescript v1 declaration files
 typings/
