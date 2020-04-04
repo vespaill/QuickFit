@@ -11,29 +11,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 // Import a component from the file system.
-import { ExerciseListComponent } from './exercise-list/exercise-list.component';
-
-import { HttpClientModule } from '@angular/common/http';
+import { AppComponent } from './app.component';
 
 /* Describe the module by using a decorator.
    A decorator is a way that ES2015 and TypeScript provide metadata and
    annotations to functions, modules and classes.  */
 @NgModule({
 
-    declarations: [
-        ExerciseListComponent
-    ],
-    imports: [
-        BrowserModule,
-        HttpClientModule
-    ],
-    providers: [
-
-    ],
-    // Serves as entry point into the application.
-    bootstrap: [
-        ExerciseListComponent
-    ]
+    declarations: [AppComponent],
+    imports:      [BrowserModule],
+    providers:    [],
+    bootstrap:    [AppComponent]      // Serves as entry point into application.
 
 })
 export class AppModule { }          // Export the module.
