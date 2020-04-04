@@ -312,28 +312,6 @@ callback—Function to run when a response is received.
 <br>
 <br>
 
-## 8 &nbsp; Creating an Angular application with TypeScript
-
-#### Installing Angular
-    $ npm install -g @angular/cli
-
-#### Creating a boilerplate Angular app
-    $ ng new QuickFit-public --skipGit=true --skipTests=true --defaults=true --directory=app_public
-
-#### Running the Angular app
-    $ ng serve
-This command compiles, builds, and delivers the Angular application to the browser on port http://localhost:4200. It also rebuilds and reloads the application whenever the source code changes.
-
-A __component__ handles a specific piece of functionality.
-
-A __module__ contains one or more components working together.
-
-#### Creating a new component
-    $ ng generate component <new_component_name>
-
-<br>
-<br>
-
 ## 11 &nbsp; Authenticating users, managing sessions, and securing API
 
 _JWT_ (JSON Web Token)—a JSON object encrypted into a string that’s meaningless to the human eye but that can be decoded and understood by both the application and the server.
@@ -393,7 +371,7 @@ To read and use this new file to set environment variables, you’ll need to ins
 
 The `dotenv` module should be required into the `app.js` file as the first line in the file
 
-    require('dotenv').config( {path: '.env'} );
+    require('dotenv').load();
 
 Now you can access it via `process.env.JWT_SECRET`
 
