@@ -21,6 +21,6 @@ export class AppComponent {
 
     /* Note that no var, const, or let is associated with title because inside a
        class definition, you define class members as opposed to variables. */
-    title = 'I am Getting MEAN!';
+    title = 'QuickFit-public';
 
 }

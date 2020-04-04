@@ -331,6 +331,12 @@ A __module__ contains one or more components working together.
 #### Creating a new component
     $ ng generate component <new_component_name>
 
+This command creates a new folder called `<new_component_name>` within the src folder. Create the TypeScript, HTML, and CSS files inside it, and also update the app.module.ts file to tell the module about the new component.
+
+#### Creating a data service
+
+    $ ng generate service <service_name>
+
 <br>
 <br>
 
