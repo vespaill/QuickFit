@@ -1,18 +1,54 @@
 extends layout
 
+mixin printExercise(exercise)
+  .card-body
+    h4
+      a.exercise(href=`/exercise/${exercise._id}`)= exercise.name
+    .equipments
+      each equip in exercise.equip
+        span.badge.badge-warning= equip
+
+mixin colorCodeByGroup(exercise)
+  case exercise.group
+    when "Chest"
+      .card.bg-chest
+        +printExercise(exercise)
+    when "Triceps"
+      .card.bg-triceps
+        +printExercise(exercise)
+    when "Upper back"
+      .card.bg-upper-back
+        +printExercise(exercise)
+    when "Biceps"
+      .card.bg-biceps
+        +printExercise(exercise)
+    when "Shoulders"
+      .card.bg-shoulders
+        +printExercise(exercise)
+    when "Core"
+      .card.bg-core
+        +printExercise(exercise)
+    when "Lower body"
+      .card.bg-lower-body
+        +printExercise(exercise)
+    default
+      .card.bg-secondary
+        +printExercise(exercise)
+
 block content
   .container.main-content
+    .row.justify-content-center.mb-3.mt-5
+      .display-4.text-center Exercise Selection
+
+    .row.justify-content-center.mb-3
+      a.btn.btn-default(href='/exercises/add') Add New
+
     .row.justify-content-center
       .col-12.col-md-8
         .error.alert= message
-        //- Angular component
-        app-exercise-list
+        each exercise in exercises
+          +colorCodeByGroup(exercise)
+            +printExercise(exercise)
 
 block scripts
   script(src='/javascripts/exercises.js')
-  script(src='/build/main-es5.d02e8a19204550674596.js')
-  script(src='/build/main-es2015.d02e8a19204550674596.js')
-  script(src='/build/polyfills-es5.0e4e1968447fab48e788.js')
-  script(src='/build/polyfills-es2015.bbb42ff2e1c488ff52d5.js')
-  script(src='/build/runtime-es5.c9afb3256f2870e161de.js')
-  script(src='/build/runtime-es2015.c9afb3256f2870e161de.js')
