@@ -28,7 +28,11 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+/* Set the public and app_public folders to be static paths, meaning that their
+   files can be easily referenced from the browser */
 app.use( express.static( path.join(__dirname, 'public') ) );
+app.use( express.static( path.join(__dirname, 'app_public') ) );
 
 // Initialize passport and add it as middleware.
 app.use(passport.initialize());
