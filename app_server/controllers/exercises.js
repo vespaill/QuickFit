@@ -1,14 +1,6 @@
 const globals = require('./globals');
 const request = require('request');
 
-// Set the default server URL for the local development.
-// const apiOptions = { server: 'http://localhost:3000' };
-
-// If the application is running in production mode, use the live URL.
-// if (process.env.NODE_ENV === 'production') {
-//     apiOptions.server = 'https://quickfit.herokuapp.com';
-// }
-
 const renderExercises = (req, res, responseBody) => {
 
     let message = null;
@@ -145,7 +137,7 @@ const addExercise = (req, res) => {
            query parameters. */
         error: req.query.err
     });
-}
+};
 
 const doAddExercise = (req, res) => {
 
@@ -183,29 +175,12 @@ const doAddExercise = (req, res) => {
                     res.redirect('/exercise-list/add?err=val');
 
                 } else {
-                    showError(req, res, statusCode);
+                    globals.showError(req, res, statusCode);
                 }
             }
         );
     }
 
-}
-
-const showError = (req, res, status) => {
-    let title = '';
-    let content = '';
-    if (status === 404) {
-        title = '404, page not found';
-        content = 'Oh dear. Looks like you can\'t find this page. Sorry.';
-    } else {
-        title = `${status}, something's gone wrong`;
-        content = 'Something, somewhere, has gone just a little bit wrong.';
-    }
-    res.status(status);
-    res.render('generic-text', {
-        title,
-        content
-    });
 };
 
 module.exports = {

@@ -8,6 +8,8 @@ const User = mongoose.model('User');
 /* -------------------------------------------------------------------------- */
 const register = (req, res) => {
 
+    console.log(req.body);
+
     // Respond with an error status if not all required fields are found.
     if (!req.body.name || !req.body.email || !req.body.password) {
         return res

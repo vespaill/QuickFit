@@ -3,11 +3,11 @@ const router = express.Router();
 const ctrlPublic = require('../controllers/public');
 const ctrlUser = require('../controllers/user_specific_pages');
 const ctrlExercises = require('../controllers/exercises');
+const ctrlAuth = require('../controllers/authentication');
 
 /* Define URL for different pages. */
 router.get('/', ctrlPublic.intro);
 router.get('/login', ctrlPublic.login);
-router.get('/register-form', ctrlPublic.register);
 router.get('/qnr1', ctrlPublic.qnr1);
 router.get('/qnr2', ctrlPublic.qnr2);
 router.get('/qnr3', ctrlPublic.qnr3);
@@ -30,6 +30,10 @@ router
 router.get('/exercise/:exerciseid', ctrlExercises.exerciseInfo);
 
 
+router
+    .route('/register-form')
+    .get(ctrlAuth.registerForm)
+    .post(ctrlAuth.doRegisterUser);
 
 
 module.exports = router;

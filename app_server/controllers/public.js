@@ -67,13 +67,6 @@ const login = (req, res) => {
     });
 };
 
-/* Get the registration page */
-const register = (req, res) => {
-    res.render('register-form.pug', {
-        title: `${globals.getSiteName()}—Registration`
-    });
-};
-
 /* Get the about page */
 const about = (req, res) => {
     res.render('about.pug', {
@@ -84,7 +77,6 @@ const about = (req, res) => {
 module.exports = {
     intro,
     login,
-    register,
     qnr1,
     qnr2,
     qnr3,
