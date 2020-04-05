@@ -39,11 +39,11 @@ const qnr3 = (req, res) => {
         question: 'How much work will you put in per session?',
         options: ['9', '15', '21+'],
         prev: 'qnr2',
-        next: 'qnr_end'
+        next: 'qnr-end'
     });
 };
 const qnr_end = (req, res) => {
-    res.render('qnr_end.pug', {
+    res.render('qnr-end.pug', {
         title: `${globals.getSiteName()}—Questionnaire`,
         savedAnswers: ['saved#1', 'saved#2', 'saved#2'],
         recommended_program: '${Recommended Program}',

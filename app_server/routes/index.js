@@ -11,7 +11,7 @@ router.get('/register-form', ctrlPublic.register);
 router.get('/qnr1', ctrlPublic.qnr1);
 router.get('/qnr2', ctrlPublic.qnr2);
 router.get('/qnr3', ctrlPublic.qnr3);
-router.get('/qnr_end', ctrlPublic.qnr_end);
+router.get('/qnr-end', ctrlPublic.qnr_end);
 router.get('/program-list', ctrlPublic.program_list);
 
 /* User-specific pages. */

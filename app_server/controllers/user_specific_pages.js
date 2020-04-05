@@ -15,7 +15,7 @@ const account = (req, res) => {
 
 const calendar = (req, res) => {
     res.render('calendar.pug', {
-        title: `globals.getSiteName()—Calendar`,
+        title: `${globals.getSiteName()}—Calendar`,
         // Dummy workout program data for now (assumes that the user can only have 1 program)
         program: [
             {
