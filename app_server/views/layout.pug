@@ -17,23 +17,26 @@ html
         #navbarToggle.navbar-collapse.collapse
           ul.navbar-nav.center.ml-auto
             li.nav-item
-              a.nav-link.btn.btn-default(href='/exercises') Exercises
+              a.nav-link.btn.btn-default(href='/exercise-list') Exercises
             li.nav-item
               a.nav-link.btn.btn-default(href='/dashboard/calendar') Calendar
             li.nav-item
               a.nav-link.btn.btn-default(href='/dashboard') Dashboard
             li.nav-item
               a.nav-link.btn.btn-default(href='/login') Login
+            li.nav-item
+              a.nav-link.btn.btn-default(href='/register-form') Register
 
     block content
 
     footer.footer.fixed-bottom.d-none.d-md-block
-      .text-center &copy; Copyright QuickFit 2020
+      .text-center
+        small &copy; Copyright QuickFit 2020
 
-    script(src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous")
     script(src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous")
     script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous")
-
     script(src='/javascripts/bootstrap/bootstrap.min.js')
+    script(src='/javascripts/layout.js')
 
     block scripts

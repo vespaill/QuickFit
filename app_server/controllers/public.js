@@ -1,11 +1,11 @@
-const myGlobals = require('./globals');
+const globals = require('./globals');
 
 /* Get the intro page */
 const intro = (req, res) => {
     /* Defines the route, using the view template 'intro.pug'
        Passes an object with variables to be used in the view. */
     res.render('intro.pug', {
-        title: myGlobals.website_name(),
+        title: globals.getSiteName(),
         introMsg: 'QuickFit is a progressive web application designed to help people meet their fitness goals, whatever they may be. QuickFit has been created from the ground-up with beginners in mind. It aims to remove needless complexities that are often experienced by the beginner when choosing a workout program. Click below to find a workout program tailored to your needs by going through our questionnaire.'
     });
 
@@ -14,7 +14,7 @@ const intro = (req, res) => {
 /* Get the questionnaire pages */
 const qnr1 = (req, res) => {
     res.render('questionnaire.pug', {
-        title: `${myGlobals.website_name()}—questionnaire`,
+        title: `${globals.getSiteName()}—Questionnaire`,
         savedAnswers: [],
         question: 'What is your fitness goal?',
         options: ['Gain Muscle', 'Maintain Weight', 'Burn Fat'],
@@ -24,7 +24,7 @@ const qnr1 = (req, res) => {
 };
 const qnr2 = (req, res) => {
     res.render('questionnaire.pug', {
-        title: `${myGlobals.website_name()}—questionnaire`,
+        title: `${globals.getSiteName()}—Questionnaire`,
         savedAnswers: ['saved#1'],
         question: 'How many days a week will you train?',
         options: ['3', '4', '5', '6'],
@@ -34,7 +34,7 @@ const qnr2 = (req, res) => {
 };
 const qnr3 = (req, res) => {
     res.render('questionnaire.pug', {
-        title: `${myGlobals.website_name()}—questionnaire`,
+        title: `${globals.getSiteName()}—Questionnaire`,
         savedAnswers: ['saved#1', 'saved#2'],
         question: 'How much work will you put in per session?',
         options: ['9', '15', '21+'],
@@ -44,15 +44,15 @@ const qnr3 = (req, res) => {
 };
 const qnr_end = (req, res) => {
     res.render('qnr_end.pug', {
-        title: `${myGlobals.website_name()}—questionnaire`,
+        title: `${globals.getSiteName()}—Questionnaire`,
         savedAnswers: ['saved#1', 'saved#2', 'saved#2'],
         recommended_program: '${Recommended Program}',
     });
 };
 
 const program_list = (req, res) => {
-    res.render('program_list.pug', {
-        title: `${myGlobals.website_name()}—programs`,
+    res.render('program-list.pug', {
+        title: `${globals.getSiteName()}—Programs`,
         programs: ['Gorilla Gains', 'Lipids Annihilator', 'Anabolic Beast',
                    'Catabolic ReactX', 'Look Like I\'m On Steroids',
                    'Belly Deflator', 'Lipocyte Chemotherapy', 'Rocky Montage',
@@ -63,21 +63,21 @@ const program_list = (req, res) => {
 /* Get the login page */
 const login = (req, res) => {
     res.render('login.pug', {
-        title: `${myGlobals.website_name()}—Login`
+        title: `${globals.getSiteName()}—Login`
     });
 };
 
 /* Get the registration page */
 const register = (req, res) => {
-    res.render('register.pug', {
-        title: `${myGlobals.website_name()}—Registration`
+    res.render('register-form.pug', {
+        title: `${globals.getSiteName()}—Registration`
     });
 };
 
 /* Get the about page */
 const about = (req, res) => {
     res.render('about.pug', {
-        title: `${myGlobals.website_name()}—About`
+        title: `${globals.getSiteName()}—About`
     });
 };
 

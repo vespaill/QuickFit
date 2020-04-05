@@ -346,9 +346,18 @@ a.exercise:hover {
   min-height: 4em;
 }
 
+.alert {
+  color: white;
+  margin: auto;
+  margin-bottom: 1em;
+}
+
 .alert-danger {
   background-color: #d9534f;
-  color: white;
+}
+
+.alert-success {
+  background-color:  #5cb85c;
 }
 
 .custom-control-label:before{

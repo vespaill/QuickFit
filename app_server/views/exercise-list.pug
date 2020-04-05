@@ -41,7 +41,11 @@ block content
       .display-4.text-center Exercise Selection
 
     .row.justify-content-center.mb-3
-      a.btn.btn-default(href='/exercises/add') Add New
+      a.btn.btn-default(href='/exercise-list/add') Add New
+
+    .row
+      - if (inserted == 'true')
+        .alert.alert-success(role='alert') Exercises added!
 
     .row.justify-content-center
       .col-12.col-md-8
@@ -51,4 +55,4 @@ block content
             +printExercise(exercise)
 
 block scripts
-  script(src='/javascripts/exercises.js')
+  script(src='/javascripts/exercise-list.js')

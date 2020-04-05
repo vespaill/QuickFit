@@ -1,13 +1,13 @@
-const myGlobals = require('./globals');
+const globals = require('./globals');
 const request = require('request');
 
 // Set the default server URL for the local development.
-const apiOptions = { server: 'http://localhost:3000' };
+// const apiOptions = { server: 'http://localhost:3000' };
 
 // If the application is running in production mode, use the live URL.
-if (process.env.NODE_ENV === 'production') {
-    apiOptions.server = 'https://quickfit.herokuapp.com';
-}
+// if (process.env.NODE_ENV === 'production') {
+//     apiOptions.server = 'https://quickfit.herokuapp.com';
+// }
 
 const renderExercises = (req, res, responseBody) => {
 
@@ -32,14 +32,16 @@ const renderExercises = (req, res, responseBody) => {
     res.render(
 
         // Name of template to use, in this case referencing exercises.pug
-        'exercises', {  // JavaScript object containing data for template to use
+        'exercise-list', {  // JavaScript object containing data for template to use
 
-        title: `${myGlobals.website_name()}—exercises`,
+        title: `${globals.getSiteName()}—Exercises`,
 
         /* Here we have finally removed the hardcoded array of exercise objects,
            and passed the responseBody instead. */
         exercises: responseBody,
-        message
+        message,
+        inserted: req.query.inserted
+
 
     });
 
@@ -47,8 +49,7 @@ const renderExercises = (req, res, responseBody) => {
 
 const exercises = (req, res) => {
 
-    /* Set the path for the API request. (The server is already set at the top
-       of the file.) */
+    /* Set the path for the API request. */
     const path = '/api/exercises';
 
     // Set the request options, including URL, method and empty JSON body
@@ -56,7 +57,7 @@ const exercises = (req, res) => {
 
         /* Full URL of the request to be made, including protocol, domain, path,
            and URL parameters */
-        url: `${apiOptions.server}${path}`,
+        url: `${globals.getServer()}${path}`,
 
         // Method of the request, such as GET, POST, PUT, or DELETE
         method: 'GET',
@@ -93,7 +94,7 @@ const exerciseInfo = (req, res) => {
     // Set the path for the API request. Server is already set up at the top.
     const path = `/api/exercise/${req.params.exerciseid}`;
     const requestOptions = {
-        url: `${apiOptions.server}${path}`,
+        url: `${globals.getServer()}${path}`,
         method: 'GET',
         json: {}
     };
@@ -110,8 +111,8 @@ const exerciseInfo = (req, res) => {
 
 // GET 'Add Exercise' page
 const addExercise = (req, res) => {
-    res.render('exercise-form.pug', {
-        title: 'New Exercise',
+    res.render('exercise-form', {
+        title: `${globals.getSiteName()}—New Exercise`,
         groupOptions: [
             'Chest',
             'Upper back',
@@ -160,26 +161,26 @@ const doAddExercise = (req, res) => {
     console.log(postdata);
 
     const requestOptions = {
-        url: `${apiOptions.server}${path}`,
+        url: `${globals.getServer()}${path}`,
         method: 'POST',
         json: postdata
     };
 
     if (!postdata.name || !postdata.equip || !postdata.group) {
-        res.redirect('/exercises/add?err=val');
+        res.redirect('/exercise-list/add?err=val');
     } else {
         request(
             requestOptions,
             (err, {statusCode}, {name}) => {
                 if (statusCode === 201) {
-                    res.redirect('/exercises');
+                    res.redirect('/exercise-list?inserted=true');
 
                 /* Adds a check to see whether the status is 400, the body has a
                 name, and that name is ValidationError. */
                 } else if (statusCode===400 && name && name==='ValidationError') {
                     /* If true, redirects to the exercise form, passing an error
                     flag in a query string */
-                    res.redirect('/exercises/add?err=val');
+                    res.redirect('/exercise-list/add?err=val');
 
                 } else {
                     showError(req, res, statusCode);

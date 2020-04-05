@@ -1,0 +1,41 @@
+extends layout
+block content
+  .container.main-content
+    .row.mb-4.mt-5
+      .col-12
+        .display-4.text-center.mb-4 Create Your QuickFit Account
+    form.row(action='', method='post', role='form')
+      .col-12.text-center
+        - if (error == 'val')
+          .alert.alert-danger(role='alert') Fields required, please try again
+
+      //- Left hand side.
+      .col-md-6
+        //- First and Last name
+        .row.mb-5
+          .col-12.input-group
+            .input-group-prepend
+              span.input-group-text#inputGroup-sizing-default Name:
+            input.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='first' name='first-name')
+            input.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='last' name='last-name')
+        //- Email
+        .row.mb-5
+          .col-12.input-group
+            .input-group-prepend
+              span.input-group-text#inputGroup-sizing-default Email:
+            input.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='example@domain.com' name='email')
+        //- Password
+        .row.mb-2
+          .col-12.input-group
+            input.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='password' name='pw')
+            input.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='confirm' name='pw-confirm')
+
+        .row.mb-5
+          .col-12 Use 8 or more characters with a mix of letters, numbers, and symbols
+      //- Right hand side: picture
+      .col-md-6.d-none.d-md-block
+        img.mx-auto.d-block(style="height: 240px" src='/images/grandma_deadlift.jpg')
+
+      //- Submit
+      .col-12.text-center
+        button.col-md-4.btn.btn-default Sign up
