@@ -8,7 +8,6 @@ const passport     = require('passport');   // Require Passport before the model
 require('./app_api/models/db');
 require('./app_api/config/passport');       // Require strategy after the model definition
 
-
 const indexRouter = require('./app_server/routes/index');
 const apiRouter = require('./app_api/routes/index');
 
@@ -33,18 +32,19 @@ app.use( express.static( path.join(__dirname, 'public') ) );
 // Initialize passport and add it as middleware.
 app.use(passport.initialize());
 
-app.use('/api', (req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    next();
-});
+// app.use('/api', (req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+//     next();
+// });
+
 app.use('/', indexRouter);;
 app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler

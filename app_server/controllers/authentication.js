@@ -12,7 +12,7 @@ const registerForm = (req, res) => {
 const doRegisterUser = (req, res) => {
 
     if (req.body.password !== req.body.pwConfirm) {
-        res.redirect('/register-form?confirmerr=val');
+        res.redirect('/register-form?err=password_confirm_err');
     }
 
     const path = '/api/register';
@@ -34,20 +34,20 @@ const doRegisterUser = (req, res) => {
     console.log(requestOptions);
 
     if (!postdata.name || !postdata.email || !postdata.password) {
-        res.redirect('/register-form?postdataerr=val');
+        res.redirect('/register-form?err=postdata_incomplete');
     } else {
         request(
             requestOptions,
             (err, {statusCode}, {name}) => {
                 if (statusCode === 200) {
-                    res.redirect('/login');
+                    res.redirect('/login-form');
 
                 /* Adds a check to see whether the status is 400, the body has a
                    name, and that name is ValidationError. */
                 } else if (statusCode===400 && name && name==='ValidationError') {
                     /* If true, redirect to the register form, passing an error
                        flag in a query string */
-                    res.redirect('/register-form?validationerror=val');
+                    res.redirect('/register-form?err=validation_error');
 
                 } else {
                     globals.showError(req, res, statusCode);
@@ -58,7 +58,15 @@ const doRegisterUser = (req, res) => {
 
 };
 
+/* Get the login page */
+const loginForm = (req, res) => {
+    res.render('login-form', {
+        title: `${globals.getSiteName()}—Login`
+    });
+};
+
 module.exports = {
     registerForm,
-    doRegisterUser
+    doRegisterUser,
+    loginForm
 };

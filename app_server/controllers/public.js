@@ -60,27 +60,11 @@ const program_list = (req, res) => {
     });
 }
 
-/* Get the login page */
-const login = (req, res) => {
-    res.render('login.pug', {
-        title: `${globals.getSiteName()}—Login`
-    });
-};
-
-/* Get the about page */
-const about = (req, res) => {
-    res.render('about.pug', {
-        title: `${globals.getSiteName()}—About`
-    });
-};
-
 module.exports = {
     intro,
-    login,
     qnr1,
     qnr2,
     qnr3,
     qnr_end,
-    program_list,
-    about
+    program_list
 };
