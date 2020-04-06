@@ -23,7 +23,7 @@ const doRegisterUser = (req, res) => {
         password: req.body.password
     };
 
-    console.log(postdata);
+    console.log(`postdata: ${JSON.stringify(postdata,  null, '\t')}`);
 
     const requestOptions = {
         url: `${globals.getServer()}${path}`,
@@ -31,7 +31,7 @@ const doRegisterUser = (req, res) => {
         json: postdata
     };
 
-    console.log(requestOptions);
+    console.log(`requestOptions: ${JSON.stringify(requestOptions,  null, '\t')}`);
 
     if (!postdata.name || !postdata.email || !postdata.password) {
         res.redirect('/register-form?err=postdata_incomplete');
@@ -39,6 +39,7 @@ const doRegisterUser = (req, res) => {
         request(
             requestOptions,
             (err, {statusCode}, {name}) => {
+                // On successful registration, redirect to login page.
                 if (statusCode === 200) {
                     res.redirect('/login-form');
 
