@@ -1,0 +1,41 @@
+.qnr-btn {
+  background-color: #FF9A00;
+  color: #FFF;
+}
+
+.qnr-btn:hover {
+  color: #000;
+}
+
+.qnr-btn:focus {
+  background-color: #ff5d00;
+  font-weight: bold;
+  color: #000;
+}
+
+.qnr-nav-btn {
+  background-color: #00a2ff;
+  color: #FFFFFF;
+  position: sticky;
+}
+
+#nav-btn-right {
+  background-color: #00a2ff;
+  color: #FFFFFF;
+  float: right;
+  position: sticky;
+  /* visibility: hidden; */
+}
+
+.badge-pill {
+  background-color: #ff5d00;
+  color: #FFFFFF;
+}
+
+.choiceFixed {
+  height: 370px;
+}
+
+a:hover {
+  color: black;
+}

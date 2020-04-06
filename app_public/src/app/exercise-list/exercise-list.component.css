@@ -1,8 +1,38 @@
-#exercise-list-component {
-  background-color: #294D67;
-  margin-top: 3rem;
+a.exercise {
+  color: black;
+  text-decoration: none;
 }
 
-.white-text {
+a.exercise:hover {
   color: white;
+}
+
+.badge-warning {
+  margin-right: 2px;
+}
+
+.error {
+  background-color: #d9534f;
+  color: white;
+}
+
+.card-body {
+  padding: 10px;
+}
+.card {
+  margin-bottom: 5px;
+
+}
+
+.bg-chest      { background-color: #ea9999; }
+.bg-triceps    { background-color: #e6b8af; }
+.bg-upper-back { background-color: #a4c2f4; }
+.bg-biceps     { background-color: #c9daf8; }
+.bg-shoulders  { background-color: #93c47d; }
+.bg-core       { background-color: #8e7cc3; }
+.bg-lower-body { background-color: #f6b26b; }
+
+.bg-chest, .bg-triceps, .bg-upper-back, .bg-biceps,
+.bg-shoulders, .bg-core, .bg-lower-body {
+  color: black;
 }

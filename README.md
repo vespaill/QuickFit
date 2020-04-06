@@ -1,9 +1,9 @@
 # COMMANDS USED
 
-##### Install the dependencies.
+#### Install the dependencies.
     $ npm install
 
-#### AUTOMATICALLY RESTARTING THE APPLICATION WITH NODEMON
+#### Automatically restarting the application with nodemon
 Installing nodemon globably
 
     $ npm install -g nodemon
@@ -13,6 +13,13 @@ Running it
     $ nodemon
 
 You should see a few extra lines output to terminal, confirming that nodemon is running and that it has started node `./bin/www`. Go to `localhost:3000` and check.
+
+#### Running the Angular app
+Inside `/app_public`:
+
+    $ ng serve
+
+
 <br>
 <br>
 <br>
@@ -336,6 +343,53 @@ This command creates a new folder called `<new_component_name>` within the src f
 #### Creating a data service
 
     $ ng generate service <service_name>
+
+#### ALLOWING CORS REQUESTS IN EXPRESS
+In `app.js`, right before the routes are used:
+
+    app.use('/api', (req, res, next) => {
+        res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        next();
+    });
+CORS (cross-origin resource sharing)—it means allowing the access or request of certain resources from a different domain.
+
+#### Building an Angular application for production
+To create a production build of your application inside `app_public/build`, go to `app_public` and run:
+
+    $ ng build --prod --output-path build
+
+#### Using the Angular application from the Express site
+* Defining a static path for the angular application
+* Referencing the compiled angular javascript files from the html
+* Adding the html tag to bind the angular app
+
+<br>
+<br>
+
+## 9 &nbsp; Building a single-page application with Angular: Foundations
+
+### 9.1 &nbsp; Adding navigation in an Angular SPA
+* 9.1.1 &nbsp; Importing the Angular router and defining the first route
+* 9.1.2 &nbsp; Routing configuration (path-component pairs)
+* 9.1.3 &nbsp; Creating a component for the framework and navigation
+* 9.1.4 &nbsp; Defining where to display the content using router-outlet
+* 9.1.5 &nbsp; Navigating between pages
+
+### 9.2 &nbsp; Building a modular app using multiple nested components
+* 9.2.1 &nbsp; Creating the main homepage component
+* 9.2.2 &nbsp; Creating and using reusable subcomponents
+    * Creating the page-header component
+    * Defining the data for the page-header component on the homepage
+    * Passing data into the page-header component
+    * Accepting and displaying incoming data in a component
+
+### 9.4 &nbsp; Safely binding HTML content
+* 9.4.1 &nbsp; Adding the About page content to the app
+* 9.4.2 &nbsp; Creating a pipe to transform the line breaks
+    * Creating an html linebreaks pipe
+    * Applying the pipe to the binding
+* 9.4.3 &nbsp; Safely binding HTML by using a property binding
 
 <br>
 <br>

@@ -1,14 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-
-// Make our service available to the component by importing it.
 import { ExerciseDataService } from '../exercise-data.service';
+
+enum groupEnum {
+    chest = 'Chest',
+    upperBack = 'Upper back',
+    shoulders = 'Shoulders',
+    biceps = 'Biceps',
+    triceps = 'Triceps',
+    core = 'Core',
+    lowerBody = 'Lower body',
+}
 
 // Create and export a class called Exercise.
 export class Exercise {
     _id:   string;
     name:  string;
     equip: string[];
-    group: string;
+    group: groupEnum;
 }
 
 @Component({
@@ -19,10 +27,16 @@ export class Exercise {
 
 export class ExerciseListComponent implements OnInit {
 
+    public pageContent = {
+        header: {
+            title: "Exercise Selection"
+        },
+    }
+
     // Inject the service into the component using the constructor.
     constructor(private ExerciseDataService: ExerciseDataService) { }
 
-    // The exercises declaration should have no default value.
+    // Declare a member variable of type array of Exercise.
     exercises: Exercise[];
 
     // Define a getExercises method that accepts no parameters and returns nothing.
@@ -31,8 +45,8 @@ export class ExerciseListComponent implements OnInit {
         // Call our data service method.
         this.ExerciseDataService
             .getExercises()
-                // Update the exercises array with the contents of the response.
-                .then(foundExercises => this.exercises = foundExercises);
+            // Update the exercises array with the contents of the response.
+            .then( (foundExercises) => {this.exercises = foundExercises} );
 
     }
 

@@ -1,0 +1,32 @@
+<!-- NAVIGATION BAR -->
+<nav class="navbar navbar-expand-md">
+  <div class="container">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" id="home-link" class="nav-link" >home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="container">
+    <div id="navbarToggle" class="navbar-collapse collapse">
+      <ul class="navbar-nav center ml-auto">
+        <li *ngFor="let navlink of navlinks" class="nav-item text-center">
+          <a  routerLink="/{{navlink}}" routerLinkActive="active" class="nav-link" >{{navlink}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container content">
+
+  <router-outlet></router-outlet>
+
+  <footer class="footer fixed-bottom d-none d-md-block">
+    <div class="row">
+      <div class="col-12 text-center">
+        <small>&copy; Copyright QuickFit 2020</small>
+      </div>
+    </div>
+  </footer>
+</div>

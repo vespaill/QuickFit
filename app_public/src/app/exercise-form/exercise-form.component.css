@@ -1,0 +1,32 @@
+.input-group-text, .input-label {
+  background-color: #294D67;
+  color: white;
+}
+
+.input-card {
+  padding: 1em;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.input-label {
+  margin: 0;
+  border-radius: 5px;
+  padding: 1ex 0 8px 12px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.desc-txt {
+  min-height: 4em;
+}
+
+.alert-danger {
+  background-color: #d9534f;
+  color: white;
+}
+
+.custom-control-label:before{
+  background-color: #D5D0CA;
+}

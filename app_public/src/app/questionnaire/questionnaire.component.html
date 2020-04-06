@@ -1,0 +1,13 @@
+<div class="container main-content">
+  <div class="row mt-5">
+    <div class="col-12 display-4 text-center">What is your fitness goal?</div>
+  </div>
+  <div class="row justify-content-center my-5"></div>
+  <div class="row justify-content-center mb-5">
+    <button *ngFor="let option of options" class="option btn btn-lg qnr-btn mx-5">{{option}}</button>
+  </div>
+  <div class="row justify-content-between">
+    <a class="col-4 btn qnr-nav-btn" href="/">Previous</a>
+    <a class="col-4 btn qnr-nav-btn" id="nav-btn-right" href="qnr2" style="display: none;">Next</a>
+  </div>
+</div>
