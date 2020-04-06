@@ -5,6 +5,11 @@
 /* Home button in navbar */
 #home-link {
   margin-bottom: 2px;
+  padding: 20px 80px;
+  background-image: url("../../assets/images/logo/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 125px;
 }
 
 .navbar-toggler-icon {
