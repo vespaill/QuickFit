@@ -64,7 +64,7 @@ import { HtmlLineBreaksPipe } from './html-line-breaks.pipe';
                 path: 'calendar',
                 component: CalendarComponent
             }, {
-                path: 'exercise-list/:exerciseid',
+                path: 'exercise/:exerciseid',
                 component: ExerciseInfoComponent
             }
         ])

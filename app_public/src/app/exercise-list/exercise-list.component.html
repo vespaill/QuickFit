@@ -7,7 +7,7 @@
       <div *ngFor="let exercise of exercises" class="card bg-{{exercise.group.replace(' ', '-').toLowerCase()}}">
         <div class="card-body">
           <h4>
-            <a class="exercise" routerLink="/exercise-list/{{exercise._id}}">{{exercise.name}}</a>
+            <a class="exercise" routerLink="/exercise/{{exercise._id}}">{{exercise.name}}</a>
           </h4>
           <div class="equipments">
             <span *ngFor="let equipment of exercise.equip" class="badge badge-warning">{{equipment}}</span>
