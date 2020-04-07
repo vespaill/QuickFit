@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./framework.component.css'],
     styles: [`.active {
                     background-color: #ff5d00;
-                    font-weight: bold;
                     color: #000;
                 }`
     ]

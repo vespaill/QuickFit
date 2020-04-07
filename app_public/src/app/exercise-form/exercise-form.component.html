@@ -1,80 +1,64 @@
 <app-page-header [content]="pageContent.header"></app-page-header>
 <div class="component">
   <form action="" method="post" role="form">
-    <div class="row">
-      <div class="col-12 text-center"></div>
-    </div>
+    <!-- ------------------------------------------------------------------- -->
+    <!--                         Name & Category Options                     -->
+    <!-- ------------------------------------------------------------------- -->
     <div class="row mb-4">
+      <!-- Name -------------------------------------------------------- -->
       <div class="col-sm-6 input-group mb-3">
-        <div class="input-group-prepend"><span class="input-group-text" id="inputGroup-sizing-default">Name:</span>
-        </div><input class="form-control" type="text" aria-label="Sizing example input"
-          describedby="inputGroup-sizing-default" name="name">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Name:</span>
+        </div>
+        <input class="form-control" type="text" aria-label="Sizing example input" describedby="inputGroup-sizing-default" name="name">
       </div>
+      <!-- Category -------------------------------------------------------- -->
       <div class="col-sm-6 input-group mb-3">
-        <div class="input-group-prepend"><span class="input-group-text"
-            id="inputGroup-sizing-default">Category:</span></div><select class="custom-select form-control"
-          type="text" aria-label="Sizing example input" describedby="inputGroup-sizing-default" name="category">
-          <option hidden="">Choose a category</option>
-          <option class="bg-chest">Chest</option>
-          <option class="bg-upper-back">Upper back</option>
-          <option class="bg-shoulders">Shoulders</option>
-          <option class="bg-biceps">Biceps</option>
-          <option class="bg-triceps">Triceps</option>
-          <option class="bg-core">Core</option>
-          <option class="bg-lower-body">Lower body</option>
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Category:</span>
+        </div>
+        <select class="custom-select form-control" type="text" aria-label="Sizing example input" describedby="inputGroup-sizing-default" name="category">
+          <option hidden>Choose a category</option>
+          <option *ngFor="let groupOption of pageContent.groupOptions" class="bg-{{groupOption.replace(' ', '-').toLowerCase()}}">{{groupOption}}</option>
         </select>
       </div>
     </div>
+
+    <!-- ------------------------------------------------------------------- -->
+    <!--                            Equipment Options                        -->
+    <!-- ------------------------------------------------------------------- -->
     <div class="row mb-5">
       <div class="col-12"><label class="col-12 input-label">Equipment Options:</label>
         <div class="card input-card overflow-hidden">
           <div class="row">
-            <div class="col-sm-2 text-center">
-              <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox"
-                  id="checkbox-BB" name="equipment" value="BB"><label class="custom-control-label"
-                  for="checkbox-BB"><span class="badge badge-warning" data-toggle="tooltip" data-placement="right"
-                    data-html="true" title="" data-original-title="Barbell">BB</span></label></div>
-            </div>
-            <div class="col-sm-2 text-center">
-              <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox"
-                  id="checkbox-DB" name="equipment" value="DB"><label class="custom-control-label"
-                  for="checkbox-DB"><span class="badge badge-warning" data-toggle="tooltip" data-placement="right"
-                    data-html="true" title="" data-original-title="Dumbbell">DB</span></label></div>
-            </div>
-            <div class="col-sm-2 text-center">
-              <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox"
-                  id="checkbox-C" name="equipment" value="C"><label class="custom-control-label"
-                  for="checkbox-C"><span class="badge badge-warning" data-toggle="tooltip" data-placement="right"
-                    data-html="true" title="" data-original-title="Cable">C</span></label></div>
-            </div>
-            <div class="col-sm-2 text-center">
-              <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox"
-                  id="checkbox-M" name="equipment" value="M"><label class="custom-control-label"
-                  for="checkbox-M"><span class="badge badge-warning" data-toggle="tooltip" data-placement="right"
-                    data-html="true" title="" data-original-title="Machine">M</span></label></div>
-            </div>
-            <div class="col-sm-2 text-center">
-              <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox"
-                  id="checkbox-BE" name="equipment" value="BE"><label class="custom-control-label"
-                  for="checkbox-BE"><span class="badge badge-warning" data-toggle="tooltip" data-placement="right"
-                    data-html="true" title=""
-                    data-original-title="Body weight<br>&amp; additional equipment">BE</span></label></div>
-            </div>
-            <div class="col-sm-2 text-center">
-              <div class="custom-control custom-checkbox"><input class="custom-control-input" type="checkbox"
-                  id="checkbox-BW" name="equipment" value="BW"><label class="custom-control-label"
-                  for="checkbox-BW"><span class="badge badge-warning" data-toggle="tooltip" data-placement="right"
-                    data-html="true" title="" data-original-title="Body weight only">BW</span></label></div>
+            <div *ngFor="let equipOption of pageContent.equipOptions" class="col-sm-2 text-center">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox" name="equipment" id="checkbox-{{equipOption.abbrv}}" value="{{equipOption.abbrv}}">
+                <label class="custom-control-label" for="checkbox-{{equipOption.abbrv}}">
+                  <span class="badge badge-warning" data-toggle="tooltip" data-placement="right" data-html="true" title="{{equipOption.name}}">{{equipOption.abbrv}}</span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- ------------------------------------------------------------------- -->
+    <!--                          Description Textarea                       -->
+    <!-- ------------------------------------------------------------------- -->
     <div class="row mb-4">
-      <div class="col-12"><label class="col-12 input-label">Description:</label><textarea
-          class="desc-txt form-control input-card" placeholder="optional" name="description"></textarea></div>
+      <div class="col-12">
+        <label class="col-12 input-label">Description:</label>
+        <textarea class="desc-txt form-control input-card" placeholder="optional" name="description"></textarea>
+      </div>
     </div>
-    <div class="row justify-content-center"><button class="col-sm-3 btn btn-default">Save</button></div>
+
+    <!-- ------------------------------------------------------------------- -->
+    <!--                              Submit Button                          -->
+    <!-- ------------------------------------------------------------------- -->
+    <div class="row justify-content-center">
+      <button class="col-sm-3 btn btn-default">Save</button>
+    </div>
   </form>
 </div>
-<script src="/assets/javascripts/exercise-form.js"></script>

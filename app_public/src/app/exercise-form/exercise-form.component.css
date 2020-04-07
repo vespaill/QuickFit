@@ -30,3 +30,16 @@
 .custom-control-label:before{
   background-color: #D5D0CA;
 }
+
+.bg-chest      { background-color: #ea9999; }
+.bg-triceps    { background-color: #e6b8af; }
+.bg-upper-back { background-color: #a4c2f4; }
+.bg-biceps     { background-color: #c9daf8; }
+.bg-shoulders  { background-color: #93c47d; }
+.bg-core       { background-color: #8e7cc3; }
+.bg-lower-body { background-color: #f6b26b; }
+
+.bg-chest, .bg-triceps, .bg-upper-back, .bg-biceps,
+.bg-shoulders, .bg-core, .bg-lower-body {
+  color: black;
+}

@@ -41,4 +41,18 @@ export class ExerciseDataService {
         return Promise.reject(error.message || error);
     }
 
+    /* ---------------------------------------------------------------------- */
+    /*                         Get an exercise by ID                          */
+    /* ---------------------------------------------------------------------- */
+    public getExerciseById(exerciseId: string): Promise<Exercise> {
+
+        const url: string = `${this.apiBaseUrl}/exercise/${exerciseId}`;
+
+        return this.http
+            .get(url)
+            .toPromise()
+            .then(response => response as Exercise)
+            .catch(this.handleError);
+    }
+
 }

@@ -1,0 +1,20 @@
+<app-page-header [content]="pageContent.header"></app-page-header>
+<div class="component">
+  <div class="row mt-5">
+    <div class="col-12">
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <span *ngFor="let equipment of pageContent.exercise.equip" class="badge badge-warning">{{equipment}}</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <p>{{pageContent.exercise.desc}}</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -321,13 +321,15 @@ callback—Function to run when a response is received.
 
 ## 8 &nbsp; Creating an Angular application with TypeScript
 
+### 8.1 &nbsp; Getting up and running with Angular
+
 #### Installing Angular
     $ npm install -g @angular/cli
 
-#### Creating a boilerplate Angular app
+#### 8.1.1 &nbsp; Creating a boilerplate Angular app
     $ ng new QuickFit-public --skipGit=true --skipTests=true --defaults=true --directory=app_public
 
-#### Running the Angular app
+#### 8.1.2 &nbsp; Running the Angular app
     $ ng serve
 This command compiles, builds, and delivers the Angular application to the browser on port http://localhost:4200. It also rebuilds and reloads the application whenever the source code changes.
 
@@ -335,12 +337,27 @@ A __component__ handles a specific piece of functionality.
 
 A __module__ contains one or more components working together.
 
-#### Creating a new component
+---
+
+### 8.2 &nbsp; Working with Angular components
+
+#### 8.2.1 &nbsp; Creating a new component
     $ ng generate component <new_component_name>
 
 This command creates a new folder called `<new_component_name>` within the src folder. Create the TypeScript, HTML, and CSS files inside it, and also update the app.module.ts file to tell the module about the new component.
 
-#### Creating a data service
+#### 8.2.4 &nbsp; Using class member data in the HTML template
+Using `*ngFor` to loop through an array
+
+    <div class="facilities">
+        <span *ngFor="let facility of location.facilities" class="badge badge-warning">{{facility}}</span>
+    </div>
+
+
+---
+
+### 8.3 &nbsp; Getting data from an API
+#### 8.3.1 &nbsp; Creating a data service
 
     $ ng generate service <service_name>
 
@@ -354,12 +371,15 @@ In `app.js`, right before the routes are used:
     });
 CORS (cross-origin resource sharing)—it means allowing the access or request of certain resources from a different domain.
 
-#### Building an Angular application for production
+---
+
+### 8.4 &nbsp; Putting an Angular application into production
+#### 8.4.1 &nbsp; Building an Angular application for production
 To create a production build of your application inside `app_public/build`, go to `app_public` and run:
 
     $ ng build --prod --output-path build
 
-#### Using the Angular application from the Express site
+#### 8.4.2 &nbsp; Using the Angular application from the Express site
 * Defining a static path for the angular application
 * Referencing the compiled angular javascript files from the html
 * Adding the html tag to bind the angular app
@@ -388,8 +408,19 @@ To create a production build of your application inside `app_public/build`, go t
 * 9.4.1 &nbsp; Adding the About page content to the app
 * 9.4.2 &nbsp; Creating a pipe to transform the line breaks
     * Creating an html linebreaks pipe
+
+        `$ ng generate pipe html-line-breaks`
+
     * Applying the pipe to the binding
 * 9.4.3 &nbsp; Safely binding HTML by using a property binding
+
+<br>
+<br>
+
+## 10 &nbsp; Building a single-page application with Angular: The next level
+
+### 10.1 &nbsp; Working with more—complex views and routing parameters
+### 10.2 &nbsp; Working with forms and handling submitted data
 
 <br>
 <br>

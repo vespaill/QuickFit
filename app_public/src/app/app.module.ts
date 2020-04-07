@@ -13,13 +13,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule }     from '@angular/router';
 
 // Import our components from the file system.
-import { ExerciseListComponent } from './exercise-list/exercise-list.component';
-import { FrameworkComponent }    from './framework/framework.component';
-import { IntroComponent }        from './intro/intro.component';
-import { ExerciseFormComponent } from './exercise-form/exercise-form.component';
+import { ExerciseListComponent }  from './exercise-list/exercise-list.component';
+import { FrameworkComponent }     from './framework/framework.component';
+import { IntroComponent }         from './intro/intro.component';
+import { ExerciseFormComponent }  from './exercise-form/exercise-form.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
-import { CalendarComponent } from './calendar/calendar.component';
-import { PageHeaderComponent } from './page-header/page-header.component';
+import { CalendarComponent }      from './calendar/calendar.component';
+import { PageHeaderComponent }    from './page-header/page-header.component';
+import { ExerciseInfoComponent }  from './exercise-info/exercise-info.component';
+import { HtmlLineBreaksPipe } from './html-line-breaks.pipe';
 
 /* Describe the module by using a decorator.
    A decorator is a way that ES2015 and TypeScript provide metadata and
@@ -27,13 +29,15 @@ import { PageHeaderComponent } from './page-header/page-header.component';
 @NgModule({
 
     declarations: [
-        ExerciseListComponent,
         FrameworkComponent,
+        PageHeaderComponent,
         IntroComponent,
-        ExerciseFormComponent,
         QuestionnaireComponent,
+        ExerciseListComponent,
+        ExerciseFormComponent,
         CalendarComponent,
-        PageHeaderComponent
+        ExerciseInfoComponent,
+        HtmlLineBreaksPipe
     ],
 
     imports: [
@@ -51,7 +55,7 @@ import { PageHeaderComponent } from './page-header/page-header.component';
                 // Specify the ExerciseListComponent as the one to use for this route.
                 component: ExerciseListComponent
             }, {
-                path: 'exercise-list/add',
+                path: 'exercise-list/exercise-form',
                 component: ExerciseFormComponent
             }, {
                 path: 'questionnaire',
@@ -59,6 +63,9 @@ import { PageHeaderComponent } from './page-header/page-header.component';
             }, {
                 path: 'calendar',
                 component: CalendarComponent
+            }, {
+                path: 'exercise-list/:exerciseid',
+                component: ExerciseInfoComponent
             }
         ])
     ],

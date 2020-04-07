@@ -1,3 +1,6 @@
+/* -------------------------------------------------------------------------- */
+/*                                Color scheme                                */
+/* -------------------------------------------------------------------------- */
 :root {
   --portal-orange-light: #FF9A00;
   --portal-orange-dark: #FF5D00;
@@ -14,6 +17,30 @@
   --dark: #1B1B1B;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                    Fonts                                   */
+/* -------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'densmore';
+  src: url('assets/fonts/densmore.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'frozen';
+  src: url('assets/fonts/frozen.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'typo-quick';
+  src: url('assets/fonts/TypoQuikRegularDemo.woff') format('woff');
+
+
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   General                                  */
+/* -------------------------------------------------------------------------- */
 /* You can add global styles to this file, and also import other style files */
 * {
   margin: 0;
@@ -41,4 +68,39 @@ body {
   padding: 2em 1em;
   box-shadow: 0 .5rem 1rem #00000026 !important;
   border-radius: 1rem;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Buttons                                  */
+/* -------------------------------------------------------------------------- */
+.btn {
+  margin: 3px
+}
+
+.btn-group-xs>.btn, .btn-xs {
+  /* xs button */
+  padding: .25rem .4rem;
+  font-size: .875rem;
+  line-height: .5;
+  border-radius: .2rem;
+}
+
+.btn-default {
+  background-color: #FF9A00;
+  color: #FFF;
+  margin-right: 1em;
+}
+
+.btn-blue {
+  background-color: #0082C4;
+  color: #FFF;
+}
+
+.form input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 40px;
+  border-radius: 11px;
+  border: 1px solid #000000;
+  padding-left: 15px;
 }

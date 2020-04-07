@@ -17,6 +17,7 @@ export class Exercise {
     name:  string;
     equip: string[];
     group: groupEnum;
+    desc:  string;
 }
 
 @Component({

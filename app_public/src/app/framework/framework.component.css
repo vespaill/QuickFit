@@ -1,15 +1,27 @@
 .navbar {
-  background-color: var(--dark);
+  background-color: var(--dissipate);
+  font-family: 'typo-quick';
+  letter-spacing: 3px;
 }
 
 /* Home button in navbar */
 #home-link {
   margin-bottom: 2px;
-  padding: 20px 80px;
-  background-image: url("../../assets/images/logo/logo.png");
+  background-color: var(--dark);
+  background-image: url("../../assets/images/logo/run_sky_blue.png");
   background-repeat: no-repeat;
-  background-position: center;
-  background-size: 125px;
+  background-position: right;
+  background-size: contain;
+  padding-right: 3em;
+}
+
+#home-link.active {
+  background-color: var(--portal-orange-dark);
+  background-image: url("../../assets/images/logo/run_white.png");
+}
+
+#home-link:not(.active):hover {
+  background-image: url("../../assets/images/logo/run_orange.png");
 }
 
 .navbar-toggler-icon {
@@ -20,24 +32,24 @@
 .nav-item {
   max-width: 150px;
   margin: 3px 0;
+  margin-right: 0.5rem;
 }
 
 .nav-link {
-  background-color: #FF9A00;
-  color: #FFF;
+  background-color: var(--dark);
+  color: white;
   border-radius: .25rem;
   margin-top: 5px;
 }
+.nav-link.active {
+  color: white;
+}
 
-.nav-link:hover {
-  color: black;
+.nav-link:not(.active):hover {
+  color: var(--portal-orange-dark);
 }
 
 footer {
   background-color: var(--waiting-room);
   padding: 15px;
-}
-
-.nav-item {
-  margin-right: 0.5rem;
 }
