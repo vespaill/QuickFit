@@ -1,9 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const ctrlPublic = require('../controllers/public');
-const ctrlUser = require('../controllers/user_specific_pages');
+const express       = require('express');
+const router        = express.Router();
+
+const ctrlPublic    = require('../controllers/public');
+const ctrlUser      = require('../controllers/user_specific_pages');
 const ctrlExercises = require('../controllers/exercises');
-const ctrlAuth = require('../controllers/authentication');
+const ctrlAuth      = require('../controllers/authentication');
 
 // Define URLs for different pages.
 router.get('/', ctrlPublic.intro);
@@ -45,6 +46,4 @@ router
     .route('/login-form')
     .get(ctrlAuth.loginForm);
 
-
-/* -------------------------------------------------------------------------- */
 module.exports = router;

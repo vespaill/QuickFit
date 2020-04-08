@@ -16,10 +16,9 @@ mongoose.connect(dbURI, {
 });
 
 
-/*******************************************************************************
+/* -----------------------------------------------------------------------------
     Listen for Mongoose connection events and output statuses to the console.
-*******************************************************************************/
-
+----------------------------------------------------------------------------- */
 // Monitor for a successful connection through Mongoose.
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${dbURI}`);
@@ -35,12 +34,10 @@ mongoose.connection.on('disconnected', () => {
     console.log('Mongoose disconnected');
 });
 
-
-/*******************************************************************************
+/* -----------------------------------------------------------------------------
     Listen to Node processes for termination or restart signals and call the
     gracefulShutdown function when appropriate, passing a continuation callback.
-*******************************************************************************/
-
+----------------------------------------------------------------------------- */
 // Reusable function to close the Mongoose connection.
 const gracefulShutdown = (msg, callback) => {
     /* Close the Mongoose connection and pass an anonymous function to run when

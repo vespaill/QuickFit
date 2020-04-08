@@ -1,51 +1,47 @@
-require('dotenv').config( {path: '.env'} );
-const createError  = require('http-errors');
-const express      = require('express');
-const path         = require('path');
-const logger       = require('morgan');
-const cookieParser = require('cookie-parser');
-const passport     = require('passport');   // Require Passport before the model definition
-require('./app_api/models/db');
-require('./app_api/config/passport');       // Require strategy after the model definition
-const indexRouter  = require('./app_server/routes/index');
-const apiRouter    = require('./app_api/routes/index');
-const app          = express();
+/* -----------------------------------------------------------------------------
+Using middleware:
 
-/* -------------------------------------------------------------------------- */
-/*                              view engine setup                             */
-/* -------------------------------------------------------------------------- */
-// Tell Express to look for views in /app_server/views
-app.set('views', path.join(__dirname, 'app_server', 'views'));
+Express is a routing and middleware web framework that has minimal functionality
+of its own: An Express application is essentially a series of middleware
+function calls.
 
-// Tell Express to use the pug template engine.
-app.set('view engine', 'pug');
-/* -------------------------------------------------------------------------- */
+Middleware functions are functions that have access to the request object (req),
+the response object (res), and the next middleware function in the application's
+request-response cycle. The next middleware function is commonly denoted by a
+variable named next.
+
+Learn more at https://expressjs.com/en/guide/using-middleware.html
+----------------------------------------------------------------------------- */
+
+require('dotenv').config( {path: '.env'} );   // Environment variable stores JWT secret.
+const createError  = require('http-errors');  // Creates HTTP errors for Express with ease.
+const express      = require('express');      // Load the Express module. This returns a function.
+const path         = require('path');         // Utilities for working with file & directory paths.
+const logger       = require('morgan');       // Used to log requests.
+const cookieParser = require('cookie-parser');// Used to parse cookies & populate req.cookies.
+const passport     = require('passport');     // Used for authentication. Must precede model.
+require('./app_api/models/db');               // Database connection & model/schema definitions.
+require('./app_api/config/passport');         // Indicate Passport strategy. Must procede model.
 
 
-app.use(logger('dev'));
-app.use(express.json());
+const indexRouter = require('./app_server/routes/index'); // Include URL routes,
+const apiRouter   = require('./app_api/routes/index');    // & API URL routes.
 
-/* Tell our application that we want be able to access form data from the req
-   variables. */
-app.use( express.urlencoded({ extended: false }) );
+/* Call the Express function, this returns an object of type "Express"
+   By convention we call this object "app" This represents our application.
+   This app object has many useful methods like get, post, put and delete. */
+const app = express();
 
-app.use(cookieParser());
-
-/* Tell Express to serve static files such as images, CSS files, and JavaScript
-   files from directory ./public */
-app.use( express.static(path.join(__dirname, 'public')) );
-
-// Initialize passport and add it as middleware.
-app.use(passport.initialize());
-
-// app.use('/api', (req, res, next) => {
-//     res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
-//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-//     next();
-// });
-
-app.use('/', indexRouter);;
-app.use('/api', apiRouter);
+app.set('views',path.join(__dirname,'app_server','views')); // Look for views in /app_server/views
+app.set('view engine', 'pug');                              // Use the pug template engine.
+app.use(logger('dev'));                                     // Log requests.
+app.use(express.json());                                    // Parse incoming requests with JSON payloads.
+app.use(express.urlencoded({extended:false}));              // Parse incoming requests with urlencoded payloads.
+app.use(cookieParser());                                    // Parse Cookie header & populate req.cookies
+app.use(express.static(path.join(__dirname,'public')));     // Serve static files (images, css, & js) from ./public
+app.use(passport.initialize());                             // Initialize passport & add it as middleware.
+app.use('/', indexRouter);                                  // Use our basic URL route definitions.
+app.use('/api', apiRouter);                                 // Use our API URL route definitions.
 
 // Catch 404 and forward to error handler.
 app.use(function(req, res, next) {
