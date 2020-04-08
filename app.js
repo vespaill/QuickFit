@@ -1,6 +1,4 @@
 /* -----------------------------------------------------------------------------
-Using middleware:
-
 Express is a routing and middleware web framework that has minimal functionality
 of its own: An Express application is essentially a series of middleware
 function calls.
@@ -10,18 +8,22 @@ the response object (res), and the next middleware function in the application's
 request-response cycle. The next middleware function is commonly denoted by a
 variable named next.
 
-Learn more at https://expressjs.com/en/guide/using-middleware.html
+The req object represents the HTTP request and has properties for the request
+query string, parameters, body, HTTP headers, and so on.
+
+Learn more at https://expressjs.com/en/4x/api.html
+          and https://expressjs.com/en/guide/using-middleware.html
 ----------------------------------------------------------------------------- */
 
 require('dotenv').config( {path: '.env'} );   // Environment variable stores JWT secret.
 const createError  = require('http-errors');  // Creates HTTP errors for Express with ease.
-const express      = require('express');      // Load the Express module. This returns a function.
-const path         = require('path');         // Utilities for working with file & directory paths.
+const express      = require('express');      // Load the Express module. Returns a function.
+const path         = require('path');         // Utilities for working with file & directory paths
 const logger       = require('morgan');       // Used to log requests.
 const cookieParser = require('cookie-parser');// Used to parse cookies & populate req.cookies.
 const passport     = require('passport');     // Used for authentication. Must precede model.
 require('./app_api/models/db');               // Database connection & model/schema definitions.
-require('./app_api/config/passport');         // Indicate Passport strategy. Must procede model.
+require('./app_api/config/passport');         // Indicate Passport strategy. Must go after model.
 
 
 const indexRouter = require('./app_server/routes/index'); // Include URL routes,
@@ -34,11 +36,11 @@ const app = express();
 
 app.set('views',path.join(__dirname,'app_server','views')); // Look for views in /app_server/views
 app.set('view engine', 'pug');                              // Use the pug template engine.
-app.use(logger('dev'));                                     // Log requests.
+app.use(logger('dev'));                                     // Log CRUD requests in terminal.
 app.use(express.json());                                    // Parse incoming requests with JSON payloads.
-app.use(express.urlencoded({extended:false}));              // Parse incoming requests with urlencoded payloads.
+app.use(express.urlencoded({extended:false}));              // Parse incoming requests w/ urlencoded payloads
 app.use(cookieParser());                                    // Parse Cookie header & populate req.cookies
-app.use(express.static(path.join(__dirname,'public')));     // Serve static files (images, css, & js) from ./public
+app.use(express.static(path.join(__dirname,'public')));     // Serve static files(images,css,js) from ./public
 app.use(passport.initialize());                             // Initialize passport & add it as middleware.
 app.use('/', indexRouter);                                  // Use our basic URL route definitions.
 app.use('/api', apiRouter);                                 // Use our API URL route definitions.
@@ -58,5 +60,9 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+// Not needed if using nodemon; server setup is handled in file ./bin/www
+// const port = 3000;
+// app.listen(port, () => console.log(`app listening at http://localhost:${port}`))
 
 module.exports = app;
