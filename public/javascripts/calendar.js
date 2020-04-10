@@ -2,6 +2,8 @@
  * Global calendar var
  */
 var cal;
+var addExerciseModal;
+var viewExerciseModal;
 
 // Number of days visible in week and month view
 const NUM_DAYS = {
@@ -10,6 +12,10 @@ const NUM_DAYS = {
 };
 
 function init() {
+    addExerciseModal = $('#modalAddExercise');
+
+    $('#tableExercises').DataTable();
+
     initCalendar();
     setRenderRangeText();
     setEventListener();
@@ -100,8 +106,7 @@ function onClickExercise(schedule) {
  * Called whenever + button is clicked
  */
 function onClickAddExercise() {
-    // TODO: Popup the add exercise modal here
-    alert("🔨🔨 Work In Progress 🔨🔨");
+    addExerciseModal.modal('show');
 }
 
 /**

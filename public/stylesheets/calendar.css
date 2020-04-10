@@ -81,3 +81,12 @@
 .ic-plus {
   background: url('../images/calendar/ic-plus.svg') no-repeat;
 }
+
+.modal-header, .modal-footer {
+  background-color: #294D67;
+}
+
+.modal-body {
+  background-color: #D5D0CA;
+  color: black;
+}

@@ -307,13 +307,14 @@ a.exercise:hover {
 
 }
 
-.bg-chest      { background-color: #ea9999; }
-.bg-triceps    { background-color: #e6b8af; }
-.bg-upper-back { background-color: #a4c2f4; }
-.bg-biceps     { background-color: #c9daf8; }
-.bg-shoulders  { background-color: #93c47d; }
-.bg-core       { background-color: #8e7cc3; }
-.bg-lower-body { background-color: #f6b26b; }
+/* !important is used to override existing background-colors that may exist on an element */
+.bg-chest      { background-color: #ea9999 !important; }
+.bg-triceps    { background-color: #e6b8af !important; }
+.bg-upper-back { background-color: #a4c2f4 !important; }
+.bg-biceps     { background-color: #c9daf8 !important; }
+.bg-shoulders  { background-color: #93c47d !important; }
+.bg-core       { background-color: #8e7cc3 !important; }
+.bg-lower-body { background-color: #f6b26b !important; }
 
 .bg-chest, .bg-triceps, .bg-upper-back, .bg-biceps,
 .bg-shoulders, .bg-core, .bg-lower-body {
