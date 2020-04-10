@@ -31,7 +31,8 @@ mixin colorCodeByGroup(exercise)
 block css
   //- When CDN is used, the files are blocked by client. I think toggling CORS may fix
   link(rel='stylesheet' href='/stylesheets/calendar/tui-calendar.css')
-  link(rel='stylesheet' href='https://cdn.datatables.net/v/dt/dt-1.10.20/datatables.min.css')
+  //- Not using CDN since the css file had to be explicitly modified
+  link(rel='stylesheet' href='/stylesheets/datatables.min.css')
   link(rel='stylesheet' href='/stylesheets/calendar.css')
 block content
   .container.main-content
@@ -76,6 +77,7 @@ block content
               each exercise in exercises
                 +colorCodeByGroup(exercise)
         .modal-footer
+          button.btn.btn-default(type='button' data-dismiss='modal') Add
           button.btn.btn-default(type='button' data-dismiss='modal') Close
 block scripts
   //- Pass program data through a script so that it is accessible as a variable in scripts

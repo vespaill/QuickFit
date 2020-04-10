@@ -4,6 +4,7 @@
 var cal;
 var addExerciseModal;
 var viewExerciseModal;
+var tableExercises;
 
 // Number of days visible in week and month view
 const NUM_DAYS = {
@@ -12,10 +13,7 @@ const NUM_DAYS = {
 };
 
 function init() {
-    addExerciseModal = $('#modalAddExercise');
-
-    $('#tableExercises').DataTable();
-
+    initModals();
     initCalendar();
     setRenderRangeText();
     setEventListener();
@@ -49,6 +47,26 @@ function computeSchedules(numDays) {
     }
     cal.clear(true);
     cal.createSchedules(scheduleList);
+}
+
+/**
+ * Initialized DataTables and modals
+ */
+function initModals() {
+    addExerciseModal = $('#modalAddExercise');
+    // TODO: init other modal here
+    tableExercises = $('#tableExercises').DataTable();
+
+    // Allow user to "select" and "unselect" exercises from the table
+    $('#tableExercises tbody').on('click', 'tr', function () {
+        if ($(this).hasClass('selected')) {
+            $(this).removeClass('selected');
+        }
+        else {
+            tableExercises.$('tr.selected').removeClass('selected');
+            $(this).addClass('selected');
+        }
+    });
 }
 
 /**
