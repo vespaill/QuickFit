@@ -2,9 +2,15 @@
  * Global calendar var
  */
 var cal;
+var selectedDay;
+// Modals
 var addExerciseModal;
 var viewExerciseModal;
+// Tables
 var tableExercises;
+// Input
+var inputReps;
+var btnAddExercise;
 
 // Number of days visible in week and month view
 const NUM_DAYS = {
@@ -53,9 +59,29 @@ function computeSchedules(numDays) {
  * Initialized DataTables and modals
  */
 function initModals() {
+    inputReps = $('#inputReps');
+    btnAddExercise = $('#btnAddExercise');
     addExerciseModal = $('#modalAddExercise');
     // TODO: init other modal here
-    tableExercises = $('#tableExercises').DataTable();
+    tableExercises = $('#tableExercises').DataTable({
+        "columnDefs": [
+            // Hide ID column
+            { className: "d-none", "targets": [3] }
+        ]
+    });
+
+    // Attach event listeners for when modal is closed
+    addExerciseModal.on('hidden.bs.modal', function () {
+        // Unselect exercise
+        tableExercises.$('tr.selected').removeClass('selected');
+        // Clear search
+        tableExercises.search("");
+        tableExercises.draw();
+        // Clear reps
+        inputReps.val('');
+        // Hide error
+        $('.invalid-feedback').removeClass('d-block');
+    });
 
     // Allow user to "select" and "unselect" exercises from the table
     $('#tableExercises tbody').on('click', 'tr', function () {
@@ -67,6 +93,8 @@ function initModals() {
             $(this).addClass('selected');
         }
     });
+
+    btnAddExercise.on('click', onAddExercise);
 }
 
 /**
@@ -96,13 +124,13 @@ function initCalendar() {
             },
             weekDayname: function (model) {
                 // Add + button to day name in weekly view
-                return '<span class="tui-full-calendar-dayname-date">' + model.date + '</span>&nbsp;&nbsp;<span class="tui-full-calendar-dayname-name">' + model.dayName + '</span>' + '<span><button class="btn btn-default btn-xs float-right mt-2 mr-2 btn-add-exercise" type="button"><i class="calendar-icon ic-plus"></i></button></span>';
+                return '<span class="tui-full-calendar-dayname-date">' + model.date + '</span>&nbsp;&nbsp;<span class="tui-full-calendar-dayname-name">' + model.dayName + '</span>' + '<span><button class="btn btn-default btn-xs float-right mt-2 mr-2 btn-add-exercise" type="button" data-day="' + model.day + '"><i class="calendar-icon ic-plus"></i></button></span>';
             },
             monthDayname: function (model) {
-                return (model.label).toString() + '<span><button class="btn btn-default btn-xs float-right btn-add-exercise" type="button"><i class="calendar-icon ic-plus"></i></button></span>';
+                return (model.label).toString() + '<span><button class="btn btn-default btn-xs float-right btn-add-exercise" type="button" data-day="' + model.day + '"><i class="calendar-icon ic-plus"></i></button></span>';
             },
             task: function (schedule) {
-                return '<div class=\"bg-' + schedule.raw.group.toLowerCase() + '\">' + schedule.title + ' x ' + schedule.raw.reps + "</div>";
+                return '<div class=\"bg-' + schedule.raw.group.toLowerCase() + '\">' + schedule.raw.name + ' x ' + schedule.raw.reps + "</div>";
             },
         }
     });
@@ -123,8 +151,44 @@ function onClickExercise(schedule) {
 /**
  * Called whenever + button is clicked
  */
-function onClickAddExercise() {
+function onClickAddExercise(e) {
+    selectedDay = parseInt($(this).data('day'));
     addExerciseModal.modal('show');
+}
+
+function onAddExercise() {
+    var numReps = parseInt(inputReps.val());
+    // [0] is name, [1] is equipment, [2] is group, [3] is db-id
+    var selectedExercise = tableExercises.row('.selected').data();
+    var error = false;
+
+    $('.invalid-feedback').removeClass('d-block');
+    // Validate reps
+    if (isNaN(numReps) || numReps < 1) {
+        // Show error
+        $('#errorReps').addClass('d-block');
+        error = true;
+    }
+
+    // Ensure exercise is selected
+    if (selectedExercise === undefined) {
+        $('#errorTable').addClass('d-block');
+        error = true;
+    }
+
+    if (error) {
+        return false;
+    }
+
+    // TODO: Push object returned from API call
+    program.push({
+        name: selectedExercise[0],
+        group: selectedExercise[2],
+        dayOfWeek: selectedDay,
+        reps: numReps,
+        id: selectedExercise[3]
+    });
+    computeSchedules(NUM_DAYS[cal.getViewName()]);
 }
 
 /**

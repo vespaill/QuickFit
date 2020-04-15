@@ -4,6 +4,7 @@ mixin printExercise(exercise)
   td= exercise.name
   td= exercise.equip
   td= exercise.group
+  td= exercise._id
 
 mixin colorCodeByGroup(exercise)
   case exercise.group
@@ -67,17 +68,25 @@ block content
           button.close(type='button' data-dismiss='modal' aria-label='Close')
             span(aria-hidden='true') &times;
         .modal-body
-          table#tableExercises.hover.row-border
+          table#tableExercises.hover.row-border.w-100
             thead
               tr
                 th Name
                 th Equipment
                 th Group
+                th ID
             tbody
               each exercise in exercises
                 +colorCodeByGroup(exercise)
+          #errorTable.invalid-feedback Select an exercise
+          .row.mt-4
+            .col-sm-12.input-group
+              .input-group-prepend
+                span.input-group-text#inputGroup-sizing-default Reps:
+              input#inputReps.form-control(type='number' min=0 describedby='inputGroup-sizing-default')
+              #errorReps.invalid-feedback Choose a number greater than 0
         .modal-footer
-          button.btn.btn-default(type='button' data-dismiss='modal') Add
+          button#btnAddExercise.btn.btn-default(type='button' data-dismiss='modal') Add
           button.btn.btn-default(type='button' data-dismiss='modal') Close
 block scripts
   //- Pass program data through a script so that it is accessible as a variable in scripts
