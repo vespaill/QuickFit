@@ -1,8 +1,8 @@
 jQuery(document).ready(() => {
     $('.alert')
         .hide()
-        .slideDown()
-        .delay(1000)
-        .slideUp()
+        .slideDown(1000)
+        .delay(3000)
+        .slideUp(2000)
         ;
 });

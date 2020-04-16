@@ -10,6 +10,7 @@ var http  = require('http');    // To use the HTTP server and client.
 /*------------------------------------------------------------------------------
     Get port from environment and store in Express.
 ------------------------------------------------------------------------------*/
+// If process.env.PORT is set, use that, otherwise use 3000.
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 

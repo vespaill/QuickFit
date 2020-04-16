@@ -1,5 +1,6 @@
 // Gives the controllers access to the database connection.
 const mongoose = require('mongoose');
+const debug = require('debug')('app-api:exercises')
 
 /* Bring in the Exercise model defined in ./models/exercises.js so that you can
    interact with the Exercises collection. */
@@ -30,9 +31,8 @@ const exercisesList = (req, res) => {
 
 // Controller for creating a new exercise
 const exercisesCreate = (req, res) => {
-    console.log(req.body);
+    debug(`req.body: ${req.body}`);
     Exercise_model
-
         // Applies the create method to the model
         .create({      // <model_name>.create.( { <data_to_save> }, <callback> )
 

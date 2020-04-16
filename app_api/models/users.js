@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
+const crypto   = require('crypto');
+const jwt      = require('jsonwebtoken');
 
 
 const userSchema = new mongoose.Schema({
@@ -45,7 +45,7 @@ userSchema.methods.setPassword = function (password) {
 
 
 // Validating a submitted password.
-userSchema.methods.isValidPassword = function (password) {
+userSchema.methods.validPassword = function (password) {
 
     /* Hash the provided password using crypto's pbkdf2Sync
       (password-based key derivation function 2) */
@@ -65,7 +65,7 @@ userSchema.methods.isValidPassword = function (password) {
     When this generateJwt method is called, it uses the data from the current
     user model to create a unique JWT and return it.
 ----------------------------------------------------------------------------- */
-userSchema.methods.generateJwt = function () {
+userSchema.methods.generateJwt = function() {
 
     const expiry = new Date();
 

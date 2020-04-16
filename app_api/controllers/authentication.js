@@ -1,14 +1,14 @@
-const passport = require('passport');
-const mongoose = require('mongoose');
-const User = mongoose.model('User');
-
+const passport   = require('passport');
+const mongoose   = require('mongoose');
+const debug      = require('debug')('app-api:auth');
+const User_model = mongoose.model('User');
 
 /* -------------------------------------------------------------------------- */
 /*                      Register controller for the API.                      */
 /* -------------------------------------------------------------------------- */
 const register = (req, res) => {
 
-    console.log(`API—register(): req.body = ${req.body.name} ${req.body.email} ${req.body.password}`);
+    debug(`req.body: ${JSON.stringify(req.body,  null, '\t')}`);
 
     // Respond with an error status if not all required fields are found.
     if (!req.body.name || !req.body.email || !req.body.password) {
@@ -20,7 +20,7 @@ const register = (req, res) => {
     }
 
     // Create a new user instance, and set the name and email.
-    const user = new User();
+    const user = new User_model();
     user.name = req.body.name;
     user.email = req.body.email;
 
@@ -30,9 +30,17 @@ const register = (req, res) => {
     // Save the new user to MongoDB.
     user.save((err) => {
         if (err) {
-            res
-                .status(404)
-                .json(err);
+            // email is already in database
+            if (err.code === 11000) {
+                res
+                    .status(409)
+                    .json(err);
+            // generic error
+            } else {
+                res
+                    .status(404)
+                    .json(err);
+            }
         } else {
             /* Generate a JWT, using the schema method, and send it to the
                browser. */

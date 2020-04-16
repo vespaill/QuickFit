@@ -3,6 +3,11 @@ block content
   .container.main-content.form
     form(action='', method='post', role='form')
       .row.mt-5
+        .col-12.text-center
+          case msg
+            when 'register_success'
+              .alert.alert-success(role='alert') User registered
+      .row.mt-5
         .col-md-6.text-center.mx-auto
           input(type='text' autocomplete='username' placeholder='Email')
       .row.mt-5
