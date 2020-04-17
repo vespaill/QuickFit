@@ -59,7 +59,17 @@ block content
           i.calendar-icon.ic-arrow-line-right(data-action='move-next')
       span#renderRange.render-range
     #calendar
-  //- TODO: Insert modals here (one for clicking on an existing exercise and one for adding an exercise to day)
+  #modalViewExercise.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalViewExerciseTitle' aria-hidden='true')
+    .modal-dialog.modal-lg.modal-dialog-centered(role='document')
+      .modal-content
+        .modal-header
+          h5#modalAddExerciseLongTitle.modal-title Exercise Details
+          button.close(type='button' data-dismiss='modal' aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body
+        .modal-footer
+          button#btnDeleteExercise.btn.btn-danger(type='button' data-dismiss='modal') Delete
+          button.btn.btn-default(type='button' data-dismiss='modal') Close
   #modalAddExercise.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalAddExerciseTitle' aria-hidden='true')
     .modal-dialog.modal-lg.modal-dialog-centered(role='document')
       .modal-content

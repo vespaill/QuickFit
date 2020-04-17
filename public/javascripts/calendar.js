@@ -62,7 +62,8 @@ function initModals() {
     inputReps = $('#inputReps');
     btnAddExercise = $('#btnAddExercise');
     addExerciseModal = $('#modalAddExercise');
-    // TODO: init other modal here
+    viewExerciseModal = $('#modalViewExercise');
+
     tableExercises = $('#tableExercises').DataTable({
         "columnDefs": [
             // Hide ID column
@@ -144,8 +145,10 @@ function initCalendar() {
  * @param {*} schedule 
  */
 function onClickExercise(schedule) {
-    // TODO: Popup the exercise modal here
-    alert("🔨🔨 Work In Progress 🔨🔨");
+    console.log(JSON.stringify(schedule));
+
+    // Set modal data
+    viewExerciseModal.modal('show');
 }
 
 /**

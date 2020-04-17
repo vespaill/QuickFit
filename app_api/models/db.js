@@ -89,6 +89,7 @@ process.on('SIGTERM', () => {
 
 require('./exercises');
 require('./users');
+require('./programs');
 
 const getDbURI = () => {
     return dbURI;
