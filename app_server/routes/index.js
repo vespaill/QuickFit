@@ -1,5 +1,6 @@
 const express       = require('express');
 const router        = express.Router();
+const passport      = require('passport');
 
 const ctrlPublic    = require('../controllers/public');
 const ctrlUser      = require('../controllers/user_specific_pages');
@@ -17,8 +18,8 @@ router.get('/program-list', ctrlPublic.program_list);
 /* -------------------------------------------------------------------------- */
 /*                            User-specific pages.                            */
 /* -------------------------------------------------------------------------- */
-router.get('/dashboard', ctrlUser.dashboard);
-router.get('/dashboard/account', ctrlUser.account);
+// router.get('/dashboard', ctrlUser.dashboard);
+// router.get('/dashboard/account', ctrlUser.account);
 router.get('/dashboard/calendar', ctrlUser.calendar);
 
 
@@ -44,6 +45,7 @@ router
 
 router
     .route('/login-form')
-    .get(ctrlAuth.loginForm);
+    .get(ctrlAuth.loginForm)
+    .post(ctrlAuth.doLoginUser);
 
 module.exports = router;

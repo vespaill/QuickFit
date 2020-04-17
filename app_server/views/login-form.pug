@@ -5,14 +5,23 @@ block content
       .row.mt-5
         .col-12.text-center
           case msg
+            when 'postdata_incomplete'
+              .alert.alert-danger(role='alert') All fields required!
+            when 'login_failure'
+              .alert.alert-danger(role='alert') Invalid username or password
             when 'register_success'
               .alert.alert-success(role='alert') User registered
+            when 'login_success'
+              .alert.alert-success(role='alert') Login successful
+      //- Email
       .row.mt-5
         .col-md-6.text-center.mx-auto
-          input(type='text' autocomplete='username' placeholder='Email')
+          input.form-control(required type='email'   autocomplete='username' placeholder='Email' name='email')
+      //- Password
       .row.mt-5
         .col-md-6.text-center.mx-auto
-          input(type='password' autocomplete='current-password' placeholder='Password')
+          input.form-control(required type='password' autocomplete='current-password' placeholder='Password' name='password')
+      //- Submit
       .row.mt-5
         .col-md-4.text-center.mx-auto
           button.btn-block.btn.btn-blue.p-2 Login

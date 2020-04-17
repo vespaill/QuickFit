@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const crypto   = require('crypto');
 const jwt      = require('jsonwebtoken');
+const debug    = require('debug')('app-api:users');
 
 
 const userSchema = new mongoose.Schema({
@@ -32,6 +33,7 @@ const userSchema = new mongoose.Schema({
     'this' in a Mongoose method refers to the model itself.
 ----------------------------------------------------------------------------- */
 userSchema.methods.setPassword = function (password) {
+    debug('Generating encrypted hash for user.');
 
     // Create a random string for the salt.
     this.salt = crypto.randomBytes(16).toString('hex');
@@ -40,12 +42,12 @@ userSchema.methods.setPassword = function (password) {
     this.hash = crypto
         .pbkdf2Sync(password, this.salt, 1000, 64, 'sha512')
         .toString('hex');
-
 };
 
 
 // Validating a submitted password.
 userSchema.methods.validPassword = function (password) {
+    debug(`Validating given password: ${password}`);
 
     /* Hash the provided password using crypto's pbkdf2Sync
       (password-based key derivation function 2) */
@@ -55,7 +57,6 @@ userSchema.methods.validPassword = function (password) {
 
     // Check the password against the hash.
     return this.hash === hash;
-
 };
 
 
@@ -66,6 +67,7 @@ userSchema.methods.validPassword = function (password) {
     user model to create a unique JWT and return it.
 ----------------------------------------------------------------------------- */
 userSchema.methods.generateJwt = function() {
+    debug(`Generating JasonWebToken`);
 
     const expiry = new Date();
 
