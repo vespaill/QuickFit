@@ -11,6 +11,7 @@ const Exercise_model = mongoose.model('Exercise');
 const programList = (req, res) => {
     Program_model
         .find()
+        .populate('exercises.exercise')
         .exec((err, programs) => {
             if (!programs) {
                 return res
