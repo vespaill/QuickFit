@@ -7,7 +7,8 @@ const debug         = require('debug')('app-api:passport');
 
 // Passport local strategy definition
 passport.use(new LocalStrategy({
-        usernameField: 'email'
+        usernameField: 'email',
+        passwordField : 'password'
     },
     // Search MongoDB for a user with the supplied email address.
     (username, password, done) => {
@@ -37,7 +38,7 @@ passport.use(new LocalStrategy({
                 });
             }
             // If you've reached the end, you can return the user object
-            debug(`User found, returning`);
+            debug(`User found: ${user}\nreturning`);
             return done(null, user);
 
         });
@@ -49,13 +50,9 @@ passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
-passport.deserializeUser((userId, done) => {
+passport.deserializeUser(function (id, done) {
     debug('In deserializeUser...');
-    User.findById(userId, (err, user) => {
-        if (err) {
-            done(err)
-        } else {
-            done(null, user)
-        }
+    User.findById(id, function (err, user) {
+        done(err, user)
     });
-})
+});
