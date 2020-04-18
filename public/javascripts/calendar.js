@@ -10,6 +10,7 @@ var viewExerciseModal;
 var tableExercises;
 // Input
 var inputReps;
+var inputWeight;
 var btnAddExercise;
 
 // Number of days visible in week and month view
@@ -37,14 +38,14 @@ function computeSchedules(numDays) {
 
     for (i = 0; i < numDays; ++i) {
         // Program var is passed from PUG
-        program.forEach(exercise => {
+        program.exercises.forEach(exerciseEntry => {
             // Inefficient af, optimize later
-            if (exercise.dayOfWeek == date.getDay()) {
+            if (exerciseEntry.dayOfWeek == date.getDay()) {
                 scheduleList.push({
                     start: date,
-                    title: exercise.name,
+                    title: exerciseEntry.exercise.name,
                     category: 'task',
-                    raw: exercise
+                    raw: exerciseEntry
                 });
             }
         });
@@ -60,6 +61,7 @@ function computeSchedules(numDays) {
  */
 function initModals() {
     inputReps = $('#inputReps');
+    inputWeight = $('#inputWeight');
     btnAddExercise = $('#btnAddExercise');
     addExerciseModal = $('#modalAddExercise');
     viewExerciseModal = $('#modalViewExercise');
@@ -78,8 +80,9 @@ function initModals() {
         // Clear search
         tableExercises.search("");
         tableExercises.draw();
-        // Clear reps
+        // Clear input
         inputReps.val('');
+        inputWeight.val('');
         // Hide error
         $('.invalid-feedback').removeClass('d-block');
     });
@@ -131,7 +134,7 @@ function initCalendar() {
                 return (model.label).toString() + '<span><button class="btn btn-default btn-xs float-right btn-add-exercise" type="button" data-day="' + model.day + '"><i class="calendar-icon ic-plus"></i></button></span>';
             },
             task: function (schedule) {
-                return '<div class=\"bg-' + schedule.raw.group.toLowerCase() + '\">' + schedule.raw.name + ' x ' + schedule.raw.reps + "</div>";
+                return '<div class=\"bg-' + schedule.raw.exercise.group.toLowerCase() + '\">' + schedule.raw.exercise.name + ' x ' + schedule.raw.reps + "</div>";
             },
         }
     });
@@ -161,6 +164,7 @@ function onClickAddExercise(e) {
 
 function onAddExercise() {
     var numReps = parseInt(inputReps.val());
+    var weight = parseInt(inputWeight.val());
     // [0] is name, [1] is equipment, [2] is group, [3] is db-id
     var selectedExercise = tableExercises.row('.selected').data();
     var error = false;
@@ -170,6 +174,13 @@ function onAddExercise() {
     if (isNaN(numReps) || numReps < 1) {
         // Show error
         $('#errorReps').addClass('d-block');
+        error = true;
+    }
+
+    // Validate weight
+    if (isNaN(weight) || weight < 1) {
+        // Show error
+        $('#errorWeight').addClass('d-block');
         error = true;
     }
 
@@ -183,15 +194,13 @@ function onAddExercise() {
         return false;
     }
 
-    // TODO: Push object returned from API call
-    program.push({
-        name: selectedExercise[0],
-        group: selectedExercise[2],
-        dayOfWeek: selectedDay,
-        reps: numReps,
-        id: selectedExercise[3]
+    apiAddExercise(selectedExercise[3], selectedDay, numReps, weight, (data) => {
+        program.exercises.push(data);
+        computeSchedules(NUM_DAYS[cal.getViewName()]);
+    }, (error) => {
+        // TODO: Display error in UI
+        console.log(JSON.stringify(error));
     });
-    computeSchedules(NUM_DAYS[cal.getViewName()]);
 }
 
 /**
@@ -306,6 +315,23 @@ function setEventListener() {
      * dynamically
      */
     $(document).on('click', '.btn-add-exercise', onClickAddExercise)
+}
+
+function apiAddExercise(exerciseId, dayOfWeek, reps, weight, success, error) {
+    requestBody = {};
+    requestBody["programId"] = program._id;
+    requestBody["exerciseId"] = exerciseId;
+    requestBody["dayOfWeek"] = dayOfWeek;
+    requestBody["reps"] = reps;
+    requestBody["weight"] = weight;
+
+    $.ajax({
+        url: window.location.origin + '/api/programs',
+        type: 'POST',
+        data: requestBody,
+        success: success,
+        error: error
+    });
 }
 
 jQuery(document).ready(() => {

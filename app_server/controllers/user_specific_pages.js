@@ -15,37 +15,26 @@ const account = (req, res) => {
 };
 
 const calendar = (req, res) => {
-    /* Set the path for the API request. */
-    const path = '/api/exercises';
-
-    // Set the request options, including URL, method and empty JSON body
-    const requestOptions = {
-
-        /* Full URL of the request to be made, including protocol, domain, path,
-           and URL parameters */
-        url: `${globals.getServer()}${path}`,
-
-        // Method of the request, such as GET, POST, PUT, or DELETE
+    let requestOptions = {
+        url: `${globals.getServer()}${'/api/exercises'}`,
         method: 'GET',
-
-        /* Body of the request as a JavaScript object; an empty object should be
-           sent if no body data is needed */
         json: {},
     };
 
-    // Make request to the API, sending through the request options.
-    request(
-        requestOptions,
+    // Do exercise API call
+    request(requestOptions, (err, response, exercises) => {
+        requestOptions.url = `${globals.getServer()}${'/api/programs'}`;
 
-        // Supply the callback to render the exercises page
-        (err, response, body) => {
-            // Pass the body returned by the request to renderExercises()
-            renderCalendar(req, res, body);
-        }
-    );
+        // Do program API call
+        request(requestOptions, (err, response, programs) => {
+            // For now, there is one program for the entire website
+            // Later, there will be at least one per user
+            renderCalendar(req, res, exercises, programs[0]);
+        });
+    });
 };
 
-const renderCalendar = (req, res, exercises) => {
+const renderCalendar = (req, res, exercises, program) => {
     let message = null;
 
     if (!(exercises instanceof Array)) {
@@ -61,30 +50,31 @@ const renderCalendar = (req, res, exercises) => {
         title: `${globals.getSiteName()}—Calendar`,
         message: message,
         exercises: exercises,
+        program: program
         // Dummy workout program data for now (assumes that the user can only have 1 program)
-        program: [
-            {
-                name: "Flat Bench Press",
-                group: "Chest",
-                dayOfWeek: 1,
-                reps: 10,
-                id: "id"
-            },
-            {
-                name: "Arnorld Press",
-                group: "Shoulders",
-                dayOfWeek: 1,
-                reps: 10,
-                id: "id"
-            },
-            {
-                name: "Plank",
-                group: "Core",
-                dayOfWeek: 3,
-                reps: 10,
-                id: "id"
-            }
-        ]
+        // program: [
+        //     {
+        //         name: "Flat Bench Press",
+        //         group: "Chest",
+        //         dayOfWeek: 1,
+        //         reps: 10,
+        //         id: "id"
+        //     },
+        //     {
+        //         name: "Arnorld Press",
+        //         group: "Shoulders",
+        //         dayOfWeek: 1,
+        //         reps: 10,
+        //         id: "id"
+        //     },
+        //     {
+        //         name: "Plank",
+        //         group: "Core",
+        //         dayOfWeek: 3,
+        //         reps: 10,
+        //         id: "id"
+        //     }
+        // ]
     });
 };
 

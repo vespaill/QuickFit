@@ -95,6 +95,12 @@ block content
                 span.input-group-text#inputGroup-sizing-default Reps:
               input#inputReps.form-control(type='number' min=0 describedby='inputGroup-sizing-default')
               #errorReps.invalid-feedback Choose a number greater than 0
+          .row.mt-4
+            .col-sm-12.input-group
+              .input-group-prepend
+                span.input-group-text#inputGroup-sizing-default Weight:
+              input#inputWeight.form-control(type='number' min=0 describedby='inputGroup-sizing-default')
+              #errorWeight.invalid-feedback Choose a number greater than 0
         .modal-footer
           button#btnAddExercise.btn.btn-default(type='button' data-dismiss='modal') Add
           button.btn.btn-default(type='button' data-dismiss='modal') Close
