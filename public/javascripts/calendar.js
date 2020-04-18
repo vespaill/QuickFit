@@ -3,6 +3,7 @@
  */
 var cal;
 var selectedDay;
+var selectedExerciseEntryId;
 // Modals
 var addExerciseModal;
 var viewExerciseModal;
@@ -12,6 +13,7 @@ var tableExercises;
 var inputReps;
 var inputWeight;
 var btnAddExercise;
+var btnDeleteExercise;
 
 // Number of days visible in week and month view
 const NUM_DAYS = {
@@ -63,6 +65,7 @@ function initModals() {
     inputReps = $('#inputReps');
     inputWeight = $('#inputWeight');
     btnAddExercise = $('#btnAddExercise');
+    btnDeleteExercise = $('#btnDeleteExercise');
     addExerciseModal = $('#modalAddExercise');
     viewExerciseModal = $('#modalViewExercise');
 
@@ -99,6 +102,7 @@ function initModals() {
     });
 
     btnAddExercise.on('click', onAddExercise);
+    btnDeleteExercise.on('click', onClickDeleteExercise);
 }
 
 /**
@@ -148,16 +152,33 @@ function initCalendar() {
  * @param {*} schedule 
  */
 function onClickExercise(schedule) {
-    console.log(JSON.stringify(schedule));
+    selectedExerciseEntryId = schedule.schedule.raw._id;
 
     // Set modal data
+    $('#modalViewExerciseLongTitle').text(schedule.schedule.raw.exercise.name + ' x ' + schedule.schedule.raw.reps + ', ' + schedule.schedule.raw.weight + ' lb');
+    $('#exerciseGroup').text(schedule.schedule.raw.exercise.group);
+    $('#exerciseEquipment').text(schedule.schedule.raw.exercise.equip);
+    $('#exerciseDescription').text(schedule.schedule.raw.exercise.desc);
+
     viewExerciseModal.modal('show');
+}
+
+function onClickDeleteExercise() {
+    apiDeleteExercise(selectedExerciseEntryId, (data) => {
+        // Remove the entry from calendar
+        program.exercises = program.exercises.filter(entry => entry._id !== selectedExerciseEntryId);
+        // Redraw the schedules
+        computeSchedules(NUM_DAYS[cal.getViewName()]);
+    }, (error) => {
+        // TODO: Display error in UI
+        console.log(JSON.stringify(error));
+    });
 }
 
 /**
  * Called whenever + button is clicked
  */
-function onClickAddExercise(e) {
+function onClickAddExercise() {
     selectedDay = parseInt($(this).data('day'));
     addExerciseModal.modal('show');
 }
@@ -328,6 +349,20 @@ function apiAddExercise(exerciseId, dayOfWeek, reps, weight, success, error) {
     $.ajax({
         url: window.location.origin + '/api/programs',
         type: 'POST',
+        data: requestBody,
+        success: success,
+        error: error
+    });
+}
+
+function apiDeleteExercise(entryId, success, error) {
+    requestBody = {};
+    requestBody["programId"] = program._id;
+    requestBody["entryId"] = entryId;
+
+    $.ajax({
+        url: window.location.origin + '/api/programs',
+        type: 'DELETE',
         data: requestBody,
         success: success,
         error: error

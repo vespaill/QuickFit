@@ -63,10 +63,17 @@ block content
     .modal-dialog.modal-lg.modal-dialog-centered(role='document')
       .modal-content
         .modal-header
-          h5#modalAddExerciseLongTitle.modal-title Exercise Details
+          h5#modalViewExerciseLongTitle.modal-title Exercise Details
           button.close(type='button' data-dismiss='modal' aria-label='Close')
             span(aria-hidden='true') &times;
         .modal-body
+          h5 Group
+          p#exerciseGroup
+          h5 Equipment
+          p#exerciseEquipment
+          hr
+          h5 Description
+          p#exerciseDescription
         .modal-footer
           button#btnDeleteExercise.btn.btn-danger(type='button' data-dismiss='modal') Delete
           button.btn.btn-default(type='button' data-dismiss='modal') Close
