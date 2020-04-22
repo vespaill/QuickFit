@@ -7,7 +7,9 @@ const ctrlUser      = require('../controllers/user_specific_pages');
 const ctrlExercises = require('../controllers/exercises');
 const ctrlAuth      = require('../controllers/authentication');
 
-// Define URLs for different pages.
+/* -------------------------------------------------------------------------- */
+/*                      Define URLs for different pages.                      */
+/* -------------------------------------------------------------------------- */
 router.get('/', ctrlPublic.intro);
 router.get('/qnr1', ctrlPublic.qnr1);
 router.get('/qnr2', ctrlPublic.qnr2);
@@ -18,8 +20,8 @@ router.get('/program-list', ctrlPublic.program_list);
 /* -------------------------------------------------------------------------- */
 /*                            User-specific pages.                            */
 /* -------------------------------------------------------------------------- */
-// router.get('/dashboard', ctrlUser.dashboard);
-// router.get('/dashboard/account', ctrlUser.account);
+router.get('/dashboard', ctrlUser.dashboard);
+router.get('/dashboard/account', ctrlUser.account);
 router.get('/dashboard/calendar', ctrlUser.calendar);
 
 

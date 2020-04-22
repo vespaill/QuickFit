@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const crypto   = require('crypto');
-const jwt      = require('jsonwebtoken');
 const debug    = require('debug')('app-api:users');
-
 
 const userSchema = new mongoose.Schema({
 
@@ -20,11 +18,9 @@ const userSchema = new mongoose.Schema({
     hash: String,
     salt: String
 
-
     /* The email and name are both set from the registration form, but the hash
        and salt are both created by the system. The hash, of course, is derived
        from the salt, and the password is supplied via the form. */
-
 });
 
 
@@ -57,37 +53,6 @@ userSchema.methods.validPassword = function (password) {
 
     // Check the password against the hash.
     return this.hash === hash;
-};
-
-
-/* -----------------------------------------------------------------------------
-    Creating a schema method to generate a JWT (JSON Web Token)
-
-    When this generateJwt method is called, it uses the data from the current
-    user model to create a unique JWT and return it.
------------------------------------------------------------------------------ */
-userSchema.methods.generateJwt = function() {
-    debug(`Generating JasonWebToken`);
-
-    const expiry = new Date();
-
-    // Create an expiry date object, and set it for seven days.
-    expiry.setDate(expiry.getDate() + 7);
-
-    // Call the jwt.sign method, and return the token that it returns.
-    return jwt.sign({
-
-        // Pass the payload to the method.
-        _id: this._id,
-        email: this.email,
-        name: this.name,
-
-        // Include 'exp' as UNIX time in seconds.
-        exp: parseInt(expiry.getTime() / 1000, 10),
-
-    }, process.env.JWT_SECRET); // Send secret for hasing algorithm to use.
-    // We don't keep secrets in code; we use environment variables instead.
-
 };
 
 mongoose.model('User', userSchema);

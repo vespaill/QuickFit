@@ -1,5 +1,6 @@
-const globals = require('./globals');
+const globals = require('../../globals');
 const request = require('request');
+const debug   = require('debug')('app-svr:ctrl');
 
 const renderExercises = (req, res, responseBody) => {
 
@@ -7,8 +8,9 @@ const renderExercises = (req, res, responseBody) => {
 
     /* If the response isn't an array, set a message and set the responseBody
        to be an empty array. */
-    if (!(responseBody instanceof Array)) {
+    if ( !(responseBody instanceof Array) ) {
         message = "API lookup error";
+        debug(responseBody);
         responseBody = [];
     } else {
         // If the response is an array with no length, set a message.

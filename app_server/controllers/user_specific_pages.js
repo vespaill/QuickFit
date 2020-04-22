@@ -1,4 +1,4 @@
-const globals = require('./globals');
+const globals = require('../../globals');
 const request = require('request');
 
 const dashboard = (req, res) => {

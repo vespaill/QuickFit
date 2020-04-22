@@ -86,13 +86,13 @@ const login = (req, res) => {
         }
         // If Passport returned a user instance, generate and send a JWT.
         if (user) {
-            debug('User authenticated\nCalling generateJwt()');
-            const token = user.generateJwt();
-            debug(`Sending 200 & token: ${token}`);
+            debug('User authenticated');
+            debug(user);
+            debug('Sending 200 & user');
             res
                 .status(200)
                 .json({
-                    token
+                    user
                 });
         // Otherwise, return an info message (why authentication failed).
         } else {

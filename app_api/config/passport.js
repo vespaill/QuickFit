@@ -4,7 +4,6 @@ const mongoose      = require('mongoose');
 const User          = mongoose.model('User');
 const debug         = require('debug')('app-api:passport');
 
-
 // Passport local strategy definition
 passport.use(new LocalStrategy({
         usernameField: 'email',
@@ -12,17 +11,17 @@ passport.use(new LocalStrategy({
     },
     // Search MongoDB for a user with the supplied email address.
     (username, password, done) => {
-        debug(`Looking for user with supplied email: ${username}`);
+        debug('Looking for user with supplied email:', username);
         User.findOne({ email: username }, (err, user) => {
 
             if (err) {
-                debug(`err`);
+                debug('err');
                 return done(err);
             }
 
             // If no user is found, return false and a message.
             if (!user) {
-                debug(`User not found`);
+                debug('User not found');
                 return done(null, false, {
                     message: 'Incorrect username.'
                 });
@@ -30,7 +29,7 @@ passport.use(new LocalStrategy({
 
             // Call the validPassword method, passing the supplied password.
             if ( !user.validPassword(password) ) {
-                debug(`Incorrect password`);
+                debug('Incorrect password');
 
                 // If the password is incorrect, return false and a message.
                 return done(null, false, {

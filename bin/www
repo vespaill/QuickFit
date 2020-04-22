@@ -3,15 +3,15 @@
 /*------------------------------------------------------------------------------
     Module dependencies.
 ------------------------------------------------------------------------------*/
-var app   = require('../app');  // Include our app.
-var debug = require('debug')('quickfit:server');
-var http  = require('http');    // To use the HTTP server and client.
+const app     = require('../app');  // Include our app.
+const http    = require('http');    // To use the HTTP server and client.
+const globals = require('../globals');
 
 /*------------------------------------------------------------------------------
     Get port from environment and store in Express.
 ------------------------------------------------------------------------------*/
 // If process.env.PORT is set, use that, otherwise use 3000.
-var port = normalizePort(process.env.PORT || '3000');
+var port = globals.getPort();
 app.set('port', port);
 
 /*------------------------------------------------------------------------------
@@ -25,25 +25,6 @@ var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
-/*------------------------------------------------------------------------------
-    Normalize a port into a number, string, or false.
-------------------------------------------------------------------------------*/
-function normalizePort(val) {
-    var port = parseInt(val, 10);
-
-    if (isNaN(port)) {
-        // named pipe
-        return val;
-    }
-
-    if (port >= 0) {
-        // port number
-        return port;
-    }
-
-    return false;
-}
 
 /*------------------------------------------------------------------------------
     Event listener for HTTP server "error" event.
@@ -80,5 +61,5 @@ function onListening() {
     var bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port;
-    debug('Listening on ' + bind);
+    console.log('Listening on port', port);
 }

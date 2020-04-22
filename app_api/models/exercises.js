@@ -14,7 +14,15 @@ const exerciseSchema = new mongoose.Schema({
     },
     group: {
         type: String,
-        enum: ['Chest', 'Upper back', 'Shoulders', 'Biceps', 'Triceps', 'Core', 'Lower body'],
+        enum: [
+            'Chest',
+            'Upper back',
+            'Shoulders',
+            'Biceps',
+            'Triceps',
+            'Core',
+            'Lower body'
+        ],
         required: true
     },
     desc: {
@@ -22,8 +30,6 @@ const exerciseSchema = new mongoose.Schema({
         default: 'empty'
     }
 });
-
-
 
 // Build a model called 'Exercise' using the exerciseSchema that we defined.
 mongoose.model('Exercise', exerciseSchema);

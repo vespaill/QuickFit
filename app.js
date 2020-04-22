@@ -26,7 +26,6 @@ require('./app_api/models/db');                             // Database connecti
 require('./app_api/config/passport');                       // Indicate Passport strategy. Must go after model.
 const indexRouter  = require('./app_server/routes/index');  // Include URL routes,
 const apiRouter    = require('./app_api/routes/index');     // & API URL routes.
-const debug        = require('debug')('app:');
 
 /* Call the Express function, this returns an object of type "Express"
    By convention we call this object "app." This represents our application.

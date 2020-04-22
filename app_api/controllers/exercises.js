@@ -10,6 +10,7 @@ const Exercise_model = mongoose.model('Exercise');
 const exercisesList = (req, res) => {
     Exercise_model
         .find()
+        .sort('group')
         .exec((err, exercise) => {
             if (!exercise) {
                 return res
@@ -17,13 +18,12 @@ const exercisesList = (req, res) => {
                     .json({
                         "message": "no exercises found"
                     });
-
             } else if (err) {
                 return res
                     .status(404)
                     .json(err);
             }
-            res
+            return res
                 .status(200)
                 .json(exercise);
         });
@@ -35,20 +35,18 @@ const exercisesCreate = (req, res) => {
     Exercise_model
         // Applies the create method to the model
         .create({      // <model_name>.create.( { <data_to_save> }, <callback> )
-
             name: req.body.name,
             equip: req.body.equip,
             group: req.body.group,
             desc: req.body.desc
-
         // Callback function contains appropriate responses for success/failure
         }, (err, exercise) => {
             if (err) {
-                res
+                return res
                     .status(400)
                     .json(err);
             } else {
-                res
+                return res
                     .status(201)
                     .json(exercise);
             }
@@ -89,7 +87,7 @@ const exerciseReadOne = (req, res) => {
             /* If Mongoose doesn't error, continue as before, and send an
                exercise object inside an HTTP status response of 200 (which
                means a successful GET or PUT request).  */
-            res
+            return res
                 .status(200)
                 .json(exercise);
         });

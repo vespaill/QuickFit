@@ -15,13 +15,14 @@ mongoose.connect(dbURI, {
     useCreateIndex: true
 });
 
+// mongoose.set('debug', true);
 
 /* -----------------------------------------------------------------------------
     Listen for Mongoose connection events and output statuses to the console.
 ----------------------------------------------------------------------------- */
 // Monitor for a successful connection through Mongoose.
 mongoose.connection.on('connected', () => {
-    console.log(`Mongoose connected to ${dbURI}`);
+    console.log(`Mongoose connected to ${dbURI}...`);
 });
 
 // Check for a connection error.
