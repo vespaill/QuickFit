@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const crypto   = require('crypto');
-const debug    = require('debug')('app-api:users');
+const debug    = require('debug')('app-api:models/users  ');
 
 const userSchema = new mongoose.Schema({
-
     email: {                // Email should be required and unique.
         type: String,
         unique: true,
@@ -43,7 +42,7 @@ userSchema.methods.setPassword = function (password) {
 
 // Validating a submitted password.
 userSchema.methods.validPassword = function (password) {
-    debug(`Validating given password: ${password}`);
+    debug('Validating given password: %s', password);
 
     /* Hash the provided password using crypto's pbkdf2Sync
       (password-based key derivation function 2) */
@@ -54,5 +53,6 @@ userSchema.methods.validPassword = function (password) {
     // Check the password against the hash.
     return this.hash === hash;
 };
+
 
 mongoose.model('User', userSchema);

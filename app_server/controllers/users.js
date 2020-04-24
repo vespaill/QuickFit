@@ -1,6 +1,6 @@
 const globals = require('../../globals');
 const request = require('request');
-const debug   = require('debug')('app-svr:auth');
+const debug   = require('debug')('app-svr:ctrl/users    ');
 
 // GET 'Registration' page
 const registerForm = (req, res) => {
@@ -18,7 +18,7 @@ const doRegisterUser = (req, res) => {
 
     } else {
         debug('Password fields match.\nGenerating request.');
-        const path = '/api/register';
+        const path = '/api/users/';
         const postdata = {
             name: `${req.body.firstName} ${req.body.lastName}`,
             email: req.body.email,
@@ -30,8 +30,7 @@ const doRegisterUser = (req, res) => {
             json: postdata
         };
 
-        // debug(`postdata: ${JSON.stringify(postdata,  null, '\t')}`);
-        debug(`requestOptions: ${JSON.stringify(requestOptions,  null, '\t')}`);
+        debug('requestOptions: %O', requestOptions);
 
         // If any of the postdata is incomplete, redirect
         if (!postdata.name || !postdata.email || !postdata.password) {
@@ -77,61 +76,8 @@ const loginForm = (req, res) => {
     });
 };
 
-const doLoginUser = (req, res) => {
-    const path = '/api/login';
-    const postdata = {
-        email: req.body.email,
-        password: req.body.password
-    };
-    // If any of the postdata is incomplete, redirect
-    if (!postdata.email || !postdata.password) {
-        res.redirect('/login-form?msg=postdata_incomplete');
-    } else {
-        const requestOptions = {
-            url: `${globals.getServer()}${path}`,
-            method: 'POST',
-            json: postdata
-        };
-        debug(`requestOptions: ${JSON.stringify(requestOptions,  null, '\t')}`);
-        request(requestOptions,
-            (err, response) => {
-                if (response.statusCode === 200) {
-                    debug('200 received');
-                    debug('Login successful');
-                    debug('user', response.body.user);
-                    debug('Redirecting to calendar');
-                    res.redirect('/dashboard/calendar');
-                } else if (response.statusCode === 401) {
-                    debug('401 received');
-                    debug('Login failure');
-                    res.redirect('/login-form?msg=login_failure');
-                } else {
-                    debug('Calling showError');
-                    globals.showError(req, res, response.statusCode);
-                }
-            }
-        );
-    }
-
-};
-
-function isLoggedIn(req, res, next) {
-    debug('isLoggedIn: user: ', req.body.user);
-    debug('isLoggedIn: user: ', req.user);
-
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res
-        .status(400)
-        .send('<h1>You are not authenticated</h1><p><a href="/login-form">Login</a></p>');
-}
-
 module.exports = {
     registerForm,
     doRegisterUser,
     loginForm,
-    doLoginUser,
-    isLoggedIn
 };

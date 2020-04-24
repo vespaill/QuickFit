@@ -1,12 +1,13 @@
-// Gives the controllers access to the database connection.
+/* Give the controllers access to the database connection. */
 const mongoose = require('mongoose');
-const debug = require('debug')('app-api:exercises')
+const debug = require('debug')('app-api:ctrl/exercises')
 
-/* Bring in the Exercise model defined in ./models/exercises.js so that you can
+/* Bring in the Exercise model defined in ./models/exercises.js so that we can
    interact with the Exercises collection. */
 const Exercise_model = mongoose.model('Exercise');
 
-// List all the exercises in the Exercise collection.
+/* GET '/'
+   Retrieve all exercise documents from collection. */
 const exercisesList = (req, res) => {
     Exercise_model
         .find()
@@ -15,9 +16,7 @@ const exercisesList = (req, res) => {
             if (!exercise) {
                 return res
                     .status(404)
-                    .json({
-                        "message": "no exercises found"
-                    });
+                    .json('No exercises found');
             } else if (err) {
                 return res
                     .status(404)
@@ -29,9 +28,10 @@ const exercisesList = (req, res) => {
         });
 };
 
-// Controller for creating a new exercise
+/* POST '/'
+   Create a new exercise document and insert into collection. */
 const exercisesCreate = (req, res) => {
-    debug(`req.body: ${req.body}`);
+    debug('req.body: %O', req.body);
     Exercise_model
         // Applies the create method to the model
         .create({      // <model_name>.create.( { <data_to_save> }, <callback> )
@@ -44,7 +44,7 @@ const exercisesCreate = (req, res) => {
             if (err) {
                 return res
                     .status(400)
-                    .json(err);
+                    .send(err.message);
             } else {
                 return res
                     .status(201)
@@ -53,8 +53,9 @@ const exercisesCreate = (req, res) => {
         });
 };
 
+/* GET /:id
+   Retrieve an exercise document. */
 const exerciseReadOne = (req, res) => {
-
     Exercise_model
         /* With your route being defined with an URL of '/exercise/:exerciseid'
            you can access the exerciseid parameter from inside the controller
@@ -72,9 +73,7 @@ const exerciseReadOne = (req, res) => {
             if (!exercise) {
                 return res
                     .status(404)
-                    .json({
-                        "message": "exercise not found"
-                    });
+                    .send('Exercise not found');
 
             /* Error trap 2: If Mongoose returns an error, send it as a 404
                response and exit the controller, using a return statement. */
@@ -93,55 +92,58 @@ const exerciseReadOne = (req, res) => {
         });
 };
 
-// Making changes to an existing document in MongoDB
+/* PUT /:id
+   Make changes to an existing exercise document. */
 const exerciseUpdateOne = (req, res) => {
-    if (!req.params.exerciseid) {
+    const { exerciseid } = req.params;
+
+    if (!exerciseid) {
         return res
             .status(404)
-            .json({
-                "message": "Not found, exercise is required"
-            });
+            .send('Undefined exercise ID');
     }
+
     Exercise_model
-        .findById(req.params.exerciseid)
+        .findById(exerciseid)
         .exec((err, exercise) => {
             if (!exercise) {
                 return res
-                    .json(404)
-                    .status({
-                        "message": "exerciseid not found"
-                    });
+                    .status(404)
+                    .send('Exercise not found');
             } else if (err) {
                 return res
                     .status(400)
                     .json(err);
             }
-            exercise.name = req.body.name;
-            exercise.equip = req.body.equip.split(",");
-            exercise.group = req.body.group;
-            exercise.desc = req.body.desc;
+            debug('req.body = %O', req.body);
 
-            exercise.save((err, loc) => {   // Save the instance
+            for (var p in req.body)
+                exercise[p] = req.body[p]
+
+            debug('exercise = %O', exercise);
+
+            exercise.save((err, updatedExercise) => {   /* Save the instance */
                 /* Send an appropriate response, depending on the outcome of the
                    save operation. */
                 if (err) {
                     res
                         .status(404)
-                        .json(err);
-                } else {
+                        .send(err.message);
+                } else {    /* Return the updated exercise */
                     res
                         .status(200)
-                        .json(loc);
+                        .json(updatedExercise);
                 }
             });
         });
 };
 
 
-// Deleting a document from MongoDB, given an ID
+/* DELETE /:id
+   Remove an exercise document from the collection.
+   Return the deleted  */
 const exerciseDeleteOne = (req, res) => {
-
-    const {exerciseid} = req.params;
+    const { exerciseid } = req.params;
 
     if (exerciseid) {
         Exercise_model
@@ -150,20 +152,22 @@ const exerciseDeleteOne = (req, res) => {
                 if (err) {
                     return res
                         .status(404)
-                        .json(err);
+                        .send(err.message);
+                } else if (!exercise) {
+                    return res
+                        .status(404)
+                        .send('Exercise not found');
                 }
                 res
-                    .status(204)
-                    .json(null);
+                    .status(200)
+                    .json(exercise);
+                    // .send(message:`Exercise \"${exercise.name}\" DELETED`);
             });
     } else {
         res
             .status(404)
-            .json({
-                "message": "No Exercise"
-            });
+            .send('Invalid exercise ID');
     }
-
 };
 
 module.exports = {

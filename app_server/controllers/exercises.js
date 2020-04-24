@@ -1,6 +1,6 @@
 const globals = require('../../globals');
 const request = require('request');
-const debug   = require('debug')('app-svr:ctrl');
+const debug   = require('debug')('app-svr:ctrl/exercises');
 
 const renderExercises = (req, res, responseBody) => {
 
@@ -75,6 +75,7 @@ const exercises = (req, res) => {
 };
 
 const renderExerciseInfo = function (req, res, exercise) {
+    debug('exercise = %O', exercise);
     // Compile the view template exercise-info.pug
     res.render('exercise-info.pug', {
         // Pass some data to the template.
@@ -86,7 +87,7 @@ const renderExerciseInfo = function (req, res, exercise) {
 const exerciseInfo = (req, res) => {
 
     // Set the path for the API request. Server is already set up at the top.
-    const path = `/api/exercise/${req.params.exerciseid}`;
+    const path = `/api/exercises/${req.params.exerciseid}`;
     const requestOptions = {
         url: `${globals.getServer()}${path}`,
         method: 'GET',
@@ -104,7 +105,7 @@ const exerciseInfo = (req, res) => {
 };
 
 // GET 'Add Exercise' page
-const addExercise = (req, res) => {
+const addExerciseForm = (req, res) => {
     res.render('exercise-form', {
         title: `${globals.getSiteName()}—New Exercise`,
         groupOptions: [
@@ -188,6 +189,6 @@ const doAddExercise = (req, res) => {
 module.exports = {
     exercises,
     exerciseInfo,
-    addExercise,
+    addExerciseForm,
     doAddExercise
 };

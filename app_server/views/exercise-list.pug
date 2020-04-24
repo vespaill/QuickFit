@@ -2,6 +2,18 @@ extends layout
 
 mixin printExercise(exercise)
   .card-body
+    //- Trigger the modal with a button
+    button.close(type="button" data-toggle="modal" data-target=`#delete-${exercise.name.toLowerCase()}`) &times;
+    //- Modal
+    .modal.fade(role="dialog" id=`delete-${exercise.name.toLowerCase()}`)
+      .modal-dialog
+        //- Modal content
+        .modal-content
+          .modal-body
+            h5.mt-3.text-center= `Delete "${exercise.name}"?`
+            input(hidden=true, name=`${exercise.name}`)
+          .modal-footer
+            button.btn.btn-default(type="button" data-dismiss="modal") Cancel
     h4
       a.exercise(href=`/exercise/${exercise._id}`)= exercise.name
     .equipments
@@ -47,9 +59,11 @@ block content
       - if (inserted == 'true')
         .alert.alert-success(role='alert') Exercise added!
 
+    // Exercise list
     .row.justify-content-center
       .col-12.col-md-8
         .error.alert= message
+        // Print each exercise
         each exercise in exercises
           +colorCodeByGroup(exercise)
             +printExercise(exercise)

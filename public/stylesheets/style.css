@@ -364,3 +364,11 @@ a.exercise:hover {
 .custom-control-label:before{
   background-color: #D5D0CA;
 }
+
+/* Vertically align modal to the middle */
+.modal-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+}

@@ -5,8 +5,8 @@ const Exercise_model = mongoose.model('Exercise');
 
 /**
  * Appends all programs in DB to the response body.
- * @param {*} req 
- * @param {*} res 
+ * @param {*} req
+ * @param {*} res
  */
 const programList = (req, res) => {
     Program_model
@@ -16,9 +16,7 @@ const programList = (req, res) => {
             if (!programs) {
                 return res
                     .status(400)
-                    .json({
-                        "message": "no programs found"
-                    });
+                    .send('No programs found');
 
             } else if (err) {
                 return res
@@ -40,7 +38,7 @@ const programList = (req, res) => {
  *                  dayOfWeek
  *                  reps
  *                  weight
- * @param {*} res 
+ * @param {*} res
  */
 const programAddExercise = (req, res) => {
     if (req.body["programId"] == undefined ||
@@ -50,9 +48,7 @@ const programAddExercise = (req, res) => {
         req.body["weight"] == undefined) {
         return res
             .status(400)
-            .json({
-                "message": "bad request"
-            });
+            .send('Bad request');
     }
     // This whole method can be simplified to 3 lines
     // Doing it the long way is less efficient but allows
@@ -62,9 +58,7 @@ const programAddExercise = (req, res) => {
             // Program not found with provided ID
             return res
                 .status(400)
-                .json({
-                    "message": "program not found"
-                });
+                .json('Program not found');
         } else if (err) {
             return res
                 .status(400)
@@ -76,9 +70,7 @@ const programAddExercise = (req, res) => {
                 // Exercise not found with provided ID
                 return res
                     .status(400)
-                    .json({
-                        "message": "exercise not found"
-                    });
+                    .send('Exercise not found');
             } else if (err) {
                 return res
                     .status(400)
@@ -113,16 +105,14 @@ const programAddExercise = (req, res) => {
  * @param {*} req Should have the following information
  *                  programId
  *                  entryId -> id of the exercise, reps, weight, ... object
- * @param {*} res 
+ * @param {*} res
  */
 const programDeleteExercise = (req, res) => {
     if (req.body["programId"] == undefined ||
         req.body["entryId"] == undefined) {
         return res
             .status(400)
-            .json({
-                "message": "bad request"
-            });
+            .send('Bad request');
     }
 
     Program_model.updateOne({ _id: req.body.programId }, { $pull: { exercises: { _id: req.body.entryId } } }, (err, program) => {

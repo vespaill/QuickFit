@@ -12,7 +12,8 @@ if (process.env.NODE_ENV === 'production') {
 mongoose.connect(dbURI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    useFindAndModify: false
 });
 
 // mongoose.set('debug', true);
