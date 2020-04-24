@@ -6,7 +6,7 @@ const ctrlUsers     = require('../controllers/users');
 
 
 /* ----------------------------- Exercises API ------------------------------ */
-router.route('/exercises/')
+router.route('/exercises')
     .get(ctrlExercises.exercisesList)
     .post(ctrlExercises.exercisesCreate);
 

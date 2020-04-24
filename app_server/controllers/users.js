@@ -2,7 +2,87 @@ const globals = require('../../globals');
 const request = require('request');
 const debug   = require('debug')('app-svr:ctrl/users    ');
 
-// GET 'Registration' page
+const dashboard = (req, res) => {
+    res.render('dashboard.pug', {
+        title: globals.getSiteName(),
+        greetingMsg: 'Hello [Name]'
+    });
+};
+
+const account = (req, res) => {
+    res.render('account.pug', {
+        title: globals.getSiteName()
+    });
+};
+
+const calendar = (req, res) => {
+    let requestOptions = {
+        url: `${globals.getServer()}${'/api/exercises'}`,
+        method: 'GET',
+        json: {},
+    };
+
+    // Do exercise API call
+    request(requestOptions, (err, response, exercises) => {
+        requestOptions.url = `${globals.getServer()}${'/api/programs'}`;
+
+        // Do program API call
+        request(requestOptions, (err, response, programs) => {
+            // For now, there is one program for the entire website
+            // Later, there will be at least one per user
+            renderCalendar(req, res, exercises, programs[0]);
+        });
+    });
+};
+
+const renderCalendar = (req, res, exercises, program) => {
+    let message = null;
+
+    if (!(exercises instanceof Array)) {
+        message = "API lookup error";
+        responseBody = [];
+    } else {
+        if (!exercises.length) {
+            message = "No exercises found in database";
+        }
+    }
+
+    res.render('calendar.pug', {
+        title: `${globals.getSiteName()}—Calendar`,
+        message: message,
+        exercises: exercises,
+        program: program
+        // Dummy workout program data for now (assumes that the user can only have 1 program)
+        // program: [
+        //     {
+        //         name: "Flat Bench Press",
+        //         group: "Chest",
+        //         dayOfWeek: 1,
+        //         reps: 10,
+        //         id: "id"
+        //     },
+        //     {
+        //         name: "Arnorld Press",
+        //         group: "Shoulders",
+        //         dayOfWeek: 1,
+        //         reps: 10,
+        //         id: "id"
+        //     },
+        //     {
+        //         name: "Plank",
+        //         group: "Core",
+        //         dayOfWeek: 3,
+        //         reps: 10,
+        //         id: "id"
+        //     }
+        // ]
+    });
+};
+
+module.exports = {
+};
+
+/* GET the register-form page */
 const registerForm = (req, res) => {
     res.render('register-form', {
         title: `${globals.getSiteName()}—Registration`,
@@ -10,8 +90,9 @@ const registerForm = (req, res) => {
     });
 };
 
+/* POST request to Users API */
 const doRegisterUser = (req, res) => {
-    // If password fields don't match, redirect.
+    /* If the password fields don't match, redirect. */
     if (req.body.password !== req.body.pwConfirm) {
         debug('Password fields do not match!');
         res.redirect('/register-form?err=password_confirm_err');
@@ -32,16 +113,16 @@ const doRegisterUser = (req, res) => {
 
         debug('requestOptions: %O', requestOptions);
 
-        // If any of the postdata is incomplete, redirect
+        /* If any of the postdata is incomplete, redirect */
         if (!postdata.name || !postdata.email || !postdata.password) {
             res.redirect('/register-form?err=postdata_incomplete');
         } else {
             request(requestOptions,
 
-                /*     req.statusCode   res.name     */
+                /*     req.statusCode     res.name     */
                 (err,  { statusCode },    { name }) => {
 
-                    // On successful registration, redirect to login page.
+                    /* On successful registration, redirect to login page. */
                     if (statusCode === 200) {
                         debug('200 received\nSuccessful register\nRedirecting to login');
                         res.redirect('/login-form?msg=register_success');
@@ -68,7 +149,7 @@ const doRegisterUser = (req, res) => {
     }
 };
 
-/* Get the login page */
+/* GET the login-form page */
 const loginForm = (req, res) => {
     res.render('login-form', {
         title: `${globals.getSiteName()}—Login`,
@@ -77,6 +158,9 @@ const loginForm = (req, res) => {
 };
 
 module.exports = {
+    dashboard,
+    account,
+    calendar,
     registerForm,
     doRegisterUser,
     loginForm,
