@@ -1,4 +1,5 @@
-// Here are some queries I played around with in mongo shell.
+/* These are some queries I played around with in mongo shell to populate the
+   database. */
 
 db.exercises.insertOne({
     equip: ['BB', 'DB'],

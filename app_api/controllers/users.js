@@ -143,7 +143,7 @@ const deleteUser = (req, res) => {
 
 const loginUser = (req, res) => {
 
-    // // Validate that the required fields have been supplied.
+    // /* Validate that the required fields have been supplied. */
     // if (!req.body.email || !req.body.password) {
     //     debug('Undefined email or password\nSending 400')
     //     return res
@@ -151,16 +151,16 @@ const loginUser = (req, res) => {
     //         .send('All fields required');
     // }
 
-    // // Pass the name of the strategy and a callback to the authenticate method.
+    // /* Pass the name of the strategy and a callback to the authenticate method. */
     // passport.authenticate('local', (err, user, info) => {
-    //     // Return an error if Passport returns an error.
+    //     /* Return an error if Passport returns an error. */
     //     if (err) {
     //         debug('Generic error\nSending 404')
     //         return res
     //             .status(404)
     //             .json(err);
     //     }
-    //     // If Passport returned a user instance, generate and send a JWT.
+    //     /* If Passport returned a user instance, generate and send a JWT. */
     //     if (user) {
     //         debug('User authenticated');
     //         debug(user);
@@ -168,7 +168,7 @@ const loginUser = (req, res) => {
     //         res
     //             .status(200)
     //             .json({ user });
-    //     // Otherwise, return an info message (why authentication failed).
+    //     /* Otherwise, return an info message (why authentication failed). */
     //     } else {
     //         debug('Authentication failed\nSending 401 & info')
     //         res
@@ -176,7 +176,7 @@ const loginUser = (req, res) => {
     //             .json(info);
     //     }
 
-    // }) (req, res);  // Make sure that req and res are available to Passport.
+    // }) (req, res);  /* Make sure that req and res are available to Passport. */
 
 };
 

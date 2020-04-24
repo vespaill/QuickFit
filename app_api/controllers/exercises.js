@@ -33,13 +33,13 @@ const exercisesList = (req, res) => {
 const exercisesCreate = (req, res) => {
     debug('req.body: %O', req.body);
     Exercise_model
-        // Applies the create method to the model
-        .create({      // <model_name>.create.( { <data_to_save> }, <callback> )
+        /* Applies the create method to the model */
+        .create({   /* <model_name>.create.( { <data_to_save> }, <callback> ) */
             name: req.body.name,
             equip: req.body.equip,
             group: req.body.group,
             desc: req.body.desc
-        // Callback function contains appropriate responses for success/failure
+        /* Callback contains appropriate responses for success/failure */
         }, (err, exercise) => {
             if (err) {
                 return res
@@ -61,12 +61,12 @@ const exerciseReadOne = (req, res) => {
            you can access the exerciseid parameter from inside the controller
            like this: req.params.exerciseid */
 
-        // Get an exerciseid from the URL parameters, and pass it to findById()
-        // in order to tell the Exercise_model what the query will be.
+        /* Get an exerciseid from the URL parameters, and pass it to findById()
+           in order to tell the Exercise_model what the query will be. */
         .findById(req.params.exerciseid)
 
-        // Actually execute the query
-        .exec((err, exercise) => {  // Define callback to accept possible params
+        /*  Actually execute the query */
+        .exec((err, exercise) => {/* Define callback to accept possible params*/
 
             /* Error trap 1: If Mongoose doesn't return an exercise, send a 404
                message and exit the function scope, using a return statement. */

@@ -13,7 +13,7 @@ const renderExercises = (req, res, responseBody) => {
         debug(responseBody);
         responseBody = [];
     } else {
-        // If the response is an array with no length, set a message.
+        /* If the response is an array with no length, set a message. */
         if (!responseBody.length) {
             message = "No exercises found in database";
         }
@@ -24,10 +24,10 @@ const renderExercises = (req, res, responseBody) => {
        The render method takes the name of the view template and a JavaScript
        data object. */
     res.render(
+        /* Name of template to use, in this case referencing exercises.pug */
+        'exercise-list', {
 
-        // Name of template to use, in this case referencing exercises.pug
-        'exercise-list', {  // JavaScript object containing data for template to use
-
+        /* JavaScript object containing data for template to use */
         title: `${globals.getSiteName()}—Exercises`,
 
         /* Here we have finally removed the hardcoded array of exercise objects,
@@ -35,10 +35,7 @@ const renderExercises = (req, res, responseBody) => {
         exercises: responseBody,
         message,
         inserted: req.query.inserted
-
-
     });
-
 };
 
 const exercises = (req, res) => {
@@ -46,14 +43,14 @@ const exercises = (req, res) => {
     /* Set the path for the API request. */
     const path = '/api/exercises';
 
-    // Set the request options, including URL, method and empty JSON body
+    /* Set the request options, including URL, method and empty JSON body */
     const requestOptions = {
 
         /* Full URL of the request to be made, including protocol, domain, path,
            and URL parameters */
         url: `${globals.getServer()}${path}`,
 
-        // Method of the request, such as GET, POST, PUT, or DELETE
+        /* Method of the request, such as GET, POST, PUT, or DELETE */
         method: 'GET',
 
         /* Body of the request as a JavaScript object; an empty object should be
@@ -61,13 +58,13 @@ const exercises = (req, res) => {
         json: {},
     };
 
-    // Make request to the API, sending through the request options.
+    /* Make request to the API, sending through the request options. */
     request(
         requestOptions,
 
-        // Supply the callback to render the exercises page
+        /* Supply the callback to render the exercises page */
         (err, response, body) => {
-            // Pass the body returned by the request to renderExercises()
+            /* Pass the body returned by the request to renderExercises() */
             renderExercises(req, res, body);
         }
     );
@@ -76,9 +73,9 @@ const exercises = (req, res) => {
 
 const renderExerciseInfo = function (req, res, exercise) {
     debug('exercise = %O', exercise);
-    // Compile the view template exercise-info.pug
+    /* Compile the view template exercise-info.pug */
     res.render('exercise-info.pug', {
-        // Pass some data to the template.
+        /* Pass some data to the template. */
         title: exercise.name,
         exercise
     });
@@ -86,7 +83,7 @@ const renderExerciseInfo = function (req, res, exercise) {
 
 const exerciseInfo = (req, res) => {
 
-    // Set the path for the API request. Server is already set up at the top.
+    /* Set the path for the API request. Server is already set up at the top. */
     const path = `/api/exercises/${req.params.exerciseid}`;
     const requestOptions = {
         url: `${globals.getServer()}${path}`,
@@ -94,7 +91,7 @@ const exerciseInfo = (req, res) => {
         json: {}
     };
 
-    // Make request to the API, sending through the request options.
+    /* Make request to the API, sending through the request options. */
     request(
         requestOptions,
         (err, response, body) => {
@@ -104,7 +101,7 @@ const exerciseInfo = (req, res) => {
 
 };
 
-// GET 'Add Exercise' page
+/* GET 'Add Exercise' page */
 const addExerciseForm = (req, res) => {
     res.render('exercise-form', {
         title: `${globals.getSiteName()}—New Exercise`,

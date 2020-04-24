@@ -3,11 +3,11 @@ const getSiteName = () => 'QuickFit';
 const getPort = () => normalizePort(process.env.PORT || '3000');
 
 const getServer = () => {
-    // If the application is running in production mode, use the live URL.
+    /* If the application is running in production mode, use the live URL. */
     if (process.env.NODE_ENV === 'production')
         return 'https://quickfit.herokuapp.com'
 
-    // Otherwise use the default server URL for the local development.
+    /* Otherwise use the default server URL for the local development. */
     return `http://localhost:${getPort()}`;
 };
 
@@ -38,12 +38,12 @@ function normalizePort(val) {
     var port = parseInt(val, 10);
 
     if (isNaN(port)) {
-        // named pipe
+        /* named pipe */
         return val;
     }
 
     if (port >= 0) {
-        // port number
+        /* port number */
         return port;
     }
 

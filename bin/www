@@ -3,14 +3,14 @@
 /*------------------------------------------------------------------------------
     Module dependencies.
 ------------------------------------------------------------------------------*/
-const app     = require('../app');  // Include our app.
-const http    = require('http');    // To use the HTTP server and client.
+const app     = require('../app');  /* Include our app. */
+const http    = require('http');    /* To use the HTTP server and client. */
 const globals = require('../globals');
 
 /*------------------------------------------------------------------------------
     Get port from environment and store in Express.
 ------------------------------------------------------------------------------*/
-// If process.env.PORT is set, use that, otherwise use 3000.
+/* If process.env.PORT is set, use that, otherwise use 3000. */
 var port = globals.getPort();
 app.set('port', port);
 
@@ -38,7 +38,7 @@ function onError(error) {
         ? 'Pipe ' + port
         : 'Port ' + port;
 
-    // handle specific listen errors with friendly messages
+    /* Handle specific listen errors with friendly messages. */
     switch (error.code) {
         case 'EACCES':
             console.error(bind + ' requires elevated privileges');

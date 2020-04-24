@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
-// Use local database URI
+/* Use local database URI */
 let dbURI = 'mongodb://localhost/quickfit';
 
-// If we're in heroku, use the live database URI instead.
+/* If we're in heroku, use the live database URI instead. */
 if (process.env.NODE_ENV === 'production') {
     dbURI = process.env.MONGODB_URI;
 }
 
-// Connect to the database.
+/* Connect to the database. */
 mongoose.connect(dbURI, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
@@ -21,17 +21,17 @@ mongoose.connect(dbURI, {
 /* -----------------------------------------------------------------------------
     Listen for Mongoose connection events and output statuses to the console.
 ----------------------------------------------------------------------------- */
-// Monitor for a successful connection through Mongoose.
+/* Monitor for a successful connection through Mongoose. */
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${dbURI}...`);
 });
 
-// Check for a connection error.
+/* Check for a connection error. */
 mongoose.connection.on('error', err => {
     console.log(`Mongoose connection error: ${err}`);
 });
 
-// Checks for a disconnection event.
+/* Checks for a disconnection event. */
 mongoose.connection.on('disconnected', () => {
     console.log('Mongoose disconnected');
 });
@@ -40,7 +40,7 @@ mongoose.connection.on('disconnected', () => {
     Listen to Node processes for termination or restart signals and call the
     gracefulShutdown function when appropriate, passing a continuation callback.
 ----------------------------------------------------------------------------- */
-// Reusable function to close the Mongoose connection.
+/* Reusable function to close the Mongoose connection. */
 const gracefulShutdown = (msg, callback) => {
     /* Close the Mongoose connection and pass an anonymous function to run when
        it's closed. */
@@ -52,7 +52,7 @@ const gracefulShutdown = (msg, callback) => {
     });
 };
 
-// Listens for SIGUSR2, which is what nodemon uses.
+/* Listens for SIGUSR2, which is what nodemon uses. */
 process.once('SIGUSR2', () => {
     /* Send a message to gracefulShutdown and a callback to kill the process,
        emitting SIGUSR2 again. */
@@ -61,7 +61,7 @@ process.once('SIGUSR2', () => {
     });
 });
 
-// Listening for SIGINT on Windows.
+/* Listening for SIGINT on Windows. */
 const readLine = require('readline');
 if (process.platform === 'win32') {
     const rl = readLine.createInterface({
@@ -73,17 +73,17 @@ if (process.platform === 'win32') {
     });
 }
 
-// Listen for SIGINT to be emitted upon application termination.
+/* Listen for SIGINT to be emitted upon application termination. */
 process.on('SIGINT', () => {
-    // Send message and callback to exit the Node process.
+    /* Send message and callback to exit the Node process. */
     gracefulShutdown('app termination', () => {
         process.exit(0);
     });
 });
 
-// Listens for SIGTERM to be emitted when Heroku shuts down the process.
+/* Listens for SIGTERM to be emitted when Heroku shuts down the process. */
 process.on('SIGTERM', () => {
-    // Send message and callback to exit the Node process.
+    /* Send message and callback to exit the Node process. */
     gracefulShutdown('Heroku app shutdown', () => {
         process.exit(0);
     });

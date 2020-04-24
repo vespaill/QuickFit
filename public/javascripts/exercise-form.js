@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
-    // Enable bootstrap tooltips.
+    /* Enable bootstrap tooltips. */
     $('[data-toggle="tooltip"]').tooltip();
 
-    // Colorcode the option, according to selected exercise category.
+    /* Colorcode the option, according to selected exercise category. */
     let $select = $('select');
     $select.change(function(e) {
         $select

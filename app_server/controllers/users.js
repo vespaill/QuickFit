@@ -22,14 +22,14 @@ const calendar = (req, res) => {
         json: {},
     };
 
-    // Do exercise API call
+    /* Do exercise API call */
     request(requestOptions, (err, response, exercises) => {
         requestOptions.url = `${globals.getServer()}${'/api/programs'}`;
 
-        // Do program API call
+        Do program API call
         request(requestOptions, (err, response, programs) => {
-            // For now, there is one program for the entire website
-            // Later, there will be at least one per user
+            /* For now, there is one program for the entire website
+               Later, there will be at least one per user */
             renderCalendar(req, res, exercises, programs[0]);
         });
     });
@@ -52,7 +52,8 @@ const renderCalendar = (req, res, exercises, program) => {
         message: message,
         exercises: exercises,
         program: program
-        // Dummy workout program data for now (assumes that the user can only have 1 program)
+        /* Dummy workout program data for now (assumes that the user can only
+           have 1 program) */
         // program: [
         //     {
         //         name: "Flat Bench Press",

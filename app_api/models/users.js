@@ -3,17 +3,17 @@ const crypto   = require('crypto');
 const debug    = require('debug')('app-api:models/users  ');
 
 const userSchema = new mongoose.Schema({
-    email: {                // Email should be required and unique.
+    email: {            /* Email should be required and unique. */
         type: String,
         unique: true,
         required: true
     },
-    name: {                 // Name is also required but not necessarily unique
+    name: {             /* Name is also required but not necessarily unique */
         type: String,
         required: true
     },
 
-    // Hash and salt are both strings.
+    /* Hash and salt are both strings. */
     hash: String,
     salt: String
 
@@ -30,17 +30,17 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.setPassword = function (password) {
     debug('Generating encrypted hash for user.');
 
-    // Create a random string for the salt.
+    /* Create a random string for the salt. */
     this.salt = crypto.randomBytes(16).toString('hex');
 
-    // Create an encrypted hash.
+    /* Create an encrypted hash. */
     this.hash = crypto
         .pbkdf2Sync(password, this.salt, 1000, 64, 'sha512')
         .toString('hex');
 };
 
 
-// Validating a submitted password.
+/* Validating a submitted password. */
 userSchema.methods.validPassword = function (password) {
     debug('Validating given password: %s', password);
 
@@ -50,7 +50,7 @@ userSchema.methods.validPassword = function (password) {
         .pbkdf2Sync(password, this.salt, 1000, 64, 'sha512')
         .toString('hex');
 
-    // Check the password against the hash.
+    /* Check the password against the hash. */
     return this.hash === hash;
 };
 
