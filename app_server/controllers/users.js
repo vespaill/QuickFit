@@ -26,7 +26,7 @@ const calendar = (req, res) => {
     request(requestOptions, (err, response, exercises) => {
         requestOptions.url = `${globals.getServer()}${'/api/programs'}`;
 
-        Do program API call
+        /* Do program API call */
         request(requestOptions, (err, response, programs) => {
             /* For now, there is one program for the entire website
                Later, there will be at least one per user */

@@ -1,7 +1,7 @@
-// Require Mongoose so that you can use its methods.
+/* Require Mongoose so that you can use its methods. */
 const mongoose = require('mongoose');
 
-// Define a schema for exercises
+/* Define a schema for exercises */
 const exerciseSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -32,5 +32,5 @@ const exerciseSchema = new mongoose.Schema({
     }
 });
 
-// Build a model called 'Exercise' using the exerciseSchema that we defined.
+/* Build a model called 'Exercise' using the exerciseSchema that we defined. */
 mongoose.model('Exercise', exerciseSchema);
