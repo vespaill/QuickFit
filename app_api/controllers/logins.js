@@ -2,6 +2,7 @@ const mongoose   = require('mongoose');
 const debug      = require('debug')('app-api:ctrl/logins ---->');
 const _          = require('lodash');
 const User_model = mongoose.model('User');
+const setToken   = require('../../globals').setInMemToken;
 
 /* POST */
 const loginUser = (req, res) => {
@@ -32,6 +33,7 @@ const loginUser = (req, res) => {
             };
 
             const token = user.generateJwt();
+            setToken(token);
             return res
                 .header('x-auth-token', token)
                 .status(200)

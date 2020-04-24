@@ -1,7 +1,5 @@
 const getSiteName = () => 'QuickFit';
-
 const getPort = () => normalizePort(process.env.PORT || '3000');
-
 const getServer = () => {
     /* If the application is running in production mode, use the live URL. */
     if (process.env.NODE_ENV === 'production')
@@ -10,7 +8,6 @@ const getServer = () => {
     /* Otherwise use the default server URL for the local development. */
     return `http://localhost:${getPort()}`;
 };
-
 
 const showError = (req, res, status) => {
     let title = '';
@@ -50,9 +47,17 @@ function normalizePort(val) {
     return false;
 }
 
+let inMemoryToken;
+const setInMemToken = (val) => { inMemoryToken = val; }
+const getInMemToken = () => inMemoryToken;
+
 module.exports = {
     getSiteName,
     getServer,
+
     getPort,
-    showError
+    showError,
+
+    setInMemToken,
+    getInMemToken
 };

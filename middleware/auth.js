@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
+const getToken   = require('../globals').getInMemToken;
 
 module.exports = function auth(req, res, next) {
-    const token = req.header('x-auth-token');
+    // const token = req.header('x-auth-token');
+    const token = getToken();
     if (!token) {
         return res
             .status(401)
