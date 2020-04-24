@@ -1,15 +1,18 @@
 const mongoose = require('mongoose');
 const crypto   = require('crypto');
+const jwt      = require('jsonwebtoken');
 const debug    = require('debug')('app-api:models/users  ');
 
 const userSchema = new mongoose.Schema({
+    name: {             /* Name is also required but not necessarily unique */
+        type: String,
+        required: true,
+        trim: true,
+        maxlength: 50
+    },
     email: {            /* Email should be required and unique. */
         type: String,
         unique: true,
-        required: true
-    },
-    name: {             /* Name is also required but not necessarily unique */
-        type: String,
         required: true
     },
 
@@ -18,8 +21,9 @@ const userSchema = new mongoose.Schema({
     salt: String
 
     /* The email and name are both set from the registration form, but the hash
-       and salt are both created by the system. The hash, of course, is derived
-       from the salt, and the password is supplied via the form. */
+       and salt are both created by the system. The hash is derived from a salt
+       and a password. The salt is a randomly generated string and the password
+       is supplied via the form. */
 });
 
 
@@ -52,6 +56,11 @@ userSchema.methods.validPassword = function (password) {
 
     /* Check the password against the hash. */
     return this.hash === hash;
+};
+
+userSchema.methods.generateJwt = function () {
+    const token = jwt.sign( { _id: this._id }, process.env.JWT_SECRET );
+    return token;
 };
 
 

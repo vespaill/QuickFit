@@ -1,14 +1,15 @@
 const express       = require('express');
 const router        = express.Router();
+const auth          = require('../../middleware/auth');
 const ctrlExercises = require('../controllers/exercises');
 const ctrlPrograms  = require('../controllers/programs');
 const ctrlUsers     = require('../controllers/users');
-
+const ctrlLogins    = require('../controllers/logins');
 
 /* ----------------------------- Exercises API ------------------------------ */
 router.route('/exercises')
     .get(ctrlExercises.exercisesList)
-    .post(ctrlExercises.exercisesCreate);
+    .post(auth, ctrlExercises.exercisesCreate);
 
 router.route('/exercises/:exerciseid')
     .get(ctrlExercises.exerciseReadOne)
@@ -34,5 +35,9 @@ router.route('/users/:userid')
     // .put(ctrlUsers.updateUser)
     .delete(ctrlUsers.deleteUser);
 
+/* ------------------------------- Logins API ------------------------------- */
+
+router.route('/logins')
+    .post(ctrlLogins.loginUser);
 
 module.exports = router;

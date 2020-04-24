@@ -51,7 +51,7 @@ const registerUser = (req, res) => {
                 debug('MongoError: E11000 duplicate key error collection\nSending 409');
                 res
                     .status(409)
-                    .send('Email has already been registered once.');
+                    .send('Email already registered.');
             } else { /* generic error */
                 debug('Generic error\nSending 404');
                 res
@@ -139,46 +139,6 @@ const deleteUser = (req, res) => {
             .send('Invalid exercise ID');
     }
 }
-
-
-const loginUser = (req, res) => {
-
-    // /* Validate that the required fields have been supplied. */
-    // if (!req.body.email || !req.body.password) {
-    //     debug('Undefined email or password\nSending 400')
-    //     return res
-    //         .status(400)
-    //         .send('All fields required');
-    // }
-
-    // /* Pass the name of the strategy and a callback to the authenticate method. */
-    // passport.authenticate('local', (err, user, info) => {
-    //     /* Return an error if Passport returns an error. */
-    //     if (err) {
-    //         debug('Generic error\nSending 404')
-    //         return res
-    //             .status(404)
-    //             .json(err);
-    //     }
-    //     /* If Passport returned a user instance, generate and send a JWT. */
-    //     if (user) {
-    //         debug('User authenticated');
-    //         debug(user);
-    //         debug('Sending 200 & user');
-    //         res
-    //             .status(200)
-    //             .json({ user });
-    //     /* Otherwise, return an info message (why authentication failed). */
-    //     } else {
-    //         debug('Authentication failed\nSending 401 & info')
-    //         res
-    //             .status(401)
-    //             .json(info);
-    //     }
-
-    // }) (req, res);  /* Make sure that req and res are available to Passport. */
-
-};
 
 module.exports = {
     getUsers,

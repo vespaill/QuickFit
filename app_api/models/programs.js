@@ -7,7 +7,9 @@ const programSchema = new mongoose.Schema({
     // Program name
     name: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        maxlength: 50
     },
     // List of exercises
     exercises: [{
