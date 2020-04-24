@@ -1,6 +1,6 @@
 const globals = require('../../globals');
 const request = require('request');
-const debug   = require('debug')('app-svr:ctrl/exercises');
+const debug   = require('debug')('app-svr:ctrl/exercises ->');
 
 const renderExercises = (req, res, responseBody) => {
 
@@ -140,9 +140,7 @@ const addExerciseForm = (req, res) => {
 };
 
 const doAddExercise = (req, res) => {
-
     const path = '/api/exercises';
-
     const postdata = {
         name: req.body.name,
         equip: req.body.equipment,
@@ -150,7 +148,7 @@ const doAddExercise = (req, res) => {
         desc: req.body.description === ''? undefined : req.body.description
     };
 
-    console.log(postdata);
+    debug(postdata);
 
     const requestOptions = {
         url: `${globals.getServer()}${path}`,

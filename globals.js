@@ -25,7 +25,7 @@ const showError = (req, res, status) => {
         content = 'Something, somewhere, has gone just a little bit wrong.';
     }
     res.status(status);
-    res.render('generic-text', {
+    res.render('generic-text.pug', {
         title,
         content
     });

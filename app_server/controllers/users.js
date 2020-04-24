@@ -1,6 +1,6 @@
 const globals = require('../../globals');
 const request = require('request');
-const debug   = require('debug')('app-svr:ctrl/users    ');
+const debug   = require('debug')('app-svr:ctrl/users ----->');
 
 const dashboard = (req, res) => {
     res.render('dashboard.pug', {

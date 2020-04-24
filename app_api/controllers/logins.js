@@ -1,5 +1,5 @@
 const mongoose   = require('mongoose');
-const debug      = require('debug')('app-api:ctrl/logins  ');
+const debug      = require('debug')('app-api:ctrl/logins ---->');
 const _          = require('lodash');
 const User_model = mongoose.model('User');
 
@@ -35,7 +35,9 @@ const loginUser = (req, res) => {
             return res
                 .header('x-auth-token', token)
                 .status(200)
-                .json(_.pick(user, ['_id', 'email']));
+                .json(_.assign({
+                    message: 'Login successful. JWT stored in header \'x-auth-token\''
+                }, _.pick(user, 'email')));
         });
 
 };

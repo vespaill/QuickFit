@@ -1,6 +1,9 @@
-const express       = require('express');
-const router        = express.Router();
-const auth          = require('../../middleware/auth');
+const express = require('express');
+const router  = express.Router();
+
+const auth  = require('../../middleware/auth');
+const admin = require('../../middleware/admin');
+
 const ctrlExercises = require('../controllers/exercises');
 const ctrlPrograms  = require('../controllers/programs');
 const ctrlUsers     = require('../controllers/users');
@@ -14,7 +17,7 @@ router.route('/exercises')
 router.route('/exercises/:exerciseid')
     .get(ctrlExercises.exerciseReadOne)
     .put(ctrlExercises.exerciseUpdateOne)
-    .delete(ctrlExercises.exerciseDeleteOne);
+    .delete([auth, admin], ctrlExercises.exerciseDeleteOne);
 
 
 /* ------------------------------ Programs API ------------------------------ */

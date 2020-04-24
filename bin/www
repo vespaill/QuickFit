@@ -1,8 +1,5 @@
 #!/usr/bin/env node
 
-/*------------------------------------------------------------------------------
-    Module dependencies.
-------------------------------------------------------------------------------*/
 const app     = require('../app');  /* Include our app. */
 const http    = require('http');    /* To use the HTTP server and client. */
 const globals = require('../globals');

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const debug    = require('debug')('app-api:models/db ------>');
 
 /* Use local database URI */
 let dbURI = 'mongodb://localhost/quickfit';
@@ -23,17 +24,17 @@ mongoose.connect(dbURI, {
 ----------------------------------------------------------------------------- */
 /* Monitor for a successful connection through Mongoose. */
 mongoose.connection.on('connected', () => {
-    console.log(`Mongoose connected to ${dbURI}...`);
+    debug(`Mongoose connected to ${dbURI}...`);
 });
 
 /* Check for a connection error. */
 mongoose.connection.on('error', err => {
-    console.log(`Mongoose connection error: ${err}`);
+    debug(`Mongoose connection error: ${err}`);
 });
 
 /* Checks for a disconnection event. */
 mongoose.connection.on('disconnected', () => {
-    console.log('Mongoose disconnected');
+    debug('Mongoose disconnected');
 });
 
 /* -----------------------------------------------------------------------------
@@ -47,7 +48,7 @@ const gracefulShutdown = (msg, callback) => {
     mongoose.connection.close(() => {
         /* Output a message and call a callback when the Mongoose connection is
            closed. */
-        console.log(`Mongoose disconnected through ${msg}`);
+        debug(`Mongoose disconnected through ${msg}`);
         callback();
     });
 };

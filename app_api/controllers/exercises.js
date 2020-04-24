@@ -1,6 +1,6 @@
 /* Give the controllers access to the database connection. */
 const mongoose = require('mongoose');
-const debug = require('debug')('app-api:ctrl/exercises')
+const debug = require('debug')('app-api:ctrl/exercises ->')
 
 /* Bring in the Exercise model defined in ./models/exercises.js so that we can
    interact with the Exercises collection. */
@@ -160,8 +160,10 @@ const exerciseDeleteOne = (req, res) => {
                 }
                 res
                     .status(200)
-                    .json(exercise);
-                    // .send(message:`Exercise \"${exercise.name}\" DELETED`);
+                    .json({
+                        message: "Exercise deleted",
+                        exercise
+                    });
             });
     } else {
         res

@@ -21,6 +21,7 @@ const express     = require('express');     /* Load the Express module. Returns 
 const path        = require('path');        /* Utilities for working with file & directory paths */
 const logger      = require('morgan');      /* Used to log requests. */
 const bodyParser  = require('body-parser'); /* Needed to parse incoming json and raw data payloads */
+const errorHandler= require('./middleware/error');
 require('./app_api/models/db');             /* Database connection & model/schema definitions. */
 
 /* Include our routers */
@@ -44,19 +45,7 @@ app.use('/', indexRouter);
 app.use('/api', apiRouter);
 
 /* Catch 404 and forward to error handler. */
-app.use(function(req, res, next) {
-    next(createError(404));
-});
-
-/* Error handler. */
-app.use(function(err, req, res, next) {
-    /* Set locals, only providing error in development. */
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    /* Render the error page. */
-    res.status(err.status || 500);
-    res.render('error');
-});
+app.use((req, res, next) => { next(createError(404)); });
+app.use(errorHandler);
 
 module.exports = app;

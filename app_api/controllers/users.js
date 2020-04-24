@@ -1,13 +1,14 @@
 const mongoose   = require('mongoose');
-const debug      = require('debug')('app-api:ctrl/users    ');
+const debug      = require('debug')('app-api:ctrl/users ----->');
+const _          = require('lodash');
 const User_model = mongoose.model('User');
 
 /* GET */
 const getUsers = (req, res) => {
     User_model
         .find()
-        .sort('email')
-        .select('email')
+        .sort('-isAdmin email')
+        .select('email isAdmin')
         .exec((err, users) => {
             if (!users) {
                 return res
@@ -46,12 +47,15 @@ const registerUser = (req, res) => {
 
     debug('Saving new user to MongoDB...');
     user.save((err) => {
+        const retObj = _.assign( { message: '' }, _.pick(user, 'email') );
         if (err) {
             if (err.code === 11000) { /* Mongo error: duplicate key */
-                debug('MongoError: E11000 duplicate key error collection\nSending 409');
+                debug('MongoError: E11000 duplicate key error collection');
+                debug('Sending 409');
+                retObj.message = 'Email already registered.';
                 res
                     .status(409)
-                    .send('Email already registered.');
+                    .json(retObj);
             } else { /* generic error */
                 debug('Generic error\nSending 404');
                 res
@@ -60,12 +64,12 @@ const registerUser = (req, res) => {
             }
         } else {
             debug('Successful save of new user\nSending 200');
+            retObj.message = 'New email has been registered';
             res
                 .status(200)
-                .send("Successfully registered new user");
+                .json(retObj);
         }
     });
-
 };
 
 
@@ -73,6 +77,7 @@ const registerUser = (req, res) => {
 const getUser = (req, res) => {
     User_model
         .findById(req.params.userid)
+        .select('isAdmin email')
         .exec((err, user) => {
             if (!user) {
                 return res
@@ -119,6 +124,7 @@ const deleteUser = (req, res) => {
     if (userid) {
         User_model
             .findByIdAndRemove(userid)
+            .select('email')
             .exec((err, user) => {
                 if (err) {
                     return res
@@ -131,7 +137,10 @@ const deleteUser = (req, res) => {
                 }
                 res
                     .status(200)
-                    .json(user);
+                    .json({
+                        message: 'User deleted',
+                        email: user.email
+                    });
             });
     } else {
         res

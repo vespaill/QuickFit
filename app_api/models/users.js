@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const crypto   = require('crypto');
 const jwt      = require('jsonwebtoken');
-const debug    = require('debug')('app-api:models/users  ');
+const debug    = require('debug')('app-api:models/users --->');
 
 const userSchema = new mongoose.Schema({
     name: {             /* Name is also required but not necessarily unique */
@@ -17,13 +17,17 @@ const userSchema = new mongoose.Schema({
     },
 
     /* Hash and salt are both strings. */
-    hash: String,
-    salt: String
-
     /* The email and name are both set from the registration form, but the hash
        and salt are both created by the system. The hash is derived from a salt
        and a password. The salt is a randomly generated string and the password
        is supplied via the form. */
+    hash: String,
+    salt: String,
+
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 });
 
 
@@ -59,7 +63,10 @@ userSchema.methods.validPassword = function (password) {
 };
 
 userSchema.methods.generateJwt = function () {
-    const token = jwt.sign( { _id: this._id }, process.env.JWT_SECRET );
+    const token = jwt.sign( {
+        _id: this._id,
+        isAdmin: this.isAdmin
+    }, process.env.JWT_SECRET );
     return token;
 };
 
