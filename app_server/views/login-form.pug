@@ -6,13 +6,15 @@ block content
         .col-12.text-center
           case msg
             when 'postdata_incomplete'
-              .alert.alert-danger(role='alert') All fields required!
-            when 'login_failure'
-              .alert.alert-danger(role='alert') Invalid username or password
+              .alert.alert-danger(role='alert') All fields are required!
+            when 'incorrect_password'
+              .alert.alert-danger(role='alert') The password did not match our records
+            when 'unregistered_email'
+              .alert.alert-danger(role='alert') The email did not match our records
             when 'register_success'
-              .alert.alert-success(role='alert') User registered
+              .alert.alert-success(role='alert') New user registered!
             when 'login_success'
-              .alert.alert-success(role='alert') Login successful
+              .alert.alert-success(role='alert') Login successful!
       //- Email
       .row.mt-5
         .col-md-6.text-center.mx-auto

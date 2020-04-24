@@ -158,6 +158,34 @@ const loginForm = (req, res) => {
     });
 };
 
+const doLoginUser = (req, res) => {
+    if (!req.body.email || !req.body.password)
+        res.redirect('/login-form?msg=postdata_incomplete');
+
+    const path = '/api/logins';
+    const postdata = {
+        email: req.body.email,
+        password: req.body.password
+    };
+    const requestOptions = {
+        url: `${globals.getServer()}${path}`,
+        method: 'POST',
+        json: postdata
+    };
+
+    request(requestOptions, (err, { statusCode }, response) => {
+        if (statusCode === 200) {
+            res.redirect('/login-form?msg=login_success');
+        } else if (statusCode === 401) {
+            res.redirect('/login-form?msg=incorrect_password');
+        } else if (response.message == 'User not found') {
+            res.redirect('/login-form?msg=unregistered_email');
+        } else {
+            globals.showError(req, res, statusCode);
+        }
+    });
+}
+
 module.exports = {
     dashboard,
     account,
@@ -165,4 +193,5 @@ module.exports = {
     registerForm,
     doRegisterUser,
     loginForm,
+    doLoginUser
 };

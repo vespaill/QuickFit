@@ -18,7 +18,7 @@ const loginUser = (req, res) => {
             if (!user) {
                 return res
                     .status(404)
-                    .send('User not found');
+                    .json({ message: 'User not found' });
             } else if (err) {
                 return res
                     .status(404)
@@ -27,8 +27,8 @@ const loginUser = (req, res) => {
 
             if ( !user.validPassword(req.body.password) ) {
                 return res
-                    .status(404)
-                    .send('Incorrect password');
+                    .status(401)
+                    .send({ message: 'Incorrect password' });
             };
 
             const token = user.generateJwt();

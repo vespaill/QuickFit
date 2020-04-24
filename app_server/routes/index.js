@@ -1,6 +1,8 @@
 const express       = require('express');
 const router        = express.Router();
 
+const auth  = require('../../middleware/auth');
+
 const ctrlPublic    = require('../controllers/public');
 const ctrlExercises = require('../controllers/exercises');
 const ctrlUsers      = require('../controllers/users');
@@ -32,11 +34,12 @@ router.route('/register-form')
 
 router.route('/login-form')
     .get(ctrlUsers.loginForm)
+    .post(ctrlUsers.doLoginUser);
 
 /* ------------------------- Protected user pages. -------------------------- */
 router.get('/dashboard', ctrlUsers.dashboard);
 router.get('/dashboard/account', ctrlUsers.account);
-router.get('/dashboard/calendar', ctrlUsers.calendar);
+router.get('/dashboard/calendar', auth, ctrlUsers.calendar);
 
 module.exports = router;
 
