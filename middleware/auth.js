@@ -1,23 +1,11 @@
-const jwt = require('jsonwebtoken');
-const getToken   = require('../globals').getInMemToken;
+const debug = require('debug')('app-svr:middleware/auth ---->');
 
 module.exports = function auth(req, res, next) {
-    // const token = req.header('x-auth-token');
-    const token = getToken();
-    if (!token) {
-        return res
-            .status(401)
-            .send('Access denied. No token provided.');
+    if (req.session.user) {
+        debug('User:', req.session.user);
+        next();     // If session exists, proceed to page
+    } else {
+        var err = new Error("Not logged in!");
+        next(err);  // Error, trying to access unauthorized page!
     }
-
-    try {
-        /* If the token is valid, return the payload data as an object */
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
-        next();
-    } catch (ex) {
-        res
-            .status(400)
-            .send('Invalid token.');
-    }
-}
+ }

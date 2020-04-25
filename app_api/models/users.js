@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const crypto   = require('crypto');
-const jwt      = require('jsonwebtoken');
 const debug    = require('debug')('app-api:models/users --->');
 
 const userSchema = new mongoose.Schema({
@@ -61,14 +60,5 @@ userSchema.methods.validPassword = function (password) {
     /* Check the password against the hash. */
     return this.hash === hash;
 };
-
-userSchema.methods.generateJwt = function () {
-    const token = jwt.sign( {
-        _id: this._id,
-        isAdmin: this.isAdmin
-    }, process.env.JWT_SECRET );
-    return token;
-};
-
 
 mongoose.model('User', userSchema);

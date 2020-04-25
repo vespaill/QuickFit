@@ -22,11 +22,13 @@ const path        = require('path');        /* Utilities for working with file &
 const logger      = require('morgan');      /* Used to log requests. */
 const bodyParser  = require('body-parser'); /* Needed to parse incoming json and raw data payloads */
 const errorHandler= require('./middleware/error');
-require('./app_api/models/db');             /* Database connection & model/schema definitions. */
+const session     = require('express-session');
+const dbURI       = (require('./app_api/models/db').getDbURI)();/* Database connection & model/schema definitions. */
+const MongoStore  = require('connect-mongo')(session);
 
 /* Include our routers */
 const indexRouter = require('./app_server/routes/index');
-const apiRouter = require('./app_api/routes/index');
+const apiRouter   = require('./app_api/routes/index');
 
 /* Call the Express function, this returns an object of type "Express"
    By convention we call this object "app." This represents our application.
@@ -35,10 +37,19 @@ const app = express();
 
 app.set('views',path.join(__dirname,'app_server','views')); /* Look for views in /app_server/views */
 app.set('view engine', 'pug');                              /* Use the pug template engine. */
-app.use(logger('dev'));                                     /* Log CRUD requests in terminal. */
+// app.use(logger('dev'));                                     /* Log CRUD requests in terminal. */
 app.use(bodyParser.json());                                 /* Parse incoming requests with JSON payloads. */
 app.use(bodyParser.urlencoded({ extended:false }));         /* Parse incoming requests w/ urlencoded payloads */
 app.use(express.static( path.join(__dirname, 'public') ));  /* Serve static files(images,css,js) from ./public */
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    store: new MongoStore({
+        "url": dbURI,
+        "collection": "sessions",
+        "auto_reconnect": true,
+        "clear_interval": 3600, // 60 minutes
+    })
+}));
 
 /* Use our routers */
 app.use('/', indexRouter);

@@ -175,7 +175,9 @@ const doLoginUser = (req, res) => {
 
     request(requestOptions, (err, { statusCode }, response) => {
         if (statusCode === 200) {
-            res.redirect('/login-form?msg=login_success');
+            debug('response.user =', response.user);
+            req.session.user = response.user;
+            res.redirect('/dashboard/calendar');
         } else if (statusCode === 401) {
             res.redirect('/login-form?msg=incorrect_password');
         } else if (response.message == 'User not found') {
@@ -186,6 +188,13 @@ const doLoginUser = (req, res) => {
     });
 }
 
+// app.get('/logout',
+const logoutUser = (req, res) => {
+    req.session.destroy();
+    debug('Session detroyed, User logged out.')
+    res.redirect('/login-form');
+};
+
 module.exports = {
     dashboard,
     account,
@@ -193,5 +202,6 @@ module.exports = {
     registerForm,
     doRegisterUser,
     loginForm,
-    doLoginUser
+    doLoginUser,
+    logoutUser
 };

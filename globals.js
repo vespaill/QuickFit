@@ -49,6 +49,7 @@ function normalizePort(val) {
 
 let inMemoryToken;
 const setInMemToken = (val) => { inMemoryToken = val; }
+const clearInMemToken = (val) => { inMemoryToken = undefined; }
 const getInMemToken = () => inMemoryToken;
 
 module.exports = {
@@ -59,5 +60,7 @@ module.exports = {
     showError,
 
     setInMemToken,
-    getInMemToken
+    getInMemToken,
+    clearInMemToken
+
 };

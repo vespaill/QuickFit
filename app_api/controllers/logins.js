@@ -2,7 +2,6 @@ const mongoose   = require('mongoose');
 const debug      = require('debug')('app-api:ctrl/logins ---->');
 const _          = require('lodash');
 const User_model = mongoose.model('User');
-const setToken   = require('../../globals').setInMemToken;
 
 /* POST */
 const loginUser = (req, res) => {
@@ -29,17 +28,12 @@ const loginUser = (req, res) => {
             if ( !user.validPassword(req.body.password) ) {
                 return res
                     .status(401)
-                    .send({ message: 'Incorrect password' });
+                    .json({ message: 'Incorrect password' });
             };
 
-            const token = user.generateJwt();
-            setToken(token);
             return res
-                .header('x-auth-token', token)
                 .status(200)
-                .json(_.assign({
-                    message: 'Login successful. JWT stored in header \'x-auth-token\''
-                }, _.pick(user, 'email')));
+                .json({ user: user });
         });
 
 };

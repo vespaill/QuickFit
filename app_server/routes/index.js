@@ -36,6 +36,8 @@ router.route('/login-form')
     .get(ctrlUsers.loginForm)
     .post(ctrlUsers.doLoginUser);
 
+router.get('/logout', ctrlUsers.logoutUser);
+
 /* ------------------------- Protected user pages. -------------------------- */
 router.get('/dashboard', ctrlUsers.dashboard);
 router.get('/dashboard/account', ctrlUsers.account);
