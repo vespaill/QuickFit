@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title= title
+    title=locals.site.name+title
     link(rel="stylesheet", href="/stylesheets/bootstrap/bootstrap.min.css")
     link(rel="stylesheet", href="/stylesheets/style.css")
     link(rel="icon" href="/images/favicon.ico")
@@ -20,13 +20,12 @@ html
             li.nav-item
               a.nav-link.btn.btn-default(href="/exercise-list") Exercises
             li.nav-item
-              a.nav-link.btn.btn-default(href="/dashboard/calendar") Calendar
-            //- li.nav-item
-            //-   a.nav-link.btn.btn-default(href="/dashboard") Dashboard
+              a.nav-link.btn.btn-default(href="/dashboard") Dashboard
             li.nav-item
               a.nav-link.btn.btn-default(href="/login-form") Login
             li.nav-item
               a.nav-link.btn.btn-default(href="/register-form") Register
+            //- - if (logged_in)
             li.nav-item
               a#logout-btn.nav-link.btn.btn-danger(href="/logout") Logout
 

@@ -28,7 +28,7 @@ const renderExercises = (req, res, responseBody) => {
         'exercise-list', {
 
         /* JavaScript object containing data for template to use */
-        title: `${globals.getSiteName()}—Exercises`,
+        title: '—Exercises',
 
         /* Here we have finally removed the hardcoded array of exercise objects,
            and passed the responseBody instead. */
@@ -104,7 +104,7 @@ const exerciseInfo = (req, res) => {
 /* GET 'Add Exercise' page */
 const addExerciseForm = (req, res) => {
     res.render('exercise-form', {
-        title: `${globals.getSiteName()}—New Exercise`,
+        title: '—New Exercise',
         groupOptions: [
             'Chest',
             'Upper back',

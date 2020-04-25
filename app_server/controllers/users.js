@@ -4,14 +4,14 @@ const debug   = require('debug')('app-svr:ctrl/users ----->');
 
 const dashboard = (req, res) => {
     res.render('dashboard.pug', {
-        title: globals.getSiteName(),
-        greetingMsg: 'Hello [Name]'
+        title: '—Dashboard',
+        username: req.session.user.name
     });
 };
 
 const account = (req, res) => {
     res.render('account.pug', {
-        title: globals.getSiteName()
+        title: '—Account'
     });
 };
 
@@ -48,7 +48,7 @@ const renderCalendar = (req, res, exercises, program) => {
     }
 
     res.render('calendar.pug', {
-        title: `${globals.getSiteName()}—Calendar`,
+        title: '—Calendar',
         message: message,
         exercises: exercises,
         program: program
@@ -86,7 +86,7 @@ const renderCalendar = (req, res, exercises, program) => {
 /* GET the register-form page */
 const registerForm = (req, res) => {
     res.render('register-form', {
-        title: `${globals.getSiteName()}—Registration`,
+        title: '—Registration',
         error: req.query.err
     });
 };
@@ -153,7 +153,7 @@ const doRegisterUser = (req, res) => {
 /* GET the login-form page */
 const loginForm = (req, res) => {
     res.render('login-form', {
-        title: `${globals.getSiteName()}—Login`,
+        title: '—Login',
         msg: req.query.msg
     });
 };
@@ -177,7 +177,7 @@ const doLoginUser = (req, res) => {
         if (statusCode === 200) {
             debug('response.user =', response.user);
             req.session.user = response.user;
-            res.redirect('/dashboard/calendar');
+            res.redirect('/dashboard');
         } else if (statusCode === 401) {
             res.redirect('/login-form?msg=incorrect_password');
         } else if (response.message == 'User not found') {

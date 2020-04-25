@@ -1,11 +1,12 @@
 extends layout
 block content
   .container-fluid.main-content
-    .text-center.greeting.mt-5= greetingMsg
+    h4.text-center.greeting.mt-5 Hi&nbsp;#{username}
     .row.d-flex.justify-content-center
       .col-4.my-programs
         .row.font-weight-bold.box-title
-          .col-8 My Programs
+          .col-8
+            h4 My Programs
           .text-center.col-4
             button.btn.btn-default.btn-lg.my-2.add-button Add
         .col-12.program-list

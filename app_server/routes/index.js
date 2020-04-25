@@ -1,7 +1,7 @@
 const express       = require('express');
 const router        = express.Router();
 
-const auth  = require('../../middleware/auth');
+const auth  = require('../../middleware/auth').auth;
 
 const ctrlPublic    = require('../controllers/public');
 const ctrlExercises = require('../controllers/exercises');
@@ -39,8 +39,8 @@ router.route('/login-form')
 router.get('/logout', ctrlUsers.logoutUser);
 
 /* ------------------------- Protected user pages. -------------------------- */
-router.get('/dashboard', ctrlUsers.dashboard);
-router.get('/dashboard/account', ctrlUsers.account);
+router.get('/dashboard', auth, ctrlUsers.dashboard);
+router.get('/dashboard/account', auth, ctrlUsers.account);
 router.get('/dashboard/calendar', auth, ctrlUsers.calendar);
 
 module.exports = router;

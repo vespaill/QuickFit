@@ -35,9 +35,11 @@ const apiRouter   = require('./app_api/routes/index');
    This app object has many useful methods like get, post, put and delete. */
 const app = express();
 
+app.locals.site = { name: 'QuickFit' };
+
 app.set('views',path.join(__dirname,'app_server','views')); /* Look for views in /app_server/views */
 app.set('view engine', 'pug');                              /* Use the pug template engine. */
-// app.use(logger('dev'));                                     /* Log CRUD requests in terminal. */
+app.use(logger('dev'));                                     /* Log CRUD requests in terminal. */
 app.use(bodyParser.json());                                 /* Parse incoming requests with JSON payloads. */
 app.use(bodyParser.urlencoded({ extended:false }));         /* Parse incoming requests w/ urlencoded payloads */
 app.use(express.static( path.join(__dirname, 'public') ));  /* Serve static files(images,css,js) from ./public */
