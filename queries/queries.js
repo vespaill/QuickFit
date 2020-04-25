@@ -1,13 +1,24 @@
-/* These are some queries I played around with in mongo shell to populate the
-   database. */
+/* These are some commands I played around with in mongo shell in order to
+   populate the Exercises collection in the MongoDB database. */
 
+/* Show all the databases you have. */
+show dbs;
+
+/* Switch to, or create a database called 'quickfit' */
+use quickfit;
+
+/* Display all the documents in the 'exercises' collection.  */
+db.exercises.find().pretty();
+
+/* Insert one document into collection */
 db.exercises.insertOne({
     equip: ['BB', 'DB'],
     name: 'Flat Bench Press',
     group: 'Chest',
     desc: 'Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.'
-})
+});
 
+/* Insert multiple documents into collection */
 db.exercises.insertMany([{
     equip: ['BB', 'DB'],
     name: 'Flat Bench Press',
@@ -173,4 +184,4 @@ db.exercises.insertMany([{
     name: 'Hip Abduction',
     group: 'Lower body',
     desc: 'Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.'
-}])
+}]);

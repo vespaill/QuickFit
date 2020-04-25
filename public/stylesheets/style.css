@@ -1,3 +1,25 @@
+/* -------------------------------------------------------------------------- */
+/*                                Color scheme                                */
+/* -------------------------------------------------------------------------- */
+:root {
+  --portal-orange-light: #FF9A00;
+  --portal-orange-dark: #FF5D00;
+  --portal-entrance: #005DDF;
+  --deep-sky-blue: #00A2FF;
+  --portal-blue: #D5DBEB;
+
+  --waiting-room: #D5D0CA;
+  --bones: #C8C5C0;
+  --along-the-shoreline: #BEBBB6;
+  --steel-blue-grey: #60737A;
+
+  --dissipate: #294D67;
+  --dark: #1B1B1B;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   General                                  */
+/* -------------------------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -15,20 +37,36 @@ h1, h2, h3, h4, h5, h6 {
 
 body {
   color: white;
-  background-color: #D5D0CA;
+  background-color: var(--waiting-room);
 }
 
 .main-content {
   color: #000000;
 }
 
+.jumbotron {
+  background-color: var(--dark);
+  background-image: url("../images/logo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 100px;
+}
+
 #IntroMsg {
   font-size: 18px;
 }
 
-/* Navbar *********************************************************************/
+.footer {
+  background-color: var(--dissipate);
+  padding: 15px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   Navbar                                   */
+/* -------------------------------------------------------------------------- */
 .navbar {
-  background-color: #294D67;
+  background-color: var(--dissipate);
 }
 
 .navbar-toggler-icon {
@@ -46,15 +84,10 @@ body {
   margin-bottom: 5px;
 }
 
-.jumbotron {
-  background-color: #1B1B1B;
-  background-image: url("../images/logo.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  padding: 100px;
-}
-/******************************************************************************/
 
+/* -------------------------------------------------------------------------- */
+/*                                   Buttons                                  */
+/* -------------------------------------------------------------------------- */
 .btn {
   margin: 3px
 }
@@ -68,7 +101,7 @@ body {
 }
 
 .btn-default {
-  background-color: #FF9A00;
+  background-color: var(--portal-orange-light);
   color: #FFF;
   /* margin-right: 1em; */
 }
@@ -87,15 +120,154 @@ body {
   padding-left: 15px;
 }
 
-.footer {
-  background-color: #294D67;
-  padding: 15px;
+
+/* -------------------------------------------------------------------------- */
+/*                              Alerts & Modals                               */
+/* -------------------------------------------------------------------------- */
+.alert {
+  color: white;
+  margin: auto;
+  margin-bottom: 1em;
 }
 
-/* Questionnaire **************************************************************/
-/* qnr-btn stands for questionnaire button */
+.alert-danger {
+  background-color: #d9534f;
+}
+
+.alert-success {
+  background-color: #5cb85c;
+}
+
+.alert-warning {
+  background-color: var(--portal-orange-light);
+  border-color: var(--portal-orange-light);
+}
+
+.custom-control-label:before{
+  background-color: var(--waiting-room);
+}
+
+/* Vertically align modal to the middle */
+.modal-dialog {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) !important;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                  Calendar                                  */
+/* -------------------------------------------------------------------------- */
+.close {
+  font-size: 12px;
+}
+
+.table {
+  background-color: var(--portal-blue);
+}
+
+.add-btn {
+  font-size: 12px;
+}
+
+.empty-btn {
+  font-size: 7px;
+}
+
+a.button {
+  margin-right: 15px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Program list                                */
+/* -------------------------------------------------------------------------- */
+#program-list {
+  background-color: var(--portal-orange-light);
+  margin-top: 1ex;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                 Exercises                                  */
+/* -------------------------------------------------------------------------- */
+a.exercise {
+  color: black;
+  text-decoration: none;
+}
+
+a.exercise:hover {
+  color: white;
+}
+
+.badge-warning {
+  margin-right: 2px;
+}
+
+.error {
+  background-color: #d9534f;
+  color: white;
+}
+
+.card-body {
+  padding: 10px;
+}
+.card {
+  margin-bottom: 5px;
+
+}
+
+/* !important is used to override existing background-colors that may exist on
+   an element */
+.bg-chest      { background-color: #ea9999 }
+.bg-triceps    { background-color: #e6b8af }
+.bg-upper-back { background-color: #a4c2f4 }
+.bg-biceps     { background-color: #c9daf8 }
+.bg-shoulders  { background-color: #93c47d }
+.bg-core       { background-color: #8e7cc3 }
+.bg-lower-body { background-color: #f6b26b }
+
+.bg-chest, .bg-triceps, .bg-upper-back, .bg-biceps,
+.bg-shoulders, .bg-core, .bg-lower-body {
+  color: black;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                               exercise-form                                */
+/* -------------------------------------------------------------------------- */
+.input-group-text, .input-label {
+  background-color: var(--dissipate);
+  color: white;
+}
+
+.input-card {
+  padding: 1em;
+  margin: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+
+}
+
+.input-label {
+  margin: 0;
+  border-radius: 5px;
+  padding: 1ex 0 8px 12px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.desc-txt {
+  min-height: 4em;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Questionnaire                                */
+/* -------------------------------------------------------------------------- */
 .qnr-btn {
-  background-color: #FF9A00;
+  background-color: var(--portal-orange-light);
   color: #FFF;
 }
 
@@ -104,19 +276,19 @@ body {
 }
 
 .qnr-btn:focus {
-  background-color: #ff5d00;
+  background-color: var(--portal-orange-dark);
   font-weight: bold;
   color: #000;
 }
 
 .qnr-nav-btn {
-  background-color: #00a2ff;
+  background-color: var(--deep-sky-blue);
   color: #FFFFFF;
   position: sticky;
 }
 
 #nav-btn-right {
-  background-color: #00a2ff;
+  background-color: var(--deep-sky-blue);
   color: #FFFFFF;
   float: right;
   position: sticky;
@@ -124,7 +296,7 @@ body {
 }
 
 .badge-pill {
-  background-color: #ff5d00;
+  background-color: var(--portal-orange-dark);
   color: #FFFFFF;
 }
 
@@ -136,7 +308,10 @@ a:hover {
   color: black;
 }
 
-/* Dashboard ******************************************************************/
+
+/* -------------------------------------------------------------------------- */
+/*                                 Dashboard                                  */
+/* -------------------------------------------------------------------------- */
 .greeting {
   font-size: 40px;
   margin-bottom: 30px;
@@ -203,7 +378,10 @@ a:hover {
   border-radius: 0 0 20px 20px;
 }
 
-/* Profile Page *******************************************************/
+
+/* -------------------------------------------------------------------------- */
+/*                                Profile page                                */
+/* -------------------------------------------------------------------------- */
 .exercise-names {
   padding-right: 0;
 }
@@ -250,125 +428,4 @@ a:hover {
 .update-button {
   box-sizing: border-box;
   width : 100%;
-}
-
-/* Calendar *******************************************************************/
-.close {
-  font-size: 12px;
-}
-
-.table {
-  background-color: #d5dbeb;
-}
-
-.add-btn {
-  font-size: 12px;
-}
-
-.empty-btn {
-  font-size: 7px;
-}
-
-a.button {
-  margin-right: 15px;
-}
-
-/* Program list ***************************************************************/
-#program-list {
-  background-color: #FF9A00;
-  margin-top: 1ex;
-}
-
-/* Exercises ******************************************************************/
-
-a.exercise {
-  color: black;
-  text-decoration: none;
-}
-
-a.exercise:hover {
-  color: white;
-}
-
-.badge-warning {
-  margin-right: 2px;
-}
-
-.error {
-  background-color: #d9534f;
-  color: white;
-}
-
-.card-body {
-  padding: 10px;
-}
-.card {
-  margin-bottom: 5px;
-
-}
-
-/* !important is used to override existing background-colors that may exist on an element */
-.bg-chest      { background-color: #ea9999 }
-.bg-triceps    { background-color: #e6b8af }
-.bg-upper-back { background-color: #a4c2f4 }
-.bg-biceps     { background-color: #c9daf8 }
-.bg-shoulders  { background-color: #93c47d }
-.bg-core       { background-color: #8e7cc3 }
-.bg-lower-body { background-color: #f6b26b }
-
-.bg-chest, .bg-triceps, .bg-upper-back, .bg-biceps,
-.bg-shoulders, .bg-core, .bg-lower-body {
-  color: black;
-}
-
-/* Add Exercise */
-.input-group-text, .input-label {
-  background-color: #294D67;
-  color: white;
-}
-
-.input-card {
-  padding: 1em;
-  margin: 0;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-
-}
-
-.input-label {
-  margin: 0;
-  border-radius: 5px;
-  padding: 1ex 0 8px 12px;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.desc-txt {
-  min-height: 4em;
-}
-
-.alert {
-  color: white;
-  margin: auto;
-  margin-bottom: 1em;
-}
-
-.alert-danger {
-  background-color: #d9534f;
-}
-
-.alert-success {
-  background-color:  #5cb85c;
-}
-
-.custom-control-label:before{
-  background-color: #D5D0CA;
-}
-
-/* Vertically align modal to the middle */
-.modal-dialog {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) !important;
 }

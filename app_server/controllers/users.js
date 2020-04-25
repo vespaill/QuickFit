@@ -80,9 +80,9 @@ const renderCalendar = (req, res, exercises, program) => {
     });
 };
 
-module.exports = {
-};
-
+/* -----------------------------------------------------------------------------
+                          User login and registration
+----------------------------------------------------------------------------- */
 /* GET the register-form page */
 const registerForm = (req, res) => {
     res.render('register-form', {
@@ -192,7 +192,8 @@ const doLoginUser = (req, res) => {
 const logoutUser = (req, res) => {
     req.session.destroy();
     debug('Session detroyed, User logged out.')
-    res.redirect('/');
+    res
+        .redirect('/login-form?msg=logged_out');
 };
 
 module.exports = {
