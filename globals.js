@@ -47,20 +47,9 @@ function normalizePort(val) {
     return false;
 }
 
-let inMemoryToken;
-const setInMemToken = (val) => { inMemoryToken = val; }
-const clearInMemToken = (val) => { inMemoryToken = undefined; }
-const getInMemToken = () => inMemoryToken;
-
 module.exports = {
     getSiteName,
     getServer,
-
     getPort,
     showError,
-
-    setInMemToken,
-    getInMemToken,
-    clearInMemToken
-
 };

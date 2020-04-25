@@ -1,5 +1,3 @@
-const clearToken = require('../../globals').clearInMemToken;
-
 jQuery(document).ready(() => {
     $('.alert')
         .hide()
@@ -7,7 +5,4 @@ jQuery(document).ready(() => {
         .delay(3000)
         .slideUp(2000);
 
-    $('#logout-btn').on('click', (e) => {
-        clearToken();
-    })
 });
