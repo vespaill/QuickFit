@@ -192,7 +192,7 @@ const doLoginUser = (req, res) => {
 const logoutUser = (req, res) => {
     req.session.destroy();
     debug('Session detroyed, User logged out.')
-    res.redirect('/login-form');
+    res.redirect('/');
 };
 
 module.exports = {

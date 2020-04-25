@@ -43,11 +43,11 @@ app.use(bodyParser.urlencoded({ extended:false }));         /* Parse incoming re
 app.use(express.static( path.join(__dirname, 'public') ));  /* Serve static files(images,css,js) from ./public */
 app.use(session({
     secret: process.env.SESSION_SECRET,
+    resave: false,              /* don't save session if unmodified */
+    saveUninitialized: false,   /* don't create session until something stored */
     store: new MongoStore({
         "url": dbURI,
-        "collection": "sessions",
-        "auto_reconnect": true,
-        "clear_interval": 3600, // 60 minutes
+        "autoReconnect": true,
     })
 }));
 
