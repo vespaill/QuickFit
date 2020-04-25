@@ -21,8 +21,8 @@ router.get('/program-list', ctrlPublic.program_list);
 router.get('/exercise-list', ctrlExercises.exercises);
 
 router.route('/exercise-list/add')
-    .get(ctrlExercises.addExerciseForm)
-    .post(ctrlExercises.doAddExercise);
+    .get(auth, ctrlExercises.addExerciseForm)
+    .post(auth, ctrlExercises.doAddExercise);
 
 router.get('/exercise/:exerciseid', ctrlExercises.exerciseInfo);
 

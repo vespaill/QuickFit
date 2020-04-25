@@ -12,12 +12,12 @@ const ctrlLogins    = require('../controllers/logins');
 /* ----------------------------- Exercises API ------------------------------ */
 router.route('/exercises')
     .get(ctrlExercises.exercisesList)
-    .post(auth, ctrlExercises.exercisesCreate);
+    .post(ctrlExercises.exercisesCreate);
 
 router.route('/exercises/:exerciseid')
     .get(ctrlExercises.exerciseReadOne)
     .put(ctrlExercises.exerciseUpdateOne)
-    .delete([auth, admin], ctrlExercises.exerciseDeleteOne);
+    .delete(auth, ctrlExercises.exerciseDeleteOne);
 
 
 /* ------------------------------ Programs API ------------------------------ */
