@@ -6,7 +6,7 @@ block content
         h1.text-center Login to QuickFit
     form(action='', method='post', role='form')
       .row
-        .col-12.text-center
+        .col-12.text-center.mt-3
           case msg
             when 'postdata_incomplete'
               .alert.alert-danger(role='alert') All fields are required!
@@ -21,7 +21,7 @@ block content
             when 'logged_out'
               .alert.alert-warning(role='alert') Logged out
       //- Email
-      .row.mt-5
+      .row.mt-3
         .col-md-6.text-center.mx-auto
           input.form-control(required type='email'   autocomplete='username' placeholder='Email' name='email')
       //- Password
@@ -32,6 +32,6 @@ block content
       .row.mt-5
         .col-md-4.text-center.mx-auto
           button.btn-block.btn.btn-blue.p-2 Login
-    .row.mt-3
-      .col-md-4.text-center.mx-auto
-        a.btn-block.btn.btn-default.p-2(href='/register-form') Create Account
+    //- .row.mt-3
+    //-   .col-md-4.text-center.mx-auto
+    //-     a.btn-block.btn.btn-default.p-2(href='/register-form') Create Account

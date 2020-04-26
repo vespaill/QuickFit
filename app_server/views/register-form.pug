@@ -3,9 +3,9 @@ block content
   .container.main-content
     .row.mb-4.mt-5
       .col-12
-        h1.text-center.mb-4 Create Your QuickFit Account
+        h1.text-center.mb-2 Create Your QuickFit Account
     form.row(action='', method='post', role='form')
-      .col-12.text-center
+      .col-12.text-center.mb-3
         case error
           when 'password_confirm_err'
             .alert.alert-danger(role='alert') Passwords do not match!
@@ -49,5 +49,5 @@ block content
       .col-12.text-center
         button.col-md-4.btn.btn-blue Sign up
 
-    .col-12.text-center.mt-4
-      a.btn.btn-default.col-md-4(href='/login-form') Log in
+    //- .col-12.text-center.mt-4
+    //-   a.btn.btn-default.col-md-4(href='/login-form') Log in
