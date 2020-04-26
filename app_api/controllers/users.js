@@ -45,6 +45,9 @@ const registerUser = (req, res) => {
     debug('Hashing password...');
     user.setPassword(req.body.password);
 
+    debug('Populating user exercises...');
+    user.populateExercises();
+
     debug('Saving new user to MongoDB...');
     user.save((err) => {
         const retObj = _.assign( { message: '' }, _.pick(user, 'email') );
@@ -77,7 +80,7 @@ const registerUser = (req, res) => {
 const getUser = (req, res) => {
     User_model
         .findById(req.params.userid)
-        .select('isAdmin email')
+        // .select('isAdmin email')
         .exec((err, user) => {
             if (!user) {
                 return res
@@ -149,10 +152,79 @@ const deleteUser = (req, res) => {
     }
 }
 
+/* POST /:id/exercises */
+const addExerciseToUser = (req, res) => {
+    const { userid } = req.params;
+    const exercise = req.body;
+
+    if (!userid) {
+        return res
+            .status(404)
+            .send('Undefined user ID');
+    }
+
+    User_model
+        .findById(userid)
+        .exec((err, user) => {
+            if ( !user ) {
+                return res
+                    .status(404)
+                    .send('User not found');
+            } else if (err) {
+                return res
+                    .status(400)
+                    .json(err);
+            }
+            user.exercises.push( new Exercise_model(exercise) );
+
+            user.save((err, updatedUser) => {
+                if (err)
+                    res
+                        .status(404)
+                        .send(err.message);
+                else {
+                    res
+                        .status(200)
+                        .json(updatedUser);
+                }
+            });
+        });
+}
+
+/* GET /:userid/exercises/:exerciseid */
+const getOneUserExercise = (req, res) => {
+    User_model
+        .findById(req.params.userid)
+        .exec((err, user) => {
+            if (!user) {
+                return res
+                    .status(404)
+                    .send('User not found');
+
+            } else if (err) {
+                return res
+                    .status(404)
+                    .json(err);
+            }
+
+            debug('getOneUserExercise(): exerciseid =', req.params.exerciseid);
+            const exercise = user.exercises.find((element) => {
+                return element._id == req.params.exerciseid
+            });
+            debug('getOneUserExercise(): exercise: ', exercise);
+
+            return res
+                .status(200)
+                .json(exercise);
+        });
+}
+
 module.exports = {
     getUsers,
     registerUser,
     getUser,
     // updateUser,
-    deleteUser
+    deleteUser,
+    addExerciseToUser,
+    getOneUserExercise
 };

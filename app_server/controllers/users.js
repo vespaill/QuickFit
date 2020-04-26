@@ -1,6 +1,9 @@
-const globals = require('../../globals');
 const request = require('request');
 const debug   = require('debug')('app-svr:ctrl/users ----->');
+
+const server  = (require('../../globals').getServer)();
+const showErr = require('../../globals').showError;
+const _       = require('lodash');
 
 const dashboard = (req, res) => {
     res.render('dashboard.pug', {
@@ -17,14 +20,14 @@ const account = (req, res) => {
 
 const calendar = (req, res) => {
     let requestOptions = {
-        url: `${globals.getServer()}${'/api/exercises'}`,
+        url: `${server}${'/api/exercises'}`,
         method: 'GET',
         json: {},
     };
 
     /* Do exercise API call */
     request(requestOptions, (err, response, exercises) => {
-        requestOptions.url = `${globals.getServer()}${'/api/programs'}`;
+        requestOptions.url = `${server}${'/api/programs'}`;
 
         /* Do program API call */
         request(requestOptions, (err, response, programs) => {
@@ -84,7 +87,7 @@ const renderCalendar = (req, res, exercises, program) => {
                           User login and registration
 ----------------------------------------------------------------------------- */
 /* GET the register-form page */
-const registerForm = (req, res) => {
+const renderRegisterForm = (req, res) => {
     res.render('register-form', {
         title: '—Registration',
         error: req.query.err
@@ -92,7 +95,9 @@ const registerForm = (req, res) => {
 };
 
 /* POST request to Users API */
-const doRegisterUser = (req, res) => {
+const registerUser = (req, res) => {
+    const funcName = 'registerUser()';
+    debug(funcName, 'begin');
     /* If the password fields don't match, redirect. */
     if (req.body.password !== req.body.pwConfirm) {
         debug('Password fields do not match!');
@@ -107,7 +112,7 @@ const doRegisterUser = (req, res) => {
             password: req.body.password
         };
         const requestOptions = {
-            url: `${globals.getServer()}${path}`,
+            url: `${server}${path}`,
             method: 'POST',
             json: postdata
         };
@@ -141,13 +146,14 @@ const doRegisterUser = (req, res) => {
                         res.redirect('/register-form?err=email_taken');
 
                     } else {
-                        globals.showError(req, res, statusCode);
+                        showErr(req, res, statusCode);
                     }
 
                 }
             );
         }
     }
+    debug(funcName, 'end');
 };
 
 /* GET the login-form page */
@@ -168,14 +174,14 @@ const doLoginUser = (req, res) => {
         password: req.body.password
     };
     const requestOptions = {
-        url: `${globals.getServer()}${path}`,
+        url: `${server}${path}`,
         method: 'POST',
         json: postdata
     };
 
     request(requestOptions, (err, { statusCode }, response) => {
         if (statusCode === 200) {
-            debug('response.user =', response.user);
+            debug('doLoginUser(): response.user =', response.user);
             req.session.user = response.user;
             res.redirect('/dashboard');
         } else if (statusCode === 401) {
@@ -183,26 +189,166 @@ const doLoginUser = (req, res) => {
         } else if (response.message == 'User not found') {
             res.redirect('/login-form?msg=unregistered_email');
         } else {
-            globals.showError(req, res, statusCode);
+            showErr(req, res, statusCode);
         }
     });
 }
 
-// app.get('/logout',
 const logoutUser = (req, res) => {
     req.session.destroy();
-    debug('Session detroyed, User logged out.')
+    debug('logoutUser(): Session detroyed, User logged out.')
     res
         .redirect('/login-form?msg=logged_out');
+};
+
+const renderUserExercises = (req, res, exerciseArray) => {
+    let message = null;
+    if ( !(exerciseArray instanceof Array) ) {
+        message = 'API lookup error';
+        exerciseArray = [];
+    } else if (!exerciseArray.length) {
+        message = 'User has no excises';
+    }
+    res.render('exercise-list', {
+        title: '—User Exercises',
+        exercises: _.orderBy(exerciseArray, ['group'],['asc']),/*  Sort by group */
+        message,
+        username: req.session.user.name,
+        inserted: req.query.inserted
+    });
+};
+
+const getUserExercises = (req, res) => {
+    debug('getUserExercises(): req.session.user._id =', req.session.user._id);
+    const requestOptions = {
+        url: `${server}/api/users/${req.session.user._id}`,
+        method: 'GET',
+        json: {},
+    };
+    debug('getUserExercises(): url =', requestOptions.url);
+
+    request(requestOptions, (err, response, { exercises }) => {
+            renderUserExercises(req, res, exercises);
+        }
+    );
+}
+
+const renderExerciseForm = (req, res) => {
+    debug('renderExerciseForm()...');
+    res.render('exercise-form', {
+        title: '—New Exercise',
+        groupOptions: [
+            'Chest',
+            'Upper back',
+            'Shoulders',
+            'Biceps',
+            'Triceps',
+            'Core',
+            'Lower body'
+        ],
+        equipOptions: [{
+                abbrv: 'BB',
+                name: 'Barbell'
+            }, {
+                abbrv: 'DB',
+                name: 'Dumbbell'
+            }, {
+                abbrv: 'C',
+                name: 'Cable'
+            }, {
+                abbrv: 'M',
+                name: 'Machine'
+            }, {
+                abbrv: 'BE',
+                name: 'Body weight<br>& additional equipment'
+            }, {
+                abbrv: 'BW',
+                name: 'Body weight only'
+        }],
+        /* Send a new error variable to the view, passing the view any existing
+           query parameters. */
+        error: req.query.err
+    });
+};
+
+const postExercise = (req, res) => {
+    debug('postExercise(): req.session.user._id: ', req.session.user._id);
+    const path = `/api/users/${req.session.user._id}/exercises`;
+    const postdata = {
+        name: req.body.name,
+        equip: req.body.equipment,
+        group: req.body.category,
+        desc: req.body.description === ''? undefined : req.body.description
+    };
+    const requestOptions = {
+        url: `${server}${path}`,
+        method: 'POST',
+        json: postdata
+    };
+    debug('postExercise(): postdata =', requestOptions);
+
+    if (!postdata.name || !postdata.equip || !postdata.group) {
+        res.redirect('/dashboard/exercise-list/add?err=val');
+    } else {
+        request(
+            requestOptions,
+            (err, {statusCode}, {name}) => {
+                if (statusCode === 200) {
+                    res.redirect('/dashboard/exercise-list?inserted=true');
+
+                /* Adds a check to see whether the status is 400, the body has a
+                name, and that name is ValidationError. */
+                } else if (statusCode===400 && name && name==='ValidationError') {
+                    /* If true, redirects to the exercise form, passing an error
+                    flag in a query string */
+                    res.redirect('/dashboard/exercise-list/add?err=val');
+
+                } else {
+                    showErr(req, res, statusCode);
+                }
+            }
+        );
+    }
+};
+
+const renderInfoOneUserExercise = (req, res, exercise) => {
+    debug('renderInfoOneUserExercise(): exercise = %O', exercise.name);
+    res.render('exercise-info.pug', {
+        title: exercise.name,
+        exercise
+    });
+}
+
+
+const getOneUserExercise = (req, res) => {
+    const requestOptions = {
+        url: `${server}/api/users/${req.session.user._id}/exercises/${req.params.exerciseid}`,
+        method: 'GET',
+        json: {},
+    };
+    debug('getOneUserExercise(): ', requestOptions.url);
+    request(requestOptions, (err, response, exercise) => {
+        debug('getOneUserExercise(): exercise = %O', exercise.name);
+        renderInfoOneUserExercise(req, res, exercise);
+    });
 };
 
 module.exports = {
     dashboard,
     account,
     calendar,
-    registerForm,
-    doRegisterUser,
+
+    renderRegisterForm,
+    registerUser,
+
     loginForm,
     doLoginUser,
-    logoutUser
+
+    logoutUser,
+
+    getUserExercises,
+    getOneUserExercise,
+
+    renderExerciseForm,
+    postExercise,
 };

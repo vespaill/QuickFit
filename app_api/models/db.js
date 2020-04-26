@@ -94,8 +94,6 @@ require('./exercises');
 require('./users');
 require('./programs');
 
-const getDbURI = () => {
+exports.getDbURI = () => {
     return dbURI;
 }
-
-exports.getDbURI = getDbURI;

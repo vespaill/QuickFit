@@ -2,20 +2,8 @@ extends layout
 
 mixin printExercise(exercise)
   .card-body
-    //- Trigger the modal with a button
-    button.close(type="button" data-toggle="modal" data-target=`#delete-${exercise.name.toLowerCase()}`) &times;
-    //- Modal
-    .modal.fade(role="dialog" id=`delete-${exercise.name.toLowerCase()}`)
-      .modal-dialog
-        //- Modal content
-        .modal-content
-          .modal-body
-            h5.mt-3.text-center= `Delete "${exercise.name}"?`
-            input(hidden=true, name=`${exercise.name}`)
-          .modal-footer
-            button.btn.btn-default(type="button" data-dismiss="modal") Cancel
     h4
-      a.exercise(href=`/exercise/${exercise._id}`)= exercise.name
+      a.exercise(href=`exercise/${exercise._id}`)= exercise.name
     .equipments
       each equip in exercise.equip
         span.badge.badge-warning= equip
@@ -50,10 +38,16 @@ mixin colorCodeByGroup(exercise)
 block content
   .container.main-content
     .row.justify-content-center.mb-3.mt-5
-      h1.text-center Exercise Selection
+      .text-center
+        - if (locals.authenticated)
+          h1 #{username}'s exercises
+        - else
+          h1 Exercise Selection
+          p Once logged in, you can add delete from this list.
 
-    .row.justify-content-center.mb-3
-      a.btn.btn-default(href='/exercise-list/add') Add New
+    - if (locals.authenticated)
+      .row.justify-content-center.mb-3
+        a.btn.btn-default(href='/dashboard/exercise-list/add') Add New
 
     .row
       - if (inserted == 'true')

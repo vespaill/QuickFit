@@ -14,24 +14,14 @@ router.get('/qnr2', ctrlPublic.qnr2);
 router.get('/qnr3', ctrlPublic.qnr3);
 router.get('/qnr-end', ctrlPublic.qnr_end);
 router.get('/program-list', ctrlPublic.program_list);
+router.get('/exercise-list', ctrlExercises.getPublicExercises);
+router.get('/exercise/:exerciseid', ctrlExercises.exerciseInfo);
 
 
-/* ----------------------------- Exercise pages ----------------------------- */
-router.route('/exercise-list')
-    .get(ctrlExercises.exercises);
-
-router.route('/exercise-list/add')
-    .get(auth, ctrlExercises.addExerciseForm)
-    .post(auth, ctrlExercises.doAddExercise);
-
-router.route('/exercise/:exerciseid')
-    .get(ctrlExercises.exerciseInfo);
-
-
-/* ---------------- User authentication/authorization pages. ---------------- */
+/* -------------------- User login & registration pages. -------------------- */
 router.route('/register-form')
-    .get(ctrlUsers.registerForm)
-    .post(ctrlUsers.doRegisterUser);
+    .get(ctrlUsers.renderRegisterForm)
+    .post(ctrlUsers.registerUser);
 
 router.route('/login-form')
     .get(ctrlUsers.loginForm)
@@ -39,10 +29,19 @@ router.route('/login-form')
 
 router.get('/logout', ctrlUsers.logoutUser);
 
+
 /* ------------------------- Protected user pages. -------------------------- */
 router.get('/dashboard', auth, ctrlUsers.dashboard);
-router.get('/dashboard/account', auth, ctrlUsers.account);
 router.get('/dashboard/calendar', auth, ctrlUsers.calendar);
+router.get('/dashboard/exercise-list', auth, ctrlUsers.getUserExercises);
+router.get('/dashboard/exercise/:exerciseid', auth, ctrlUsers.getOneUserExercise);
+
+router.route('/dashboard/exercise-list/add')
+    .get(auth, ctrlUsers.renderExerciseForm)
+    .post(auth, ctrlUsers.postExercise);
+
+router.get('/dashboard/account', auth, ctrlUsers.account);
+
 
 module.exports = router;
 

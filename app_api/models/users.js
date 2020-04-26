@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const crypto   = require('crypto');
 const debug    = require('debug')('app-api:models/users --->');
+const server   = (require('../../globals').getServer)();
+const request  = require('request');
+const _        = require('lodash');
+
+Exercise_model = mongoose.model('Exercise');
 
 const userSchema = new mongoose.Schema({
     name: {             /* Name is also required but not necessarily unique */
@@ -26,9 +31,32 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
-    }
+    },
+
+    exercises: [Exercise_model.schema]
 });
 
+userSchema.methods.populateExercises = function () {
+    request({
+        url: `${server}/api/exercises`,
+        method: 'GET',
+        json: {}
+    }, (err, response, body) => {
+
+        for (i = 0; i < body.length; i++) {
+            debug(_.pick(body[i], 'name'));
+            this.exercises.push( new Exercise_model(body[i]) );
+        }
+        this.save();
+
+    })
+}
+
+async function addAuthor(courseId, author) {
+    const course = await Course.findById(courseId);
+    course.authors.push(author);
+    course.save();
+}
 
 /* -----------------------------------------------------------------------------
     Setting a password in the User model.

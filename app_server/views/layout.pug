@@ -19,14 +19,16 @@ html
           ul.navbar-nav.center.ml-auto
             - if (!locals.authenticated)
                 li.nav-item
+                  a.nav-link.btn.btn-default(href="/exercise-list") Exercises
+                li.nav-item
                   a.nav-link.btn.btn-default(href="/login-form") Login
                 li.nav-item
                   a.nav-link.btn.btn-default(href="/register-form") Register
             - else
                 li.nav-item
-                  a.nav-link.btn.btn-default(href="/exercise-list") Exercises
+                  a.nav-link.btn.btn-default(href="/dashboard/exercise-list") Your Exercises
                 li.nav-item
-                  a.nav-link.btn.btn-default(href="/dashboard") Dashboard
+                  a.nav-link.btn.btn-default(href="/dashboard/") Dashboard
                 li.nav-item
                   a#logout-btn.nav-link.btn.btn-danger(href="/logout") Logout
 

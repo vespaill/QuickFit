@@ -1,4 +1,5 @@
-const debug = require('debug')('app-svr:middleware/auth->');
+const debug = require('debug')('app:middleware/auth ---->');
+const _     = require('lodash');
 
 function auth(req, res, next) {
     if (req.session.user) {
@@ -13,6 +14,7 @@ function auth(req, res, next) {
 
 function checkLogin(req, res, next) {
     res.locals.authenticated = (req.session.user)? true : false;
+    debug('User: ', _.pick(req.session.user, ['email', '_id']));
     debug('Authenticated: ', res.locals.authenticated);
     next();
 }

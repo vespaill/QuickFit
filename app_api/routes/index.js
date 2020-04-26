@@ -38,6 +38,11 @@ router.route('/users/:userid')
     // .put(ctrlUsers.updateUser)
     .delete(ctrlUsers.deleteUser);
 
+router.route('/users/:userid/exercises')
+    .post(ctrlUsers.addExerciseToUser);
+
+router.get('/users/:userid/exercises/:exerciseid', ctrlUsers.getOneUserExercise);
+
 /* ------------------------------- Logins API ------------------------------- */
 
 router.route('/logins')

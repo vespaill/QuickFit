@@ -2,20 +2,20 @@ const globals = require('../../globals');
 const request = require('request');
 const debug   = require('debug')('app-svr:ctrl/exercises ->');
 
-const renderExercises = (req, res, responseBody) => {
+const renderExercises = (req, res, exerciseArray) => {
     debug('renderExercises()');
     debug('Authenticated: ', res.locals.authenticated);
     let message = null;
 
     /* If the response isn't an array, set a message and set the responseBody
        to be an empty array. */
-    if ( !(responseBody instanceof Array) ) {
+    if ( !(exerciseArray instanceof Array) ) {
         message = "API lookup error";
-        debug(responseBody);
-        responseBody = [];
+        debug(exerciseArray);
+        exerciseArray = [];
     } else {
         /* If the response is an array with no length, set a message. */
-        if (!responseBody.length) {
+        if (!exerciseArray.length) {
             message = "No exercises found in database";
         }
     }
@@ -33,40 +33,23 @@ const renderExercises = (req, res, responseBody) => {
 
         /* Here we have finally removed the hardcoded array of exercise objects,
            and passed the responseBody instead. */
-        exercises: responseBody,
+        exercises: exerciseArray,
         message,
         inserted: req.query.inserted
     });
 };
 
-const exercises = (req, res) => {
+const getPublicExercises = (req, res) => {
     debug('exercises()');
     debug('Authenticated: ', res.locals.authenticated);
-    /* Set the path for the API request. */
-    const path = '/api/exercises';
 
-    /* Set the request options, including URL, method and empty JSON body */
     const requestOptions = {
-
-        /* Full URL of the request to be made, including protocol, domain, path,
-           and URL parameters */
-        url: `${globals.getServer()}${path}`,
-
-        /* Method of the request, such as GET, POST, PUT, or DELETE */
+        url: `${globals.getServer()}/api/exercises`,
         method: 'GET',
-
-        /* Body of the request as a JavaScript object; an empty object should be
-           sent if no body data is needed */
         json: {},
     };
 
-    /* Make request to the API, sending through the request options. */
-    request(
-        requestOptions,
-
-        /* Supply the callback to render the exercises page */
-        (err, response, body) => {
-            /* Pass the body returned by the request to renderExercises() */
+    request(requestOptions, (err, response, body) => {
             renderExercises(req, res, body);
         }
     );
@@ -103,89 +86,7 @@ const exerciseInfo = (req, res) => {
 
 };
 
-/* GET 'Add Exercise' page */
-const addExerciseForm = (req, res) => {
-    res.render('exercise-form', {
-        title: '—New Exercise',
-        groupOptions: [
-            'Chest',
-            'Upper back',
-            'Shoulders',
-            'Biceps',
-            'Triceps',
-            'Core',
-            'Lower body'
-        ],
-        equipOptions: [{
-                abbrv: 'BB',
-                name: 'Barbell'
-            }, {
-                abbrv: 'DB',
-                name: 'Dumbbell'
-            }, {
-                abbrv: 'C',
-                name: 'Cable'
-            }, {
-                abbrv: 'M',
-                name: 'Machine'
-            }, {
-                abbrv: 'BE',
-                name: 'Body weight<br>& additional equipment'
-            }, {
-                abbrv: 'BW',
-                name: 'Body weight only'
-        }],
-        /* Send a new error variable to the view, passing the view any existing
-           query parameters. */
-        error: req.query.err
-    });
-};
-
-const doAddExercise = (req, res) => {
-    const path = '/api/exercises';
-    const postdata = {
-        name: req.body.name,
-        equip: req.body.equipment,
-        group: req.body.category,
-        desc: req.body.description === ''? undefined : req.body.description
-    };
-
-    debug(postdata);
-
-    const requestOptions = {
-        url: `${globals.getServer()}${path}`,
-        method: 'POST',
-        json: postdata
-    };
-
-    if (!postdata.name || !postdata.equip || !postdata.group) {
-        res.redirect('/exercise-list/add?err=val');
-    } else {
-        request(
-            requestOptions,
-            (err, {statusCode}, {name}) => {
-                if (statusCode === 201) {
-                    res.redirect('/exercise-list?inserted=true');
-
-                /* Adds a check to see whether the status is 400, the body has a
-                name, and that name is ValidationError. */
-                } else if (statusCode===400 && name && name==='ValidationError') {
-                    /* If true, redirects to the exercise form, passing an error
-                    flag in a query string */
-                    res.redirect('/exercise-list/add?err=val');
-
-                } else {
-                    globals.showError(req, res, statusCode);
-                }
-            }
-        );
-    }
-
-};
-
 module.exports = {
-    exercises,
+    getPublicExercises,
     exerciseInfo,
-    addExerciseForm,
-    doAddExercise
 };
