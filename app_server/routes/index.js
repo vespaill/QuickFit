@@ -1,12 +1,11 @@
 const express       = require('express');
 const router        = express.Router();
 
-const auth  = require('../../middleware/auth').auth;
+const auth          = require('../../middleware/auth').auth;
 
 const ctrlPublic    = require('../controllers/public');
 const ctrlExercises = require('../controllers/exercises');
-const ctrlUsers      = require('../controllers/users');
-
+const ctrlUsers     = require('../controllers/users');
 
 /* ------------------------------ Public pages ------------------------------ */
 router.get('/', ctrlPublic.intro);
@@ -18,13 +17,15 @@ router.get('/program-list', ctrlPublic.program_list);
 
 
 /* ----------------------------- Exercise pages ----------------------------- */
-router.get('/exercise-list', ctrlExercises.exercises);
+router.route('/exercise-list')
+    .get(ctrlExercises.exercises);
 
 router.route('/exercise-list/add')
     .get(auth, ctrlExercises.addExerciseForm)
     .post(auth, ctrlExercises.doAddExercise);
 
-router.get('/exercise/:exerciseid', ctrlExercises.exerciseInfo);
+router.route('/exercise/:exerciseid')
+    .get(ctrlExercises.exerciseInfo);
 
 
 /* ---------------- User authentication/authorization pages. ---------------- */

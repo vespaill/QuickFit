@@ -1,3 +1,5 @@
+const debug = require('debug')('app-svr:ctrl/public ---->');
+
 /* Get the intro page */
 const intro = (req, res) => {
     /* Defines the route, using the view template 'intro.pug'

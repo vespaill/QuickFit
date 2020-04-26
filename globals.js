@@ -1,4 +1,3 @@
-const getSiteName = () => 'QuickFit';
 const getPort = () => normalizePort(process.env.PORT || '3000');
 const getServer = () => {
     /* If the application is running in production mode, use the live URL. */
@@ -48,7 +47,6 @@ function normalizePort(val) {
 }
 
 module.exports = {
-    getSiteName,
     getServer,
     getPort,
     showError,

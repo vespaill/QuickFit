@@ -3,7 +3,8 @@ const request = require('request');
 const debug   = require('debug')('app-svr:ctrl/exercises ->');
 
 const renderExercises = (req, res, responseBody) => {
-
+    debug('renderExercises()');
+    debug('Authenticated: ', res.locals.authenticated);
     let message = null;
 
     /* If the response isn't an array, set a message and set the responseBody
@@ -39,7 +40,8 @@ const renderExercises = (req, res, responseBody) => {
 };
 
 const exercises = (req, res) => {
-
+    debug('exercises()');
+    debug('Authenticated: ', res.locals.authenticated);
     /* Set the path for the API request. */
     const path = '/api/exercises';
 
@@ -72,7 +74,7 @@ const exercises = (req, res) => {
 };
 
 const renderExerciseInfo = function (req, res, exercise) {
-    debug('exercise = %O', exercise);
+    debug('exercise = %O', exercise.name);
     /* Compile the view template exercise-info.pug */
     res.render('exercise-info.pug', {
         /* Pass some data to the template. */

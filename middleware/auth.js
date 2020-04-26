@@ -1,24 +1,23 @@
-const debug = require('debug')('app-svr:middleware/auth ---->');
+const debug = require('debug')('app-svr:middleware/auth->');
 
 function auth(req, res, next) {
     if (req.session.user) {
-        debug('User:', req.session.user);
+        // debug('User exists, proceeding to page');
         next();     // If session exists, proceed to page
     } else {
+        // debug('User doesn\'t exist, sending err');
         var err = new Error("Not logged in!");
         next(err);  // Error, trying to access unauthorized page!
     }
  }
 
-// function checkLogin(err, req, res, next) {
-//     var logged_in = false;
-//     if (req.session.userId) {
-//         res.locals.logged_in = true;
-//     }
-//     next(err);
-// }
+function checkLogin(req, res, next) {
+    res.locals.authenticated = (req.session.user)? true : false;
+    debug('Authenticated: ', res.locals.authenticated);
+    next();
+}
 
  module.exports = {
     auth,
-    // checkLogin
+    checkLogin
  }

@@ -17,17 +17,18 @@ html
       .container
         #navbarToggle.navbar-collapse.collapse
           ul.navbar-nav.center.ml-auto
-            li.nav-item
-              a.nav-link.btn.btn-default(href="/exercise-list") Exercises
-            li.nav-item
-              a.nav-link.btn.btn-default(href="/dashboard") Dashboard
-            li.nav-item
-              a.nav-link.btn.btn-default(href="/login-form") Login
-            li.nav-item
-              a.nav-link.btn.btn-default(href="/register-form") Register
-            //- - if (logged_in)
-            li.nav-item
-              a#logout-btn.nav-link.btn.btn-danger(href="/logout") Logout
+            - if (!locals.authenticated)
+                li.nav-item
+                  a.nav-link.btn.btn-default(href="/login-form") Login
+                li.nav-item
+                  a.nav-link.btn.btn-default(href="/register-form") Register
+            - else
+                li.nav-item
+                  a.nav-link.btn.btn-default(href="/exercise-list") Exercises
+                li.nav-item
+                  a.nav-link.btn.btn-default(href="/dashboard") Dashboard
+                li.nav-item
+                  a#logout-btn.nav-link.btn.btn-danger(href="/logout") Logout
 
     block content
 
