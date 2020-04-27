@@ -149,7 +149,7 @@ const deleteUser = (req, res) => {
     } else {
         res
             .status(404)
-            .send('Invalid exercise ID');
+            .send('Invalid user ID');
     }
 }
 
@@ -194,30 +194,90 @@ const addExerciseToUser = (req, res) => {
 
 /* GET /:userid/exercises/:exerciseid */
 const getOneUserExercise = (req, res) => {
-    User_model
-        .findById(req.params.userid)
-        .exec((err, user) => {
-            if (!user) {
-                return res
-                    .status(404)
-                    .send('User not found');
+    const { userid,  exerciseid } = req.params;
+    if (userid && exerciseid) {
+        User_model
+            .findById(userid)
+            .exec((err, user) => {
+                if (!user) {
+                    return res
+                        .status(404)
+                        .send('User not found');
 
-            } else if (err) {
-                return res
-                    .status(404)
-                    .json(err);
-            }
+                } else if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
 
-            debug('getOneUserExercise(): exerciseid =', req.params.exerciseid);
-            const exercise = user.exercises.find((element) => {
-                return element._id == req.params.exerciseid
+                debug('getOneUserExercise(): exerciseid =', exerciseid);
+                const exercise = user.exercises.find(e => e._id == exerciseid);
+                debug('getOneUserExercise(): exercise: ', exercise);
+
+                return res
+                    .status(200)
+                    .json(exercise);
             });
-            debug('getOneUserExercise(): exercise: ', exercise);
+    } else {
+        res
+            .status(404)
+            .send('Invalid IDs');
+    }
+}
 
-            return res
-                .status(200)
-                .json(exercise);
-        });
+const deleteOneUserExercise = (req, res) => {
+    const { userid, exerciseid } = req.params;
+    if (userid && exerciseid) {
+        User_model
+            .findById(userid)
+            .exec((err, user) => {
+                if (!user) {
+                    return res
+                        .status(404)
+                        .send('User not found');
+                } else if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+
+                /* Find index of exercise */
+                const index = user.exercises.map(e => e._id).indexOf(exerciseid);
+                debug('deleteOneUserExercise(): index =', index);
+
+                if (index === -1) {
+                    return res
+                        .status(404)
+                        .send('User exercise not found');
+                } else {
+                    const exerciseName = user.exercises[index].name;
+
+                    /* Remove from array */
+                    user.exercises.splice(index, 1);
+
+                    /* Don't forget to save changes into model */
+                    user.save((err, updatedUser) => {
+                        if (err) {
+                            res
+                                .status(404)
+                                .send(err.message);
+                        } else {
+                            res
+                                .status(200)
+                                .json({
+                                    message: 'User exercise deleted',
+                                    exerciseid,
+                                    exerciseName
+                                });
+                        }
+                    });
+                }
+            });
+    } else {
+        res
+            .status(404)
+            .send('Undefined IDs');
+    }
 }
 
 module.exports = {
@@ -227,5 +287,6 @@ module.exports = {
     // updateUser,
     deleteUser,
     addExerciseToUser,
-    getOneUserExercise
+    getOneUserExercise,
+    deleteOneUserExercise
 };

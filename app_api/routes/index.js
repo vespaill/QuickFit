@@ -41,7 +41,9 @@ router.route('/users/:userid')
 router.route('/users/:userid/exercises')
     .post(ctrlUsers.addExerciseToUser);
 
-router.get('/users/:userid/exercises/:exerciseid', ctrlUsers.getOneUserExercise);
+router.route('/users/:userid/exercises/:exerciseid')
+    .get(ctrlUsers.getOneUserExercise)
+    .delete(ctrlUsers.deleteOneUserExercise);
 
 /* ------------------------------- Logins API ------------------------------- */
 
