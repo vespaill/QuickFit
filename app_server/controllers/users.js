@@ -181,7 +181,7 @@ const doLoginUser = (req, res) => {
 
     request(requestOptions, (err, { statusCode }, response) => {
         if (statusCode === 200) {
-            debug('doLoginUser(): response.user =', response.user);
+            debug('doLoginUser(): response.user =', response.user.email);
             req.session.user = response.user;
             res.redirect('/dashboard');
         } else if (statusCode === 401) {

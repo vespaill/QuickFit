@@ -1,6 +1,5 @@
 const mongoose   = require('mongoose');
 const debug      = require('debug')('app-api:ctrl/logins ---->');
-const _          = require('lodash');
 const User_model = mongoose.model('User');
 
 /* POST */

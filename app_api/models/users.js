@@ -5,7 +5,7 @@ const server   = (require('../../globals').getServer)();
 const request  = require('request');
 const _        = require('lodash');
 
-Exercise_model = mongoose.model('Exercise');
+const Exercise_model = mongoose.model('Exercise');
 
 const userSchema = new mongoose.Schema({
     name: {             /* Name is also required but not necessarily unique */
@@ -36,27 +36,26 @@ const userSchema = new mongoose.Schema({
     exercises: [Exercise_model.schema]
 });
 
+
+/* -----------------------------------------------------------------------------
+    Makes a GET request to the exercises API in order to populate the user's
+    exercises.
+----------------------------------------------------------------------------- */
 userSchema.methods.populateExercises = function () {
+    debug('Populating user\'s exercise collection...')
     request({
         url: `${server}/api/exercises`,
         method: 'GET',
         json: {}
     }, (err, response, body) => {
-
         for (i = 0; i < body.length; i++) {
             debug(_.pick(body[i], 'name'));
             this.exercises.push( new Exercise_model(body[i]) );
         }
         this.save();
-
     })
 }
 
-async function addAuthor(courseId, author) {
-    const course = await Course.findById(courseId);
-    course.authors.push(author);
-    course.save();
-}
 
 /* -----------------------------------------------------------------------------
     Setting a password in the User model.
@@ -79,8 +78,8 @@ userSchema.methods.setPassword = function (password) {
 userSchema.methods.validPassword = function (password) {
     debug('Validating given password: %s', password);
 
-    /* Hash the provided password using crypto's pbkdf2Sync
-      (password-based key derivation function 2) */
+    /* Hash the provided password using crypto's pbkdf2Sync which stands for
+      'password-based key derivation function 2' */
     const hash = crypto
         .pbkdf2Sync(password, this.salt, 1000, 64, 'sha512')
         .toString('hex');

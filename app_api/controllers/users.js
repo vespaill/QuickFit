@@ -1,7 +1,8 @@
-const mongoose   = require('mongoose');
-const debug      = require('debug')('app-api:ctrl/users ----->');
-const _          = require('lodash');
-const User_model = mongoose.model('User');
+const mongoose       = require('mongoose');
+const debug          = require('debug')('app-api:ctrl/users ----->');
+const _              = require('lodash');
+const Exercise_model = mongoose.model('Exercise');
+const User_model     = mongoose.model('User');
 
 /* GET */
 const getUsers = (req, res) => {
