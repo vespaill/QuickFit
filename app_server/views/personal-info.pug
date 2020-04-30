@@ -1,41 +1,41 @@
 extends layout
 block content
   .container.main-content
-    .row.mb-4.mt-5
+    .row.mt-5
       .col-12.text-center
         - if (changes == "true")
           .alert.alert-success(role="alert")="User updated!"
         - if (changes == "false")
           .alert.alert-warning(role="alert")="No updates made"
-    .row.mt-5
-      .col-md-6.mx-auto
+    .row.row-eq-height.mt-5
+      .col-md-6.mx-auto.mb-5
         .card.parent-card
           .card-body.px-0.pb-0
-            h3.card-title.px-1.text-center Personal information
-            form(action="", method="post", role="form").card.nested-card
+            h4.card-title.px-1.text-center Personal Information
+            form.card.nested-card(action="", method="post", role="form")
               .card-body.pt-3
                 .col-lg-6.input-group.mb-3.mx-auto
                   .input-group-prepend
-                    span.input-group-text#inputGroup-sizing-default Weight:
+                    span.input-group-text#inputGroup-sizing-default Weight (kg):
                   input.form-control(
                     type="number"
                     min=1
                     max=700
                     aria-label="Sizing example input"
                     describedby="inputGroup-sizing-default"
-                    placeholder=weight+" kg"
+                    value=weight
                     name="weight")
 
                 .col-lg-6.input-group.mb-3.mx-auto
                   .input-group-prepend
-                    span.input-group-text#inputGroup-sizing-default Height:
+                    span.input-group-text#inputGroup-sizing-default Height (cm):
                   input.form-control(
                     type="number"
                     min=30
                     max=300
                     aria-label="Sizing example input"
                     describedby="inputGroup-sizing-default"
-                    placeholder=height+" cm"
+                    value=height
                     name="height")
 
                 .col-lg-6.input-group.mb-3.mx-auto
@@ -51,7 +51,7 @@ block content
                     option= "female"
                     option= "other"
 
-                .col-lg-6.input-group.mb-2.mx-auto
+                .col-lg-6.input-group.mb-3.mx-auto
                   .input-group-prepend
                     span.input-group-text#inputGroup-sizing-default Age:
                   input.form-control(
@@ -60,7 +60,44 @@ block content
                     max=150
                     aria-label="Sizing example input"
                     describedby="inputGroup-sizing-default"
-                    placeholder=age
+                    value=age
                     name="age")
-              .row.justify-content-center
-                button.col-lg-3.mx-4.mb-4.btn.btn-default Update
+
+                .col-lg-6.input-group.mb-2.mx-auto
+                  .input-group-prepend
+                    span.input-group-text#inputGroup-sizing-default Activity level:
+                  input.form-control(
+                    type="number"
+                    min=1
+                    max=2
+                    step = 0.1
+                    value=activityLevel
+                    name="activityLevel")
+              .row.justify-content-center.mx-4
+                button.col-lg-3.mb-4.btn.btn-blue Save
+      .col-md-6.mx-auto
+        .card.parent-card
+          .card-body.px-0.pb-0
+            h4.card-title.px-1.text-center Recommended Macros
+            #macros.card.nested-card
+              .card-body.pt-3
+                .col-lg-8.input-group.mb-3.mx-auto
+                  .input-group-prepend
+                    span.input-group-text#inputGroup-sizing-default Calories:
+                  input.cals.form-control(disabled)
+                .col-lg-8.input-group.mb-3.mx-auto
+                  .input-group-prepend
+                    span.input-group-text#inputGroup-sizing-default Protein:
+                  input.prots.form-control(disabled)
+                .col-lg-8.input-group.mb-3.mx-auto
+                  .input-group-prepend
+                    span.input-group-text#inputGroup-sizing-default Carbohydrates:
+                  input.carbs.form-control(disabled)
+                .col-lg-8.input-group.mb-3.mx-auto
+                  .input-group-prepend
+                    span.input-group-text#inputGroup-sizing-default Fats:
+                  input.fats.form-control(disabled)
+              .row.justify-content-center.mx-4
+                button#refresh-macros.col-lg-3.mb-4.btn.btn-default Calculate
+block scripts
+  script(src='/javascripts/personal-info.js')

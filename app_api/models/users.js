@@ -57,7 +57,12 @@ const userSchema = new mongoose.Schema({
         max: 150,
         default: 20
     },
-    // daily activity level
+    activityLevel: {
+        type: Number,
+        min: 1,
+        max: 2,
+        default: 1.5
+    },
     // fitness goals
     // workout volume
     // workout intensity

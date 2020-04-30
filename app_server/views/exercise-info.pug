@@ -3,7 +3,7 @@ block content
   .container.main-content
     .row.mt-5
       .col-12
-        .div(class=`card bg-${exercise.group.replace(' ', '-').toLowerCase()}`)
+        div(class=`card bg-${exercise.group.replace(' ', '-').toLowerCase()}`)
           .card-body.mx-auto.px-5
             h1.card-title.text-center= exercise.name
 
@@ -14,13 +14,12 @@ block content
 
           .card-body.px-5
             h4.card-title.mb-0 Muscle Group
-            |
-            .badge.badge-card= exercise.group
+            div= exercise.group
 
 
           .card-body.px-5
             h4.card-title.mb-0 Equipment options
-            .equipments.badge.badge-card
+            .equipments
               each equip in exercise.equip
                 span.badge.badge-warning= equip
 

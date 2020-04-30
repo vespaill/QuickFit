@@ -324,6 +324,18 @@ a.exercise:hover {
 
 
 /* -------------------------------------------------------------------------- */
+/*                                 Dashboard                                  */
+/* -------------------------------------------------------------------------- */
+.greeting {
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+#personal-form .input-group-text {
+  background-color: var(--steel-blue-grey);
+}
+
+/* -------------------------------------------------------------------------- */
 /*                               Questionnaire                                */
 /* -------------------------------------------------------------------------- */
 .qnr-btn {
@@ -366,126 +378,4 @@ a.exercise:hover {
 
 a:hover {
   color: black;
-}
-
-
-/* -------------------------------------------------------------------------- */
-/*                                 Dashboard                                  */
-/* -------------------------------------------------------------------------- */
-.greeting {
-  font-size: 40px;
-  margin-bottom: 30px;
-}
-
-.row > .my-programs, .row > .current-program, .row > .nutrition, .row > .history, .row > .info {
-  border: 1px solid #686767;
-  border-radius: 20px;
-  padding: 0;
-}
-
-.my-programs > div:nth-child(even), .nutrition > div:nth-child(even) {
-  background-color: #ffffff;
-}
-
-.my-programs > div, .nutrition > div, .current-program > div, .program-list > div {
-  border-bottom: 2px solid #706e6e;
-}
-
-.program-list > div:last-child, .nutrition > div:last-child {
-  border-bottom: none;
-}
-
-.nutrition > div {
-  padding: 0 10px 0 10px;
-}
-
-.box-title {
-  font-size: 25px;
-  padding: 0 0 10px 10px;
-}
-
-.current-program {
-  margin: 0 50px 0 50px;
-}
-
-.row {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.add-button {
-  box-sizing: border-box;
-  width : 100%;
-}
-
-.program-list {
-  padding: 0;
-}
-
-.program-list > div {
-  padding: 0;
-}
-
-.buttons > button {
-  color: #ffffff;
-  background-color: #237fbd;
-  border-radius: 20px;
-  border: 1px solid #267fa8;
-  margin: 3px 0 3px 0;
-}
-
-.program-list {
-  border-radius: 0 0 20px 20px;
-}
-
-
-/* -------------------------------------------------------------------------- */
-/*                                Profile page                                */
-/* -------------------------------------------------------------------------- */
-.exercise-names {
-  padding-right: 0;
-}
-
-.exercise-names > div {
-  margin-bottom: 3px;
-}
-
-.exercise-names div:nth-child(even) {
-  background-color: pink;
-}
-
-.exercise-names div:nth-child(odd) {
-  background-color: yellowgreen;
-}
-
-.history > div:nth-child(even), .info > div:nth-child(even) {
-  background-color: #ffffff;
-}
-
-.history > div, .info > div {
-  border-bottom: 2px solid #706e6e;
-}
-
-.history > div:last-child, .info > div:last-child {
-  border-bottom: none;
-}
-
-.box-title {
-  font-size: 25px;
-  padding: 0 0 10px 10px;
-}
-
-::placeholder {
-  color: #000000;
-  font-style: italic;
-}
-
-.fields {
-  padding: 30px 0 200px 0;
-  border-radius: 0 0 20px 20px;
-}
-
-.update-button {
-  box-sizing: border-box;
-  width : 100%;
 }

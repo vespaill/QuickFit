@@ -32,6 +32,7 @@ const renderPersonalInfoPage = (req, res, userDetails) => {
         height: userDetails.height,
         gender: userDetails.gender,
         age: userDetails.age,
+        activityLevel: userDetails.activityLevel,
         changes: req.query.changes
     });
 };
@@ -44,13 +45,14 @@ const getUserPersonalInfo = (req, res) => {
         json: {},
     };
     debug('getUserDetails(): url =', requestOptions.url);
-    request(requestOptions, (err, response, {weight, height, gender, age}) => {
-        debug({weight, height, gender, age});
+    request(requestOptions, (err, response, {weight, height, gender, age, activityLevel}) => {
+        debug({weight, height, gender, age, activityLevel});
         renderPersonalInfoPage(req, res, {
             weight: weight,
             height: height,
             gender: gender,
-            age: age
+            age: age,
+            activityLevel: activityLevel
         });
     });
 }
@@ -63,6 +65,7 @@ const updateUserPersonalInfo = (req, res) => {
     if (req.body.height) putdata.height = req.body.height;
     if (req.body.gender) putdata.gender = req.body.gender;
     if (req.body.age) putdata.age = req.body.age;
+    if (req.body.activityLevel) putdata.activityLevel = req.body.activityLevel;
 
     const requestOptions = {
         url: `${server}/api/users/${req.session.user._id}`,
