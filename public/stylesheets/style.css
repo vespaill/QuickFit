@@ -256,6 +256,10 @@ a.exercise:hover {
   color: white;
 }
 
+.badge-card {
+  background-color: white;
+}
+
 .badge-warning {
   margin-right: 2px;
 }

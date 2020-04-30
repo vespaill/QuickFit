@@ -6,7 +6,7 @@ const showErr = require('../../globals').showError;
 const _       = require('lodash');
 
 /* -----------------------------------------------------------------------------
-                                   User pages
+                              User dashboard pages
 ----------------------------------------------------------------------------- */
 const dashboard = (req, res) => {
     res.render('dashboard.pug', {
@@ -276,7 +276,7 @@ const renderUserExercises = (req, res, exerciseArray) => {
     }
     res.render('exercise-list', {
         title: '—User Exercises',
-        exercises: _.orderBy(exerciseArray, ['group'],['asc']),/*  Sort by group */
+        exercises: _.orderBy(exerciseArray, ['group'], ['asc']),/*  Sort by group */
         message,
         username: req.session.user.name,
         inserted: req.query.inserted
