@@ -8,20 +8,36 @@ block content
     form(action='', method='post', role='form')
       .row
         .col-12.text-center
-          - if (error == 'val')
-            .alert.alert-danger(role='alert') Fields required, please try again
+          case error
+            when "name"
+              .alert.alert-danger(role='alert')="Please write a name"
+            when "group"
+              .alert.alert-danger(role='alert')="Please select a category"
+            when "equip"
+              .alert.alert-danger(role='alert')="Please select at least one equipment option"
+
       //- Exercise name and muscle group ROW
       .row.mb-4
         .col-sm-6.input-group.mb-3
           .input-group-prepend
             span.input-group-text#inputGroup-sizing-default Name:
-          input.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' name='name')
+          input.form-control(
+            type='text'
+            required
+            aria-label='Sizing example input'
+            describedby='inputGroup-sizing-default'
+            name='name')
 
         .col-sm-6.input-group.mb-3
           .input-group-prepend
             span.input-group-text#inputGroup-sizing-default Category:
-          select.custom-select.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' name='category')
-            option(hidden) Choose a category
+          select.custom-select.form-control(
+            type='text'
+            required
+            aria-label='Sizing example input'
+            describedby='inputGroup-sizing-default'
+            name='category')
+            option(hidden value="") Choose a category
             each option in groupOptions
               option(class=`bg-${option.replace(' ', '-').toLowerCase()}`)= option
 

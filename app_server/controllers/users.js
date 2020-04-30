@@ -15,11 +15,61 @@ const dashboard = (req, res) => {
     });
 };
 
-const account = (req, res) => {
+const renderAccountPage = (req, res, userDetails) => {
     res.render('account.pug', {
-        title: '—Account'
+        title: '—Account',
+        weight: userDetails.weight,
+        height: userDetails.height,
+        gender: userDetails.gender,
+        age: userDetails.age,
+        changes: req.query.changes
     });
 };
+
+const getUserPersonalInfo = (req, res) => {
+    debug('getUserDetails(): req.session.user._id =', req.session.user._id);
+    const requestOptions = {
+        url: `${server}/api/users/${req.session.user._id}`,
+        method: 'GET',
+        json: {},
+    };
+    debug('getUserDetails(): url =', requestOptions.url);
+    request(requestOptions, (err, response, {weight, height, gender, age}) => {
+        debug({weight, height, gender, age});
+        renderAccountPage(req, res, {
+            weight: weight,
+            height: height,
+            gender: gender,
+            age: age
+        });
+    });
+}
+
+const updateUserPersonalInfo = (req, res) => {
+    debug('updateUserPersonalInfo(): req.session.user._id =', req.session.user._id);
+
+    let putdata = {};
+    if (req.body.weight) putdata.weight = req.body.weight;
+    if (req.body.height) putdata.height = req.body.height;
+    if (req.body.gender) putdata.gender = req.body.gender;
+    if (req.body.age) putdata.age = req.body.age;
+
+    const requestOptions = {
+        url: `${server}/api/users/${req.session.user._id}`,
+        method: 'PUT',
+        json: putdata
+    };
+    debug('updateUserPersonalInfo(): url =', requestOptions.url);
+    debug('updateUserPersonalInfo(): putdata =', requestOptions.json);
+
+    if (_.isEmpty(putdata)) {
+        res.redirect('/dashboard/account?changes=false');
+    } else {
+        request(requestOptions, (err, response, responseBody) => {
+            res.redirect('/dashboard/account?changes=true');
+        });
+    }
+}
 
 const calendar = (req, res) => {
     let requestOptions = {
@@ -291,9 +341,16 @@ const postUserExercise = (req, res) => {
         json: postdata
     };
     debug('postExercise(): postdata =', requestOptions);
-
     if (!postdata.name || !postdata.equip || !postdata.group) {
-        res.redirect('/dashboard/exercise-list/add?err=val');
+        if (!postdata.name) {
+            res.redirect('/dashboard/exercise-list/add?err=name');
+        }
+        if (!postdata.equip) {
+            res.redirect('/dashboard/exercise-list/add?err=equip');
+        }
+        if (!postdata.group) {
+            res.redirect('/dashboard/exercise-list/add?err=group');
+        }
     } else {
         request(
             requestOptions,
@@ -341,8 +398,10 @@ const getOneUserExercise = (req, res) => {
 
 module.exports = {
     dashboard,
-    account,
     calendar,
+
+    getUserPersonalInfo,
+    updateUserPersonalInfo,
 
     renderRegisterForm,
     registerUser,

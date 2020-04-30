@@ -21,12 +21,6 @@
 /* -------------------------------------------------------------------------- */
 /*                                    Fonts                                   */
 /* -------------------------------------------------------------------------- */
-
-@font-face {
-  font-family: 'cmu-bright';
-  src: url('../fonts/cmunbmr.ttf')
-}
-
 @font-face {
   font-family: 'typo-quick';
   src: url('../fonts/typo-quik-regular.woff');
@@ -38,16 +32,15 @@
 }
 
 
-
 /* -------------------------------------------------------------------------- */
 /*                                   General                                  */
 /* -------------------------------------------------------------------------- */
 * {
   margin: 0;
   padding: 0;
-  font-family: jubilat, serif;
+  font-family: 'PT Sans', sans-serif;
   font-style: normal;
-  font-weight: 100;
+  font-weight: 400;
 }
 
 /* Have extra space at bottom so that you can scroll down past the fixed footer.
@@ -56,11 +49,11 @@ html {
   margin-bottom: 300px;
 }
 
-h2, h3, h4, h5, h6 {
+h4, h5, h6 {
   font-family: 'typo-quick';
 }
 
-h1 {
+h1, h2, h3 {
   font-family: 'bavro';
 }
 
@@ -215,16 +208,43 @@ a.button {
 
 
 /* -------------------------------------------------------------------------- */
-/*                                Program list                                */
+/*                                   Cards                                    */
 /* -------------------------------------------------------------------------- */
-#program-list {
-  background-color: var(--portal-orange-light);
-  margin-top: 1ex;
+.card {
+  margin-bottom: 5px;
 }
 
+.parent-card {
+  border:1px solid black;
+  background: var(--steel-blue-grey);
+  color: white;
+}
+
+.nested-card {
+  color: black;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border: none;
+  border-top: 1px solid black;
+  margin-bottom: 0;
+}
+
+.card.nested-card input::placeholder, .card.nested-card select {
+  color: black;
+  font-style: normal;
+
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-text {
+  font-family: 'typo-quick';
+}
 
 /* -------------------------------------------------------------------------- */
-/*                                 Exercises                                  */
+/*                               Exercise list                                */
 /* -------------------------------------------------------------------------- */
 a.exercise {
   color: black;
@@ -245,14 +265,6 @@ a.exercise:hover {
   color: white;
 }
 
-.card-body {
-  padding: 10px;
-}
-.card {
-  margin-bottom: 5px;
-
-}
-
 /* !important is used to override existing background-colors that may exist on
    an element */
 .bg-chest      { background-color: #ea9999 }
@@ -266,6 +278,15 @@ a.exercise:hover {
 .bg-chest, .bg-triceps, .bg-upper-back, .bg-biceps,
 .bg-shoulders, .bg-core, .bg-lower-body {
   color: black;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                                Program list                                */
+/* -------------------------------------------------------------------------- */
+#program-list {
+  background-color: var(--portal-orange-light);
+  margin-top: 1ex;
 }
 
 

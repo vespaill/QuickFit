@@ -40,7 +40,9 @@ router.route('/dashboard/exercise-list/add')
     .get(auth, ctrlUsers.renderExerciseForm)
     .post(auth, ctrlUsers.postUserExercise);
 
-router.get('/dashboard/account', auth, ctrlUsers.account);
+router.route('/dashboard/account')
+    .get(auth, ctrlUsers.getUserPersonalInfo)
+    .post(auth, ctrlUsers.updateUserPersonalInfo);
 
 
 module.exports = router;

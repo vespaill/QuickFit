@@ -37,21 +37,25 @@ const userSchema = new mongoose.Schema({
     weight: {
         type: Number,   /* kg */
         min: 1,
-        max: 700
+        max: 700,
+        default: 80
     },
     height: {
         type: Number,   /* centimeters */
         min: 30,
-        max: 300
+        max: 300,
+        default: 180
     },
     gender: {
         type: String,
         enum: ['male', 'female', 'other'],
+        default: 'other'
     },
     age: {
         type: Number,
         min: 0,
-        max: 150
+        max: 150,
+        default: 20
     },
     // daily activity level
     // fitness goals
