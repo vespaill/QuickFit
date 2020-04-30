@@ -33,7 +33,30 @@ const userSchema = new mongoose.Schema({
         default: false
     },
 
-    exercises: [Exercise_model.schema]
+    exercises: [Exercise_model.schema],
+    weight: {
+        type: Number,   /* kg */
+        min: 1,
+        max: 700
+    },
+    height: {
+        type: Number,   /* centimeters */
+        min: 30,
+        max: 300
+    },
+    gender: {
+        type: String,
+        enum: ['male', 'female', 'other'],
+    },
+    age: {
+        type: Number,
+        min: 0,
+        max: 150
+    },
+    // daily activity level
+    // fitness goals
+    // workout volume
+    // workout intensity
 });
 
 

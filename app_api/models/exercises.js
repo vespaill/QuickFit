@@ -9,9 +9,11 @@ const exerciseSchema = new mongoose.Schema({
         maxlength: 50
     },
     equip: {
-        type: [String],
-        required: true,
-        default: undefined
+        type: [{
+            type: String,
+            enum: ['BB', 'DB', 'C', 'M', 'BE', 'BW'],
+        }],
+        required: true
     },
     group: {
         type: String,
