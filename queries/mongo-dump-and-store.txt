@@ -1,0 +1,8 @@
+Dump local database data into a folder
+$ mongodump -h localhost:27017 -d quickfit
+
+Get live database url
+$ heroku config:get MONGODB_URI
+
+Upload the dumped data into the live database
+$ mongorestore -h ds257054.mlab.com:57054 -d heroku_s9pkjtlw -u heroku_s9pkjtlw -p crm0g4e96pjjhvri1aovolmuu8 .\quickfit\

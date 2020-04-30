@@ -4,12 +4,12 @@ const _              = require('lodash');
 const Exercise_model = mongoose.model('Exercise');
 const User_model     = mongoose.model('User');
 
-/* GET */
+/* GET /api/users */
 const getUsers = (req, res) => {
     User_model
         .find()
         .sort('-isAdmin email')
-        .select('email isAdmin')
+        .select('-exercises -salt -hash -__v')
         .exec((err, users) => {
             if (!users) {
                 return res
@@ -26,8 +26,7 @@ const getUsers = (req, res) => {
         });
 }
 
-
-/* POST */
+/* POST /api/users */
 const registerUser = (req, res) => {
     debug('req.body: %O', req.body);
 
@@ -51,7 +50,7 @@ const registerUser = (req, res) => {
 
     debug('Saving new user to MongoDB...');
     user.save((err) => {
-        const retObj = _.assign( { message: '' }, _.pick(user, 'email') );
+        const retObj = _.assign( { message: '' }, _.pick(user, ['_id', 'email']) );
         if (err) {
             if (err.code === 11000) { /* Mongo error: duplicate key */
                 debug('MongoError: E11000 duplicate key error collection');
@@ -77,7 +76,8 @@ const registerUser = (req, res) => {
 };
 
 
-/* GET /:id */
+/* -------------------------------------------------------------------------- */
+/* GET /api/users/:userid */
 const getUser = (req, res) => {
     User_model
         .findById(req.params.userid)
@@ -99,29 +99,38 @@ const getUser = (req, res) => {
         });
 }
 
-/* PUT /:id */
-// const updateUser = (req, res) => {
-    // const { userid } = req.params;
-    // if (!userid) return res.status(404).send('Undefined exercise ID');
-    // Exercise_model
-    //     .findById(userid)
-    //     .exec((err, user) => {
-    //         if ( !user )  return res.status(404).send('Exercise not found');
-    //         else if (err) return res.status(400).json(err);
+/* PUT /api/users/:userid */
+const updateUser = (req, res) => {
+    const { userid } = req.params;
+    if (!userid) return res.status(404).send('Undefined user ID');
+    User_model
+        .findById(userid)
+        .exec((err, user) => {
+            if ( !user )  return res.status(404).send('Exercise not found');
+            else if (err) return res.status(400).json(err);
 
-    //         debug('req.body = %O', req.body);
-    //         for (var p in req.body) user[p] = req.body[p];
-    //         debug('exercise = %O', user);
+            debug('req.body = %O', req.body);
 
-    //         user.save((err, updatedUser) => {
-    //             if (err) res.status(404).send(err.message);
-    //             else     res.status(200).json(updatedUser);
-    //         });
-    //     });
-// }
+            /* For each property defined in the request body object, update the
+               user object accordingly. */
+            for (var p in req.body) user[p] = req.body[p];
 
+            debug('User = %O', _.pick(user, ['name', 'email']));
 
-/* DELETE /:id */
+            user.save((err, updatedUser) => {
+                if (err) res.status(404).send(err.message);
+                else
+                    res
+                        .status(200)
+                        .json(_.assign(
+                            { message: "User updated" },
+                            _.pick(user, ['name', 'email'])
+                        ));
+            });
+        });
+}
+
+/* DELETE /api/users/:userid */
 const deleteUser = (req, res) => {
     const { userid } = req.params;
 
@@ -153,7 +162,9 @@ const deleteUser = (req, res) => {
     }
 }
 
-/* POST /:id/exercises */
+
+/* -------------------------------------------------------------------------- */
+/* POST /api/users/:userid/exercises */
 const addExerciseToUser = (req, res) => {
     const { userid } = req.params;
     const exercise = req.body;
@@ -186,13 +197,16 @@ const addExerciseToUser = (req, res) => {
                 else {
                     res
                         .status(200)
-                        .json(updatedUser);
+                        .json({
+                            message: "User exercise added!",
+                            exercise
+                        });
                 }
             });
         });
 }
 
-/* GET /:userid/exercises/:exerciseid */
+/* GET /api/users/:userid/exercises/:exerciseid */
 const getOneUserExercise = (req, res) => {
     const { userid,  exerciseid } = req.params;
     if (userid && exerciseid) {
@@ -225,6 +239,7 @@ const getOneUserExercise = (req, res) => {
     }
 }
 
+/* DELETE /api/users/:userid/exercises/:exerciseid */
 const deleteOneUserExercise = (req, res) => {
     const { userid, exerciseid } = req.params;
     if (userid && exerciseid) {
@@ -266,7 +281,6 @@ const deleteOneUserExercise = (req, res) => {
                                 .status(200)
                                 .json({
                                     message: 'User exercise deleted',
-                                    exerciseid,
                                     exerciseName
                                 });
                         }
@@ -283,9 +297,11 @@ const deleteOneUserExercise = (req, res) => {
 module.exports = {
     getUsers,
     registerUser,
+
     getUser,
-    // updateUser,
+    updateUser,
     deleteUser,
+
     addExerciseToUser,
     getOneUserExercise,
     deleteOneUserExercise

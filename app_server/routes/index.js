@@ -24,7 +24,7 @@ router.route('/register-form')
     .post(ctrlUsers.registerUser);
 
 router.route('/login-form')
-    .get(ctrlUsers.loginForm)
+    .get(ctrlUsers.renderLoginForm)
     .post(ctrlUsers.doLoginUser);
 
 router.get('/logout', ctrlUsers.logoutUser);
@@ -38,7 +38,7 @@ router.get('/dashboard/exercise/:exerciseid', auth, ctrlUsers.getOneUserExercise
 
 router.route('/dashboard/exercise-list/add')
     .get(auth, ctrlUsers.renderExerciseForm)
-    .post(auth, ctrlUsers.postExercise);
+    .post(auth, ctrlUsers.postUserExercise);
 
 router.get('/dashboard/account', auth, ctrlUsers.account);
 

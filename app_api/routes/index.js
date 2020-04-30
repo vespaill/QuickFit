@@ -35,7 +35,7 @@ router.route('/users')
 
 router.route('/users/:userid')
     .get(ctrlUsers.getUser)
-    // .put(ctrlUsers.updateUser)
+    .put(ctrlUsers.updateUser)
     .delete(ctrlUsers.deleteUser);
 
 router.route('/users/:userid/exercises')

@@ -5,6 +5,9 @@ const server  = (require('../../globals').getServer)();
 const showErr = require('../../globals').showError;
 const _       = require('lodash');
 
+/* -----------------------------------------------------------------------------
+                                   User pages
+----------------------------------------------------------------------------- */
 const dashboard = (req, res) => {
     res.render('dashboard.pug', {
         title: '—Dashboard',
@@ -157,7 +160,7 @@ const registerUser = (req, res) => {
 };
 
 /* GET the login-form page */
-const loginForm = (req, res) => {
+const renderLoginForm = (req, res) => {
     res.render('login-form', {
         title: '—Login',
         msg: req.query.msg
@@ -197,10 +200,12 @@ const doLoginUser = (req, res) => {
 const logoutUser = (req, res) => {
     req.session.destroy();
     debug('logoutUser(): Session detroyed, User logged out.')
-    res
-        .redirect('/login-form?msg=logged_out');
+    res.redirect('/login-form?msg=logged_out');
 };
 
+/* -----------------------------------------------------------------------------
+                                 User exercises
+----------------------------------------------------------------------------- */
 const renderUserExercises = (req, res, exerciseArray) => {
     let message = null;
     if ( !(exerciseArray instanceof Array) ) {
@@ -271,7 +276,7 @@ const renderExerciseForm = (req, res) => {
     });
 };
 
-const postExercise = (req, res) => {
+const postUserExercise = (req, res) => {
     debug('postExercise(): req.session.user._id: ', req.session.user._id);
     const path = `/api/users/${req.session.user._id}/exercises`;
     const postdata = {
@@ -319,7 +324,6 @@ const renderInfoOneUserExercise = (req, res, exercise) => {
     });
 }
 
-
 const getOneUserExercise = (req, res) => {
     const requestOptions = {
         url: `${server}/api/users/${req.session.user._id}/exercises/${req.params.exerciseid}`,
@@ -333,6 +337,8 @@ const getOneUserExercise = (req, res) => {
     });
 };
 
+
+
 module.exports = {
     dashboard,
     account,
@@ -340,15 +346,12 @@ module.exports = {
 
     renderRegisterForm,
     registerUser,
-
-    loginForm,
+    renderLoginForm,
     doLoginUser,
-
     logoutUser,
 
     getUserExercises,
     getOneUserExercise,
-
     renderExerciseForm,
-    postExercise,
+    postUserExercise,
 };
