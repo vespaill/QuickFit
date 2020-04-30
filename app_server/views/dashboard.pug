@@ -1,8 +1,10 @@
 extends layout
 block content
-  .container-fluid.main-content
-    h4.text-center.greeting.mt-5 Hi,&nbsp;#{username}
+  .container-fluid.main-content.text-center
+    h4.greeting.mt-5 Hi,&nbsp;#{username}
+    p.mb-5 Explore your QuickFit
     .row.d-flex.justify-content-center
       a.btn.btn-default(href="/dashboard/exercise-list") Your exercises
       a.btn.btn-default(href="/dashboard/calendar") Calendar View
       a.btn.btn-default(href="/dashboard/account") Account
+      a.btn.btn-default(href="/dashboard/personal-info") Personal Info

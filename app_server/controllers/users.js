@@ -16,8 +16,18 @@ const dashboard = (req, res) => {
 };
 
 const renderAccountPage = (req, res, userDetails) => {
-    res.render('account.pug', {
-        title: '—Account',
+    res.render('account', {
+        title: '—User account'
+    });
+};
+
+const getUserAccount = (req, res) => {
+    renderAccountPage(req, res);
+}
+
+const renderPersonalInfoPage = (req, res, userDetails) => {
+    res.render('personal-info.pug', {
+        title: '—User details',
         weight: userDetails.weight,
         height: userDetails.height,
         gender: userDetails.gender,
@@ -36,7 +46,7 @@ const getUserPersonalInfo = (req, res) => {
     debug('getUserDetails(): url =', requestOptions.url);
     request(requestOptions, (err, response, {weight, height, gender, age}) => {
         debug({weight, height, gender, age});
-        renderAccountPage(req, res, {
+        renderPersonalInfoPage(req, res, {
             weight: weight,
             height: height,
             gender: gender,
@@ -63,10 +73,10 @@ const updateUserPersonalInfo = (req, res) => {
     debug('updateUserPersonalInfo(): putdata =', requestOptions.json);
 
     if (_.isEmpty(putdata)) {
-        res.redirect('/dashboard/account?changes=false');
+        res.redirect('/dashboard/personal-info?changes=false');
     } else {
         request(requestOptions, (err, response, responseBody) => {
-            res.redirect('/dashboard/account?changes=true');
+            res.redirect('/dashboard/personal-info?changes=true');
         });
     }
 }
@@ -400,6 +410,7 @@ module.exports = {
     dashboard,
     calendar,
 
+    getUserAccount,
     getUserPersonalInfo,
     updateUserPersonalInfo,
 
