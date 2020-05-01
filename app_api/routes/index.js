@@ -45,6 +45,9 @@ router.route('/users/:userid/exercises/:exerciseid')
     .get(ctrlUsers.getOneUserExercise)
     .delete(ctrlUsers.deleteOneUserExercise);
 
+router.route('/users/:userid/program')
+    .get(ctrlUsers.getUserProgram);
+
 /* ------------------------------- Logins API ------------------------------- */
 
 router.route('/logins')

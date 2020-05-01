@@ -297,6 +297,35 @@ const deleteOneUserExercise = (req, res) => {
     }
 }
 
+/* GET /api/users/:userid/program */
+const getUserProgram = (req, res) => {
+    const { userid } = req.params;
+
+    if (userid) {
+        User_model
+            .findById(userid)
+            .exec((err, user) => {
+                if (!user) {
+                    return res
+                        .status(404)
+                        .send('User not found');
+                } else if (err) {
+                    return res
+                        .status(404)
+                        .json(err);
+                }
+                
+                res
+                    .status(200)
+                    .json(user.program)
+            });
+    } else {
+        res
+            .status(404)
+            .send('Undefined user ID');
+    }
+}
+
 module.exports = {
     getUsers,
     registerUser,
@@ -307,5 +336,7 @@ module.exports = {
 
     addExerciseToUser,
     getOneUserExercise,
-    deleteOneUserExercise
+    deleteOneUserExercise,
+
+    getUserProgram
 };
