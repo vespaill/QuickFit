@@ -6,25 +6,15 @@ block content
         div(class=`card bg-${exercise.group.replace(' ', '-').toLowerCase()}`)
           .card-body.mx-auto.px-5
             h1.card-title.text-center= exercise.name
-
-          //- .card-body.px-5
-          //-   h4.card-title.mb-0 exer id
-          //-   |
-          //-   .badge.badge-card= exercise._id
-
           .card-body.px-5
             h4.card-title.mb-0 Muscle Group
             div= exercise.group
-
-
           .card-body.px-5
             h4.card-title.mb-0 Equipment options
             .equipments
               each equip in exercise.equip
                 span.badge.badge-warning= equip
-
-          .card-body.mx-auto.px-5.pb-5
-            h4.card-title.mb-0 Description
+            h4.card-title.mt-3.mb-0 Description
             .card
               .card-body
                 p= exercise.desc
