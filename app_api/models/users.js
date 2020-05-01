@@ -90,6 +90,7 @@ userSchema.methods.populateExercises = function () {
     })
 }
 
+
 /* -----------------------------------------------------------------------------
     Initialize the user's program
 ----------------------------------------------------------------------------- */
@@ -97,7 +98,6 @@ userSchema.methods.createProgram = function () {
     debug('Creating a program for the user...')
     this.program = new Program_model();
 }
-
 
 
 /* -----------------------------------------------------------------------------
@@ -117,7 +117,9 @@ userSchema.methods.setPassword = function (password) {
 };
 
 
-/* Validating a submitted password. */
+/* -----------------------------------------------------------------------------
+    Validating a submitted password.
+----------------------------------------------------------------------------- */
 userSchema.methods.validPassword = function (password) {
     debug('Validating given password: %s', password);
 
