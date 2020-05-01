@@ -86,13 +86,13 @@ const updateUserPersonalInfo = (req, res) => {
 
 const calendar = (req, res) => {
     let requestOptions = {
-        url: `${server}${'/api/exercises'}`,
+        url: `${server}/api/users/${req.session.user._id}`,
         method: 'GET',
         json: {},
     };
 
     /* Do exercise API call */
-    request(requestOptions, (err, response, exercises) => {
+    request(requestOptions, (err, response, { exercises }) => {
         requestOptions.url = `${server}${'/api/programs'}`;
 
         /* Do program API call */

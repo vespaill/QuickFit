@@ -48,6 +48,9 @@ const registerUser = (req, res) => {
     debug('Populating user exercises...');
     user.populateExercises();
 
+    debug('Creating user\'s program...');
+    user.createProgram();
+
     debug('Saving new user to MongoDB...');
     user.save((err) => {
         const retObj = _.assign( { message: '' }, _.pick(user, ['_id', 'email']) );

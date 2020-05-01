@@ -2,13 +2,12 @@
 const mongoose = require('mongoose');
 
 const programSchema = new mongoose.Schema({
-    // TODO: Keep or remove program name? (if only 1 program per user then remove)
-    // TODO: Add username field to tie a program to a user
     // Program name
     name: {
         type: String,
         required: true,
         trim: true,
+        default: "Default Program",
         maxlength: 50
     },
     // List of exercises

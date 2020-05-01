@@ -91,8 +91,8 @@ process.on('SIGTERM', () => {
 });
 
 require('./exercises');
-require('./users');
 require('./programs');
+require('./users');
 
 exports.getDbURI = () => {
     return dbURI;

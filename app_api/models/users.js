@@ -6,6 +6,7 @@ const request  = require('request');
 const _        = require('lodash');
 
 const Exercise_model = mongoose.model('Exercise');
+const Program_model = mongoose.model('Program');
 
 const userSchema = new mongoose.Schema({
     name: {             /* Name is also required but not necessarily unique */
@@ -34,6 +35,7 @@ const userSchema = new mongoose.Schema({
     },
 
     exercises: [Exercise_model.schema],
+    program: Program_model.schema,
     weight: {
         type: Number,   /* kg */
         min: 1,
@@ -87,6 +89,15 @@ userSchema.methods.populateExercises = function () {
         this.save();
     })
 }
+
+/* -----------------------------------------------------------------------------
+    Initialize the user's program
+----------------------------------------------------------------------------- */
+userSchema.methods.createProgram = function () {
+    debug('Creating a program for the user...')
+    this.program = new Program_model();
+}
+
 
 
 /* -----------------------------------------------------------------------------
