@@ -6,11 +6,12 @@ let calcFats = (weight) => Math.round(weight);
 let calcCarbs = (caloricGoal, cal_of_proteins, cal_of_fats) =>
     Math.round((caloricGoal - cal_of_proteins - cal_of_fats)/4);
 
-const debug = true;
+const debug = false;
 
 jQuery(document).ready(() => {
-    let $refreshMacros = $('#refresh-macros');
-    $refreshMacros.on('click', () => {
+    let $inputs = $('#personal-info input');
+
+    $inputs.on('change', () => {
         let weight = parseInt($('[name="weight"]').val(), 10);      if(debug) console.log('weight =', weight);
         let height = parseInt($('[name="height"]').val(), 10);      if(debug) console.log('height =', height);
         let age    = parseInt($('[name="age"]').val(), 10);         if(debug) console.log('age =', age);
@@ -19,11 +20,11 @@ jQuery(document).ready(() => {
         let proteins = calcProteins(weight);                        if(debug) console.log('proteins =', proteins);
         let fats = calcFats(weight);                                if(debug) console.log('fats =', fats);
         let carbs = calcCarbs(caloricGoal, proteins*4, fats*9);     if(debug) console.log('carbs =', carbs);
-        $('.cals').val(caloricGoal);
-        $('.prots').val(proteins);
-        $('.carbs').val(carbs);
-        $('.fats').val(fats);
+        $('#cals').text(caloricGoal);
+        $('#prots').text(proteins);
+        $('#carbs').text(carbs);
+        $('#fats').text(fats);
     });
 
-    $refreshMacros.trigger( 'click' );
+    $inputs.trigger('change');
 });

@@ -1,17 +1,14 @@
 extends layout
 block content
   .container.main-content
-    .row.mt-5
-      .col-12.text-center
-        - if (changes == "true")
-          .alert.alert-success(role="alert")="User updated!"
-        - if (changes == "false")
-          .alert.alert-warning(role="alert")="No updates made"
-    .row.row-eq-height.mt-5
+    .row.mt-5.mb-2
+      .col-12
+        h1.text-center PERSONAL
+    .row
       .col-md-6.mx-auto.mb-5
-        .card.parent-card
+        .card.parent-card#personal-info
           .card-body.px-0.pb-0
-            h4.card-title.px-1.text-center Personal Information
+            h4.card-title.px-1.text-center User Information
             form.card.nested-card(action="", method="post", role="form")
               .card-body.pt-3
                 .col-lg-6.input-group.mb-3.mx-auto
@@ -74,30 +71,38 @@ block content
                     value=activityLevel
                     name="activityLevel")
               .row.justify-content-center.mx-4
-                button.col-lg-3.mb-4.btn.btn-blue Save
-      .col-md-6.mx-auto
+                button.col-lg-3.mb-4.btn.btn-default Save
+      .col-md-6.mx-auto.mb-5
         .card.parent-card
           .card-body.px-0.pb-0
             h4.card-title.px-1.text-center Recommended Macros
             #macros.card.nested-card
-              .card-body.pt-3
-                .col-lg-8.input-group.mb-3.mx-auto
-                  .input-group-prepend
-                    span.input-group-text#inputGroup-sizing-default Calories:
-                  input.cals.form-control(disabled)
-                .col-lg-8.input-group.mb-3.mx-auto
-                  .input-group-prepend
-                    span.input-group-text#inputGroup-sizing-default Protein:
-                  input.prots.form-control(disabled)
-                .col-lg-8.input-group.mb-3.mx-auto
-                  .input-group-prepend
-                    span.input-group-text#inputGroup-sizing-default Carbohydrates:
-                  input.carbs.form-control(disabled)
-                .col-lg-8.input-group.mb-3.mx-auto
-                  .input-group-prepend
-                    span.input-group-text#inputGroup-sizing-default Fats:
-                  input.fats.form-control(disabled)
-              .row.justify-content-center.mx-4
-                button#refresh-macros.col-lg-3.mb-4.btn.btn-default Calculate
+              .card-body.pt-3.text-center
+                .col-lg-6.mb-3.mx-auto
+                  .card.bg-success
+                    .card-body.p-0
+                      h4.m-0 Calories:
+                      h4.d-block#cals
+                .col-lg-6.mb-3.mx-auto
+                  .card.bg-danger
+                    .card-body.p-0
+                      h4.m-0 Protein:
+                      h4#prots
+                .col-lg-6.mb-3.mx-auto
+                  .card.bg-primary
+                    .card-body.p-0
+                      h4.m-0 Carbohydrates:
+                      h4#carbs
+                .col-lg-6.mb-2.mx-auto
+                  .card.bg-warning
+                    .card-body.p-0
+                      h4.m-0 Fats:
+                      h4#fats
+    .row
+      .col-12.text-center
+        - if (changes == "true")
+          .alert.alert-success(role="alert")="User updated!"
+        - if (changes == "false")
+          .alert.alert-warning(role="alert")="No updates made"
 block scripts
   script(src='/javascripts/personal-info.js')
