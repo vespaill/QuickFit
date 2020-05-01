@@ -85,6 +85,7 @@ const getUser = (req, res) => {
     User_model
         .findById(req.params.userid)
         // .select('isAdmin email')
+        .populate('program.exercises.exercise')
         .exec((err, user) => {
             if (!user) {
                 return res
@@ -297,13 +298,14 @@ const deleteOneUserExercise = (req, res) => {
     }
 }
 
-/* GET /api/users/:userid/program */
+/* GET /api/users/program */
 const getUserProgram = (req, res) => {
-    const { userid } = req.params;
+    const { userid } = req.session.user._id;
 
     if (userid) {
         User_model
             .findById(userid)
+            .populate('program.exercises.exercise')
             .exec((err, user) => {
                 if (!user) {
                     return res
@@ -326,6 +328,93 @@ const getUserProgram = (req, res) => {
     }
 }
 
+/* POST /api/users/program */
+const addExerciseToUserProgram = (req, res) => {
+    const userid = req.session.user._id;
+
+    // Validate request
+    if (req.body["programId"] == undefined ||
+        req.body["exerciseId"] == undefined ||
+        req.body["dayOfWeek"] == undefined ||
+        req.body["reps"] == undefined ||
+        req.body["weight"] == undefined ||
+        !userid) {
+        return res
+            .status(400)
+            .send('Bad request');
+    }
+    
+    User_model
+        .findById(userid)
+        .populate('program.exercises.exercise')
+        .exec((err, user) => {
+            if (!user) {
+                return res
+                    .status(404)
+                    .send('User not found');
+            } else if (err) {
+                return res
+                    .status(404)
+                    .json(err);
+            }
+
+            // Find the exercise
+            const exercise = user.exercises.find(e => e._id == req.body.exerciseId);
+
+            // Ensure exercise exists
+            if (!exercise) {
+                return res
+                    .status(404)
+                    .send('Exercise not found');
+            }
+
+            // Add the exercise to the user's program
+            var index = user.program.exercises.push({
+                exercise: exercise,
+                reps: req.body.reps,
+                weight: req.body.weight,
+                dayOfWeek: req.body.dayOfWeek,
+            }) - 1;
+
+            user.save((err, updatedUser) => {
+                if (err) {
+                    res
+                        .status(400)
+                        .json(err);
+                } else {
+                    // Return the saved exercise
+                    res
+                        .status(200)
+                        .json(updatedUser.program.exercises[index]);
+                }
+            });
+        });
+}
+
+/* DELETE /api/users/program */
+const deleteExerciseFromUserProgram = (req, res) => {
+    const userid = req.session.user._id;
+
+    if (req.body["programId"] == undefined ||
+        req.body["entryId"] == undefined ||
+        !userid) {
+        return res
+            .status(400)
+            .send('Bad request');
+    }
+
+    User_model.updateOne({ _id: userid }, { $pull: { 'program.exercises': { _id: req.body.entryId } } }, (err, user) => {
+        if (err) {
+            return res
+                .status(400)
+                .json(err);
+        }
+        res
+            .status(204)
+            .json(null);
+    });
+}
+
 module.exports = {
     getUsers,
     registerUser,
@@ -338,5 +427,7 @@ module.exports = {
     getOneUserExercise,
     deleteOneUserExercise,
 
-    getUserProgram
+    getUserProgram,
+    addExerciseToUserProgram,
+    deleteExerciseFromUserProgram
 };

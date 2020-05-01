@@ -347,7 +347,7 @@ function apiAddExercise(exerciseId, dayOfWeek, reps, weight, success, error) {
     requestBody["weight"] = weight;
 
     $.ajax({
-        url: window.location.origin + '/api/programs',
+        url: window.location.origin + '/api/users/program',
         type: 'POST',
         data: requestBody,
         success: success,
@@ -361,7 +361,7 @@ function apiDeleteExercise(entryId, success, error) {
     requestBody["entryId"] = entryId;
 
     $.ajax({
-        url: window.location.origin + '/api/programs',
+        url: window.location.origin + '/api/users/program',
         type: 'DELETE',
         data: requestBody,
         success: success,

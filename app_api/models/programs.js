@@ -41,17 +41,3 @@ const programSchema = new mongoose.Schema({
 });
 
 mongoose.model('Program', programSchema);
-
-const Program_model = mongoose.model('Program');
-
-// Create a default program if none exists
-// This is temporary, ideally, there would be a program created for each user when they register
-Program_model.find((err, programs) => {
-    if (!err && programs.length < 1) {
-        // Create default program with no exercises
-        Program_model.create({
-            name: "Default",
-            desc: "Default program"
-        });
-    }
-});

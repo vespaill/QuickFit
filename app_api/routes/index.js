@@ -33,6 +33,12 @@ router.route('/users')
     .get(ctrlUsers.getUsers)
     .post(ctrlUsers.registerUser);
 
+// UserID is retreived via the request's session rather than the path
+router.route('/users/program')
+    .get(ctrlUsers.getUserProgram)
+    .post(ctrlUsers.addExerciseToUserProgram)
+    .delete(ctrlUsers.deleteExerciseFromUserProgram);
+
 router.route('/users/:userid')
     .get(ctrlUsers.getUser)
     .put(ctrlUsers.updateUser)
@@ -45,8 +51,6 @@ router.route('/users/:userid/exercises/:exerciseid')
     .get(ctrlUsers.getOneUserExercise)
     .delete(ctrlUsers.deleteOneUserExercise);
 
-router.route('/users/:userid/program')
-    .get(ctrlUsers.getUserProgram);
 
 /* ------------------------------- Logins API ------------------------------- */
 
