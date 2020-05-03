@@ -5,9 +5,6 @@ const server  = (require('../../globals').getServer)();
 const showErr = require('../../globals').showError;
 const _       = require('lodash');
 
-/* -----------------------------------------------------------------------------
-                              User dashboard pages
------------------------------------------------------------------------------ */
 const dashboard = (req, res) => {
     res.render('dashboard.pug', {
         title: '—Dashboard',
@@ -15,16 +12,98 @@ const dashboard = (req, res) => {
     });
 };
 
-const renderAccountPage = (req, res, userDetails) => {
-    res.render('account', {
-        title: '—User account'
+/* -----------------------------------------------------------------------------
+                                    Calendar
+----------------------------------------------------------------------------- */
+const calendar = (req, res) => {
+    let requestOptions = {
+        url: `${server}/api/users/${req.session.user._id}`,
+        method: 'GET',
+        json: {},
+    };
+
+    request(requestOptions, (err, response, { exercises, program }) => {
+        renderCalendar(req, res, exercises, program);
     });
 };
 
-const getUserAccount = (req, res) => {
-    renderAccountPage(req, res);
+const renderCalendar = (req, res, exercises, program) => {
+    let message = null;
+
+    if (!(exercises instanceof Array)) {
+        message = "API lookup error";
+        responseBody = [];
+    } else {
+        if (!exercises.length) {
+            message = "No exercises found in database";
+        }
+    }
+
+    res.render('calendar.pug', {
+        title: '—Calendar',
+        message: message,
+        exercises: exercises,
+        program: program
+    });
+};
+
+/* -----------------------------------------------------------------------------
+                                    Account
+----------------------------------------------------------------------------- */
+const renderAccountPage = (req, res, userDetails) => {
+    res.render('account', {
+        title: '—User account',
+        name: userDetails.name,
+        email: userDetails.email
+    });
+};
+
+const getUserAccountInfo = (req, res) => {
+    const requestOptions = {
+        url: `${server}/api/users/${req.session.user._id}`,
+        method: 'GET',
+        json: {},
+    };
+    request(requestOptions, (err, response, {name, email}) => {
+        debug({name, email});
+        renderAccountPage(req, res, {
+            name: name,
+            email: email
+        });
+    });
 }
 
+// const updateUserAccountInfo = (req, res) => {
+//     debug('updateUserPersonalInfo(): req.session.user._id =', req.session.user._id);
+
+//     let putdata = {};
+//     if (req.body.name) putdata.name = req.body.name;
+//     if (req.body.email) putdata.email = req.body.email;
+//     if (req.body.password && req.body.pwConfirm &&
+//         (req.body.password == req.body.pwConfirm)) {
+//         putdata.password = req.body.password;
+//     }
+
+//     const requestOptions = {
+//         url: `${server}/api/users/${req.session.user._id}`,
+//         method: 'PUT',
+//         json: putdata
+//     };
+//     debug('updateUserPersonalInfo(): url =', requestOptions.url);
+//     debug('updateUserPersonalInfo(): putdata =', requestOptions.json);
+
+//     if (_.isEmpty(putdata)) {
+//         res.redirect('/dashboard/personal-info?changes=false');
+//     } else {
+//         request(requestOptions, (err, response, responseBody) => {
+//             res.redirect('/dashboard/personal-info?changes=true');
+//         });
+//     }
+// }
+
+/* -----------------------------------------------------------------------------
+                                 Personal Info
+----------------------------------------------------------------------------- */
 const renderPersonalInfoPage = (req, res, userDetails) => {
     res.render('personal-info.pug', {
         title: '—User details',
@@ -84,40 +163,8 @@ const updateUserPersonalInfo = (req, res) => {
     }
 }
 
-const calendar = (req, res) => {
-    let requestOptions = {
-        url: `${server}/api/users/${req.session.user._id}`,
-        method: 'GET',
-        json: {},
-    };
-
-    request(requestOptions, (err, response, { exercises, program }) => {
-        renderCalendar(req, res, exercises, program);
-    });
-};
-
-const renderCalendar = (req, res, exercises, program) => {
-    let message = null;
-
-    if (!(exercises instanceof Array)) {
-        message = "API lookup error";
-        responseBody = [];
-    } else {
-        if (!exercises.length) {
-            message = "No exercises found in database";
-        }
-    }
-
-    res.render('calendar.pug', {
-        title: '—Calendar',
-        message: message,
-        exercises: exercises,
-        program: program
-    });
-};
-
 /* -----------------------------------------------------------------------------
-                          User login and registration
+                             Login and registration
 ----------------------------------------------------------------------------- */
 /* GET the register-form page */
 const renderRegisterForm = (req, res) => {
@@ -306,7 +353,7 @@ const renderExerciseForm = (req, res) => {
     });
 };
 
-const postUserExercise = (req, res) => {
+const createUserExercise = (req, res) => {
     debug('postExercise(): req.session.user._id: ', req.session.user._id);
     const path = `/api/users/${req.session.user._id}/exercises`;
     const postdata = {
@@ -374,13 +421,12 @@ const getOneUserExercise = (req, res) => {
     });
 };
 
-
-
 module.exports = {
     dashboard,
     calendar,
 
-    getUserAccount,
+    getUserAccountInfo,
+    // updateUserAccountInfo,
     getUserPersonalInfo,
     updateUserPersonalInfo,
 
@@ -393,5 +439,5 @@ module.exports = {
     getUserExercises,
     getOneUserExercise,
     renderExerciseForm,
-    postUserExercise,
+    createUserExercise,
 };

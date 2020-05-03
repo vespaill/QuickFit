@@ -31,41 +31,41 @@ mixin colorCodeByGroup(exercise)
         +printExercise(exercise)
 block css
   //- When CDN is used, the files are blocked by client. I think toggling CORS may fix
-  link(rel='stylesheet' href='/stylesheets/calendar/tui-calendar.css')
+  link(rel="stylesheet" href="/stylesheets/calendar/tui-calendar.css")
   //- Not using CDN since the css file had to be explicitly modified
-  link(rel='stylesheet' href='/stylesheets/datatables.min.css')
-  link(rel='stylesheet' href='/stylesheets/calendar.css')
+  link(rel="stylesheet" href="/stylesheets/datatables.min.css")
+  link(rel="stylesheet" href="/stylesheets/calendar.css")
 block content
   .container.main-content
     #menu
       span.dropdown
-        button#dropdownMenu-calendarType.btn.btn-default.btn-sm.dropdown-toggle(type='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true')
-          i#calendarTypeIcon.calendar-icon.ic_view_month(style='margin-right: 4px;')
+        button#dropdownMenu-calendarType.btn.btn-default.btn-sm.dropdown-toggle(type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true")
+          i#calendarTypeIcon.calendar-icon.ic_view_month(style="margin-right: 4px;")
           span#calendarTypeName Weekly
-        ul.dropdown-menu(role='menu' aria-labelledby='dropdownMenu-calendarType')
-          li(role='presentation')
-            a.dropdown-menu-title(role='menuitem' data-action='toggle-weekly')
+        ul.dropdown-menu(role="menu" aria-labelledby="dropdownMenu-calendarType")
+          li(role="presentation")
+            a.dropdown-menu-title(role="menuitem" data-action="toggle-weekly")
               i.calendar-icon.ic_view_week
               | Weekly
-          li(role='presentation')
-            a.dropdown-menu-title(role='menuitem' data-action='toggle-monthly')
+          li(role="presentation")
+            a.dropdown-menu-title(role="menuitem" data-action="toggle-monthly")
               i.calendar-icon.ic_view_month
               | Monthly
       span#menu-navi
-        button.btn.btn-default.btn-sm.move-today(type='button' data-action='move-today') Today
-        button.btn.btn-default.btn-sm.move-day(type='button' data-action='move-prev')
-          i.calendar-icon.ic-arrow-line-left(data-action='move-prev')
-        button.btn.btn-default.btn-sm.move-day(type='button' data-action='move-next')
-          i.calendar-icon.ic-arrow-line-right(data-action='move-next')
+        button.btn.btn-default.btn-sm.move-today(type="button" data-action="move-today") Today
+        button.btn.btn-default.btn-sm.move-day(type="button" data-action="move-prev")
+          i.calendar-icon.ic-arrow-line-left(data-action="move-prev")
+        button.btn.btn-default.btn-sm.move-day(type="button" data-action="move-next")
+          i.calendar-icon.ic-arrow-line-right(data-action="move-next")
       span#renderRange.render-range
     #calendar
-  #modalViewExercise.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalViewExerciseTitle' aria-hidden='true')
-    .modal-dialog.modal-lg.modal-dialog-centered(role='document')
+  #modalViewExercise.modal.fade(tabindex="-1" role="dialog" aria-labelledby="modalViewExerciseTitle" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
       .modal-content
         .modal-header
           h5#modalViewExerciseLongTitle.modal-title Exercise Details
-          button.close(type='button' data-dismiss='modal' aria-label='Close')
-            span(aria-hidden='true') &times;
+          button.close(type="button" data-dismiss="modal" aria-label="Close")
+            span(aria-hidden="true") &times;
         .modal-body
           h5 Group
           p#exerciseGroup
@@ -75,15 +75,15 @@ block content
           h5 Description
           p#exerciseDescription
         .modal-footer
-          button#btnDeleteExercise.btn.btn-danger(type='button' data-dismiss='modal') Delete
-          button.btn.btn-default(type='button' data-dismiss='modal') Close
-  #modalAddExercise.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalAddExerciseTitle' aria-hidden='true')
-    .modal-dialog.modal-lg.modal-dialog-centered(role='document')
+          button#btnDeleteExercise.btn.btn-danger(type="button" data-dismiss="modal") Delete
+          button.btn.btn-default(type="button" data-dismiss="modal") Close
+  #modalAddExercise.modal.fade(tabindex="-1" role="dialog" aria-labelledby="modalAddExerciseTitle" aria-hidden="true")
+    .modal-dialog.modal-lg.modal-dialog-centered(role="document")
       .modal-content
         .modal-header
           h5#modalAddExerciseLongTitle.modal-title Add an Exercise
-          button.close(type='button' data-dismiss='modal' aria-label='Close')
-            span(aria-hidden='true') &times;
+          button.close(type="button" data-dismiss="modal" aria-label="Close")
+            span(aria-hidden="true") &times;
         .modal-body
           table#tableExercises.hover.row-border.w-100
             thead
@@ -100,17 +100,17 @@ block content
             .col-sm-12.input-group
               .input-group-prepend
                 span.input-group-text#inputGroup-sizing-default Reps:
-              input#inputReps.form-control(type='number' min=0 describedby='inputGroup-sizing-default')
+              input#inputReps.form-control(type="number" min=0 describedby="inputGroup-sizing-default")
               #errorReps.invalid-feedback Choose a number greater than 0
           .row.mt-4
             .col-sm-12.input-group
               .input-group-prepend
                 span.input-group-text#inputGroup-sizing-default Weight:
-              input#inputWeight.form-control(type='number' min=0 describedby='inputGroup-sizing-default')
+              input#inputWeight.form-control(type="number" min=0 describedby="inputGroup-sizing-default")
               #errorWeight.invalid-feedback Choose a number greater than 0
         .modal-footer
-          button#btnAddExercise.btn.btn-default(type='button' data-dismiss='modal') Add
-          button.btn.btn-default(type='button' data-dismiss='modal') Close
+          button#btnAddExercise.btn.btn-default(type="button" data-dismiss="modal") Add
+          button.btn.btn-default(type="button" data-dismiss="modal") Close
 block scripts
   //- Pass program data through a script so that it is accessible as a variable in scripts
   script.

@@ -38,14 +38,14 @@ router.get('/dashboard/exercise/:exerciseid', auth, ctrlUsers.getOneUserExercise
 
 router.route('/dashboard/exercise-list/add')
     .get(auth, ctrlUsers.renderExerciseForm)
-    .post(auth, ctrlUsers.postUserExercise);
+    .post(auth, ctrlUsers.createUserExercise);
 
 router.route('/dashboard/personal-info')
     .get(auth, ctrlUsers.getUserPersonalInfo)
-    .post(auth, ctrlUsers.updateUserPersonalInfo);
+    // .post(auth, ctrlUsers.updateUserPersonalInfo);
 
 router.route('/dashboard/account')
-    .get(auth, ctrlUsers.getUserAccount);
+    .get(auth, ctrlUsers.getUserAccountInfo);
 
 module.exports = router;
 

@@ -1,7 +1,63 @@
 extends layout
 block content
   .container.main-content
-    .row.mb-4.mt-5
-      .col-12.text-center
-        h1 Account Page
-        h4 Work in progress
+  .container.main-content
+    .row.mt-5.mb-2
+      .col-12
+        h1.text-center ACCOUNT
+    .row
+      .col-md-6.mx-auto.mb-5
+        .card.parent-card#personal-info.mb-4
+          .card-body.px-0.pb-0
+            h4.card-title.px-1.text-center Update name and/or email
+            form.card.nested-card(action="", method="post", role="form")
+              .card-body.pt-3
+                .col-12.input-group.mb-3
+                  .input-group-prepend
+                    span.input-group-text#inputGroup-sizing-default Name:
+                  input.form-control(
+                    required
+                    type="text"
+                    aria-label="Sizing example input"
+                    describedby="inputGroup-sizing-default"
+                    placeholder=name
+                    name="name")
+                .col-12.input-group.mb-3
+                  .input-group-prepend
+                    span.input-group-text#inputGroup-sizing-default Email:
+                  input.form-control(
+                    required
+                    type="email"
+                    autocomplete="username"
+                    aria-label="Sizing example input"
+                    describedby="inputGroup-sizing-default"
+                    placeholder=email
+                    name="email")
+              .row.justify-content-center.mx-4
+                button.col-lg-3.mb-4.btn.btn-default Save
+
+        //- .card.parent-card#personal-info
+        //-   .card-body.px-0.pb-0
+        //-     h4.card-title.px-1.text-center Update password
+        //-     form.card.nested-card(action="", method="post", role="form")
+        //-       .card-body.pt-3
+        //-         .col-12.input-group.mb-3
+        //-           input.form-control(
+        //-             required
+        //-             type='password'
+        //-             autocomplete='new-password'
+        //-             aria-label='Sizing example input'
+        //-             describedby='inputGroup-sizing-default'
+        //-             placeholder='new password'
+        //-             name='password')
+        //-           input.form-control(
+        //-             required
+        //-             type='password'
+        //-             autocomplete='new-password'
+        //-             aria-label='Sizing example input'
+        //-             describedby='inputGroup-sizing-default'
+        //-             placeholder='confirm new password'
+        //-             name='pwConfirm')
+        //-       .row.justify-content-center.mx-4
+        //-         button.col-lg-3.mb-4.btn.btn-default Save
+

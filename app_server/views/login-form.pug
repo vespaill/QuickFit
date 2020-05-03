@@ -4,34 +4,34 @@ block content
     .row.mt-5
       .col-12
         h1.text-center Login to QuickFit
-    form(action='', method='post', role='form')
+    form(action="", method="post", role="form")
       .row
         .col-12.text-center.mt-3
           case msg
-            when 'postdata_incomplete'
-              .alert.alert-danger(role='alert') All fields are required!
-            when 'incorrect_password'
-              .alert.alert-danger(role='alert') The password did not match our records
-            when 'unregistered_email'
-              .alert.alert-danger(role='alert') The email did not match our records
-            when 'register_success'
-              .alert.alert-success(role='alert') New user registered!
-            when 'login_success'
-              .alert.alert-success(role='alert') Login successful!
-            when 'logged_out'
-              .alert.alert-warning(role='alert') Logged out
+            when "postdata_incomplete"
+              .alert.alert-danger(role="alert") All fields are required!
+            when "incorrect_password"
+              .alert.alert-danger(role="alert") The password did not match our records
+            when "unregistered_email"
+              .alert.alert-danger(role="alert") The email did not match our records
+            when "register_success"
+              .alert.alert-success(role="alert") New user registered!
+            when "login_success"
+              .alert.alert-success(role="alert") Login successful!
+            when "logged_out"
+              .alert.alert-warning(role="alert") Logged out
       //- Email
       .row.mt-3
         .col-md-6.text-center.mx-auto
-          input.form-control(required type='email'   autocomplete='username' placeholder='Email' name='email')
+          input.form-control(required type="email"   autocomplete="username" placeholder="Email" name="email")
       //- Password
       .row.mt-5
         .col-md-6.text-center.mx-auto
-          input.form-control(required type='password' autocomplete='current-password' placeholder='Password' name='password')
+          input.form-control(required type="password" autocomplete="current-password" placeholder="Password" name="password")
       //- Submit
       .row.mt-5
         .col-md-4.text-center.mx-auto
           button.btn-block.btn.btn-blue.p-2 Login
     //- .row.mt-3
     //-   .col-md-4.text-center.mx-auto
-    //-     a.btn-block.btn.btn-default.p-2(href='/register-form') Create Account
+    //-     a.btn-block.btn.btn-default.p-2(href="/register-form") Create Account

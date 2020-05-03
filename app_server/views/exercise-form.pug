@@ -5,16 +5,16 @@ block content
     .row.mb-4.mt-5
       .col-12
         h1.text-center.mb-4 Add a new exercise to the database
-    form(action='', method='post', role='form')
+    form(action="", method="post", role="form")
       .row
         .col-12.text-center
           case error
             when "name"
-              .alert.alert-danger(role='alert')="Please write a name"
+              .alert.alert-danger(role="alert")="Please write a name"
             when "group"
-              .alert.alert-danger(role='alert')="Please select a category"
+              .alert.alert-danger(role="alert")="Please select a category"
             when "equip"
-              .alert.alert-danger(role='alert')="Please select at least one equipment option"
+              .alert.alert-danger(role="alert")="Please select at least one equipment option"
 
       //- Exercise name and muscle group ROW
       .row.mb-4
@@ -22,21 +22,21 @@ block content
           .input-group-prepend
             span.input-group-text#inputGroup-sizing-default Name:
           input.form-control(
-            type='text'
+            type="text"
             required
-            aria-label='Sizing example input'
-            describedby='inputGroup-sizing-default'
-            name='name')
+            aria-label="Sizing example input"
+            describedby="inputGroup-sizing-default"
+            name="name")
 
         .col-sm-6.input-group.mb-3
           .input-group-prepend
             span.input-group-text#inputGroup-sizing-default Category:
           select.custom-select.form-control(
-            type='text'
+            type="text"
             required
-            aria-label='Sizing example input'
-            describedby='inputGroup-sizing-default'
-            name='category')
+            aria-label="Sizing example input"
+            describedby="inputGroup-sizing-default"
+            name="category")
             option(hidden value="") Choose a category
             each option in groupOptions
               option(class=`bg-${option.replace(' ', '-').toLowerCase()}`)= option
@@ -50,19 +50,19 @@ block content
               each option in equipOptions
                 .col-sm-2.text-center
                   .custom-control.custom-checkbox
-                    input.custom-control-input(type='checkbox', id=`checkbox-${option.abbrv}` name='equipment', value=option.abbrv)
+                    input.custom-control-input(type="checkbox", id=`checkbox-${option.abbrv}` name="equipment", value=option.abbrv)
                     label.custom-control-label(for=`checkbox-${option.abbrv}`)
-                      span.badge.badge-warning(data-toggle='tooltip' data-placement='right' data-html="true" title=option.name)= option.abbrv
+                      span.badge.badge-warning(data-toggle="tooltip" data-placement="right" data-html="true" title=option.name)= option.abbrv
 
       //- Description text area ROW
       .row.mb-4
         .col-12
           label.col-12.input-label Description:
-          textarea.desc-txt.form-control.input-card(placeholder='optional' name='description')
+          textarea.desc-txt.form-control.input-card(placeholder="optional" name="description")
 
       //- Submit
       .row.justify-content-center
         button.col-sm-3.btn.btn-default Save
 
 block scripts
-  script(src='/javascripts/exercise-form.js')
+  script(src="/javascripts/exercise-form.js")

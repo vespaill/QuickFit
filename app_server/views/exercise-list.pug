@@ -12,11 +12,11 @@ block content
 
     - if (locals.authenticated)
       .row.justify-content-center.mb-3
-        a.btn.btn-default(href='/dashboard/exercise-list/add') Add New
+        a.btn.btn-default(href="/dashboard/exercise-list/add") Add New
 
     .row
-      - if (inserted == 'true')
-        .alert.alert-success(role='alert') Exercise added!
+      - if (inserted == "true")
+        .alert.alert-success(role="alert") Exercise added!
 
     // Exercise list
     .row.justify-content-center
@@ -33,4 +33,4 @@ block content
                   span.badge.badge-warning= equip
 
 block scripts
-  script(src='/javascripts/exercise-list.js')
+  script(src="/javascripts/exercise-list.js")

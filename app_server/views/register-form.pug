@@ -4,17 +4,17 @@ block content
     .row.mb-4.mt-5
       .col-12
         h1.text-center.mb-2 Create Your QuickFit Account
-    form.row(action='', method='post', role='form')
+    form.row(action="", method="post", role="form")
       .col-12.text-center.mb-3
         case error
-          when 'password_confirm_err'
-            .alert.alert-danger(role='alert') Passwords do not match!
-          when 'postdata_incomplete'
-            .alert.alert-danger(role='alert') All fields required!
-          when 'validation_error'
-            .alert.alert-danger(role='alert') Validation error...
-          when 'email_taken'
-            .alert.alert-danger(role='alert') Email has already been registered
+          when "password_confirm_err"
+            .alert.alert-danger(role="alert") Passwords do not match!
+          when "postdata_incomplete"
+            .alert.alert-danger(role="alert") All fields required!
+          when "validation_error"
+            .alert.alert-danger(role="alert") Validation error...
+          when "email_taken"
+            .alert.alert-danger(role="alert") Email has already been registered
 
       //- Left hand side.
       .col-md-6
@@ -23,31 +23,31 @@ block content
           .col-12.input-group
             .input-group-prepend
               span.input-group-text#inputGroup-sizing-default Name:
-            input.form-control(required type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='first' name='firstName')
-            input.form-control(type='text' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='last (optional)' name='lastName')
+            input.form-control(required type="text" aria-label="Sizing example input" describedby="inputGroup-sizing-default" placeholder="first" name="firstName")
+            input.form-control(type="text" aria-label="Sizing example input" describedby="inputGroup-sizing-default" placeholder="last (optional)" name="lastName")
 
         //- Email
         .row.mb-5
           .col-12.input-group
             .input-group-prepend
               span.input-group-text#inputGroup-sizing-default Email:
-            input.form-control(required type='email'  autocomplete='username' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='example@domain.com' name='email')
+            input.form-control(required type="email"  autocomplete="username" aria-label="Sizing example input" describedby="inputGroup-sizing-default" placeholder="example@domain.com" name="email")
 
         //- Password
         .row.mb-2
           .col-12.input-group
-            input.form-control(required type='password' autocomplete='new-password' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='password' name='password')
-            input.form-control(required type='password' autocomplete='new-password' aria-label='Sizing example input' describedby='inputGroup-sizing-default' placeholder='confirm' name='pwConfirm')
+            input.form-control(required type="password" autocomplete="new-password" aria-label="Sizing example input" describedby="inputGroup-sizing-default" placeholder="password" name="password")
+            input.form-control(required type="password" autocomplete="new-password" aria-label="Sizing example input" describedby="inputGroup-sizing-default" placeholder="confirm" name="pwConfirm")
 
         .row.mb-5
           .col-12 Use 8 or more characters with a mix of letters, numbers, and symbols
       //- Right hand side: picture
       .col-md-6.d-none.d-md-block
-        img.mx-auto.d-block(style="height: 240px" src='/images/grandma_deadlift.jpg')
+        img.mx-auto.d-block(style="height: 240px" src="/images/grandma_deadlift.jpg")
 
       //- Submit
       .col-12.text-center
         button.col-md-4.btn.btn-blue Sign up
 
     //- .col-12.text-center.mt-4
-    //-   a.btn.btn-default.col-md-4(href='/login-form') Log in
+    //-   a.btn.btn-default.col-md-4(href="/login-form") Log in
