@@ -39,7 +39,7 @@ router.route('/dashboard/exercise-list/add')
 
 router.route('/dashboard/personal-info')
     .get(auth, ctrlUsers.getUserPersonalInfo)
-    // .post(auth, ctrlUsers.updateUserPersonalInfo);
+    .post(auth, ctrlUsers.updateUserPersonalInfo);
 
 router.route('/dashboard/account')
     .get(auth, ctrlUsers.getUserAccountInfo);
