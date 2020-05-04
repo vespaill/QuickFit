@@ -1,24 +1,26 @@
 extends layout
 block content
   .container.main-content
-    .row.mt-5
-      h1.col-12.text-center= question
+    //- Question
+    #questions-row.row.mt-5
+      //- h1.col-12.text-center= question
 
-    //- Saved Choices
-    .row.justify-content-center.my-5
-      each savedAnswer in savedAnswers
-        .col-12
-          h3.text-center
-            span.badge.badge-pill= savedAnswer
+    //- Saved options
+    #saved-options-row.row.justify-content-center.my-5
+      //-   .col-12
+      //-     h3.text-center
+      //-       span.badge.badge-pill= savedAnswer
 
-    //- Choices
-    .row.justify-content-center.mb-5
-      each option in options
-        button.option.btn.btn-lg.qnr-btn.mx-5= option
+    //- options
+    #options-row.row.justify-content-center.mb-5
+      //- each option in options
+      //-   button.option.btn.btn-lg.qnr-btn.mx-5= option
 
     //- Prev/Next Btns
     .row.justify-content-between
-      a.col-4.btn.qnr-nav-btn(href=prev) Previous
-      a.col-4#nav-btn-right.btn.qnr-nav-btn(href=next) Next
+      //- a.col-4.btn.qnr-nav-btn(href=prev) Previous
+      //- a.col-4#nav-btn-right.btn.qnr-nav-btn(href=next) Next
+      #nav-btn-left.btn.qnr-nav-btn Previous
+      #nav-btn-right.btn.qnr-nav-btn Next
 block scripts
   script(src="/javascripts/questionnaire.js")

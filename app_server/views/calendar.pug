@@ -1,34 +1,4 @@
 extends layout
-
-mixin printExercise(exercise)
-  td= exercise.name
-  td= exercise.equip
-  td= exercise.group
-  td= exercise._id
-
-mixin colorCodeByGroup(exercise)
-  case exercise.group
-    when "Chest"
-      tr.bg-chest
-        +printExercise(exercise)
-    when "Triceps"
-      tr.bg-triceps
-        +printExercise(exercise)
-    when "Upper back"
-      tr.bg-upper-back
-        +printExercise(exercise)
-    when "Biceps"
-      tr.bg-biceps
-        +printExercise(exercise)
-    when "Shoulders"
-      tr.bg-shoulders
-        +printExercise(exercise)
-    when "Core"
-      tr.bg-core
-        +printExercise(exercise)
-    when "Lower body"
-      tr.bg-lower-body
-        +printExercise(exercise)
 block css
   //- When CDN is used, the files are blocked by client. I think toggling CORS may fix
   link(rel="stylesheet" href="/stylesheets/calendar/tui-calendar.css")
@@ -94,7 +64,11 @@ block content
                 th ID
             tbody
               each exercise in exercises
-                +colorCodeByGroup(exercise)
+                tr(class=`bg-${exercise.group.replace(' ', '-').toLowerCase()}`)
+                  td= exercise.name
+                  td= exercise.equip
+                  td= exercise.group
+                  td= exercise._id
           #errorTable.invalid-feedback Select an exercise
           .row.mt-4
             .col-sm-12.input-group

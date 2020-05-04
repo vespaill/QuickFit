@@ -2,9 +2,21 @@ extends layout
 block content
   .container-fluid.main-content.text-center
     h4.greeting.mt-5 Hi,&nbsp;#{username}
-    p.mb-5 Explore your QuickFit
-    .row.d-flex.justify-content-center
+    - if (goal != "empty")
+      .row.justify-content-center.mt-5.mb-5
+        .card.border.border-dark.rounded-lg
+          .card-body
+            h4.card-title Fitness Goals
+            h4.text-center
+              span.badge.badge-pill=goal
+            h4.text-center
+              span.badge.badge-pill #{freq} days a week
+            h4.text-center
+              span.badge.badge-pill #{vol} sets per workout
+    .row
+      .col-12
+        p.mb-2 Explore your QuickFit
+        a.btn.btn-default(href="/questionnaire")=(goal=="empty")? "Setup fitnes goals":"Update goals"
+    .row.justify-content-center
       a.btn.btn-default(href="/dashboard/exercise-list") Your exercises
-      a.btn.btn-default(href="/dashboard/calendar") Calendar View
-      a.btn.btn-default(href="/dashboard/account") Account
       a.btn.btn-default(href="/dashboard/personal-info") Personal Info

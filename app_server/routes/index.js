@@ -9,10 +9,7 @@ const ctrlUsers     = require('../controllers/users');
 
 /* ------------------------------ Public pages ------------------------------ */
 router.get('/', ctrlPublic.intro);
-router.get('/qnr1', ctrlPublic.qnr1);
-router.get('/qnr2', ctrlPublic.qnr2);
-router.get('/qnr3', ctrlPublic.qnr3);
-router.get('/qnr-end', ctrlPublic.qnr_end);
+router.get('/questionnaire', ctrlPublic.questionnaire);
 router.get('/program-list', ctrlPublic.program_list);
 router.get('/exercise-list', ctrlExercises.getPublicExercises);
 router.get('/exercise/:exerciseid', ctrlExercises.exerciseInfo);
@@ -46,6 +43,8 @@ router.route('/dashboard/personal-info')
 
 router.route('/dashboard/account')
     .get(auth, ctrlUsers.getUserAccountInfo);
+
+router.get('/saveQnrAnswersToUser', ctrlUsers.saveQnrAnswersToUser);
 
 module.exports = router;
 

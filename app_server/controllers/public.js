@@ -12,41 +12,9 @@ const intro = (req, res) => {
 };
 
 /* Get the questionnaire pages */
-const qnr1 = (req, res) => {
+const questionnaire = (req, res) => {
     res.render('questionnaire.pug', {
         title: '—Questionnaire',
-        savedAnswers: [],
-        question: 'What is your fitness goal?',
-        options: ['Gain Muscle', 'Maintain Weight', 'Burn Fat'],
-        prev: '/',      /* url for previous page */
-        next: 'qnr2'    /* url for next page */
-    });
-};
-const qnr2 = (req, res) => {
-    res.render('questionnaire.pug', {
-        title: '—Questionnaire',
-        savedAnswers: ['saved#1'],
-        question: 'How many days a week will you train?',
-        options: ['3', '4', '5', '6'],
-        prev: 'qnr1',
-        next: 'qnr3'
-    });
-};
-const qnr3 = (req, res) => {
-    res.render('questionnaire.pug', {
-        title: '—Questionnaire',
-        savedAnswers: ['saved#1', 'saved#2'],
-        question: 'How much work will you put in per session?',
-        options: ['9', '15', '21+'],
-        prev: 'qnr2',
-        next: 'qnr-end'
-    });
-};
-const qnr_end = (req, res) => {
-    res.render('qnr-end.pug', {
-        title: '—Questionnaire',
-        savedAnswers: ['saved#1', 'saved#2', 'saved#2'],
-        recommended_program: '${Recommended Program}',
     });
 };
 
@@ -62,9 +30,6 @@ const program_list = (req, res) => {
 
 module.exports = {
     intro,
-    qnr1,
-    qnr2,
-    qnr3,
-    qnr_end,
+    questionnaire,
     program_list
 };

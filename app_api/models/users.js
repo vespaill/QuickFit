@@ -65,9 +65,9 @@ const userSchema = new mongoose.Schema({
         max: 2,
         default: 1.5
     },
-    // fitness goals
-    // workout volume
-    // workout intensity
+    fitness_goal:     {type: String, trim: true, maxlength: 50,default:'empty'},
+    workout_frequency:{type: String, trim: true, maxlength: 50,default:'empty'},
+    workout_volume:   {type: String, trim: true, maxlength: 50,default:'empty'}
 });
 
 

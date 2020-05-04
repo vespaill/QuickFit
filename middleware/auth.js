@@ -3,12 +3,14 @@ const _     = require('lodash');
 
 function auth(req, res, next) {
     if (req.session.user) {
-        // debug('User exists, proceeding to page');
+        debug("req.params =", req.params);
+        debug('User exists, proceeding to page');
         next();     // If session exists, proceed to page
     } else {
-        // debug('User doesn\'t exist, sending err');
-        var err = new Error("Not logged in!");
-        next(err);  // Error, trying to access unauthorized page!
+        debug("User doesn't exist, redirecting to login");
+        res.redirect('/login-form');
+        // var err = new Error("Not logged in!");
+        // next(err);  // Error, trying to access unauthorized page!
     }
  }
 

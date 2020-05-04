@@ -5,28 +5,53 @@ const server  = (require('../../globals').getServer)();
 const showErr = require('../../globals').showError;
 const _       = require('lodash');
 
-const dashboard = (req, res) => {
+const saveQnrAnswersToUser = (req, res, next) => {
+    if (req.session.user) {
+        const putdata = {
+            fitness_goal: req.query.goal || 'empty',
+            workout_frequency: req.query.freq || 'empty',
+            workout_volume: req.query.vol || 'empty'
+        }
+        const requestOptions = {
+            url: `${server}/api/users/${req.session.user._id}`,
+            method: 'PUT',
+            json: putdata
+        };
+        debug("saveQnrAnswersToUser(): putdata =", putdata);
+        request(requestOptions, (err, request, responseBody) => {
+            res.redirect('/dashboard');
+        });
+    } else {
+        res.redirect('/register-form');
+    }
+};
+
+const renderDashboard = (req, res, responseBody) => {
     res.render('dashboard.pug', {
         title: '—Dashboard',
-        username: req.session.user.name
+        username: req.session.user.name,
+        goal: responseBody.fitness_goal,
+        freq: responseBody.workout_frequency,
+        vol: responseBody.workout_volume
     });
 };
 
-/* -----------------------------------------------------------------------------
-                                    Calendar
------------------------------------------------------------------------------ */
-const calendar = (req, res) => {
+const dashboard = (req, res) => {
     let requestOptions = {
         url: `${server}/api/users/${req.session.user._id}`,
         method: 'GET',
         json: {},
     };
 
-    request(requestOptions, (err, response, { exercises, program }) => {
-        renderCalendar(req, res, exercises, program);
+    request(requestOptions, (err, response, { fitness_goal, workout_frequency, workout_volume }) => {
+        let responseBody = { fitness_goal, workout_frequency, workout_volume };
+        renderDashboard(req, res, responseBody);
     });
 };
 
+/* -----------------------------------------------------------------------------
+                                    Calendar
+----------------------------------------------------------------------------- */
 const renderCalendar = (req, res, exercises, program) => {
     let message = null;
 
@@ -46,6 +71,19 @@ const renderCalendar = (req, res, exercises, program) => {
         program: program
     });
 };
+
+const calendar = (req, res) => {
+    let requestOptions = {
+        url: `${server}/api/users/${req.session.user._id}`,
+        method: 'GET',
+        json: {},
+    };
+
+    request(requestOptions, (err, response, { exercises, program }) => {
+        renderCalendar(req, res, exercises, program);
+    });
+};
+
 
 /* -----------------------------------------------------------------------------
                                     Account
@@ -440,4 +478,6 @@ module.exports = {
     getOneUserExercise,
     renderExerciseForm,
     createUserExercise,
+
+    saveQnrAnswersToUser
 };
