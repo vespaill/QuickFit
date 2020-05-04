@@ -2,7 +2,8 @@
 /*                   Questionnaire: make next btn appear                      */
 /*                   after selecting a questionnaire option                   */
 /* -------------------------------------------------------------------------- */
-let savedAnswers = ["", "", ""];
+let savedAnswers = [];
+let sav_ans_addendum = ["", " days a week", " sets per workout"];
 const questions = [
     "What is your fitness goal?",
     "How many days a week will you train?",
@@ -12,7 +13,7 @@ const questions = [
 const options = [
     ["Gain Muscle", "Maintain Weight", "Burn Fat"],
     ["3", "4", "5", "6"],
-    ["9", "15", "21+"],
+    ["9", "15", "21"],
     ["Save answers"]
 ];
 
@@ -28,7 +29,7 @@ let func = function() {
     htmlString="";
     for (j = 0; j < i; j++) {
         htmlString += "<div class='col-12'><h3 class='text-center'><span class='badge badge-pill'>";
-        htmlString += savedAnswers[j];
+        htmlString += savedAnswers[j] + sav_ans_addendum[j];
         htmlString += "</span></h3></div>";
     }
     // console.log("htmlString =", htmlString);
@@ -46,14 +47,17 @@ let func = function() {
     /* ------------------------ display options ------------------------- */
     $nav_btn_right = $("#nav-btn-right");
     $("#nav-btn-right").hide();
-    let $qnrOptions = $(".option");
-    $qnrOptions.on("click", function() {
-        $qnrOptions.removeClass("option-selected");
-        $(this).addClass("option-selected");
-        $nav_btn_right.show();
-        savedAnswers[i] = $(this).text();
-        console.log("savedAnswers =", savedAnswers);
-    });
+
+    if (i != 3) {
+        let $qnrOptions = $(".option");
+        $qnrOptions.on("click", function() {
+            $qnrOptions.removeClass("option-selected");
+            $(this).addClass("option-selected");
+            $nav_btn_right.show();
+            savedAnswers[i] = $(this).text();
+            console.log("savedAnswers =", savedAnswers);
+        });
+    }
 };
 
 $(document).ready(() => {
@@ -66,7 +70,7 @@ $(document).ready(() => {
         }
         if (i == 3) {
             $nav_btn_right.hide();
-            let goal = savedAnswers[0].replace(' ', '-').toLowerCase();
+            let goal = savedAnswers[0].replace(' ', '-');
             let freq = savedAnswers[1];
             let vol = savedAnswers[2];
             console.log("goal: ", goal);
