@@ -7,8 +7,8 @@ let sav_ans_addendum = ["", " days a week", " sets per workout"];
 const questions = [
     "What is your fitness goal?",
     "How many days a week will you train?",
-    "How much work will you put in per session?",
-    "End of Questionnaire"
+    "How many sets per workout?",
+    "The End"
 ];
 const options = [
     ["Gain Muscle", "Maintain Weight", "Burn Fat"],
@@ -23,7 +23,7 @@ let func = function() {
     let htmlString="";
     let j = 0;
     /* ------------------------ display question ------------------------ */
-    $("#questions-row").html("<h1 class='col-12 text-center'>" + questions[i] + "</h1>");
+    $("#questions-row").html("<h4 class='col-12 text-center' style='font-size:50px'>" + questions[i] + "</h4>");
 
     /* --------------------- display saved answers ---------------------- */
     htmlString="";
