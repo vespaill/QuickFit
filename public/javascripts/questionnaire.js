@@ -29,7 +29,7 @@ let func = function() {
     htmlString="";
     for (j = 0; j < i; j++) {
         htmlString += "<div class='col-12'><h3 class='text-center'><span class='badge badge-pill'>";
-        htmlString += savedAnswers[j] + sav_ans_addendum[j];
+        htmlString += savedAnswers[j].replace('-', ' ') + sav_ans_addendum[j];
         htmlString += "</span></h3></div>";
     }
     // console.log("htmlString =", htmlString);
