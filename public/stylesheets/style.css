@@ -2,21 +2,20 @@
 /*                                Color scheme                                */
 /* -------------------------------------------------------------------------- */
 :root {
-  --portal-orange-light: #FF9A00;
-  --portal-orange-dark: #FF5D00;
-  --portal-entrance: #005DDF;
-  --deep-sky-blue: #00A2FF;
-  --portal-blue: #D5DBEB;
+  --portal-orange-light: #ff9a00;
+  --portal-orange-dark: #ff5d00;
+  --portal-entrance: #005ddf;
+  --deep-sky-blue: #00a2ff;
+  --portal-blue: #d5dbeb;
 
-  --waiting-room: #D5D0CA;
-  --bones: #C8C5C0;
-  --along-the-shoreline: #BEBBB6;
-  --steel-blue-grey: #60737A;
+  --waiting-room: #d5d0ca;
+  --bones: #c8c5c0;
+  --along-the-shoreline: #bebbb6;
+  --steel-blue-grey: #60737a;
 
-  --dissipate: #294D67;
-  --dark: #1B1B1B;
+  --dissipate: #294d67;
+  --dark: #1b1b1b;
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*                                    Fonts                                   */
@@ -30,7 +29,6 @@
   font-family: 'bavro';
   src: url('../fonts/bavro-regular.woff');
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*                                   General                                  */
@@ -49,11 +47,15 @@ html {
   margin-bottom: 300px;
 }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-family: 'typo-quick';
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'bavro';
 }
 
@@ -68,7 +70,7 @@ body {
 
 .jumbotron {
   background-color: var(--dark);
-  background-image: url("../images/logo.png");
+  background-image: url('../images/logo.png');
   background-repeat: no-repeat;
   background-position: center;
   padding: 100px;
@@ -82,7 +84,6 @@ body {
   background-color: var(--dissipate);
   padding: 15px;
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*                                   Navbar                                   */
@@ -107,35 +108,36 @@ body {
   margin-bottom: 5px;
 }
 
-
 /* -------------------------------------------------------------------------- */
 /*                                   Buttons                                  */
 /* -------------------------------------------------------------------------- */
 .btn {
-  margin: 3px
+  margin: 3px;
 }
 
-button, .btn {
+button,
+.btn {
   font-family: 'typo-quick';
 }
 
-.btn-group-xs>.btn, .btn-xs {
+.btn-group-xs > .btn,
+.btn-xs {
   /* xs button */
-  padding: .25rem .4rem;
-  font-size: .875rem;
-  line-height: .5;
-  border-radius: .2rem;
+  padding: 0.25rem 0.4rem;
+  font-size: 0.875rem;
+  line-height: 0.5;
+  border-radius: 0.2rem;
 }
 
 .btn-default {
   background-color: var(--portal-orange-light);
-  color: #FFF;
+  color: #fff;
   /* margin-right: 1em; */
 }
 
 .btn-blue {
-  background-color: #0082C4;
-  color: #FFF;
+  background-color: #0082c4;
+  color: #fff;
 }
 
 .form input {
@@ -146,7 +148,6 @@ button, .btn {
   border: 1px solid #000000;
   padding-left: 15px;
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*                              Alerts & Modals                               */
@@ -170,7 +171,7 @@ button, .btn {
   border-color: var(--portal-orange-light);
 }
 
-.custom-control-label:before{
+.custom-control-label:before {
   background-color: var(--waiting-room);
 }
 
@@ -181,7 +182,6 @@ button, .btn {
   left: 50%;
   transform: translate(-50%, -50%) !important;
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*                                  Calendar                                  */
@@ -206,7 +206,6 @@ a.button {
   margin-right: 15px;
 }
 
-
 /* -------------------------------------------------------------------------- */
 /*                                   Cards                                    */
 /* -------------------------------------------------------------------------- */
@@ -215,7 +214,7 @@ a.button {
 }
 
 .parent-card {
-  border:1px solid black;
+  border: 1px solid black;
   background: var(--steel-blue-grey);
   color: white;
 }
@@ -229,10 +228,10 @@ a.button {
   margin-bottom: 0;
 }
 
-.card.nested-card input::placeholder, .card.nested-card select {
+.card.nested-card input::placeholder,
+.card.nested-card select {
   color: black;
   font-style: normal;
-
 }
 
 .card-body {
@@ -271,19 +270,37 @@ a.exercise:hover {
 
 /* !important is used to override existing background-colors that may exist on
    an element */
-.bg-chest      { background-color: #ea9999 }
-.bg-triceps    { background-color: #e6b8af }
-.bg-upper-back { background-color: #a4c2f4 }
-.bg-biceps     { background-color: #c9daf8 }
-.bg-shoulders  { background-color: #93c47d }
-.bg-core       { background-color: #8e7cc3 }
-.bg-lower-body { background-color: #f6b26b }
-
-.bg-chest, .bg-triceps, .bg-upper-back, .bg-biceps,
-.bg-shoulders, .bg-core, .bg-lower-body {
-  color: black;
+.bg-chest {
+  background-color: #ea9999;
+}
+.bg-triceps {
+  background-color: #e6b8af;
+}
+.bg-upper-back {
+  background-color: #a4c2f4;
+}
+.bg-biceps {
+  background-color: #c9daf8;
+}
+.bg-shoulders {
+  background-color: #93c47d;
+}
+.bg-core {
+  background-color: #8e7cc3;
+}
+.bg-lower-body {
+  background-color: #f6b26b;
 }
 
+.bg-chest,
+.bg-triceps,
+.bg-upper-back,
+.bg-biceps,
+.bg-shoulders,
+.bg-core,
+.bg-lower-body {
+  color: black;
+}
 
 /* -------------------------------------------------------------------------- */
 /*                                Program list                                */
@@ -293,11 +310,11 @@ a.exercise:hover {
   margin-top: 1ex;
 }
 
-
 /* -------------------------------------------------------------------------- */
 /*                               exercise-form                                */
 /* -------------------------------------------------------------------------- */
-.input-group-text, .input-label {
+.input-group-text,
+.input-label {
   background-color: var(--dissipate);
   color: white;
 }
@@ -307,7 +324,6 @@ a.exercise:hover {
   margin: 0;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-
 }
 
 .input-label {
@@ -321,7 +337,6 @@ a.exercise:hover {
 .desc-txt {
   min-height: 4em;
 }
-
 
 /* -------------------------------------------------------------------------- */
 /*                                 Dashboard                                  */
@@ -340,7 +355,7 @@ a.exercise:hover {
 /* -------------------------------------------------------------------------- */
 .qnr-btn {
   background-color: var(--portal-orange-light);
-  color: #FFF;
+  color: #fff;
 }
 
 .qnr-btn:hover {
@@ -355,13 +370,13 @@ a.exercise:hover {
 
 .qnr-nav-btn {
   background-color: var(--deep-sky-blue);
-  color: #FFFFFF;
+  color: #ffffff;
   position: sticky;
 }
 
 #nav-btn-right {
   background-color: var(--deep-sky-blue);
-  color: #FFFFFF;
+  color: #ffffff;
   float: right;
   position: sticky;
   /* visibility: hidden; */
@@ -369,7 +384,7 @@ a.exercise:hover {
 
 .badge-pill {
   background-color: var(--portal-orange-dark);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .choiceFixed {

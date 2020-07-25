@@ -5,12 +5,12 @@
   border: 1px solid #bbb;
 }
 
-.dropdown-menu>li>a {
+.dropdown-menu > li > a {
   padding: 9px 12px;
   cursor: pointer;
 }
 
-.dropdown-menu>li>a:hover {
+.dropdown-menu > li > a:hover {
   background-color: rgba(81, 92, 230, 0.05);
   color: #333;
 }
@@ -82,11 +82,12 @@
   background: url('../images/calendar/ic-plus.svg') no-repeat;
 }
 
-.modal-header, .modal-footer {
-  background-color: #294D67;
+.modal-header,
+.modal-footer {
+  background-color: #294d67;
 }
 
 .modal-body {
-  background-color: #D5D0CA;
+  background-color: #d5d0ca;
   color: black;
 }

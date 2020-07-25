@@ -1,0 +1,811 @@
+[{
+  "_id": {
+    "$oid": "5eb031e8a46a85704436089a"
+  },
+  "isAdmin": false,
+  "weight": 80,
+  "height": 180,
+  "gender": "other",
+  "age": 20,
+  "activityLevel": 1.5,
+  "fitness_goal": "gain-muscle",
+  "workout_frequency": "3",
+  "workout_volume": "9",
+  "exercises": [
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94a"
+      },
+      "name": "Preacher Curl",
+      "group": "Biceps"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94b"
+      },
+      "name": "Hammer Curl",
+      "group": "Biceps"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "1. Lie down on a flat bench.<br/><br/>2. Create upper back tightness: Pull your shoulder together; bring them back and down. This will bring your chest out. (If you want to press heavy weight, you need a solid platform to press from. Your back is the platform that you’re going to press from).<br/><br/>3. Feet Position: Your feet can be flat on the ground or brought in towards yourself to the point where your heels raise off the ground. At any rate, make sure you have solid contact against the floor. Don’t dance with your feet!<br/><br/>4. Arc: You can create some arching on your lower back, but keep it reasonable. Make sure your upper back and butt are stable on the bench at all times.<br/><br/>5. Find your grip: Generally this would be just wider than shoulder-width. Ideally, this would be the grip that allows your forearms to be perpendicular to the ground when the barbell is resting on your chest. Make sure your wrists are straight (your knuckles are facing the ceiling).<br/><br/>6. Unrack the bar: You don’t want to lose your upper back tightness, so don’t push the bar when unracking. Instead, squeeze the bar and pull it out with your lats. <br/><br/>7. Brace; inhale, hold it, and forcefully attempt to exhale against a closed airway.<br/><br/>8. Descend: Now you’re holding the bar above your neck with arms straight. In a controlled manner, bring the weight down to your middle or lower chest. You don’t want to bring the weight down to your neck or upper chest, so the elbows must tuck in slightly as you descend. In contrast to the Squat and Deadlift, the bar path for the bench press will not be straight up and down, but rather diagonal.<br/><br/>9. Ascend: Once the weight touches your mid/lower chest, press the weight up and untuck your elbows as you do. You may exhale during the ascend. <br/><br/>10. Leg-drive: You may press against the ground with your feet, especially during the ascend, as long as your butt stays on the bench.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93a"
+      },
+      "name": "Flat Bench Press",
+      "group": "Chest"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93b"
+      },
+      "name": "Dips",
+      "group": "Chest"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93c"
+      },
+      "name": "Incline Press",
+      "group": "Chest"
+    },
+    {
+      "equip": [
+        "BW"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93d"
+      },
+      "name": "Push Up",
+      "group": "Chest"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94c"
+      },
+      "name": "Hanging Leg Raise",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94d"
+      },
+      "name": "Plank",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "C"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94e"
+      },
+      "name": "Cable Crunch",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94f"
+      },
+      "name": "Decline Crunch",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd950"
+      },
+      "name": "Oblique Twists",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd951"
+      },
+      "name": "High-bar Squat",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd952"
+      },
+      "name": "Low-bar Squat",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "BB"
+      ],
+      "desc": "1. Place barbell over midfoot; keep shins about 1 inch away from the bar.<br/><br/>2. Bend over. Stop bending at the knees as soon as shins touch the bar. Continue bending at the hips until you can reach the bar.<br/><br/>3. Find your grip on the bar. Shoulder-width is fine.<br/><br/>4. Brace; inhale, hold it, and forcefully attempt to exhale against a closed airway.<br/><br/>5. Tighten-up; bring your chest out, straighten your back, squeeze the bar.<br/><br/>6. Before standing up with the weight, pull slightly and feel the weight of the bar on your hands.<br/><br/>7. Stand up with the weight and exhale at or near the top.<br/><br/>8. Beware of straightening knees before hips or vice-versa. As you stand, knees should lock out in sync with hips.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd953"
+      },
+      "name": "Conventional Deadlift",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd954"
+      },
+      "name": "Leg Press",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd955"
+      },
+      "name": "Leg Curl",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd956"
+      },
+      "name": "Leg Extension",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "BW"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd957"
+      },
+      "name": "Single-leg Bridge",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd958"
+      },
+      "name": "Standing Calf Raise",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd959"
+      },
+      "name": "Seated Calf Raise",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "C"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd95a"
+      },
+      "name": "Hip Abduction",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "BB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd940"
+      },
+      "name": "Overhead Press",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd941"
+      },
+      "name": "Arnorld Press",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd942"
+      },
+      "name": "Anterior Delt Raise",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd943"
+      },
+      "name": "Lateral Delt Raise",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd944"
+      },
+      "name": "Posterior Delt Raise",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "C"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93e"
+      },
+      "name": "Triceps Pushdown",
+      "group": "Triceps"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93f"
+      },
+      "name": "Skullcrusher",
+      "group": "Triceps"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd945"
+      },
+      "name": "Pull Up",
+      "group": "Upper back"
+    },
+    {
+      "equip": [
+        "C",
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd946"
+      },
+      "name": "Lat Pulldown",
+      "group": "Upper back"
+    },
+    {
+      "equip": [
+        "C"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd947"
+      },
+      "name": "Straight-arm Lat Pulldown",
+      "group": "Upper back"
+    },
+    {
+      "equip": [
+        "C",
+        "DB",
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd948"
+      },
+      "name": "Reverse Fly",
+      "group": "Upper back"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd949"
+      },
+      "name": "Row",
+      "group": "Upper back"
+    }
+  ],
+  "name": "Victor Espaillat",
+  "email": "vicander_99@hotmail.com",
+  "salt": "870ad3b87edd67347aa799c281ccb21b",
+  "hash": "a169a944df645a307c199f24db098a2a4649e1321444a0516fd507e91c826fa99b8e6bc9a8e472c542c383c79c86bc20b824aac53d0865cb97c2af5e39f93efb",
+  "program": {
+    "name": "Default Program",
+    "desc": "empty",
+    "_id": {
+      "$oid": "5eb031e8a46a85704436089b"
+    },
+    "exercises": []
+  },
+  "__v": 1
+},{
+  "_id": {
+    "$oid": "5eb03434a46a857044360905"
+  },
+  "isAdmin": false,
+  "weight": 95,
+  "height": 183,
+  "gender": "other",
+  "age": 20,
+  "activityLevel": 1.5,
+  "fitness_goal": "Burn-Fat",
+  "workout_frequency": "6",
+  "workout_volume": "21",
+  "exercises": [
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94a"
+      },
+      "name": "Preacher Curl",
+      "group": "Biceps"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94b"
+      },
+      "name": "Hammer Curl",
+      "group": "Biceps"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "1. Lie down on a flat bench.<br/><br/>2. Create upper back tightness: Pull your shoulder together; bring them back and down. This will bring your chest out. (If you want to press heavy weight, you need a solid platform to press from. Your back is the platform that you’re going to press from).<br/><br/>3. Feet Position: Your feet can be flat on the ground or brought in towards yourself to the point where your heels raise off the ground. At any rate, make sure you have solid contact against the floor. Don’t dance with your feet!<br/><br/>4. Arc: You can create some arching on your lower back, but keep it reasonable. Make sure your upper back and butt are stable on the bench at all times.<br/><br/>5. Find your grip: Generally this would be just wider than shoulder-width. Ideally, this would be the grip that allows your forearms to be perpendicular to the ground when the barbell is resting on your chest. Make sure your wrists are straight (your knuckles are facing the ceiling).<br/><br/>6. Unrack the bar: You don’t want to lose your upper back tightness, so don’t push the bar when unracking. Instead, squeeze the bar and pull it out with your lats. <br/><br/>7. Brace; inhale, hold it, and forcefully attempt to exhale against a closed airway.<br/><br/>8. Descend: Now you’re holding the bar above your neck with arms straight. In a controlled manner, bring the weight down to your middle or lower chest. You don’t want to bring the weight down to your neck or upper chest, so the elbows must tuck in slightly as you descend. In contrast to the Squat and Deadlift, the bar path for the bench press will not be straight up and down, but rather diagonal.<br/><br/>9. Ascend: Once the weight touches your mid/lower chest, press the weight up and untuck your elbows as you do. You may exhale during the ascend. <br/><br/>10. Leg-drive: You may press against the ground with your feet, especially during the ascend, as long as your butt stays on the bench.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93a"
+      },
+      "name": "Flat Bench Press",
+      "group": "Chest"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93b"
+      },
+      "name": "Dips",
+      "group": "Chest"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93c"
+      },
+      "name": "Incline Press",
+      "group": "Chest"
+    },
+    {
+      "equip": [
+        "BW"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93d"
+      },
+      "name": "Push Up",
+      "group": "Chest"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94c"
+      },
+      "name": "Hanging Leg Raise",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94d"
+      },
+      "name": "Plank",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "C"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94e"
+      },
+      "name": "Cable Crunch",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd94f"
+      },
+      "name": "Decline Crunch",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd950"
+      },
+      "name": "Oblique Twists",
+      "group": "Core"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd951"
+      },
+      "name": "High-bar Squat",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd952"
+      },
+      "name": "Low-bar Squat",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "BB"
+      ],
+      "desc": "1. Place barbell over midfoot; keep shins about 1 inch away from the bar.<br/><br/>2. Bend over. Stop bending at the knees as soon as shins touch the bar. Continue bending at the hips until you can reach the bar.<br/><br/>3. Find your grip on the bar. Shoulder-width is fine.<br/><br/>4. Brace; inhale, hold it, and forcefully attempt to exhale against a closed airway.<br/><br/>5. Tighten-up; bring your chest out, straighten your back, squeeze the bar.<br/><br/>6. Before standing up with the weight, pull slightly and feel the weight of the bar on your hands.<br/><br/>7. Stand up with the weight and exhale at or near the top.<br/><br/>8. Beware of straightening knees before hips or vice-versa. As you stand, knees should lock out in sync with hips.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd953"
+      },
+      "name": "Conventional Deadlift",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd954"
+      },
+      "name": "Leg Press",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd955"
+      },
+      "name": "Leg Curl",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd956"
+      },
+      "name": "Leg Extension",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "BW"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd957"
+      },
+      "name": "Single-leg Bridge",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd958"
+      },
+      "name": "Standing Calf Raise",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd959"
+      },
+      "name": "Seated Calf Raise",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "C"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd95a"
+      },
+      "name": "Hip Abduction",
+      "group": "Lower body"
+    },
+    {
+      "equip": [
+        "BB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd940"
+      },
+      "name": "Overhead Press",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd941"
+      },
+      "name": "Arnorld Press",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd942"
+      },
+      "name": "Anterior Delt Raise",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd943"
+      },
+      "name": "Lateral Delt Raise",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd944"
+      },
+      "name": "Posterior Delt Raise",
+      "group": "Shoulders"
+    },
+    {
+      "equip": [
+        "C"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93e"
+      },
+      "name": "Triceps Pushdown",
+      "group": "Triceps"
+    },
+    {
+      "equip": [
+        "BB",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd93f"
+      },
+      "name": "Skullcrusher",
+      "group": "Triceps"
+    },
+    {
+      "equip": [
+        "BE"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd945"
+      },
+      "name": "Pull Up",
+      "group": "Upper back"
+    },
+    {
+      "equip": [
+        "C",
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd946"
+      },
+      "name": "Lat Pulldown",
+      "group": "Upper back"
+    },
+    {
+      "equip": [
+        "C"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd947"
+      },
+      "name": "Straight-arm Lat Pulldown",
+      "group": "Upper back"
+    },
+    {
+      "equip": [
+        "C",
+        "DB",
+        "M"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd948"
+      },
+      "name": "Reverse Fly",
+      "group": "Upper back"
+    },
+    {
+      "equip": [
+        "C",
+        "DB"
+      ],
+      "desc": "Cillum id pariatur laboris exercitation. In nostrud aute Lorem consectetur laboris amet. Non consequat ipsum eu laboris consequat. Anim do exercitation laborum amet reprehenderit deserunt. Commodo magna eiusmod ex consectetur est quis pariatur nulla ipsum. Mollit occaecat velit anim incididunt veniam Lorem adipisicing. Est sint amet et incididunt adipisicing esse sunt proident duis consectetur.Exercitation nulla labore laboris cillum ut magna velit consequat eiusmod enim ex. Laboris Lorem quis ipsum occaecat. Et eu non ex laboris elit ad est proident fugiat nulla ea. Commodo amet sint pariatur aliqua incididunt dolor laborum qui sit in eu. Consectetur do qui sint consequat fugiat qui sint id laboris est.",
+      "_id": {
+        "$oid": "5ea7142164b08d295a7cd949"
+      },
+      "name": "Row",
+      "group": "Upper back"
+    }
+  ],
+  "name": "Tommy Lee",
+  "email": "123@123.com",
+  "salt": "77ad7e7e62bfa031252ac240c8a45a08",
+  "hash": "3a9c2910085e2d62c237429c2b6d329b577c5706fa52ca3620eebebdbdf32b2c03df30b5405edc1d94ddeb22ed6fb3a352c84403ac2380c9cdc82fdfed4d5179",
+  "program": {
+    "name": "Default Program",
+    "desc": "empty",
+    "_id": {
+      "$oid": "5eb03434a46a857044360906"
+    },
+    "exercises": []
+  },
+  "__v": 1
+}]

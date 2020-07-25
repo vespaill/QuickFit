@@ -3,35 +3,37 @@ const mongoose = require('mongoose');
 
 /* Define a schema for exercises */
 const exerciseSchema = new mongoose.Schema({
-    name: {
+  name: {
+    type: String,
+    required: true,
+    maxlength: 50
+  },
+  equip: {
+    type: [
+      {
         type: String,
-        required: true,
-        maxlength: 50
-    },
-    equip: {
-        type: [{
-            type: String,
-            enum: ['BB', 'DB', 'C', 'M', 'BE', 'BW'],
-        }],
-        required: true
-    },
-    group: {
-        type: String,
-        enum: [
-            'Chest',
-            'Upper back',
-            'Shoulders',
-            'Biceps',
-            'Triceps',
-            'Core',
-            'Lower body'
-        ],
-        required: true
-    },
-    desc: {
-        type: String,
-        default: 'empty'
-    }
+        enum: ['BB', 'DB', 'C', 'M', 'BE', 'BW']
+      }
+    ],
+    required: true
+  },
+  group: {
+    type: String,
+    enum: [
+      'Chest',
+      'Upper back',
+      'Shoulders',
+      'Biceps',
+      'Triceps',
+      'Core',
+      'Lower body'
+    ],
+    required: true
+  },
+  desc: {
+    type: String,
+    default: 'empty'
+  }
 });
 
 /* Build a model called 'Exercise' using the exerciseSchema that we defined. */

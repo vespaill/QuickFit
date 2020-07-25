@@ -1,20 +1,18 @@
 const mongoose = require('mongoose');
-const debug    = require('debug')('app-api:models/db ------>');
+const debug = require('debug')('app-api:models/db ------>');
 
 /* Use local database URI */
 let dbURI = 'mongodb://localhost/quickfit';
 
 /* If we're in heroku, use the live database URI instead. */
-if (process.env.NODE_ENV === 'production') {
-    dbURI = process.env.MONGODB_URI;
-}
+if (process.env.NODE_ENV === 'production') dbURI = process.env.MONGODB_URI;
 
 /* Connect to the database. */
 mongoose.connect(dbURI, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useFindAndModify: false
 });
 
 // mongoose.set('debug', true);
@@ -24,17 +22,17 @@ mongoose.connect(dbURI, {
 ----------------------------------------------------------------------------- */
 /* Monitor for a successful connection through Mongoose. */
 mongoose.connection.on('connected', () => {
-    debug(`Mongoose connected to ${dbURI}...`);
+  debug(`Mongoose connected to ${dbURI}...`);
 });
 
 /* Check for a connection error. */
 mongoose.connection.on('error', err => {
-    debug(`Mongoose connection error: ${err}`);
+  debug(`Mongoose connection error: ${err}`);
 });
 
 /* Checks for a disconnection event. */
 mongoose.connection.on('disconnected', () => {
-    debug('Mongoose disconnected');
+  debug('Mongoose disconnected');
 });
 
 /* -----------------------------------------------------------------------------
@@ -43,51 +41,51 @@ mongoose.connection.on('disconnected', () => {
 ----------------------------------------------------------------------------- */
 /* Reusable function to close the Mongoose connection. */
 const gracefulShutdown = (msg, callback) => {
-    /* Close the Mongoose connection and pass an anonymous function to run when
+  /* Close the Mongoose connection and pass an anonymous function to run when
        it's closed. */
-    mongoose.connection.close(() => {
-        /* Output a message and call a callback when the Mongoose connection is
+  mongoose.connection.close(() => {
+    /* Output a message and call a callback when the Mongoose connection is
            closed. */
-        debug(`Mongoose disconnected through ${msg}`);
-        callback();
-    });
+    debug(`Mongoose disconnected through ${msg}`);
+    callback();
+  });
 };
 
 /* Listens for SIGUSR2, which is what nodemon uses. */
 process.once('SIGUSR2', () => {
-    /* Send a message to gracefulShutdown and a callback to kill the process,
+  /* Send a message to gracefulShutdown and a callback to kill the process,
        emitting SIGUSR2 again. */
-    gracefulShutdown('nodemon restart', () => {
-        process.kill(process.pid, 'SIGUSR2');
-    });
+  gracefulShutdown('nodemon restart', () => {
+    process.kill(process.pid, 'SIGUSR2');
+  });
 });
 
 /* Listening for SIGINT on Windows. */
 const readLine = require('readline');
 if (process.platform === 'win32') {
-    const rl = readLine.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-    rl.on('SIGINT', () => {
-        process.emit("SIGINT");
-    });
+  const rl = readLine.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  rl.on('SIGINT', () => {
+    process.emit('SIGINT');
+  });
 }
 
 /* Listen for SIGINT to be emitted upon application termination. */
 process.on('SIGINT', () => {
-    /* Send message and callback to exit the Node process. */
-    gracefulShutdown('app termination', () => {
-        process.exit(0);
-    });
+  /* Send message and callback to exit the Node process. */
+  gracefulShutdown('app termination', () => {
+    process.exit(0);
+  });
 });
 
 /* Listens for SIGTERM to be emitted when Heroku shuts down the process. */
 process.on('SIGTERM', () => {
-    /* Send message and callback to exit the Node process. */
-    gracefulShutdown('Heroku app shutdown', () => {
-        process.exit(0);
-    });
+  /* Send message and callback to exit the Node process. */
+  gracefulShutdown('Heroku app shutdown', () => {
+    process.exit(0);
+  });
 });
 
 require('./exercises');
@@ -95,5 +93,5 @@ require('./programs');
 require('./users');
 
 exports.getDbURI = () => {
-    return dbURI;
-}
+  return dbURI;
+};
